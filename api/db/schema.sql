@@ -27,6 +27,11 @@ CREATE TABLE IF NOT EXISTS career_groups (
 -- Một "luật" = một điều kiện trên 1 đặc trưng -> suy ra 1 nét tính cách, có nguồn
 CREATE TABLE IF NOT EXISTS rules (
   id           INT PRIMARY KEY AUTO_INCREMENT,
+  -- Thêm so với DDL trong CLAUDE.md mục 6: khoá tự nhiên của luật, chính là
+  -- trường "id" dạng slug trong data/rules.json (vd "face_kim", "brow_thick").
+  -- Không có cột này thì hàng trong DB không nối ngược được về file JSON, mà
+  -- rules.json mới là nguồn sự thật (PIPELINE mục 1).
+  rule_key     VARCHAR(60) NOT NULL UNIQUE,
   feature_key  VARCHAR(60) NOT NULL,       -- vd "brow_curvature" (mục 7)
   op           ENUM('lt','lte','gt','gte','between','category') NOT NULL,
   v_min        FLOAT,                      -- ngưỡng / cận dưới

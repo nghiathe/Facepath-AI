@@ -10,7 +10,7 @@ from api.rules.features import FEATURE_KEYS, FEATURE_LABELS
 router = APIRouter()
 
 _SELECT = """
-    SELECT r.id, r.feature_key, r.op, r.v_min, r.v_max, r.category,
+    SELECT r.id, r.rule_key, r.feature_key, r.op, r.v_min, r.v_max, r.category,
            r.reading_hint, r.weight,
            t.label AS trait, t.description AS trait_description,
            s.title AS source, s.citation

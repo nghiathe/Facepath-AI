@@ -1,0 +1,52 @@
+[
+  {
+    "key": "kim",
+    "label": "Mặt chữ Nhật — kim hình",
+    "trigger": "Khuôn mặt vuông hoặc chữ nhật rõ ràng (face_shape_ratio cao, jaw_width lớn); các nét ngay thẳng.",
+    "duc_tinh": "Nghĩa",
+    "summary": "Mẫu người làm việc theo hệ thống, giàu nguyên tắc, chịu được việc dài hơi, kiên định.",
+    "reading": "Các nét chính của khuôn mặt gần như ngay thẳng, tạo hình vuông hay chữ nhật; xương thịt cân phân. Cổ thư xếp vào Kim hình — nổi bật là sự tôn trọng đạo nghĩa, mưu trí, cử chỉ đoan trang, giữ được tư thế ổn trọng.",
+    "source": "may",
+    "citation": "Q.I — Ngũ hành hình tướng, mục Hình Kim"
+  },
+  {
+    "key": "moc",
+    "label": "Mặt trái lê ngược — mộc hình",
+    "trigger": "Khuôn mặt dài, thon; trán rộng cằm thon (dạng trái lê hoặc tam giác ngược); face_shape_ratio thấp.",
+    "duc_tinh": "Nhân",
+    "summary": "Ôn hòa, giàu đồng cảm, thiên hướng nhân văn và học thuật.",
+    "reading": "Khuôn mặt dạng trái lê lật ngược, các bộ vị hẹp - dài - thẳng, mày thanh mắt sáng. Cổ thư xếp vào Mộc hình — nổi bật là đức Nhân: khi nhận xét việc, người thường tự đặt mình vào hoàn cảnh kẻ khác. Cách Mộc–Thủy tương ty chủ về tài văn học siêu quần.",
+    "source": "thanh_hoa_tu",
+    "citation": "Q.I — Ngũ hành hình tướng, mục Hình Mộc"
+  },
+  {
+    "key": "thuy",
+    "label": "Mặt tròn đầy — thủy hình",
+    "trigger": "Khuôn mặt tròn, đầy, nhiều thịt; mắt tròn; face_shape_ratio trung bình, cheekbone đầy.",
+    "duc_tinh": "Trí",
+    "summary": "Thông tuệ, linh hoạt, hào sảng, dễ thích ứng và giao tiếp.",
+    "reading": "Da thịt đầy đặn, mặt mũi tròn trịa là đặc trưng Thủy hình. Cách Thủy đắc Kim sinh chủ về phẩm cách thiện lương, tính thông tuệ hào sảng, được hưởng cả danh lẫn lợi.",
+    "source": "may",
+    "citation": "Q.I — Ngũ hành hình tướng, mục kiêm hình"
+  },
+  {
+    "key": "hoa",
+    "label": "Mặt trên thon dưới nở — hỏa hình",
+    "trigger": "Trán/đỉnh thon nhọn, phần dưới nở; tam đình trên hẹp dưới rộng; santing_upper thấp.",
+    "duc_tinh": "Lễ",
+    "summary": "Năng động, nhiệt thành, linh hoạt; mạnh về hành động và ứng biến.",
+    "reading": "Đầu dài, thượng đình hẹp nhọn, hạ đình to rộng, sắc da hồng hào. Cổ thư xếp vào Hỏa hình — đức trội là Lễ (tiết chế được phản ứng ngay cả trong lúc nóng giận), khí chất linh hoạt.",
+    "source": "thanh_hoa_tu",
+    "citation": "Q.I — Ngũ hành hình tướng, mục Hình Hỏa"
+  },
+  {
+    "key": "tho",
+    "label": "Mặt dày vững — thổ hình",
+    "trigger": "Khuôn mặt đầy đặn, thịt xương rắn chắc, nặng và vững; jaw và cheekbone đều dày.",
+    "duc_tinh": "Tín",
+    "summary": "Đáng tin, bền bỉ, ổn định; hợp việc cần sự nhất quán lâu dài.",
+    "reading": "Hình thể đầy đặn, thịt xương rắn chắc, dáng nặng và vững là đặc trưng Thổ hình. Đức trội là Tín — giữ nhịp ổn định, bền chí, ít dao động.",
+    "source": "than_di_phu",
+    "citation": "Q.I — Ngũ hành hình tướng, mục Hình Thổ"
+  }
+]

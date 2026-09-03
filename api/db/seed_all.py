@@ -1,18 +1,21 @@
-"""Nạp careers / sources / traits / rules từ /data vào MySQL.
+"""Nạp sources / careers / rules từ /data vào MySQL.
 
-Chạy:  python -m api.db.seed_all
+Chạy:
+    python -m api.db.seed_all --check   # chỉ soát dữ liệu, không cần MySQL
+    python -m api.db.seed_all           # nạp thật
 
-Hai nguyên tắc:
-  1. CHỈ nạp luật có "verified": true. Luật chưa có trích dẫn nằm lại trong
-     data/rules.json như bảng công việc để soạn dần từ sách. Nhờ vậy DB luôn
-     chỉ chứa luật kiểm chứng được (CLAUDE.md mục 1).
-  2. Xoá rồi nạp lại theo đúng thứ tự khoá ngoại => chạy bao nhiêu lần cũng
-     ra cùng kết quả, không cần thêm unique key làm lệch DDL mục 6.
+Nguồn sự thật là data/rules.json (PIPELINE mục 1). Seeder chỉ soi lại xem dữ
+liệu có tự mâu thuẫn không rồi đổ vào DB; engine thật chạy ở TypeScript phía
+client (web/lib/engine/).
 
-Một hàng `sources` = một cặp (title, citation). Mục 6 đặt citation trên bảng
-sources, còn mục 8 cho citation theo từng luật; coi mỗi cặp là một hàng thì
-khớp cả hai, khớp định dạng hiển thị "Ma Y Thần Tướng q.2", và không phải
-sửa schema.
+Xoá rồi nạp lại theo đúng thứ tự khoá ngoại => chạy bao nhiêu lần cũng ra cùng
+kết quả.
+
+CITATION: cột sources.citation trong data/sources.json chỉ nói xuất xứ của cuốn
+sách ("trích trong Nhân Tướng Học"), còn mỗi luật lại có citation riêng trỏ tới
+đúng chương/mục ("Q.I — Ngũ hành hình tướng"). Hai thứ khác nhau, nên seeder
+tạo một hàng `sources` cho từng cặp (nguồn, citation của luật) — khớp với cách
+phiếu hiển thị "Ma Y Thần Tướng — Q.I, Ngũ hành hình tướng".
 """
 
 import argparse
@@ -36,23 +39,24 @@ def load(name: str) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def validate_rule(rule: dict, index: int, career_slugs: set[str], titles: set[str]) -> None:
-    """Kiểm tra một luật đã verified. Sai thì dừng hẳn với thông báo rõ ràng."""
-    where = f"rules.json[{index}] (feature_key={rule.get('feature_key')!r})"
+def validate_rule(rule: dict, index: int, career_slugs: set[str], source_ids: set[str]) -> None:
+    """Kiểm tra một luật. Sai thì dừng hẳn với thông báo chỉ rõ chỗ sai."""
+    where = f"rules.json[{index}] (id={rule.get('id')!r})"
+
+    if not str(rule.get("id") or "").strip():
+        raise SeedError(f"{where}: thiếu 'id' (khoá tự nhiên của luật).")
 
     key = rule.get("feature_key")
     if key not in FEATURE_KEYS:
         raise SeedError(
-            f"{where}: feature_key không nằm trong danh sách mục 7.\n"
-            f"  Hợp lệ: {', '.join(FEATURE_KEYS)}"
+            f"{where}: feature_key={key!r} không nằm trong danh sách 14 chỉ số.\n"
+            f"  Hợp lệ: {', '.join(FEATURE_KEYS)}\n"
+            f"  (Sửa api/rules/features.py VÀ web/lib/engine/accessors.ts nếu thêm chỉ số mới.)"
         )
 
     op = rule.get("op")
     if op not in OPS_REQUIRING:
-        raise SeedError(
-            f"{where}: op={op!r} không hợp lệ. "
-            f"Hợp lệ: {', '.join(OPS_REQUIRING)}"
-        )
+        raise SeedError(f"{where}: op={op!r} không hợp lệ. Hợp lệ: {', '.join(OPS_REQUIRING)}")
     for field in OPS_REQUIRING[op]:
         if rule.get(field) in (None, ""):
             raise SeedError(f"{where}: op={op!r} bắt buộc phải có {field!r}.")
@@ -62,14 +66,14 @@ def validate_rule(rule: dict, index: int, career_slugs: set[str], titles: set[st
     for field in ("trait", "reading_hint", "source", "citation"):
         if not str(rule.get(field) or "").strip():
             raise SeedError(
-                f"{where}: thiếu {field!r}. Luật verified bắt buộc trỏ về nguồn "
-                f"có trích dẫn (mục 1 CLAUDE.md)."
+                f"{where}: thiếu {field!r}. Mọi luật bắt buộc trỏ về nguồn có "
+                f"trích dẫn (CLAUDE.md mục 1: kết quả phải kiểm chứng được)."
             )
 
-    if rule["source"] not in titles:
+    if rule["source"] not in source_ids:
         raise SeedError(
-            f"{where}: source={rule['source']!r} không có trong data/sources.json. "
-            f"Kiểm tra chính tả hoặc bổ sung sách vào sources.json."
+            f"{where}: source={rule['source']!r} không có trong data/sources.json.\n"
+            f"  Hợp lệ: {', '.join(sorted(source_ids))}"
         )
 
     careers = rule.get("careers") or {}
@@ -84,54 +88,73 @@ def validate_rule(rule: dict, index: int, career_slugs: set[str], titles: set[st
         if not 0 <= float(weight) <= 1:
             raise SeedError(f"{where}: trọng số của {slug!r} phải nằm trong 0..1.")
 
+    if not 0 < float(rule.get("weight", 1.0)) <= 1:
+        raise SeedError(f"{where}: 'weight' của luật phải nằm trong (0..1].")
+
 
 def load_and_validate() -> dict:
-    """Đọc /data và kiểm tra toàn bộ luật verified. Không đụng tới DB."""
+    """Đọc /data và kiểm tra toàn bộ. Không đụng tới DB."""
     careers = load("careers")
     sources = load("sources")
-    traits = load("traits")
     rules = load("rules")
+    face_types = load("face_types")
 
     career_slugs = {c["slug"] for c in careers}
-    source_notes = {s["title"]: s.get("note") for s in sources}
+    source_ids = {s["id"] for s in sources}
 
-    verified = [r for r in rules if r.get("verified") is True]
-    skipped = len(rules) - len(verified)
+    ids = [r.get("id") for r in rules]
+    dup = {i for i in ids if ids.count(i) > 1}
+    if dup:
+        raise SeedError(f"rules.json có id trùng lặp: {', '.join(sorted(dup))}")
+
     for i, rule in enumerate(rules):
-        if rule.get("verified") is True:
-            validate_rule(rule, i, career_slugs, set(source_notes))
+        validate_rule(rule, i, career_slugs, source_ids)
 
-    # Nét tính cách: gộp traits.json với trait được luật nhắc tới.
-    trait_desc = {t["label"]: t.get("description") for t in traits}
-    for rule in verified:
-        trait_desc.setdefault(rule["trait"], None)
+    # face_shape phải phủ đúng 5 ngũ hình trong face_types.json.
+    ft_keys = {f["key"] for f in face_types}
+    rule_shapes = {r["category"] for r in rules if r["feature_key"] == "face_shape"}
+    if rule_shapes - ft_keys:
+        raise SeedError(
+            f"rules.json dùng face_shape lạ: {', '.join(sorted(rule_shapes - ft_keys))}. "
+            f"face_types.json chỉ có: {', '.join(sorted(ft_keys))}"
+        )
 
-    # Nguồn: chỉ tạo hàng cho cặp (title, citation) mà luật thật sự dùng.
-    pairs = sorted({(r["source"], r["citation"]) for r in verified})
+    # Nét tính cách suy thẳng từ luật (data/traits.json đã bỏ).
+    traits = sorted({r["trait"] for r in rules})
+
+    # Mỗi cặp (nguồn, trích dẫn cụ thể của luật) là một hàng sources.
+    pairs = sorted({(r["source"], r["citation"]) for r in rules})
+    notes = {s["id"]: s for s in sources}
 
     return {
-        "careers": careers, "source_notes": source_notes, "trait_desc": trait_desc,
-        "verified": verified, "skipped": skipped, "pairs": pairs,
+        "careers": careers,
+        "sources": sources,
+        "rules": rules,
+        "face_types": face_types,
+        "traits": traits,
+        "pairs": pairs,
+        "notes": notes,
     }
 
 
 def main(check_only: bool = False) -> None:
     enable_utf8_stdout()
+    b = load_and_validate()
+    careers, rules, traits, pairs, notes = (
+        b["careers"], b["rules"], b["traits"], b["pairs"], b["notes"]
+    )
 
-    bundle = load_and_validate()
-    careers, source_notes = bundle["careers"], bundle["source_notes"]
-    trait_desc, verified = bundle["trait_desc"], bundle["verified"]
-    skipped, pairs = bundle["skipped"], bundle["pairs"]
+    weight_count = sum(len(r["careers"]) for r in rules)
+    summary = (
+        f"sources {len(pairs)} · traits {len(traits)} · careers {len(careers)} · "
+        f"rules {len(rules)} · rule_career_weights {weight_count}"
+    )
+    covered = {r["feature_key"] for r in rules}
 
     if check_only:
-        print(
-            f"Dữ liệu hợp lệ: sources {len(pairs)} · traits {len(trait_desc)} · "
-            f"careers {len(careers)} · rules {len(verified)} · "
-            f"rule_career_weights {sum(len(r['careers']) for r in verified)}"
-        )
-        print(f"Bỏ qua {skipped} luật chưa có trích dẫn (verified=false).")
-        covered = {r["feature_key"] for r in verified}
+        print(f"Dữ liệu hợp lệ: {summary}")
         print(f"Đã phủ {len(covered)}/{len(FEATURE_KEYS)} chỉ số khuôn mặt.")
+        print(f"Ngũ hình trong face_types.json: {len(b['face_types'])}")
         print("(--check: chưa ghi gì vào DB.)")
         return
 
@@ -156,27 +179,39 @@ def main(check_only: bool = False) -> None:
 
         cur.executemany(
             "INSERT INTO sources (title, citation, note) VALUES (%s, %s, %s)",
-            [(title, citation, source_notes.get(title)) for title, citation in pairs],
+            [
+                (
+                    notes[sid]["title"],
+                    citation,
+                    notes[sid].get("note") or notes[sid].get("citation"),
+                )
+                for sid, citation in pairs
+            ],
         )
         cur.execute("SELECT id, title, citation FROM sources")
-        source_id = {(row["title"], row["citation"]): row["id"] for row in cur.fetchall()}
+        by_title = {(row["title"], row["citation"]): row["id"] for row in cur.fetchall()}
+        source_id = {
+            (sid, citation): by_title[(notes[sid]["title"], citation)]
+            for sid, citation in pairs
+        }
 
         cur.executemany(
             "INSERT INTO traits (label, description) VALUES (%s, %s)",
-            sorted(trait_desc.items()),
+            [(t, None) for t in traits],
         )
         cur.execute("SELECT id, label FROM traits")
         trait_id = {row["label"]: row["id"] for row in cur.fetchall()}
 
         weight_rows: list[tuple] = []
-        for rule in verified:
+        for rule in rules:
             cur.execute(
-                "INSERT INTO rules (feature_key, op, v_min, v_max, category, "
+                "INSERT INTO rules (rule_key, feature_key, op, v_min, v_max, category, "
                 "trait_id, source_id, reading_hint, weight) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                 (
-                    rule["feature_key"], rule["op"], rule.get("v_min"), rule.get("v_max"),
-                    rule.get("category"), trait_id[rule["trait"]],
+                    rule["id"], rule["feature_key"], rule["op"],
+                    rule.get("v_min"), rule.get("v_max"), rule.get("category"),
+                    trait_id[rule["trait"]],
                     source_id[(rule["source"], rule["citation"])],
                     rule["reading_hint"], rule.get("weight", 1.0),
                 ),
@@ -192,22 +227,15 @@ def main(check_only: bool = False) -> None:
             weight_rows,
         )
 
-    print(
-        f"Đã seed: sources {len(pairs)} · traits {len(trait_desc)} · "
-        f"careers {len(careers)} · rules {len(verified)} · "
-        f"rule_career_weights {len(weight_rows)}"
-    )
-    if skipped:
-        print(
-            f"Bỏ qua {skipped} luật chưa có trích dẫn (verified=false). "
-            f"Soạn tiếp trong data/rules.json rồi chạy lại lệnh này."
-        )
-    covered = {r["feature_key"] for r in verified}
+    print(f"Đã seed: {summary}")
     print(f"Đã phủ {len(covered)}/{len(FEATURE_KEYS)} chỉ số khuôn mặt.")
+    # face_types.json không có bảng trong CLAUDE.md mục 6; web đọc thẳng từ
+    # web/lib/data.ts nên không cần nạp vào DB.
+    print("face_types.json: web đọc trực tiếp, không nạp vào DB.")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Nạp dữ liệu tướng học vào MySQL.")
     parser.add_argument(
         "--check",
         action="store_true",

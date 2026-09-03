@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Tài nguyên MediaPipe tự host: JS keo dán do Emscripten sinh ra, không
+    // phải code của dự án nên không lint (xem scripts/setup-mediapipe.mjs).
+    "public/mediapipe/**",
   ]),
 ]);
 

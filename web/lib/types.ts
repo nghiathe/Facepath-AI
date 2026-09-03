@@ -1,35 +1,12 @@
-// Kiểu dữ liệu khớp JSON của API (CLAUDE.md mục 10).
-// Khai báo sẵn cả phần của mốc 3 để lúc đó cắm vào không phải sửa chỗ khác.
-
-/** Vector đặc trưng khuôn mặt: feature_key -> giá trị đã chuẩn hoá. */
-export type FeatureVector = Record<string, number>;
-
-export type Trait = {
-  label: string;
-  hint: string;
-  source: string;
-  citation: string;
-};
+// Kiểu dữ liệu cho các endpoint TRA CỨU của API (CLAUDE.md mục 10).
+//
+// Kiểu của luồng chấm điểm nằm ở web/lib/engine/ (AnalysisResult, Trait,
+// CareerScore) vì engine chạy client-side, không qua API.
 
 export type CareerGroup = {
   slug: string;
   name: string;
   sample_jobs: string;
-};
-
-export type ScoredCareerGroup = CareerGroup & {
-  /** Mức khớp 0-100. KHÔNG phải dự báo thành công nghề nghiệp. */
-  score: number;
-};
-
-/** Trả về của POST /api/analyze — MỐC 3, chưa hiện thực ở mốc 1. */
-export type AnalyzeResult = {
-  archetype: string;
-  matched_rules_count: number;
-  traits: Trait[];
-  career_groups: ScoredCareerGroup[];
-  reading: string | null;
-  sources_count: number;
 };
 
 export type Rule = {

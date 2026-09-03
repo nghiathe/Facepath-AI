@@ -29,3 +29,7 @@ data/embeddings/*.npy
 Thumbs.db
 .idea/
 .vscode/
+
+# Tài nguyên MediaPipe tự host (~38MB): wasm copy từ node_modules, model tải về.
+# Dựng lại bằng: cd web && npm run setup:mediapipe  (tự chạy trước dev/build)
+web/public/mediapipe/

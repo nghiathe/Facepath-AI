@@ -1,16 +1,14 @@
-// Gọi backend FastAPI.
+// Gọi backend FastAPI — chỉ dùng cho tra cứu (Kho luận giải, Về phương pháp).
 //
-// BẤT BIẾN (CLAUDE.md mục 1 + 13): chỉ gửi CON SỐ, không bao giờ gửi ảnh hay
-// khung hình. Nếu cần thêm hàm gửi ảnh lên server — dừng lại và hỏi trước.
+// Việc chấm điểm KHÔNG đi qua đây: rule engine chạy ngay trong trình duyệt
+// (web/lib/engine/), nên một lượt quét không phát sinh request nào. Trước đây
+// có hàm analyze() POST lên /api/analyze; đã bỏ vì endpoint đó không tồn tại
+// và cũng không cần nữa.
+//
+// BẤT BIẾN (CLAUDE.md mục 1 + 13): không bao giờ gửi ảnh hay khung hình.
+// Nếu cần thêm hàm gửi ảnh lên server — dừng lại và hỏi trước.
 
-import type {
-  AnalyzeResult,
-  CareerGroup,
-  FeatureCatalog,
-  FeatureVector,
-  HealthStatus,
-  Rule,
-} from "./types";
+import type { CareerGroup, FeatureCatalog, HealthStatus, Rule } from "./types";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "http://localhost:8000";
@@ -35,10 +33,3 @@ export const getFeatures = () => getJson<FeatureCatalog>("/api/features");
 
 export const getRules = (featureKey?: string) =>
   getJson<Rule[]>(`/api/rules${featureKey ? `?feature=${encodeURIComponent(featureKey)}` : ""}`);
-
-/** MỐC 3. Chỉ gửi vector số — không kèm ảnh. */
-export const analyze = (features: FeatureVector) =>
-  getJson<AnalyzeResult>("/api/analyze", {
-    method: "POST",
-    body: JSON.stringify({ features }),
-  });

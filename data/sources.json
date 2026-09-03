@@ -1,22 +1,17 @@
 [
   {
+    "id": "ntc",
     "title": "Nhân Tướng Học",
-    "note": "Sách nền của đồ án. Dùng làm khung phân loại ngũ hình và tam đình."
+    "author": "Hy Trương",
+    "citation": "sách gốc của dự án",
+    "note": "Bản số hoá dùng làm ngữ liệu chính. Các nguồn cổ thư bên dưới đều được trích dẫn lại trong sách này."
   },
-  {
-    "title": "Ma Y Thần Tướng",
-    "note": "Cổ thư, chia theo quyển (q.1, q.2...). Trích dẫn ghi theo số quyển."
-  },
-  {
-    "title": "Tướng pháp ngũ hình",
-    "note": "Chuyên về phân loại kim - mộc - thuỷ - hoả - thổ. Trích dẫn ghi theo số trang."
-  },
-  {
-    "title": "Thần tướng toàn thư",
-    "note": "Cổ thư tổng hợp. Trích dẫn ghi theo số trang."
-  },
-  {
-    "title": "Thái Thanh thần giám",
-    "note": "Cổ thư, chia theo quyển. Trích dẫn ghi theo số quyển."
-  }
+  { "id": "may", "title": "Ma Y Thần Tướng", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "than_di_phu", "title": "Thần dị phú", "author": "Trần Đoàn chú giải", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "phong_giam", "title": "Phong giám tập", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "thanh_hoa_tu", "title": "Thành Hòa Tử", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "than_tuong_toan_bien", "title": "Thần tướng toàn biên", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "thuy_kinh", "title": "Thủy kính tập", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "nhan_luan", "title": "Nhân Luân đại thống phú", "citation": "trích trong Nhân Tướng Học" },
+  { "id": "to_lang_thien", "title": "Tô Lãng Thiên", "citation": "học phái Nhật Bản, trích trong Nhân Tướng Học" }
 ]
