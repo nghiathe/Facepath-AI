@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "ky-thuat-cong-nghe",
+    "name": "Kỹ thuật & công nghệ",
+    "sample_jobs": "Kỹ sư dữ liệu · lập trình viên · kỹ thuật viên vận hành hệ thống",
+    "sort_order": 1
+  },
+  {
+    "slug": "tai-chinh-ke-toan",
+    "name": "Tài chính, kế toán & kiểm toán",
+    "sample_jobs": "Kiểm toán viên · chuyên viên tín dụng · kế toán tổng hợp",
+    "sort_order": 2
+  },
+  {
+    "slug": "quan-ly-van-hanh",
+    "name": "Quản lý & vận hành",
+    "sample_jobs": "Quản trị dự án · quản lý chất lượng · điều phối chuỗi cung ứng",
+    "sort_order": 3
+  },
+  {
+    "slug": "nghien-cuu-giang-day",
+    "name": "Nghiên cứu & giảng dạy",
+    "sample_jobs": "Nghiên cứu viên · giảng viên · chuyên viên phân tích chính sách",
+    "sort_order": 4
+  },
+  {
+    "slug": "phap-ly-hcc",
+    "name": "Pháp lý & hành chính công",
+    "sample_jobs": "Chuyên viên pháp chế · thanh tra · quản lý hồ sơ nhà nước",
+    "sort_order": 5
+  },
+  {
+    "slug": "kinh-doanh-truyen-thong",
+    "name": "Kinh doanh & truyền thông",
+    "sample_jobs": "Kinh doanh B2B · truyền thông thương hiệu · tư vấn khách hàng",
+    "sort_order": 6
+  }
+]

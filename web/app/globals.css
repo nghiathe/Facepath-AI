@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Design token — trích nguyên giá trị từ CLAUDE.md mục 5.
+   Đừng tự đổi màu/font: mockup design/face-career-app.html là tham chiếu. */
+@theme {
+  /* Navy chính và các sắc độ đậm dần */
+  --color-navy: #232b76;
+  --color-navy-deep: #161c4e;
+  --color-navy-darkest: #10142e;
+
+  /* Vàng/hổ phách (accent) */
+  --color-amber: #f0a81e;
+  --color-amber-text: #c4881a;
+
+  /* Nền: trang / surface (phiếu) / thẻ */
+  --color-page: #faf9f5;
+  --color-surface: #f6f3ec;
+  --color-card: #ffffff;
+
+  /* Chữ: tiêu đề / nội dung / phụ / rất nhạt */
+  --color-ink-title: #161c4e;
+  --color-ink-body: #5c5849;
+  --color-ink-muted: #6b6656;
+  --color-ink-faint: #7a7565;
+  --color-ink-faintest: #8a8474;
+
+  /* Viền: nhạt -> đậm */
+  --color-line-soft: rgba(35, 43, 118, 0.12);
+  --color-line-strong: rgba(35, 43, 118, 0.2);
+
+  /* Hình khối: nút 3px, thẻ/khung 6px */
+  --radius-btn: 3px;
+  --radius-card: 6px;
+
+  /* Đổ bóng mềm rất nhẹ cho khung màn */
+  --shadow-screen: 0 30px 60px -30px rgba(16, 20, 46, 0.35);
+
+  /* Hệ chữ duy nhất: Be Vietnam Pro (nạp qua next/font ở layout.tsx) */
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Nền trang dùng #faf9f5 theo mục 5.
+   (#E9E6DE trong mockup chỉ là nền canvas của công cụ thiết kế.) */
+body {
+  background: var(--color-page);
+  color: var(--color-ink-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tiêu đề lớn: weight 600, letter-spacing âm nhẹ (mục 5) */
+h1,
+h2,
+h3 {
+  color: var(--color-ink-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Nội dung: line-height ~1.65 (mục 5) */
+p {
+  line-height: 1.65;
+}
+
+/* Nhãn nhỏ in hoa, giãn chữ ~0.18em (mục 5) */
+.label-caps {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
