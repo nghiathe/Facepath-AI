@@ -17,6 +17,9 @@ function features(over: Partial<FaceFeatures> = {}): FaceFeatures {
       balance: 0.95,
       dominant: "balanced",
     },
+    forehead: { width: 0.72, shape: "vuong" },
+    eyes: { length: 1.02, size: 0.5 },
+    cheekbone: { prominence: 0.55 },
     eyebrows: { curvature: 0.4, length: 1.05, thickness: 0.7, eyeGap: 0.55 },
     nose: { wingWidth: 0.55, bridgeWidth: 0.5, length: 0.5 },
     mouth: {
@@ -36,9 +39,9 @@ describe("dữ liệu khớp với engine", () => {
     expect(missingAccessors(RULES.map((r) => r.feature_key))).toEqual([]);
   });
 
-  it("rules.json dùng đúng 14 feature_key như PIPELINE mục 1", () => {
-    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(14);
-    expect(RULES).toHaveLength(26);
+  it("rules.json dùng đúng 19 feature_key như PIPELINE mục 1", () => {
+    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(19);
+    expect(RULES).toHaveLength(32);
   });
 
   it("mọi luật đều truy được về nguồn có thật", () => {
@@ -61,8 +64,12 @@ describe("dữ liệu khớp với engine", () => {
     expect(inRules).toEqual(new Set(FACE_TYPES.map((f) => f.key)));
   });
 
-  it("accessor không thừa so với nhu cầu (14 key + không key lạ)", () => {
-    expect(SUPPORTED_KEYS).toHaveLength(14);
+  // Chiều ngược lại của test đầu tiên. Accessor thừa = engine đọc một đặc trưng
+  // chẳng luật nào dùng: hoặc luật bị xoá nhầm, hoặc tên gõ lệch một bên. Nêu
+  // đích danh key thừa thay vì chỉ so số lượng, để lần sau khỏi phải đi dò.
+  it("không accessor nào thừa so với rules.json", () => {
+    const used = new Set(RULES.map((r) => r.feature_key));
+    expect(SUPPORTED_KEYS.filter((k) => !used.has(k))).toEqual([]);
   });
 });
 

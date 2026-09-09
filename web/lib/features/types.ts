@@ -7,6 +7,13 @@ export type FaceType = "kim" | "moc" | "thuy" | "hoa" | "tho";
 /** Dạng miệng. 4 giá trị đầu được rules.json dùng; "khac" là nhánh mặc định. */
 export type MouthShape = "vong_cung" | "ho" | "long" | "chu_tu" | "khac";
 
+/**
+ * Dạng trán. rules.json dùng "vuong" và "goc_tron"; "khac" là nhánh mặc định.
+ * Tướng học phân loại theo chân tóc, mà FaceMesh không thấy chân tóc — nên đây
+ * là XẤP XỈ từ đường bao trán (rules.json đã ghi chú `requires` đúng điều này).
+ */
+export type ForeheadShape = "vuong" | "goc_tron" | "khac";
+
 /** Một điểm mốc đã chuẩn hoá về [0,1] theo khung hình (định dạng MediaPipe). */
 export type Landmark = { x: number; y: number; z?: number };
 
@@ -19,6 +26,20 @@ export type FaceFeatures = {
     lower: number; // 0..1, phần cằm
     balance: number; // 0..1, 1 = cân (33/34/33)
     dominant: "upper" | "middle" | "lower" | "balanced"; // chỉ để hiển thị
+  };
+
+  forehead: {
+    width: number; // 0..1                     → forehead_width
+    shape: ForeheadShape; //                   → forehead_shape
+  };
+
+  eyes: {
+    length: number; // tỉ số, 1.0 = mắt dài trung bình → eye_length
+    size: number; // 0..1, độ mở của mắt       → eye_size
+  };
+
+  cheekbone: {
+    prominence: number; // 0..1                → cheekbone_prominence
   };
 
   eyebrows: {

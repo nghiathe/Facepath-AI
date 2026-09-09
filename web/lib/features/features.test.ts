@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   classifyFaceType,
+  classifyForeheadShape,
   classifyMouthShape,
   extractFeatures,
 } from "./features";
@@ -273,10 +274,35 @@ describe("miền giá trị và chất lượng", () => {
     expect(f.mouth.cornerAngle).toBeLessThanOrEqual(1);
   });
 
+  it("taper càng gần 1 thì trán càng vuông", () => {
+    expect(classifyForeheadShape(1.0)).toBe("vuong");
+    expect(classifyForeheadShape(0.85)).toBe("goc_tron");
+    expect(classifyForeheadShape(0.5)).toBe("khac");
+    // Hai category mà rules.json dùng phải nằm trong miền giá trị trả về.
+    expect(["vuong", "goc_tron"]).toContain(classifyForeheadShape(0.95));
+  });
+
   it("cung mày vồng thì curvature lớn hơn mày thẳng", () => {
     const flat = extractFeatures(synthFace({ browArc: 0 })).eyebrows.curvature;
     const arched = extractFeatures(synthFace({ browArc: 0.03 })).eyebrows.curvature;
     expect(arched).toBeGreaterThan(flat);
+  });
+
+  it("mặt hẹp hơn thì forehead.width nhỏ hơn", () => {
+    const wide = extractFeatures(synthFace({ faceHalfW: 0.24 })).forehead.width;
+    const narrow = extractFeatures(synthFace({ faceHalfW: 0.16 })).forehead.width;
+    expect(narrow).toBeLessThanOrEqual(wide);
+  });
+
+  it("bốn chỉ số mới đều hữu hạn và trong dải quy ước", () => {
+    const f = extractFeatures(synthFace());
+    for (const v of [f.forehead.width, f.eyes.size, f.cheekbone.prominence]) {
+      expect(Number.isFinite(v)).toBe(true);
+      expect(v).toBeGreaterThanOrEqual(0);
+      expect(v).toBeLessThanOrEqual(1);
+    }
+    // eyes.length là tỉ số quanh 1.0 (như eyebrows.length), không ép về 0..1.
+    expect(Number.isFinite(f.eyes.length)).toBe(true);
   });
 
   it("mặt thẳng đủ sáng thì đạt điều kiện chụp", () => {

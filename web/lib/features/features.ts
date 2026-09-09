@@ -13,7 +13,13 @@ import {
   RIGHT_EYEBROW,
   TOTAL_LANDMARKS,
 } from "./landmark-ids";
-import type { FaceFeatures, FaceType, Landmark, MouthShape } from "./types";
+import type {
+  FaceFeatures,
+  FaceType,
+  ForeheadShape,
+  Landmark,
+  MouthShape,
+} from "./types";
 
 // --- Hiệu chỉnh (PIPELINE mục 10) -------------------------------------------
 // Mỗi cặp [lo, hi] là dải người thật hợp lý của phép đo THÔ; giá trị được ép
@@ -28,7 +34,17 @@ export const CALIB = {
   noseLength: [0.5, 0.9] as [number, number], // dài mũi / iod
   mouthWidth: [0.35, 0.55] as [number, number], // bề ngang miệng / bề ngang mặt
   lipThickness: [0.12, 0.34] as [number, number], // (dày môi trên + dưới) / iod
+  eyeSize: [0.07, 0.13] as [number, number], // cao mắt / iod
+  foreheadWidth: [0.7, 0.92] as [number, number], // ngang trán / ngang mặt
+  cheekbone: [1.0, 1.45] as [number, number], // ngang gò má / ngang hàm
 };
+
+/**
+ * Bề ngang một mắt / iod ở người trung bình. iod đo hai khoé mắt NGOÀI nên bao
+ * cả hai mắt lẫn khoảng giữa, một mắt chiếm khoảng 0.3 của nó. Dùng làm mốc để
+ * eyes.length ≈ 1.0 với mắt trung bình — cùng quy ước với eyebrows.length.
+ */
+const EYE_LEN_REF = 0.3;
 
 // Ngưỡng "đủ điều kiện chụp" của màn Scan (CLAUDE.md mục 11).
 export const QUALITY_LIMITS = {
@@ -94,6 +110,13 @@ const stripThickness = (pts: Landmark[], bins = 5) => {
   return widths.length ? median(widths) : 0;
 };
 
+/** Bề ngang của một chùm điểm; 0 nếu không đủ điểm để đo. */
+const widthOf = (pts: Landmark[]) => {
+  if (pts.length < 2) return 0;
+  const e = extent(pts, "x");
+  return e.max - e.min;
+};
+
 /** Hai đầu mút của một cung (điểm trái nhất và phải nhất). */
 const endpoints = (pts: Landmark[]) => {
   let left = pts[0];
@@ -127,6 +150,23 @@ export function classifyFaceType(input: {
   if (input.santingUpper < input.santingLower - 0.04) return "hoa";
   if (fullness >= 0.6 && r >= 0.85) return "thuy";
   return "tho";
+}
+
+/**
+ * Dạng trán, xấp xỉ từ độ thu hẹp của đường bao khi đi lên đỉnh trán.
+ *
+ * `taper` = ngang trán ở đỉnh / ngang trán ở ngang mày. Gần 1 nghĩa là hai bên
+ * trán gần như song song → góc trán vuông; càng nhỏ thì hai góc càng bo tròn.
+ *
+ * CẢNH BÁO: tướng học phân loại trán theo CHÂN TÓC, mà FaceMesh không có điểm
+ * mốc nào ở chân tóc — đường bao trên cùng của FACE_OVAL chỉ là mép trên vùng
+ * da mặt. Vì vậy đây là xấp xỉ; hai ngưỡng dưới đây chưa hiệu chỉnh trên ảnh
+ * thật (PIPELINE mục 10), đừng tin kết quả "vuong"/"goc_tron" trước bước đó.
+ */
+export function classifyForeheadShape(taper: number): ForeheadShape {
+  if (taper >= 0.92) return "vuong";
+  if (taper >= 0.78) return "goc_tron";
+  return "khac";
 }
 
 /** Dạng miệng — PIPELINE mục 4.3 (giữ nguyên thứ tự điều kiện). */
@@ -228,6 +268,32 @@ export function extractFeatures(
     gapRaw.push((eyeTop - browBottom) / iod);
   }
 
+  // --- Mắt ---
+  // length: dài mắt so với mắt trung bình (>1 = mắt dài, kiểu mắt phượng).
+  // size: độ mở của mắt theo chiều dọc — "mắt lớn" trong sách là mắt mở rộng,
+  // lộ nhiều tròng, chứ không phải mắt dài; nên đo cao chứ không đo ngang.
+  const eyeSides = [
+    { pts: pick(lm, LEFT_EYE), outer: PT.EYE_L_OUTER, inner: PT.EYE_L_INNER },
+    { pts: pick(lm, RIGHT_EYE), outer: PT.EYE_R_OUTER, inner: PT.EYE_R_INNER },
+  ];
+  const eyeLenRaw: number[] = [];
+  const eyeHeightRaw: number[] = [];
+  for (const s of eyeSides) {
+    eyeLenRaw.push(dist(p(s.outer), p(s.inner)) / iod);
+    const e = extent(s.pts, "y");
+    eyeHeightRaw.push((e.max - e.min) / iod);
+  }
+
+  // --- Trán ---
+  // Bề ngang đo ở ngang mày (chỗ rộng nhất của trán), so với bề ngang mặt.
+  // Bề ngang một dải ngang của đường bao, tâm ở độ cao y, dày ±band.
+  const bandWidth = (y: number, band: number) =>
+    widthOf(oval.filter((pt) => Math.abs(pt.y - y) <= band));
+
+  const foreheadW = bandWidth(browY - faceH * 0.06, faceH * 0.05);
+  const foreheadTopW = bandWidth(ovalY.min + faceH * 0.1, faceH * 0.05);
+  const foreheadTaper = foreheadW === 0 ? 0 : foreheadTopW / foreheadW;
+
   // --- Mũi ---
   const alaW = Math.abs(p(PT.ALA_LEFT).x - p(PT.ALA_RIGHT).x);
   // Bề ngang sống mũi: tạm dùng khoảng cách hai khoé mắt TRONG làm đại lượng
@@ -260,6 +326,15 @@ export function extractFeatures(
   const jawX = jawPts.length >= 2 ? extent(jawPts, "x") : ovalX;
   const jawW = jawX.max - jawX.min;
 
+  // --- Gò má (lưỡng quyền) ---
+  // "Quyền cao, nở rộng" là gò má nhô so với phần dưới khuôn mặt, nên lấy bề
+  // ngang ở ngang gò má chia cho bề ngang hàm — chia cho faceW thì vô nghĩa vì
+  // với phần lớn khuôn mặt, chỗ rộng nhất CHÍNH LÀ gò má nên tỉ số luôn ~1.
+  // Gò má nằm hơi dưới khoé mắt ngoài.
+  const eyeLineY = (p(PT.EYE_L_OUTER).y + p(PT.EYE_R_OUTER).y) / 2;
+  const cheekW = bandWidth(eyeLineY + faceH * 0.06, faceH * 0.06);
+  const cheekRaw = jawW === 0 ? 0 : cheekW / jawW;
+
   // --- Chất lượng khung hình ---
   const eyeDx = p(PT.EYE_L_OUTER).x - p(PT.EYE_R_OUTER).x;
   const eyeDy = p(PT.EYE_L_OUTER).y - p(PT.EYE_R_OUTER).y;
@@ -286,6 +361,17 @@ export function extractFeatures(
       santingLower: lower,
     }),
     santing,
+    forehead: {
+      width: norm(foreheadW / faceW, ...CALIB.foreheadWidth),
+      shape: classifyForeheadShape(foreheadTaper),
+    },
+    eyes: {
+      length: mean(eyeLenRaw) / EYE_LEN_REF,
+      size: norm(mean(eyeHeightRaw), ...CALIB.eyeSize),
+    },
+    cheekbone: {
+      prominence: norm(cheekRaw, ...CALIB.cheekbone),
+    },
     eyebrows: {
       curvature: norm(mean(curvRaw), ...CALIB.browCurvature),
       length: mean(lenRatio),

@@ -2,7 +2,7 @@
 
 > Đặt file này ở thư mục gốc của repo. Claude Code sẽ tự đọc nó làm ngữ cảnh dự án.
 > Đây là **đồ án** của Khoa Công nghệ thông tin & Kinh tế số — Học viện Ngân hàng (SV: Nguyễn An · K26).
-> Giao diện đã được thiết kế xong (xem `design/face-career-app.html`). Nhiệm vụ là **hiện thực hoá chức năng** bám sát mockup này.
+> Giao diện đã được thiết kế xong (xem `design/itde-tech-camp.html`). Nhiệm vụ là **hiện thực hoá chức năng** bám sát mockup này.
 
 ---
 
@@ -67,15 +67,16 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
 
 ```
 /design
-  face-career-app.html         # mockup gốc (tham chiếu, không sửa)
+  itde-tech-camp.html          # mockup gốc (tham chiếu, không sửa)
 /web                           # Next.js frontend
   /app
     page.tsx                   # Màn 01 Trang chủ
     /scan/page.tsx             # Màn 02 Quét
     /analyze/page.tsx          # Màn 03 Đang phân tích
     /result/page.tsx           # Màn 04 Phiếu kết quả
-    /library/page.tsx          # "Kho luận giải" (tra cứu luật + nguồn)
-    /about/page.tsx            # "Về phương pháp"
+    /library/page.tsx          # "Khám phá" (tra cứu luật + nguồn)
+    /history/page.tsx          # "Lịch sử quét" (các lượt quét lưu ở máy)
+    /about/page.tsx            # "Về Tech Camp"
   /lib
     landmarks.ts               # bọc MediaPipe Face Landmarker
     features.ts                # 478 điểm → vector 24 số (mục 7)
@@ -98,25 +99,44 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
 
 ---
 
-## 5. Design system (trích từ mockup — dùng đúng)
+## 5. Design system (trích từ `design/itde-tech-camp.html` — dùng đúng)
+
+> Bảng màu navy/hổ phách của mockup cũ (`face-career-app.html`, đã bỏ) **không còn dùng**.
+> Giá trị dưới đây đã được cài thành token trong `web/app/globals.css`.
+
+**Sáng hay tối tuỳ màn** — đây là điểm dễ sai nhất:
+
+| Màn | Nền |
+|---|---|
+| 01 Landing | **sáng** `#F2F6FF` |
+| 02 Đang quét | **tối** `radial-gradient(120% 90% at 50% 0%, #16295E, #0A1330 55%, #060C22)` |
+| 03 Kết quả | **sáng** `linear-gradient(180deg, #F2F6FF, #E7EEFF)` |
+| 04 Chi tiết kết quả | **tối** `radial-gradient(120% 80% at 20% 0%, #16295E, #0A1330 60%, #060C22)` |
 
 **Màu**
-- Navy chính: `#232B76`; đậm hơn: `#161C4E`; đậm nhất: `#10142E`
-- Vàng/hổ phách (accent): `#F0A81E`; biến thể chữ: `#C4881A`
-- Nền trang: `#faf9f5`; nền surface/phiếu: `#F6F3EC`; thẻ: `#ffffff`
-- Chữ: tiêu đề `#161C4E`; nội dung `#5C5849`; phụ `#6B6656` / `#7A7565`
-- Viền: `rgba(35,43,118,0.12)` (nhạt) → `rgba(35,43,118,0.2)` (đậm)
+- Xanh thương hiệu: `#2563EB`; đậm hơn: `#1D4ED8`. Tím: `#6D4DF6` / `#7C5CFF`. Cyan: `#38BDF8`. Xanh nhạt (link, số thứ tự): `#6EA8FF`.
+- Dải nhấn (nút chính, ring, thanh chỉ số): `linear-gradient(135deg, #2563EB, #6D4DF6)` + quầng `0 14px 30px -14px rgba(37,99,235,0.8)`.
+- Nền sáng: trang `#F2F6FF`; surface `#E7EEFF`; thẻ `#FFFFFF`.
+- Nền tối: `#060C22` / `#0A1330` / `#16295E`. Dải chân trang: `linear-gradient(90deg, #0B1533, #14265C)`.
+- Chữ **trên nền sáng**: tiêu đề `#0E1A3C`; nội dung `#2E4372`; phụ `#4E5C84` → `#5B6D96` → `#6E80AC`.
+- Chữ **trên nền tối**: chính `#EAF0FF`; phụ `#93A6CF` / `#8598C4`.
+- Viền: nền sáng `rgba(14,26,60,0.07)` (nhạt) → `rgba(14,26,60,0.16)` (đậm); nền tối `rgba(147,166,207,0.22)`.
 
 **Chữ**
 - Hệ chữ duy nhất: **Be Vietnam Pro** (weights 200/300/400/600/700).
-- Tiêu đề lớn 600, letter-spacing âm nhẹ (`-0.02em`); nội dung 300–400, line-height ~1.65.
-- Nhãn nhỏ in hoa, letter-spacing ~`0.18em`, màu `#7A7565`/`#C4881A`.
+- Tiêu đề hero 600, `-0.035em`; tiêu đề thường 600, `-0.02em`; nội dung 300–400, line-height ~1.7.
+- Nhãn nhỏ in hoa, letter-spacing `0.18em`, màu `#2563EB` (nền sáng) hoặc `#6EA8FF` (nền tối).
 
 **Hình khối**
-- Bo góc nhỏ: nút `3px`, thẻ/khung `6px`. Giao diện phẳng, đổ bóng mềm rất nhẹ (`0 30px 60px -30px rgba(16,20,46,0.35)` cho khung màn).
-- Mockup vẽ ở khổ 1280×800 (desktop-first). Bản chạy thật **phải responsive**: desktop giữ bố cục 1 cột trung tâm; mobile xếp dọc, camera full-width.
+- Bo góc **tròn**: nút/thẻ nhỏ `12px`, thẻ `16px`–`18px`, khung màn `20px`. (Mockup cũ dùng 3px/6px — đã bỏ.)
+- Đổ bóng: khung màn `0 40px 90px -40px rgba(0,0,0,0.7)`; menu `0 26px 50px -22px rgba(14,26,60,0.45)`.
+- Mockup vẽ ở khổ 1280×860 (desktop-first). Bản chạy thật **phải responsive**: mobile xếp dọc, camera full-width.
 
-**Header** (mọi màn): logo Khoa · 3 mục "Quét gương mặt / Kho luận giải / Về phương pháp" · tên người dùng + avatar chữ cái.
+**Header** (mọi màn): cao `104px`, nền trắng. Bố cục 3 cột — nút mở menu `48×48` bo `12px` bên trái, **logo Khoa canh giữa** cao `68px`, ô trống cân bằng bên phải. Không hiển thị tên người dùng.
+
+**Menu** (thả xuống từ nút trái, rộng `300px`, bo `16px`): Trang chủ · Quét gương mặt · Khám phá · Lịch sử quét · Về Tech Camp.
+
+> Mockup có thêm "Bảng xếp hạng" và "Thành tựu". **Không dựng bảng xếp hạng**: xếp hạng người dùng theo kết quả quét mặt biến thứ giải trí thành thước đo so sánh giữa người với người — đúng điều mục 1 cấm. Hai mục đó gộp thành **Lịch sử quét** (khớp sẵn với bảng `sessions` ở mục 6).
 
 ---
 
@@ -307,7 +327,9 @@ GET  /api/rules?feature=...                   # tra cứu luật + nguồn
 
 ## 11. Chi tiết 4 màn (Definition of Done)
 
-**01 · Trang chủ** — hero "Gương mặt bạn nói gì về nhóm nghề phù hợp?"; nút **Bắt đầu quét** (→ /scan) và **Xem một phiếu mẫu** (→ /result với dữ liệu mẫu); lưới 4 điểm: Camera trình duyệt / 478 điểm mốc / Bộ luật tướng học / RAG + LLM; **banner disclaimer** ở chân.
+**01 · Landing** — hai cột: trái là nhãn "ITDE TECH CAMP 2027", hero "Khám phá / hệ nghề của bạn" (58px), câu "Gương mặt công nghệ — Tương lai trong tay bạn!", đoạn mô tả, nút **Bắt đầu trải nghiệm** (→ /scan, nền gradient) + **Xem phiếu mẫu** (→ /result), và 3 thẻ nhỏ: 478 điểm mốc / RAG + LLM / Hoàn toàn cục bộ. Cột phải là khung hero nền chuyển sắc kèm lưới điểm mốc trang trí và chữ dọc "ITDE TECH CAMP 2027". Dưới cùng là dải nền tối **"Cách thức tham gia"** với 4 bước (Quét khuôn mặt → AI phân tích → Khám phá kết quả → Lưu lại kết quả), rồi **banner disclaimer**.
+
+> Mockup **thiếu disclaimer** ở màn này — vẫn phải có, mục 1 xếp nó vào nguyên tắc bất di bất dịch. Mockup cũng để ô kéo-thả ảnh chân dung ở khung hero; chưa có ảnh thì để nguyên nền chuyển sắc + lưới điểm mốc.
 
 **02 · Quét gương mặt** — bật camera; khung căn mặt + hướng dẫn ("ánh sáng chính diện, bỏ kính, tóc không che cung mày, giữ 2 giây"); panel "Đặc trưng đang đọc" cập nhật live 4 chỉ số; chỉ báo `478/478 · fps · nghiêng đầu · sáng đều %` và trạng thái **đủ điều kiện chụp**; dòng "Chỉ 24 số liệu được gửi đi"; nút **Chụp và phân tích** + **Tải ảnh từ máy** (ảnh upload cũng xử lý on-device). DoD: gửi được vector 24 số sang /analyze, ảnh không rời client.
 
@@ -332,7 +354,8 @@ Mỗi bước tự chạy được rồi hãy sang bước sau. Ưu tiên đúng
 
 ## 13. Quy ước cho Claude Code
 
-- Bám sát **design token mục 5** và mockup `design/face-career-app.html`; đừng tự đổi màu/font.
+- Bám sát **design token mục 5** và mockup `design/itde-tech-camp.html`; đừng tự đổi màu/font.
+  Mockup là file bundle tự giải nén: markup thật nằm trong thẻ `<script type="__bundler/template">`, đọc bằng cách `JSON.parse` nội dung thẻ đó.
 - Toàn bộ UI, nội dung, comment hướng người dùng bằng **tiếng Việt**.
 - **Không** thêm bất kỳ đường gửi ảnh/khung hình nào lên server. Nếu một tính năng cần ảnh ở server, dừng lại và hỏi.
 - Đặt các con số hiển thị (86%, 62 luật, 12s…) là **dữ liệu tính ra**, không hard-code trừ trang "phiếu mẫu".

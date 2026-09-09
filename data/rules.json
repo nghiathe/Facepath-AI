@@ -1,240 +1,501 @@
 [
   {
     "id": "face_kim",
-    "feature_key": "face_shape", "op": "category", "category": "kim",
+    "feature_key": "face_shape",
+    "op": "category",
+    "category": "kim",
     "trait": "Kiên định, bền chí",
     "reading_hint": "Xương mặt vuông, hàm rộng, các nét ngay thẳng",
-    "source": "may", "citation": "Q.I — Ngũ hành hình tướng, Hình Kim",
+    "source": "may",
+    "citation": "Q.I — Ngũ hành hình tướng, Hình Kim",
     "weight": 1.0,
-    "careers": { "ky-thuat-cong-nghe": 0.9, "tai-chinh-ke-toan": 0.7, "phap-ly-hcc": 0.7, "quan-ly-van-hanh": 0.6 }
+    "careers": {
+      "ky-thuat-cong-nghe": 0.9,
+      "tai-chinh-ke-toan": 0.7,
+      "phap-ly-hcc": 0.7,
+      "quan-ly-van-hanh": 0.6
+    }
   },
   {
     "id": "face_moc",
-    "feature_key": "face_shape", "op": "category", "category": "moc",
+    "feature_key": "face_shape",
+    "op": "category",
+    "category": "moc",
     "trait": "Ôn hòa, giàu đồng cảm",
     "reading_hint": "Mặt dài dạng trái lê ngược, mày thanh mắt sáng, đức Nhân",
-    "source": "thanh_hoa_tu", "citation": "Q.I — Ngũ hành hình tướng, Hình Mộc",
+    "source": "thanh_hoa_tu",
+    "citation": "Q.I — Ngũ hành hình tướng, Hình Mộc",
     "weight": 1.0,
-    "careers": { "nghien-cuu-giang-day": 0.9, "kinh-doanh-truyen-thong": 0.6, "phap-ly-hcc": 0.5 }
+    "careers": {
+      "nghien-cuu-giang-day": 0.9,
+      "kinh-doanh-truyen-thong": 0.6,
+      "phap-ly-hcc": 0.5
+    }
   },
   {
     "id": "face_thuy",
-    "feature_key": "face_shape", "op": "category", "category": "thuy",
+    "feature_key": "face_shape",
+    "op": "category",
+    "category": "thuy",
     "trait": "Thông tuệ, linh hoạt",
     "reading_hint": "Mặt tròn đầy, nhiều thịt, hào sảng",
-    "source": "may", "citation": "Q.I — Ngũ hành hình tướng, kiêm hình Thủy đắc Kim sinh",
+    "source": "may",
+    "citation": "Q.I — Ngũ hành hình tướng, kiêm hình Thủy đắc Kim sinh",
     "weight": 1.0,
-    "careers": { "kinh-doanh-truyen-thong": 0.8, "nghien-cuu-giang-day": 0.7, "ky-thuat-cong-nghe": 0.5 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.8,
+      "nghien-cuu-giang-day": 0.7,
+      "ky-thuat-cong-nghe": 0.5
+    }
   },
   {
     "id": "face_hoa",
-    "feature_key": "face_shape", "op": "category", "category": "hoa",
+    "feature_key": "face_shape",
+    "op": "category",
+    "category": "hoa",
     "trait": "Năng động, ứng biến",
     "reading_hint": "Trên thon dưới nở, sắc hồng, khí chất linh hoạt",
-    "source": "thanh_hoa_tu", "citation": "Q.I — Ngũ hành hình tướng, Hình Hỏa",
+    "source": "thanh_hoa_tu",
+    "citation": "Q.I — Ngũ hành hình tướng, Hình Hỏa",
     "weight": 1.0,
-    "careers": { "kinh-doanh-truyen-thong": 0.85, "quan-ly-van-hanh": 0.6 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.85,
+      "quan-ly-van-hanh": 0.6
+    }
   },
   {
     "id": "face_tho",
-    "feature_key": "face_shape", "op": "category", "category": "tho",
+    "feature_key": "face_shape",
+    "op": "category",
+    "category": "tho",
     "trait": "Đáng tin, bền bỉ",
     "reading_hint": "Mặt dày vững, thịt xương rắn chắc, đức Tín",
-    "source": "than_di_phu", "citation": "Q.I — Ngũ hành hình tướng, Hình Thổ",
+    "source": "than_di_phu",
+    "citation": "Q.I — Ngũ hành hình tướng, Hình Thổ",
     "weight": 1.0,
-    "careers": { "quan-ly-van-hanh": 0.85, "tai-chinh-ke-toan": 0.75, "phap-ly-hcc": 0.6 }
+    "careers": {
+      "quan-ly-van-hanh": 0.85,
+      "tai-chinh-ke-toan": 0.75,
+      "phap-ly-hcc": 0.6
+    }
   },
-
   {
     "id": "santing_balanced",
-    "feature_key": "santing_balance", "op": "gte", "v_min": 0.8,
+    "feature_key": "santing_balance",
+    "op": "gte",
+    "v_min": 0.8,
     "trait": "Nhịp làm việc ổn định",
     "reading_hint": "Tam đình cân — quân bình trí lực, khí lực và hoạt lực",
-    "source": "to_lang_thien", "citation": "Chương I — Tam Đình, ý nghĩa về khả năng",
+    "source": "to_lang_thien",
+    "citation": "Chương I — Tam Đình, ý nghĩa về khả năng",
     "weight": 0.9,
-    "careers": { "quan-ly-van-hanh": 0.8, "tai-chinh-ke-toan": 0.7, "phap-ly-hcc": 0.5 }
+    "careers": {
+      "quan-ly-van-hanh": 0.8,
+      "tai-chinh-ke-toan": 0.7,
+      "phap-ly-hcc": 0.5
+    }
   },
   {
     "id": "santing_upper_high",
-    "feature_key": "santing_upper", "op": "gte", "v_min": 0.36,
+    "feature_key": "santing_upper",
+    "op": "gte",
+    "v_min": 0.36,
     "trait": "Trí lực thiên phú",
     "reading_hint": "Thượng đình (trán) cao rộng — biểu dương cho trí lực",
-    "source": "to_lang_thien", "citation": "Chương I — Tam Đình, Thượng đình chủ Trí lực",
+    "source": "to_lang_thien",
+    "citation": "Chương I — Tam Đình, Thượng đình chủ Trí lực",
     "weight": 0.9,
-    "careers": { "nghien-cuu-giang-day": 0.85, "ky-thuat-cong-nghe": 0.6, "phap-ly-hcc": 0.5 }
+    "careers": {
+      "nghien-cuu-giang-day": 0.85,
+      "ky-thuat-cong-nghe": 0.6,
+      "phap-ly-hcc": 0.5
+    }
   },
   {
     "id": "santing_lower_full",
-    "feature_key": "santing_lower", "op": "gte", "v_min": 0.35,
+    "feature_key": "santing_lower",
+    "op": "gte",
+    "v_min": 0.35,
     "trait": "Hoạt lực, thực thi bền bỉ",
     "reading_hint": "Hạ đình (cằm) đầy đặn vuông vức — biểu dương cho hoạt lực, hậu vận",
-    "source": "to_lang_thien", "citation": "Chương I — Tam Đình, Hạ đình chủ Hoạt lực",
+    "source": "to_lang_thien",
+    "citation": "Chương I — Tam Đình, Hạ đình chủ Hoạt lực",
     "weight": 0.8,
-    "careers": { "quan-ly-van-hanh": 0.75, "kinh-doanh-truyen-thong": 0.5 }
+    "careers": {
+      "quan-ly-van-hanh": 0.75,
+      "kinh-doanh-truyen-thong": 0.5
+    }
   },
-
   {
     "id": "brow_straight",
-    "feature_key": "brow_curvature", "op": "lt", "v_max": 0.5,
+    "feature_key": "brow_curvature",
+    "op": "lt",
+    "v_max": 0.5,
     "trait": "Lý trí, thích quy tắc",
     "reading_hint": "Cung mày thẳng, ít cong (mày chữ nhất) — nhân nghĩa, thông tuệ",
-    "source": "than_tuong_toan_bien", "citation": "Chương II — Lông Mày, mày chữ nhất",
+    "source": "than_tuong_toan_bien",
+    "citation": "Chương II — Lông Mày, mày chữ nhất",
     "weight": 1.0,
-    "careers": { "tai-chinh-ke-toan": 0.85, "ky-thuat-cong-nghe": 0.8, "phap-ly-hcc": 0.6 }
+    "careers": {
+      "tai-chinh-ke-toan": 0.85,
+      "ky-thuat-cong-nghe": 0.8,
+      "phap-ly-hcc": 0.6
+    }
   },
   {
     "id": "brow_curved",
-    "feature_key": "brow_curvature", "op": "gte", "v_min": 0.6,
+    "feature_key": "brow_curvature",
+    "op": "gte",
+    "v_min": 0.6,
     "trait": "Ôn nhã, thiên hướng văn học",
     "reading_hint": "Cung mày cong như trăng non — nổi tiếng đường văn học, khoa bảng",
-    "source": "may", "citation": "Chương II — Lông Mày, mày trăng non (tân nguyệt mi)",
+    "source": "may",
+    "citation": "Chương II — Lông Mày, mày trăng non (tân nguyệt mi)",
     "weight": 1.0,
-    "careers": { "nghien-cuu-giang-day": 0.85, "kinh-doanh-truyen-thong": 0.4 }
+    "careers": {
+      "nghien-cuu-giang-day": 0.85,
+      "kinh-doanh-truyen-thong": 0.4
+    }
   },
   {
     "id": "brow_long",
-    "feature_key": "brow_length", "op": "gt", "v_min": 1.0,
+    "feature_key": "brow_length",
+    "op": "gt",
+    "v_min": 1.0,
     "trait": "Giao tế khéo léo",
     "reading_hint": "Lông mày dài quá mắt — thông minh, cư xử khéo",
-    "source": "nhan_luan", "citation": "Chương II — Lông Mày, tương quan cá tính",
+    "source": "nhan_luan",
+    "citation": "Chương II — Lông Mày, tương quan cá tính",
     "weight": 0.8,
-    "careers": { "kinh-doanh-truyen-thong": 0.7, "quan-ly-van-hanh": 0.6, "nghien-cuu-giang-day": 0.5 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.7,
+      "quan-ly-van-hanh": 0.6,
+      "nghien-cuu-giang-day": 0.5
+    }
   },
   {
     "id": "brow_short",
-    "feature_key": "brow_length", "op": "lt", "v_max": 0.9,
+    "feature_key": "brow_length",
+    "op": "lt",
+    "v_max": 0.9,
     "trait": "Tập trung độc lập",
     "reading_hint": "Lông mày ngắn hơn mắt — thiên về làm việc độc lập hơn giao tế",
-    "source": "nhan_luan", "citation": "Chương II — Lông Mày, tương quan cá tính",
+    "source": "nhan_luan",
+    "citation": "Chương II — Lông Mày, tương quan cá tính",
     "weight": 0.6,
-    "careers": { "ky-thuat-cong-nghe": 0.6, "tai-chinh-ke-toan": 0.5 }
+    "careers": {
+      "ky-thuat-cong-nghe": 0.6,
+      "tai-chinh-ke-toan": 0.5
+    }
   },
   {
     "id": "brow_thick",
-    "feature_key": "brow_thickness", "op": "gt", "v_min": 0.65,
+    "feature_key": "brow_thickness",
+    "op": "gt",
+    "v_min": 0.65,
     "trait": "Thiên hướng cạnh tranh",
     "reading_hint": "Mày cọp: to bản, thô, xếch — hợp nghề cạnh tranh, thực nghiệp gia",
-    "source": "ntc", "citation": "Chương II — Lông Mày, mày cọp (hổ mi)",
+    "source": "ntc",
+    "citation": "Chương II — Lông Mày, mày cọp (hổ mi)",
     "weight": 0.9,
-    "careers": { "kinh-doanh-truyen-thong": 0.85, "quan-ly-van-hanh": 0.6 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.85,
+      "quan-ly-van-hanh": 0.6
+    }
   },
   {
     "id": "brow_high",
-    "feature_key": "brow_eye_gap", "op": "gt", "v_min": 0.5,
+    "feature_key": "brow_eye_gap",
+    "op": "gt",
+    "v_min": 0.5,
     "trait": "Phóng khoáng, phúc khí",
     "reading_hint": "Lông mày mọc cao, cách xa mắt — phú quý, được kính nể",
-    "source": "ntc", "citation": "Chương II — Lông Mày, tương quan phú quý",
+    "source": "ntc",
+    "citation": "Chương II — Lông Mày, tương quan phú quý",
     "weight": 0.7,
-    "careers": { "kinh-doanh-truyen-thong": 0.6, "quan-ly-van-hanh": 0.6 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.6,
+      "quan-ly-van-hanh": 0.6
+    }
   },
-
   {
     "id": "nose_wing_full",
-    "feature_key": "nose_wing_width", "op": "gte", "v_min": 0.6,
+    "feature_key": "nose_wing_width",
+    "op": "gte",
+    "v_min": 0.6,
     "trait": "Thực tế, giữ của",
     "reading_hint": "Cánh mũi đầy đặn, chắc chắn — tướng giàu, giữ được tài lộc",
-    "source": "ntc", "citation": "Chương IV — Mũi, tương quan phú quý",
+    "source": "ntc",
+    "citation": "Chương IV — Mũi, tương quan phú quý",
     "weight": 0.9,
-    "careers": { "tai-chinh-ke-toan": 0.85, "quan-ly-van-hanh": 0.5 }
+    "careers": {
+      "tai-chinh-ke-toan": 0.85,
+      "quan-ly-van-hanh": 0.5
+    }
   },
   {
     "id": "nose_wing_balanced",
-    "feature_key": "nose_wing_width", "op": "between", "v_min": 0.48, "v_max": 0.6,
+    "feature_key": "nose_wing_width",
+    "op": "between",
+    "v_min": 0.48,
+    "v_max": 0.6,
     "trait": "Khéo léo kỹ thuật",
     "reading_hint": "Hai cánh mũi cân xứng chắc chắn — tài mô phỏng, khéo léo về kỹ thuật",
-    "source": "ntc", "citation": "Chương IV — Mũi, tương quan cá tính (thông minh lanh lợi)",
+    "source": "ntc",
+    "citation": "Chương IV — Mũi, tương quan cá tính (thông minh lanh lợi)",
     "weight": 0.9,
-    "careers": { "ky-thuat-cong-nghe": 0.85 }
+    "careers": {
+      "ky-thuat-cong-nghe": 0.85
+    }
   },
   {
     "id": "nose_wing_thin",
-    "feature_key": "nose_wing_width", "op": "lt", "v_max": 0.45,
+    "feature_key": "nose_wing_width",
+    "op": "lt",
+    "v_max": 0.45,
     "trait": "Hào phóng, coi nhẹ vật chất",
     "reading_hint": "Cánh mũi mỏng, lỗ mũi rộng — hào phóng, coi rẻ tiền bạc",
-    "source": "ntc", "citation": "Chương IV — Mũi, tương quan cá tính (hào phóng)",
+    "source": "ntc",
+    "citation": "Chương IV — Mũi, tương quan cá tính (hào phóng)",
     "weight": 0.7,
-    "careers": { "nghien-cuu-giang-day": 0.55, "kinh-doanh-truyen-thong": 0.4 }
+    "careers": {
+      "nghien-cuu-giang-day": 0.55,
+      "kinh-doanh-truyen-thong": 0.4
+    }
   },
   {
     "id": "nose_bridge_firm",
-    "feature_key": "nose_bridge_width", "op": "gte", "v_min": 0.45,
+    "feature_key": "nose_bridge_width",
+    "op": "gte",
+    "v_min": 0.45,
     "trait": "Ý chí kiên cường, chính trực",
     "reading_hint": "Sống mũi và cánh mũi cứng rắn, ngay thẳng — ý chí kiên cường, tâm địa chính trực",
-    "source": "ntc", "citation": "Chương IV — Mũi, tương quan cá tính (lương thiện chính trực)",
+    "source": "ntc",
+    "citation": "Chương IV — Mũi, tương quan cá tính (lương thiện chính trực)",
     "weight": 0.9,
-    "careers": { "phap-ly-hcc": 0.7, "quan-ly-van-hanh": 0.6, "ky-thuat-cong-nghe": 0.5 }
+    "careers": {
+      "phap-ly-hcc": 0.7,
+      "quan-ly-van-hanh": 0.6,
+      "ky-thuat-cong-nghe": 0.5
+    }
   },
-
   {
     "id": "mouth_corner_up",
-    "feature_key": "mouth_corner_angle", "op": "gt", "v_min": 0.0,
+    "feature_key": "mouth_corner_angle",
+    "op": "gt",
+    "v_min": 0.0,
     "trait": "Tín nghĩa, tích cực",
     "reading_hint": "Khóe miệng hướng lên — người tín nghĩa, cát tướng",
-    "source": "ntc", "citation": "Chương V — Miệng, tương quan cá tính",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, tương quan cá tính",
     "weight": 0.6,
-    "careers": { "kinh-doanh-truyen-thong": 0.5, "quan-ly-van-hanh": 0.5 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.5,
+      "quan-ly-van-hanh": 0.5
+    }
   },
   {
     "id": "mouth_wide",
-    "feature_key": "mouth_width", "op": "gt", "v_min": 0.6,
+    "feature_key": "mouth_width",
+    "op": "gt",
+    "v_min": 0.6,
     "trait": "Giao tiếp cởi mở",
     "reading_hint": "Khóe miệng rộng, môi cân — khẩu tài, trình bày rõ ràng",
-    "source": "than_tuong_toan_bien", "citation": "Chương V — Miệng, tương quan cá tính",
+    "source": "than_tuong_toan_bien",
+    "citation": "Chương V — Miệng, tương quan cá tính",
     "weight": 0.9,
-    "careers": { "kinh-doanh-truyen-thong": 0.85, "nghien-cuu-giang-day": 0.6 }
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.85,
+      "nghien-cuu-giang-day": 0.6
+    }
   },
   {
     "id": "lip_thin",
-    "feature_key": "lip_thickness", "op": "lt", "v_max": 0.45,
+    "feature_key": "lip_thickness",
+    "op": "lt",
+    "v_max": 0.45,
     "trait": "Mau lẹ, mưu cơ",
     "reading_hint": "Môi mỏng cân xứng — phản ứng mau lẹ, điềm tĩnh, làm việc có mưu cơ sâu sắc",
-    "source": "ntc", "citation": "Chương V — Miệng, tương quan cá tính (môi mỏng)",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, tương quan cá tính (môi mỏng)",
     "weight": 0.8,
-    "careers": { "quan-ly-van-hanh": 0.7, "kinh-doanh-truyen-thong": 0.6, "ky-thuat-cong-nghe": 0.4 }
+    "careers": {
+      "quan-ly-van-hanh": 0.7,
+      "kinh-doanh-truyen-thong": 0.6,
+      "ky-thuat-cong-nghe": 0.4
+    }
   },
   {
     "id": "lip_thick",
-    "feature_key": "lip_thickness", "op": "gte", "v_min": 0.6,
+    "feature_key": "lip_thickness",
+    "op": "gte",
+    "v_min": 0.6,
     "trait": "Điềm đạm, chung thủy",
     "reading_hint": "Môi dày cân xứng — điềm đạm, tình cảm chung thủy, ít biến đổi",
-    "source": "ntc", "citation": "Chương V — Miệng, tương quan cá tính (môi dày)",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, tương quan cá tính (môi dày)",
     "weight": 0.7,
-    "careers": { "quan-ly-van-hanh": 0.6, "tai-chinh-ke-toan": 0.6, "phap-ly-hcc": 0.5 }
+    "careers": {
+      "quan-ly-van-hanh": 0.6,
+      "tai-chinh-ke-toan": 0.6,
+      "phap-ly-hcc": 0.5
+    }
   },
   {
     "id": "mouth_shape_vong_cung",
-    "feature_key": "mouth_shape", "op": "category", "category": "vong_cung",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "vong_cung",
     "trait": "Lý tưởng, chiều sâu tư duy",
     "reading_hint": "Miệng vòng cung — hợp nghề văn học, nghiên cứu hơn kinh doanh hay chính khách",
-    "source": "may", "citation": "Chương V — Miệng, miệng vòng cung (loan cung khẩu)",
+    "source": "may",
+    "citation": "Chương V — Miệng, miệng vòng cung (loan cung khẩu)",
     "weight": 1.0,
-    "careers": { "nghien-cuu-giang-day": 0.9, "phap-ly-hcc": 0.3 }
+    "careers": {
+      "nghien-cuu-giang-day": 0.9,
+      "phap-ly-hcc": 0.3
+    }
   },
   {
     "id": "mouth_shape_ho",
-    "feature_key": "mouth_shape", "op": "category", "category": "ho",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "ho",
     "trait": "Uy quyền, thiên thực hành",
     "reading_hint": "Miệng cọp — uy quyền, linh lợi, thiên về thực hành hơn lý thuyết",
-    "source": "ntc", "citation": "Chương V — Miệng, miệng cọp",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, miệng cọp",
     "weight": 1.0,
-    "careers": { "quan-ly-van-hanh": 0.8, "kinh-doanh-truyen-thong": 0.7 }
+    "careers": {
+      "quan-ly-van-hanh": 0.8,
+      "kinh-doanh-truyen-thong": 0.7
+    }
   },
   {
     "id": "mouth_shape_long",
-    "feature_key": "mouth_shape", "op": "category", "category": "long",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "long",
     "trait": "Dung hòa, uy tín lãnh đạo",
     "reading_hint": "Miệng rồng — uy quyền chức vị, dung hòa được thực tiễn lẫn lý thuyết",
-    "source": "ntc", "citation": "Chương V — Miệng, miệng rồng",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, miệng rồng",
     "weight": 1.0,
-    "careers": { "quan-ly-van-hanh": 0.85, "kinh-doanh-truyen-thong": 0.6, "phap-ly-hcc": 0.5 }
+    "careers": {
+      "quan-ly-van-hanh": 0.85,
+      "kinh-doanh-truyen-thong": 0.6,
+      "phap-ly-hcc": 0.5
+    }
   },
   {
     "id": "mouth_shape_chu_tu",
-    "feature_key": "mouth_shape", "op": "category", "category": "chu_tu",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "chu_tu",
     "trait": "Cẩn thận, trung hậu",
     "reading_hint": "Miệng chữ tứ / miệng vuông — cẩn thận trong lời nói và việc làm, trung hậu, thực thà",
-    "source": "ntc", "citation": "Chương V — Miệng, miệng chữ tứ & miệng vuông",
+    "source": "ntc",
+    "citation": "Chương V — Miệng, miệng chữ tứ & miệng vuông",
     "weight": 1.0,
-    "careers": { "tai-chinh-ke-toan": 0.8, "phap-ly-hcc": 0.7, "quan-ly-van-hanh": 0.6 }
+    "careers": {
+      "tai-chinh-ke-toan": 0.8,
+      "phap-ly-hcc": 0.7,
+      "quan-ly-van-hanh": 0.6
+    }
+  },
+  {
+    "id": "eye_phoenix",
+    "feature_key": "eye_length",
+    "op": "gt",
+    "v_min": 1.0,
+    "trait": "Thông tuệ, thiên học thuật",
+    "reading_hint": "Mắt dài, sáng ẩn tàng (kiểu mắt phượng) — thông tuệ văn hóa, hợp nghiên cứu học thuật hơn thương mại",
+    "source": "ntc",
+    "citation": "Chương VI — Mắt, mắt phượng (phụng nhãn)",
+    "weight": 1.0,
+    "careers": {
+      "nghien-cuu-giang-day": 0.9,
+      "phap-ly-hcc": 0.4
+    }
+  },
+  {
+    "id": "eye_large",
+    "feature_key": "eye_size",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Chí khí cao, khai phóng",
+    "reading_hint": "Mắt lớn, tròng đen lớn — chí khí cao, đại lượng, tự tin, không câu nệ khuôn thức",
+    "source": "ntc",
+    "citation": "Chương VI — Mắt, biểu nhất lãm cá tính",
+    "weight": 0.9,
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.7,
+      "quan-ly-van-hanh": 0.65
+    }
+  },
+  {
+    "id": "forehead_wide",
+    "feature_key": "forehead_width",
+    "op": "gt",
+    "v_min": 0.7,
+    "trait": "Bao quát rộng, trí nhớ tốt",
+    "reading_hint": "Trán rộng bề ngang — trí nhớ dai, nắm dữ kiện cụ thể mạnh, kiến thức phát triển theo chiều rộng",
+    "source": "ntc",
+    "citation": "Chương Trán, trán rộng",
+    "weight": 0.8,
+    "careers": {
+      "ky-thuat-cong-nghe": 0.6,
+      "tai-chinh-ke-toan": 0.6,
+      "quan-ly-van-hanh": 0.5
+    }
+  },
+  {
+    "id": "forehead_square",
+    "feature_key": "forehead_shape",
+    "op": "category",
+    "category": "vuong",
+    "trait": "Óc thực nghiệp, trọng thực tiễn",
+    "reading_hint": "Trán vuông vức, cao rộng — tinh thần thực tiễn; phần lớn khoa học gia, kinh tế gia, thực nghiệp gia có trán này",
+    "source": "ntc",
+    "citation": "Chương Trán, trán vuông",
+    "weight": 1.0,
+    "careers": {
+      "ky-thuat-cong-nghe": 0.8,
+      "tai-chinh-ke-toan": 0.7,
+      "kinh-doanh-truyen-thong": 0.6
+    },
+    "requires": "cần phân loại hình trán từ chân tóc (xấp xỉ)"
+  },
+  {
+    "id": "forehead_round_corner",
+    "feature_key": "forehead_shape",
+    "op": "category",
+    "category": "goc_tron",
+    "trait": "Thiên bẩm văn học nghệ thuật",
+    "reading_hint": "Trán hai góc tròn (chân tóc hình chữ M), cao rộng — khả năng văn học, nghệ thuật thiên bẩm",
+    "source": "ntc",
+    "citation": "Chương Trán, trán có góc tròn",
+    "weight": 1.0,
+    "careers": {
+      "nghien-cuu-giang-day": 0.85,
+      "kinh-doanh-truyen-thong": 0.4
+    },
+    "requires": "cần phân loại hình trán từ chân tóc (xấp xỉ)"
+  },
+  {
+    "id": "cheekbone_prominent",
+    "feature_key": "cheekbone_prominence",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Tự tin, ý chí đấu tranh",
+    "reading_hint": "Lưỡng quyền cao, nở rộng — tự tin, tự tôn, ý chí đấu tranh kiên cường, có uy quyền",
+    "source": "te_dong_gia",
+    "citation": "Chương Lưỡng Quyền, quyền cao & quyền rộng",
+    "weight": 0.9,
+    "careers": {
+      "quan-ly-van-hanh": 0.75,
+      "kinh-doanh-truyen-thong": 0.6,
+      "phap-ly-hcc": 0.5
+    }
   }
 ]

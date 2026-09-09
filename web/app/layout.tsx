@@ -16,7 +16,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 export const metadata: Metadata = {
   title: "Facepath-AI — Quét gương mặt, gợi ý nhóm nghề",
   description:
-    "Đồ án Khoa Công nghệ thông tin & Kinh tế số, Học viện Ngân hàng. " +
+    "Khoa Công nghệ thông tin & Kinh tế số, Học viện Ngân hàng. " +
     "Đối chiếu đặc điểm khuôn mặt với bộ luật tướng học cổ đã số hoá. " +
     "Kết quả chỉ để tham khảo, không dùng cho tuyển dụng hay đánh giá năng lực.",
 };

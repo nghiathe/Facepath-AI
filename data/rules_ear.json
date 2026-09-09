@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ear_lobe_full",
+    "feature_key": "ear_lobe",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Phúc hậu, bền vững",
+    "reading_hint": "Tai dày, thùy châu đầy rủ xuống — phúc lộc, bền vững, trường thọ",
+    "source": "ntc",
+    "citation": "Chương Tai, tương quan phú quý",
+    "weight": 0.7,
+    "careers": {
+      "quan-ly-van-hanh": 0.5,
+      "tai-chinh-ke-toan": 0.5
+    },
+    "requires": "ear_landmarks — KHÔNG có trong MediaPipe FaceMesh; cần model phát hiện tai riêng hoặc nhập tay"
+  },
+  {
+    "id": "ear_high",
+    "feature_key": "ear_position",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Chí hướng cao, danh tiếng",
+    "reading_hint": "Tai mọc cao (ngang hoặc quá lông mày) — dấu hiệu danh tiếng, chí hướng cao",
+    "source": "ntc",
+    "citation": "Chương Tai, tương quan phú quý",
+    "weight": 0.6,
+    "careers": {
+      "quan-ly-van-hanh": 0.5,
+      "phap-ly-hcc": 0.4
+    },
+    "requires": "ear_landmarks — KHÔNG có trong MediaPipe FaceMesh; cần model phát hiện tai riêng hoặc nhập tay"
+  }
+]

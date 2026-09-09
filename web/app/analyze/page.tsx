@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { RULES } from "@/lib/data";
 import { SUPPORTED_KEYS } from "@/lib/engine/accessors";
 import { evaluateRules } from "@/lib/engine/rule-engine";
@@ -17,7 +17,6 @@ type Step = { label: string; done: boolean; ms: number | null };
 // vài mili-giây — hiện đúng số đo được thay vì bịa cho khớp mockup (mục 13).
 export default function AnalyzePage() {
   const router = useRouter();
-  const started = useRef(false);
   const [steps, setSteps] = useState<Step[]>([
     { label: `Chuẩn hoá ${TOTAL_LANDMARKS} điểm mốc`, done: false, ms: null },
     { label: `Bóc tách 4 lớp · ${SUPPORTED_KEYS.length} chỉ số`, done: false, ms: null },
@@ -27,9 +26,14 @@ export default function AnalyzePage() {
   const scan = useScan();
 
   useEffect(() => {
-    if (started.current || !scan) return;
-    started.current = true;
+    if (!scan) return;
 
+    // KHÔNG dùng ref kiểu `started` để chặn chạy lặp: StrictMode ở dev cố ý
+    // mount → unmount → mount lại, mà ref thì sống sót qua lần remount đó còn
+    // `cancelled` thì không. Hệ quả là lần chạy đầu bị huỷ giữa chừng (kẹt ở
+    // bước 1, không điều hướng), còn lần mount thứ hai lại bị chính ref chặn
+    // nên không có ai chạy tiếp. Cứ để mỗi lần mount chạy một lượt của riêng
+    // nó; `cancelled` bên dưới lo việc bỏ kết quả của lượt cũ.
     let cancelled = false;
     // Nhường một khung hình giữa các bước để người dùng thấy được tiến trình,
     // đồng thời đo đúng thời gian chạy thật của từng bước.

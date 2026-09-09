@@ -14,6 +14,16 @@ Bộ dữ liệu này được soạn trực tiếp từ cuốn **Nhân Tướng
 - `brow_*` ← Chương II, *Lông Mày*
 - `nose_*` ← Chương IV, *Mũi*
 - `mouth_*` / `lip_*` / `mouth_shape` ← Chương V, *Môi Miệng*
+- `eye_size` / `eye_length` ← Chương *Mắt* (mắt phượng → thông tuệ học thuật; tròng đen lớn → chí khí cao)
+- `forehead_width` / `forehead_shape` ← Chương *Trán* (trán vuông → óc thực nghiệp; trán góc tròn → văn học nghệ thuật)
+- `cheekbone_prominence` ← Chương *Lưỡng Quyền* (quyền cao/nở → tự tin, uy quyền)
+
+## Bản mở rộng (v2): mắt, trán, lưỡng quyền, tai
+- `rules.json` đã tăng từ 26 → **32 luật** (thêm mắt, trán, gò má).
+- `rules_ear.json` (**tách riêng, 2 luật tai**): tai **KHÔNG** nằm trong 478 điểm của MediaPipe FaceMesh, nên các luật này không tự chạy trong MVP. Muốn dùng phải có model phát hiện tai riêng hoặc cho người dùng nhập tay. Mỗi luật có trường `requires` ghi rõ điều này.
+- Vài luật trong `rules.json` có trường `requires` = "cần phân loại hình trán từ chân tóc (xấp xỉ)" (các luật `forehead_shape`): `features.ts` cần một hàm phân loại hình trán; trước khi có, chúng đơn giản không khớp (engine bỏ qua an toàn feature_key chưa có accessor).
+
+**Feature mới cần thêm ở tầng code** (đã làm sẵn trong gói `engine/`): thêm nhóm `eyes`, `forehead`, `cheekbone` vào `FaceFeatures` (types.ts), và accessor tương ứng (`eye_size`, `eye_length`, `forehead_width`, `forehead_shape`, `cheekbone_prominence`) trong accessors.ts.
 
 `santing_balance` và `mouth_shape` là các trường **suy ra** ở client (mục 7 của CLAUDE.md): `santing_balance` = mức gần với tỉ lệ 33/34/33; `mouth_shape` phân loại từ độ rộng miệng + độ dày/cong môi (vòng cung, cọp, rồng, chữ tứ...).
 

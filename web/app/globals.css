@@ -1,51 +1,86 @@
 @import "tailwindcss";
 
-/* Design token — trích nguyên giá trị từ CLAUDE.md mục 5.
-   Đừng tự đổi màu/font: mockup design/face-career-app.html là tham chiếu. */
+/* Design token — trích từ design/itde-tech-camp.html (CLAUDE.md mục 5).
+   Đừng tự đổi màu/font: file mockup đó là tham chiếu.
+
+   Thiết kế này KHÔNG đồng nhất sáng hay tối: màn 01 Landing và 03 Kết quả nền
+   sáng, màn 02 Đang quét và 04 Chi tiết nền tối. Vì vậy có hai bộ token chữ —
+   `ink-*` dùng trên nền sáng, `on-dark-*` dùng trên nền tối. Đừng lẫn lộn:
+   ink-faintest trên nền tối gần như không đọc được, và ngược lại. */
 @theme {
-  /* Navy chính và các sắc độ đậm dần */
-  --color-navy: #232b76;
-  --color-navy-deep: #161c4e;
-  --color-navy-darkest: #10142e;
+  /* Xanh thương hiệu. Tên `navy` giữ nguyên từ bảng màu cũ để các màn chưa
+     dựng lại không vỡ; giá trị đã trỏ sang xanh mới. */
+  --color-navy: #2563eb;
+  --color-navy-deep: #1d4ed8;
+  --color-navy-darkest: #060c22;
 
-  /* Vàng/hổ phách (accent) */
-  --color-amber: #f0a81e;
-  --color-amber-text: #c4881a;
+  /* Dải nhấn: xanh -> tím (dùng cho nút chính, ring, thanh chỉ số) */
+  --color-blue: #2563eb;
+  --color-blue-deep: #1d4ed8;
+  --color-violet: #6d4df6;
+  --color-violet-light: #7c5cff;
+  --color-cyan: #38bdf8;
+  --color-sky: #6ea8ff;
 
-  /* Nền: trang / surface (phiếu) / thẻ */
-  --color-page: #faf9f5;
-  --color-surface: #f6f3ec;
+  /* Vàng: chỉ dùng làm điểm nhấn nhỏ */
+  --color-amber: #fbbf24;
+  --color-amber-text: #a88cff;
+
+  /* Nền sáng: trang / surface / thẻ */
+  --color-page: #f2f6ff;
+  --color-surface: #e7eeff;
   --color-card: #ffffff;
 
-  /* Chữ: tiêu đề / nội dung / phụ / rất nhạt */
-  --color-ink-title: #161c4e;
-  --color-ink-body: #5c5849;
-  --color-ink-muted: #6b6656;
-  --color-ink-faint: #7a7565;
-  --color-ink-faintest: #8a8474;
+  /* Nền tối (màn 02 và 04) */
+  --color-dark-base: #060c22;
+  --color-dark-mid: #0a1330;
+  --color-dark-top: #16295e;
 
-  /* Viền: nhạt -> đậm */
-  --color-line-soft: rgba(35, 43, 118, 0.12);
-  --color-line-strong: rgba(35, 43, 118, 0.2);
+  /* Chữ trên nền SÁNG: tiêu đề -> nhạt dần */
+  --color-ink-title: #0e1a3c;
+  --color-ink-body: #2e4372;
+  --color-ink-muted: #4e5c84;
+  --color-ink-faint: #5b6d96;
+  --color-ink-faintest: #6e80ac;
 
-  /* Hình khối: nút 3px, thẻ/khung 6px */
-  --radius-btn: 3px;
-  --radius-card: 6px;
+  /* Chữ trên nền TỐI */
+  --color-on-dark: #eaf0ff;
+  --color-on-dark-muted: #93a6cf;
+  --color-on-dark-faint: #8598c4;
 
-  /* Đổ bóng mềm rất nhẹ cho khung màn */
-  --shadow-screen: 0 30px 60px -30px rgba(16, 20, 46, 0.35);
+  /* Viền: trên nền sáng (nhạt -> đậm) và trên nền tối */
+  --color-line-soft: rgba(14, 26, 60, 0.07);
+  --color-line-strong: rgba(14, 26, 60, 0.16);
+  --color-line-dark: rgba(147, 166, 207, 0.22);
+
+  /* Hình khối: thiết kế mới bo tròn hẳn — nút 12px, thẻ 16px, khung màn 20px */
+  --radius-btn: 12px;
+  --radius-card: 16px;
+  --radius-panel: 20px;
+
+  --shadow-screen: 0 40px 90px -40px rgba(0, 0, 0, 0.7);
+  --shadow-btn: 0 14px 30px -14px rgba(37, 99, 235, 0.8);
+  --shadow-menu: 0 26px 50px -22px rgba(14, 26, 60, 0.45);
 
   /* Hệ chữ duy nhất: Be Vietnam Pro (nạp qua next/font ở layout.tsx) */
   --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Nền trang dùng #faf9f5 theo mục 5.
-   (#E9E6DE trong mockup chỉ là nền canvas của công cụ thiết kế.) */
 body {
   background: var(--color-page);
   color: var(--color-ink-body);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Nút chính: dải xanh -> tím kèm quầng sáng, theo mockup màn 01. */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-blue), var(--color-violet));
+  box-shadow: var(--shadow-btn);
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
 }
 
 /* Tiêu đề lớn: weight 600, letter-spacing âm nhẹ (mục 5) */
@@ -68,5 +103,14 @@ p {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-ink-faint);
+  color: var(--color-blue);
+}
+
+/* Cùng nhãn đó nhưng đặt trên nền tối (màn 02, 04). */
+.label-caps-dark {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-sky);
 }

@@ -16,7 +16,7 @@ nhóm nghề phù hợp. Đồ án Khoa Công nghệ thông tin & Kinh tế số
 | Phần | Trạng thái |
 |---|---|
 | Khung dự án (Next.js + FastAPI + MySQL) | xong |
-| Dữ liệu tướng học soạn từ sách (`data/`) | xong — 26 luật, 14 chỉ số, 5 ngũ hình |
+| Dữ liệu tướng học soạn từ sách (`data/`) | xong — 32 luật, 19 chỉ số, 5 ngũ hình |
 | `features.ts` — landmarks → FaceFeatures | xong (chưa hiệu chỉnh ngưỡng) |
 | Rule engine + trait + chấm điểm nghề | xong, có test |
 | Bật camera thật trên màn Quét | chưa (mốc 2) |
@@ -44,13 +44,22 @@ cd web
 cp .env.local.example .env.local
 npm install
 npm run dev          # http://localhost:3000
-npm test             # 41 test cho features + engine
+npm test             # 44 test cho features + engine
 npm run test:watch
 ```
 
 ## Chạy backend
 
 Cần một MySQL 8 đang chạy (local hoặc managed).
+
+> Chạy từ **thư mục gốc repo**, đừng `cd api`. `api.main` và `api.db.seed_all` là
+> đường dẫn *module Python*, không phải đường dẫn file — đứng trong `api/` thì
+> Python đi tìm `api/api/main.py` và báo `ModuleNotFoundError`.
+>
+> Frontend thì ngược lại: phải `cd web`. Hai phần chạy ở hai terminal riêng.
+>
+> Hiện engine chạy hoàn toàn phía client, chỉ trang "Kho luận giải" gọi API —
+> nên phần lớn thời gian chỉ cần `npm run dev`, chưa cần dựng MySQL.
 
 ```bash
 python -m venv .venv
@@ -77,13 +86,19 @@ và **bắt buộc** điền `source` (id trong `sources.json`) + `citation` tr�
 chương trong sách.
 
 Soát lại bằng `python -m api.db.seed_all --check` và `npm test`. Hai lớp kiểm tra
-sẽ chặn nếu: `feature_key` không nằm trong 14 chỉ số, `op` thiếu ngưỡng đi kèm,
+sẽ chặn nếu: `feature_key` không nằm trong 19 chỉ số, `op` thiếu ngưỡng đi kèm,
 thiếu `citation`, `source` không có thật, slug nghề sai, trọng số ngoài 0..1,
 hoặc `id` luật bị trùng.
 
-Thêm một `feature_key` mới thì phải sửa **ba** chỗ, nếu không luật sẽ bị bỏ qua
-lặng lẽ: `data/rules.json`, `web/lib/engine/accessors.ts`, `api/rules/features.py`.
-Test `engine.test.ts` bắt được trường hợp thiếu accessor.
+Thêm một `feature_key` mới thì phải sửa **bốn** chỗ, nếu không luật sẽ bị bỏ qua
+lặng lẽ: `data/rules.json`, `web/lib/features/types.ts` (thêm trường vào
+`FaceFeatures` + tính nó trong `features.ts`), `web/lib/engine/accessors.ts`,
+`api/rules/features.py`. Test `engine.test.ts` bắt cả hai chiều: thiếu accessor
+và accessor thừa.
+
+`data/rules_ear.json` **cố ý để ngoài** `rules.json` và không được `lib/data.ts`
+nạp: MediaPipe FaceMesh không có điểm mốc tai, nên `ear_lobe`/`ear_position`
+chưa đo được. Muốn dùng phải thêm model phát hiện tai riêng hoặc cho nhập tay.
 
 ## Hai lớp dữ liệu có độ tin cậy khác nhau
 

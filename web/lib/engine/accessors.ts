@@ -11,6 +11,10 @@ export const NUMERIC: Record<string, (f: FaceFeatures) => number> = {
   santing_upper: (f) => f.santing.upper,
   santing_lower: (f) => f.santing.lower,
   santing_balance: (f) => f.santing.balance,
+  forehead_width: (f) => f.forehead.width,
+  eye_length: (f) => f.eyes.length,
+  eye_size: (f) => f.eyes.size,
+  cheekbone_prominence: (f) => f.cheekbone.prominence,
   brow_curvature: (f) => f.eyebrows.curvature,
   brow_length: (f) => f.eyebrows.length,
   brow_thickness: (f) => f.eyebrows.thickness,
@@ -25,6 +29,7 @@ export const NUMERIC: Record<string, (f: FaceFeatures) => number> = {
 export const CATEGORICAL: Record<string, (f: FaceFeatures) => string> = {
   face_shape: (f) => f.faceType,
   mouth_shape: (f) => f.mouth.shape,
+  forehead_shape: (f) => f.forehead.shape,
 };
 
 /** Mọi feature_key mà engine hiểu được. */

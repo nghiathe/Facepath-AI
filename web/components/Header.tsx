@@ -1,65 +1,120 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-// 3 mục điều hướng đúng như mockup và CLAUDE.md mục 5.
+// Menu theo design/itde-tech-camp.html màn 01.
+// Mockup có "Bảng xếp hạng" và "Thành tựu"; cả hai gộp thành "Lịch sử quét" —
+// xếp hạng người dùng theo kết quả quét mặt đi ngược nguyên tắc ở CLAUDE.md
+// mục 1 ("không dùng cho ... đánh giá năng lực"), còn lịch sử thì khớp sẵn với
+// bảng `sessions` đã dự trù ở mục 6.
 const NAV = [
+  { href: "/", label: "Trang chủ" },
   { href: "/scan", label: "Quét gương mặt" },
-  { href: "/library", label: "Kho luận giải" },
-  { href: "/about", label: "Về phương pháp" },
+  { href: "/library", label: "Khám phá" },
+  { href: "/history", label: "Lịch sử quét" },
+  { href: "/about", label: "Về Tech Camp" },
 ] as const;
 
-// Mốc 1 chưa có đăng nhập; tên hiển thị cứng theo mockup.
-const USER = { name: "Nguyễn An · K26", initials: "NA" };
+const MENU_ID = "menu-chinh";
 
 export default function Header() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // Đổi trang thì đóng menu, nếu không nó vẫn mở chồng lên trang mới.
+  // Chỉnh state ngay trong lúc render (pattern "adjusting state on prop change"
+  // của React) chứ KHÔNG dùng useEffect: setState đồng bộ trong effect gây
+  // cascading render và React 19 báo lỗi thẳng — xem ghi chú ở lib/session.ts.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
+
+  // Esc để đóng — menu là lớp phủ nên phải có đường thoát bằng bàn phím.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <header className="border-b border-line-soft bg-card">
-      <div className="mx-auto flex min-h-19 max-w-6xl flex-wrap items-center gap-x-7 gap-y-3 px-6 py-4 sm:px-10">
-        <Link href="/" className="flex flex-col leading-tight">
-          <span className="text-[15px] font-semibold tracking-tight text-navy">
-            Khoa CNTT &amp; Kinh tế số
-          </span>
-          <span className="text-[11px] tracking-wide text-ink-faint">
-            Học viện Ngân hàng
-          </span>
+    <header className="relative z-20 border-b border-line-soft bg-card">
+      {/* Grid 3 cột thay vì flex: cột giữa mới canh logo vào đúng tâm trang.
+          Cột phải là ô trống rộng bằng nút bên trái — bỏ nó đi thì logo lệch
+          sang phải đúng bằng bề ngang cái nút. */}
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 sm:h-26 sm:px-8">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls={MENU_ID}
+          aria-label={open ? "Đóng menu" : "Mở menu"}
+          className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-btn border border-line-strong bg-card transition-colors hover:border-blue hover:bg-blue/5 sm:h-12 sm:w-12"
+        >
+          <span className="block h-0.5 w-5 rounded-sm bg-blue-deep" />
+          <span className="block h-0.5 w-5 rounded-sm bg-blue-deep" />
+          {/* Vạch thứ ba ngắn hơn — chi tiết của mockup, không phải lỗi. */}
+          <span className="block h-0.5 w-3.5 rounded-sm bg-blue-deep" />
+        </button>
+
+        {/* Logo khoa đã có sẵn chữ trong ảnh nên không lặp lại bằng text;
+            alt giữ nguyên nội dung đó cho trình đọc màn hình. */}
+        <Link href="/" className="justify-self-center">
+          <Image
+            src="/logo/itde_new.png"
+            alt="Khoa Công nghệ thông tin & Kinh tế số — Học viện Ngân hàng"
+            width={652}
+            height={118}
+            priority
+            className="h-8 w-auto sm:h-[68px]"
+          />
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-x-7 gap-y-1">
-          {NAV.map(({ href, label }) => {
-            const active = pathname === href || pathname.startsWith(`${href}/`);
-            return (
-              <Link
-                key={href}
-                href={href}
-                aria-current={active ? "page" : undefined}
-                className={
-                  active
-                    ? "border-b-2 border-amber py-1.5 text-[14.5px] font-semibold text-navy"
-                    : "border-b-2 border-transparent py-1.5 text-[14.5px] text-ink-muted transition-colors hover:text-navy"
-                }
-              >
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="ml-auto flex items-center gap-4">
-          <span className="hidden text-[13.5px] text-ink-muted sm:inline">
-            {USER.name}
-          </span>
-          <span
-            aria-hidden
-            className="inline-flex h-8.5 w-8.5 items-center justify-center rounded-full bg-navy text-[12.5px] font-semibold text-white"
-          >
-            {USER.initials}
-          </span>
-        </div>
+        <span aria-hidden className="h-11 w-11 sm:h-12 sm:w-12" />
       </div>
+
+      {open && (
+        <nav
+          id={MENU_ID}
+          aria-label="Điều hướng chính"
+          className="absolute left-5 top-full mt-2 w-[300px] max-w-[calc(100vw-2.5rem)] rounded-card border border-line-soft bg-card p-2.5 shadow-menu sm:left-8"
+        >
+          <ul className="flex flex-col gap-0.5">
+            {NAV.map(({ href, label }) => {
+              const active =
+                href === "/"
+                  ? pathname === "/"
+                  : pathname === href || pathname.startsWith(`${href}/`);
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    // Bấm đúng mục đang mở thì pathname không đổi, nên phần
+                    // đóng-menu-khi-đổi-trang ở trên không chạy. Đóng tay ở đây.
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={
+                      "block rounded-[11px] px-4 py-3 text-[15px] transition-colors " +
+                      (active
+                        ? "bg-blue/7 font-semibold text-blue-deep"
+                        : "text-ink-body hover:bg-blue/6")
+                    }
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

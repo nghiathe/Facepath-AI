@@ -12,7 +12,7 @@
 ---
 
 ## 1. Nguồn sự thật của schema = `rules.json`
-Engine phải chạy được với đúng 14 `feature_key` mà 26 luật đang dùng. Đây là danh sách chốt (đừng đổi tên nếu chưa sửa `rules.json`):
+Engine phải chạy được với đúng 19 `feature_key` mà 32 luật đang dùng. Đây là danh sách chốt (đừng đổi tên nếu chưa sửa `rules.json`):
 
 | feature_key | kiểu | op dùng trong rules |
 |---|---|---|
@@ -30,6 +30,15 @@ Engine phải chạy được với đúng 14 `feature_key` mà 26 luật đang 
 | `mouth_width` | number 0..1 | gt |
 | `lip_thickness` | number 0..1 | lt / gte |
 | `mouth_shape` | category (`vong_cung`/`ho`/`long`/`chu_tu`/…) | category |
+| `forehead_width` | number 0..1 | gt |
+| `forehead_shape` | category (`vuong`/`goc_tron`/`khac`) — **xấp xỉ**, xem dưới | category |
+| `eye_length` | number (~tỉ lệ so mắt trung bình, 1.0 = trung bình) | gt |
+| `eye_size` | number 0..1, độ mở của mắt | gt |
+| `cheekbone_prominence` | number 0..1 | gt |
+
+> `forehead_shape` là **xấp xỉ**: tướng học phân loại trán theo chân tóc, mà FaceMesh không có điểm mốc nào ở chân tóc. Code suy ra từ độ thu hẹp của đường bao trán và cần hiệu chỉnh (mục 10) trước khi tin kết quả.
+>
+> `data/rules_ear.json` (`ear_lobe`, `ear_position`) **cố ý để ngoài** `rules.json`: FaceMesh không có điểm mốc tai, muốn dùng phải thêm model phát hiện tai riêng hoặc cho nhập tay. `lib/data.ts` không nạp file này.
 
 Ops cần support: `lt, lte, gt, gte, between, category`.
 
@@ -59,6 +68,20 @@ export type FaceFeatures = {
     length: number;                   // ~tỉ lệ so mắt      → brow_length
     thickness: number;                // 0..1               → brow_thickness
     eyeGap: number;                   // 0..1               → brow_eye_gap
+  };
+
+  forehead: {
+    width: number;                    // 0..1               → forehead_width
+    shape: ForeheadShape;             // vuong/goc_tron/khac → forehead_shape
+  };
+
+  eyes: {
+    length: number;                   // ~tỉ lệ, 1.0 = TB   → eye_length
+    size: number;                     // 0..1, độ mở mắt    → eye_size
+  };
+
+  cheekbone: {
+    prominence: number;               // 0..1               → cheekbone_prominence
   };
 
   nose: {
