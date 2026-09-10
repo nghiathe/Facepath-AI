@@ -134,6 +134,8 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
 
 **Header** (mọi màn): cao `104px`, nền trắng. Bố cục 3 cột — nút mở menu `48×48` bo `12px` bên trái, **logo Khoa canh giữa** cao `68px`, ô trống cân bằng bên phải. Không hiển thị tên người dùng.
 
+> Cập nhật 10/09/2026: header **không giới hạn bề ngang**, lề ngang lấy đúng lề nội dung của trang (`px-6` / `sm:px-10`) — mép trái nút menu thẳng hàng với nhãn "ITDE TECH CAMP 2027" và tiêu đề dải "Cách thức trải nghiệm". Vẫn đủ 3 cột nên logo vẫn đúng tâm trang.
+
 **Menu** (thả xuống từ nút trái, rộng `300px`, bo `16px`): Trang chủ · Quét gương mặt · Khám phá · Lịch sử quét · Về Tech Camp.
 
 > Mockup có thêm "Bảng xếp hạng" và "Thành tựu". **Không dựng bảng xếp hạng**: xếp hạng người dùng theo kết quả quét mặt biến thứ giải trí thành thước đo so sánh giữa người với người — đúng điều mục 1 cấm. Hai mục đó gộp thành **Lịch sử quét** (khớp sẵn với bảng `sessions` ở mục 6).
@@ -329,7 +331,9 @@ GET  /api/rules?feature=...                   # tra cứu luật + nguồn
 
 **01 · Landing** — hai cột: trái là nhãn "ITDE TECH CAMP 2027", hero "Khám phá / hệ nghề của bạn" (58px), câu "Gương mặt công nghệ — Tương lai trong tay bạn!", đoạn mô tả, nút **Bắt đầu trải nghiệm** (→ /scan, nền gradient) + **Xem phiếu mẫu** (→ /result), và 3 thẻ nhỏ: 478 điểm mốc / RAG + LLM / Hoàn toàn cục bộ. Cột phải là khung hero nền chuyển sắc kèm lưới điểm mốc trang trí và chữ dọc "ITDE TECH CAMP 2027". Dưới cùng là dải nền tối **"Cách thức tham gia"** với 4 bước (Quét khuôn mặt → AI phân tích → Khám phá kết quả → Lưu lại kết quả), rồi **banner disclaimer**.
 
-> Mockup **thiếu disclaimer** ở màn này — vẫn phải có, mục 1 xếp nó vào nguyên tắc bất di bất dịch. Mockup cũng để ô kéo-thả ảnh chân dung ở khung hero; chưa có ảnh thì để nguyên nền chuyển sắc + lưới điểm mốc.
+> **Cập nhật 10/09/2026 — chủ dự án quyết bỏ banner disclaimer ở màn 01.** Bản đầy đủ vẫn hiển thị ở màn 04 (Phiếu kết quả) và trang Về Tech Camp. Đây là ngoại lệ có chủ ý so với mục 1: đừng tự thêm lại khi thấy code lệch đặc tả, hỏi trước.
+>
+> Chữ trên màn này cũng đã đổi theo bản copy mới (hero "Khám phá dấu ấn công nghệ của bạn" — **54px** chứ không phải 58px, vì bản chữ mới dài hơn và 58px làm hero rớt xuống 3 dòng; nút "Trải nghiệm ngay" / "Xem kết quả mẫu", dải "Cách thức trải nghiệm"). Khung hero nay đặt ảnh minh hoạ `web/public/images/image.png` (ảnh đã có sẵn lưới quét nên bỏ lưới SVG trang trí).
 
 **02 · Quét gương mặt** — bật camera; khung căn mặt + hướng dẫn ("ánh sáng chính diện, bỏ kính, tóc không che cung mày, giữ 2 giây"); panel "Đặc trưng đang đọc" cập nhật live 4 chỉ số; chỉ báo `478/478 · fps · nghiêng đầu · sáng đều %` và trạng thái **đủ điều kiện chụp**; dòng "Chỉ 24 số liệu được gửi đi"; nút **Chụp và phân tích** + **Tải ảnh từ máy** (ảnh upload cũng xử lý on-device). DoD: gửi được vector 24 số sang /analyze, ảnh không rời client.
 
@@ -359,6 +363,6 @@ Mỗi bước tự chạy được rồi hãy sang bước sau. Ưu tiên đúng
 - Toàn bộ UI, nội dung, comment hướng người dùng bằng **tiếng Việt**.
 - **Không** thêm bất kỳ đường gửi ảnh/khung hình nào lên server. Nếu một tính năng cần ảnh ở server, dừng lại và hỏi.
 - Đặt các con số hiển thị (86%, 62 luật, 12s…) là **dữ liệu tính ra**, không hard-code trừ trang "phiếu mẫu".
-- Giữ nguyên và hiển thị **disclaimer** ở màn 01 và 04, và câu "% là mức khớp, không phải dự báo thành công".
+- Giữ nguyên và hiển thị **disclaimer** ở màn 04 và trang Về Tech Camp, cùng câu "% là mức khớp, không phải dự báo thành công". (Màn 01 đã được chủ dự án cho bỏ — xem ghi chú ở mục 11.)
 - Bí mật (khoá API LLM, MySQL) qua biến môi trường `.env`; không commit.
 - Trước khi cài thư viện lạ, ưu tiên các gói trong stack đã chốt ở mục 3.

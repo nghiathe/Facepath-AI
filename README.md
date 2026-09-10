@@ -19,8 +19,9 @@ nhóm nghề phù hợp. Đồ án Khoa Công nghệ thông tin & Kinh tế số
 | Dữ liệu tướng học soạn từ sách (`data/`) | xong — 32 luật, 19 chỉ số, 5 ngũ hình |
 | `features.ts` — landmarks → FaceFeatures | xong (chưa hiệu chỉnh ngưỡng) |
 | Rule engine + trait + chấm điểm nghề | xong, có test |
-| Bật camera thật trên màn Quét | chưa (mốc 2) |
-| Nối engine vào UI, phiếu kết quả | chưa |
+| Bật camera thật trên màn Quét | xong |
+| Nối engine vào UI, phiếu kết quả | xong |
+| 5 tab menu (Trang chủ · Quét · Khám phá · Lịch sử · Về Tech Camp) | xong |
 | Hiệu chỉnh ngưỡng trên ảnh thật | **chưa — bắt buộc trước khi tin con số %** |
 | RAG + LLM | chưa (mốc 5) |
 
@@ -44,7 +45,7 @@ cd web
 cp .env.local.example .env.local
 npm install
 npm run dev          # http://localhost:3000
-npm test             # 44 test cho features + engine
+npm test             # 54 test cho features + engine + lịch sử
 npm run test:watch
 ```
 
@@ -58,8 +59,10 @@ Cần một MySQL 8 đang chạy (local hoặc managed).
 >
 > Frontend thì ngược lại: phải `cd web`. Hai phần chạy ở hai terminal riêng.
 >
-> Hiện engine chạy hoàn toàn phía client, chỉ trang "Kho luận giải" gọi API —
-> nên phần lớn thời gian chỉ cần `npm run dev`, chưa cần dựng MySQL.
+> Hiện **không màn nào của web gọi API**: engine lẫn trang tra cứu "Khám phá"
+> đều đọc `data/*.json` đã nằm trong bundle. Backend phục vụ tra cứu phía máy
+> chủ và là chỗ cắm RAG + LLM ở mốc 5 — nên để chạy web chỉ cần `npm run dev`,
+> chưa cần dựng MySQL.
 
 ```bash
 python -m venv .venv

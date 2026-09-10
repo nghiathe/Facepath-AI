@@ -20,12 +20,18 @@ export type ScanPayload = {
   at: number;
 };
 
-export function saveScan(payload: Omit<ScanPayload, "at">): void {
+/**
+ * `at` mặc định là bây giờ. Truyền vào khi MỞ LẠI một phiếu cũ từ lịch sử:
+ * mốc thời gian chính là khoá của mục lịch sử (lib/history.ts), giữ nguyên nó
+ * thì phiếu mở lại vẫn là lượt quét cũ chứ không đẻ thêm một mục mới.
+ */
+export function saveScan(payload: Omit<ScanPayload, "at"> & { at?: number }): void {
   if (typeof window === "undefined") return;
+  const at = payload.at ?? Date.now();
   try {
     sessionStorage.setItem(
       KEY,
-      JSON.stringify({ ...payload, at: Date.now() } satisfies ScanPayload)
+      JSON.stringify({ ...payload, at } satisfies ScanPayload)
     );
   } catch {
     // Hết dung lượng (ảnh quá lớn) — vẫn giữ được phần vector số.
@@ -36,7 +42,7 @@ export function saveScan(payload: Omit<ScanPayload, "at">): void {
           features: payload.features,
           snapshot: null,
           landmarks: payload.landmarks,
-          at: Date.now(),
+          at,
         } satisfies ScanPayload)
       );
     } catch {

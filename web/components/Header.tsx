@@ -48,8 +48,12 @@ export default function Header() {
     <header className="relative z-20 border-b border-line-soft bg-card">
       {/* Grid 3 cột thay vì flex: cột giữa mới canh logo vào đúng tâm trang.
           Cột phải là ô trống rộng bằng nút bên trái — bỏ nó đi thì logo lệch
-          sang phải đúng bằng bề ngang cái nút. */}
-      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-5 sm:h-26 sm:px-8">
+          sang phải đúng bằng bề ngang cái nút.
+          Không đặt max-width, và lề ngang lấy ĐÚNG lề nội dung của trang
+          (px-6 / sm:px-10 — xem app/page.tsx): mép trái nút menu thẳng hàng với
+          nhãn "ITDE TECH CAMP 2027" và tiêu đề "Cách thức trải nghiệm" bên
+          dưới. Hai ô 48px hai bên cân nhau nên logo vẫn đúng tâm trang. */}
+      <div className="grid h-20 w-full grid-cols-[auto_1fr_auto] items-center gap-3 px-6 sm:h-26 sm:px-10">
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -84,7 +88,7 @@ export default function Header() {
         <nav
           id={MENU_ID}
           aria-label="Điều hướng chính"
-          className="absolute left-5 top-full mt-2 w-[300px] max-w-[calc(100vw-2.5rem)] rounded-card border border-line-soft bg-card p-2.5 shadow-menu sm:left-8"
+          className="absolute left-6 top-full mt-2 w-[300px] max-w-[calc(100vw-3rem)] rounded-card border border-line-soft bg-card p-2.5 shadow-menu sm:left-10"
         >
           <ul className="flex flex-col gap-0.5">
             {NAV.map(({ href, label }) => {

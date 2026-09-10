@@ -1,9 +1,13 @@
-// Gọi backend FastAPI — chỉ dùng cho tra cứu (Kho luận giải, Về phương pháp).
+// Gọi backend FastAPI — client cho các endpoint tra cứu (mục 10).
 //
-// Việc chấm điểm KHÔNG đi qua đây: rule engine chạy ngay trong trình duyệt
-// (web/lib/engine/), nên một lượt quét không phát sinh request nào. Trước đây
-// có hàm analyze() POST lên /api/analyze; đã bỏ vì endpoint đó không tồn tại
-// và cũng không cần nữa.
+// HIỆN CHƯA MÀN NÀO DÙNG, và đó là chủ ý: cả engine lẫn trang "Khám phá" đều
+// đọc data/rules.json đã nằm sẵn trong bundle (lib/data.ts), nên một lượt quét
+// không phát sinh request nào và tra cứu vẫn chạy khi backend chưa bật. Giữ
+// module này cho các mốc sau — RAG + LLM (POST /api/reading) phải qua máy chủ,
+// và lúc đó bộ luật sẽ được đọc từ MySQL thay vì file tĩnh.
+//
+// Trước đây có hàm analyze() POST lên /api/analyze; đã bỏ vì endpoint đó không
+// tồn tại và việc chấm điểm cũng không cần rời máy người dùng.
 //
 // BẤT BIẾN (CLAUDE.md mục 1 + 13): không bao giờ gửi ảnh hay khung hình.
 // Nếu cần thêm hàm gửi ảnh lên server — dừng lại và hỏi trước.

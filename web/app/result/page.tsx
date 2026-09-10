@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import { formatSource } from "@/lib/data";
+import { addHistory } from "@/lib/history";
 import { analyzeFeatures, type AnalysisResult } from "@/lib/engine/analyze";
 import { ALL_LAYERS, drawOverlay, LAYER_COLORS } from "@/lib/features/overlay";
 import type { FaceFeatures } from "@/lib/features/types";
@@ -36,6 +37,31 @@ export default function ResultPage() {
     () => (scan ? analyzeFeatures(scan.features) : null),
     [scan]
   );
+
+  // Ghi lượt quét vào lịch sử trên máy (lib/history.ts). Khoá là mốc thời gian
+  // của lượt quét nên mở lại phiếu cũ chỉ ghi đè đúng mục đó, không nhân bản.
+  // KHÔNG lưu ảnh: lịch sử sống lâu dài trên máy, có thể là máy dùng chung.
+  useEffect(() => {
+    if (!scan || !result) return;
+    addHistory({
+      at: scan.at,
+      archetype: result.archetype,
+      ducTinh: result.faceType.duc_tinh,
+      matchedRulesCount: result.matchedRulesCount,
+      totalRulesCount: result.totalRulesCount,
+      sourcesCount: result.sourcesCount,
+      lead: result.careers[0]
+        ? {
+            slug: result.careers[0].slug,
+            name: result.careers[0].name,
+            percent: result.careers[0].percent,
+          }
+        : null,
+      traits: result.traits.slice(0, 3).map((t) => t.label),
+      features: result.features,
+      landmarks: scan.landmarks,
+    });
+  }, [scan, result]);
 
   // Vẽ lớp bóc tách khi ảnh đã tải xong hoặc khi bật/tắt lớp.
   useEffect(() => {
@@ -129,8 +155,11 @@ export default function ResultPage() {
                 onLoad={() => setImgReady(true)}
               />
             ) : (
+              /* Không có ảnh: phiếu mở lại từ lịch sử (lịch sử cố ý không lưu
+                 ảnh), hoặc ảnh quá lớn không nhét vừa sessionStorage. Còn toạ
+                 độ điểm mốc thì vẫn vẽ được lớp bóc tách lên nền tối này. */
               <div className="flex aspect-[3/4] items-center justify-center p-6 text-center text-xs text-white/50">
-                Không lưu được ảnh trong phiên này. Các chỉ số vẫn đầy đủ.
+                {scan.landmarks ? "" : "Phiếu này chỉ có các chỉ số, không kèm ảnh hay điểm mốc."}
               </div>
             )}
             <canvas
@@ -153,8 +182,9 @@ export default function ResultPage() {
           </div>
 
           <p className="text-[11px] leading-relaxed text-ink-faintest">
-            Ảnh chỉ nằm trong tab trình duyệt của bạn và mất khi đóng tab. Không
-            bản sao nào được gửi lên máy chủ.
+            {scan.snapshot
+              ? "Ảnh chỉ nằm trong tab trình duyệt của bạn và mất khi đóng tab. Không bản sao nào được gửi lên máy chủ."
+              : "Phiếu này không kèm ảnh — chỉ còn lớp bóc tách và các chỉ số. Lịch sử quét cố ý không lưu ảnh."}
           </p>
         </div>
 
@@ -249,6 +279,12 @@ export default function ResultPage() {
           className="rounded-btn border border-line-strong px-6 py-3 text-center text-sm text-navy hover:border-navy"
         >
           Quét lại
+        </Link>
+        <Link
+          href="/history"
+          className="rounded-btn px-6 py-3 text-center text-sm text-ink-faint hover:text-navy"
+        >
+          Xem Lịch sử quét →
         </Link>
       </div>
     </main>

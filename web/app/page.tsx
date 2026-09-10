@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import DisclaimerBanner from "@/components/DisclaimerBanner";
 
 // Màn 01 — Landing (design/itde-tech-camp.html, CLAUDE.md mục 11).
 // 478 là hằng số của MediaPipe Face Landmarker nên ghi thẳng được;
@@ -7,71 +7,78 @@ import DisclaimerBanner from "@/components/DisclaimerBanner";
 
 const STATS = [
   { title: "478 điểm mốc", body: "MediaPipe Face Landmarker" },
-  { title: "RAG + LLM", body: "Phân tích & gợi ý thông minh" },
-  { title: "Hoàn toàn cục bộ", body: "Không lưu trữ hình ảnh" },
+  { title: "RAG + LLM", body: "Phân tích và tạo gợi ý" },
+  { title: "Xử lý trên thiết bị", body: "Hình ảnh không được lưu trữ" },
 ] as const;
 
 const STEPS = [
-  { no: "01", icon: "◉", title: "Quét khuôn mặt", body: "Bằng camera", warm: false },
-  { no: "02", icon: "◈", title: "AI phân tích", body: "478 điểm mốc", warm: false },
-  { no: "03", icon: "✦", title: "Khám phá kết quả", body: "Nhóm nghề phù hợp", warm: true },
-  { no: "04", icon: "⇄", title: "Lưu lại kết quả", body: "Xem lại bất cứ lúc nào", warm: true },
+  {
+    no: "01",
+    icon: "◉",
+    title: "Quét khuôn mặt",
+    body: "Sử dụng camera để ghi nhận khuôn mặt.",
+    warm: false,
+  },
+  {
+    no: "02",
+    icon: "◈",
+    title: "AI phân tích",
+    body: "Hệ thống nhận diện 478 điểm mốc khuôn mặt.",
+    warm: false,
+  },
+  {
+    no: "03",
+    icon: "✦",
+    title: "Khám phá kết quả",
+    body: "Xem các nhóm nghề và lĩnh vực công nghệ được gợi ý.",
+    warm: true,
+  },
+  {
+    no: "04",
+    icon: "⇄",
+    title: "Lưu kết quả",
+    body: "Lưu lại để xem và chia sẻ sau trải nghiệm.",
+    warm: true,
+  },
 ] as const;
-
-/** Lưới điểm mốc trang trí ở khung hero — gợi hình 478 điểm, không phải dữ liệu thật. */
-function FaceMeshMark() {
-  const dots = [
-    [112, 96], [150, 88], [188, 98],
-    [98, 140], [150, 132], [202, 142],
-    [118, 184], [150, 196], [182, 184],
-    [132, 228], [168, 228],
-  ];
-  return (
-    <svg viewBox="0 0 300 300" className="h-full w-full" aria-hidden>
-      {/* 4 góc khung ngắm */}
-      <g fill="none" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round">
-        <path d="M14 84 L14 14 L84 14" />
-        <path d="M216 14 L286 14 L286 84" />
-        <path d="M286 216 L286 286 L216 286" />
-        <path d="M84 286 L14 286 L14 216" />
-      </g>
-      <g stroke="rgba(224,242,254,0.55)" strokeWidth="1" fill="none">
-        <path d="M112 96 L150 88 L188 98 M98 140 L150 132 L202 142 M118 184 L150 196 L182 184 M132 228 L168 228" />
-        <path d="M112 96 L98 140 L118 184 L132 228 M188 98 L202 142 L182 184 L168 228 M150 88 L150 132 L150 196" />
-      </g>
-      <g opacity="0.85" fill="#E0F2FE">
-        {dots.map(([cx, cy]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2.4" />
-        ))}
-      </g>
-    </svg>
-  );
-}
 
 export default function Home() {
   return (
     <main className="flex flex-col">
       <section className="grid grid-cols-1 lg:grid-cols-[minmax(0,596px)_1fr]">
         {/* Cột chữ */}
-        <div className="flex flex-col gap-5 px-6 py-12 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12">
-          <span className="label-caps text-[15px]">ITDE Tech Camp 2027</span>
+        <div className="flex flex-col gap-10 px-6 py-12 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12">
+          <span className="label-caps text-[15px]">ITDE Tech Camp 2026</span>
 
-          <h1 className="text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[58px]">
-            Khám phá
-            <br />
-            hệ nghề của bạn
+          {/* Đúng 2 dòng, chia sẵn bằng hai span block chứ không để chữ tự
+              xuống dòng. Cỡ chữ ở lg là 54px chứ không phải 58px như mockup:
+              bản chữ mới dài hơn bản cũ ("Khám phá / hệ nghề của bạn"), mà cột
+              trái chỉ rộng 596 - 40 - 48 = 508px. Đo bằng chính font Be Vietnam
+              Pro SemiBold (tracking -0.035em): "công nghệ của bạn" chiếm
+              516.1px ở 58px -> tràn thành 3 dòng, 498.3px ở 56px, 480.5px ở
+              54px -> dư 27px. Đổi chữ dài hơn nữa thì phải đo lại, đừng tăng
+              cỡ theo cảm tính. whitespace-nowrap chỉ bật từ sm: dưới ngưỡng đó
+              cột còn hẹp hơn chính dòng chữ, khoá lại là chữ tràn ra ngoài. */}
+          <h1 className="text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[54px]">
+            <span className="block sm:whitespace-nowrap">Khám phá dấu ấn</span>
+            <span className="block sm:whitespace-nowrap">công nghệ của bạn</span>
           </h1>
 
           <p className="text-lg font-medium text-ink-body sm:text-[19px]">
-            Gương mặt công nghệ — Tương lai trong tay bạn!
+            Một khuôn mặt — Một hành trình khám phá — Một góc nhìn mới về tương lai.
           </p>
 
           <p className="max-w-[470px] text-pretty text-[15.5px] font-light leading-[1.75] text-ink-faint">
-            Chỉ với một bức ảnh khuôn mặt, hệ thống phân tích 478 điểm mốc{" "}
+            Chụp một bức ảnh và khám phá cách hệ thống ứng dụng{" "}
             <strong className="font-semibold text-ink-body">
-              ngay trên thiết bị của bạn
+              AI, Computer Vision và RAG
             </strong>{" "}
-            và gợi ý nhóm nghề, lĩnh vực công nghệ phù hợp nhất.
+            để phân tích đặc điểm khuôn mặt, kết hợp với tri thức nhân tướng học
+            nhằm đưa ra những{" "}
+            <strong className="font-semibold text-ink-body">
+              gợi ý thú vị về nhóm nghề và lĩnh vực công nghệ
+            </strong>
+            .
           </p>
 
           <div className="mt-1.5 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center">
@@ -79,40 +86,54 @@ export default function Home() {
               href="/scan"
               className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-btn px-7 py-4 text-base font-semibold transition-[filter]"
             >
-              Bắt đầu trải nghiệm <span aria-hidden className="text-[17px]">→</span>
+              Trải nghiệm ngay <span aria-hidden className="text-[17px]">→</span>
             </Link>
             <Link
               href="/result"
               className="inline-flex items-center justify-center whitespace-nowrap rounded-btn border border-line-strong bg-card px-6 py-4 text-[15.5px] font-medium text-blue-deep transition-colors hover:border-blue"
             >
-              Xem phiếu mẫu
+              Xem kết quả mẫu
             </Link>
           </div>
 
-          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {STATS.map(({ title, body }) => (
-              <div
-                key={title}
-                className="flex flex-col gap-1 rounded-btn border border-line-soft bg-card px-4 py-3.5"
-              >
-                <strong className="text-sm font-semibold text-ink-title">{title}</strong>
-                <span className="text-[11.5px] font-light text-ink-faint">{body}</span>
-              </div>
-            ))}
+          <div className="mt-3 flex flex-col gap-2.5">
+            <h2 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-blue">
+              Công nghệ phía sau trải nghiệm
+            </h2>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {STATS.map(({ title, body }) => (
+                <div
+                  key={title}
+                  className="flex flex-col gap-1 rounded-btn border border-line-soft bg-card px-4 py-3.5"
+                >
+                  <strong className="text-sm font-semibold text-ink-title">
+                    {title}
+                  </strong>
+                  <span className="text-[11.5px] font-light text-ink-faint">{body}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Khung hero. Mockup có ô kéo-thả ảnh chân dung; chưa có ảnh nên để
-            nguyên nền chuyển sắc + lưới điểm mốc. Muốn thêm thì đặt ảnh vào
-            public/images/ rồi lồng <Image fill> vào đúng div này. */}
+        {/* Khung hero — ô ảnh chân dung mà mockup chừa sẵn.
+            ẢNH MINH HOẠ, không phải kết quả quét của ai: lớp lưới trên mặt là
+            một phần của chính tấm ảnh. Nền chuyển sắc giữ nguyên bên dưới để
+            khung không trắng bệch trong lúc ảnh đang tải. */}
         <div className="relative min-h-[320px] overflow-hidden bg-[linear-gradient(150deg,#DCE6FF_0%,#C9D8FF_45%,#B7A7F5_100%)] lg:min-h-0">
+          <Image
+            src="/images/image.png"
+            alt="Ảnh minh hoạ: khuôn mặt với lưới điểm mốc quét chồng lên"
+            fill
+            priority
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="object-cover"
+          />
+          {/* Vệt sáng mép trái: hoà ảnh vào nền trang thay vì cắt ngang đột ngột. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(242,246,255,0.9)_0%,rgba(242,246,255,0)_32%)] lg:block"
+            className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(242,246,255,0.92)_0%,rgba(242,246,255,0)_30%)] lg:block"
           />
-          <div className="pointer-events-none absolute left-1/2 top-14 h-[240px] w-[240px] -translate-x-1/2 sm:h-[300px] sm:w-[300px] lg:-translate-x-[46%]">
-            <FaceMeshMark />
-          </div>
           <div
             aria-hidden
             className="pointer-events-none absolute right-8 top-10 text-right text-[15px] font-semibold leading-[1.7] tracking-[0.24em] text-white [text-shadow:0_2px_12px_rgba(14,26,60,0.45)]"
@@ -123,23 +144,26 @@ export default function Home() {
             <br />
             CAMP
             <br />
-            2027
+            2026
           </div>
         </div>
       </section>
 
-      {/* Dải "Cách thức tham gia" — nền tối, dùng token on-dark-* */}
-      <section className="bg-[linear-gradient(90deg,#0B1533_0%,#14265C_100%)] px-6 py-8 sm:px-10 lg:py-0">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 lg:h-32 lg:flex-row lg:items-center lg:gap-0">
+      {/* Dải "Cách thức trải nghiệm" — nền tối, dùng token on-dark-*.
+          Mockup vẽ dải này cao đúng 128px, nhưng phần mô tả từng bước dài hơn
+          một dòng nên dùng min-height: cao tối thiểu như mockup, và giãn ra
+          thay vì cắt cụt chữ ở màn hẹp. */}
+      <section className="bg-[linear-gradient(90deg,#0B1533_0%,#14265C_100%)] px-6 py-8 sm:px-10 lg:py-7">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 lg:min-h-32 lg:flex-row lg:items-center lg:gap-0">
           <h2 className="w-[190px] flex-none text-xl font-semibold leading-tight text-on-dark">
             Cách thức
-            <br className="hidden lg:inline" /> tham gia
+            <br className="hidden lg:inline" /> trải nghiệm
           </h2>
           <ol className="grid flex-1 grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
             {STEPS.map(({ no, icon, title, body, warm }) => (
               <li
                 key={no}
-                className="flex items-center gap-3.5 lg:border-l lg:border-line-dark lg:pl-6"
+                className="flex items-start gap-3.5 lg:border-l lg:border-line-dark lg:pl-5"
               >
                 <span
                   aria-hidden
@@ -164,7 +188,9 @@ export default function Home() {
                   <strong className="text-[14.5px] font-semibold text-on-dark">
                     {title}
                   </strong>
-                  <span className="text-xs font-light text-on-dark-faint">{body}</span>
+                  <span className="text-xs font-light leading-relaxed text-on-dark-faint">
+                    {body}
+                  </span>
                 </div>
               </li>
             ))}
@@ -172,11 +198,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mockup mới bỏ mất disclaimer ở màn Landing; CLAUDE.md mục 1 xếp nó vào
-          nguyên tắc bất di bất dịch nên giữ lại. */}
-      <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:px-10">
-        <DisclaimerBanner />
-      </div>
+      {/* KHÔNG có khối "Lưu ý" ở màn này — chủ dự án quyết bỏ ngày 10/09/2026,
+          dù CLAUDE.md mục 1 xếp disclaimer màn 01 vào nguyên tắc bất di bất
+          dịch. Bản đầy đủ vẫn nằm ở màn Phiếu kết quả và trang Về Tech Camp;
+          đừng "sửa lại cho đúng đặc tả" nếu chưa hỏi. */}
     </main>
   );
 }
