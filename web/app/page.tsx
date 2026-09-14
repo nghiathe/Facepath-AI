@@ -46,8 +46,16 @@ const STEPS = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
-      <section className="relative grid grid-cols-1 overflow-hidden lg:grid-cols-[minmax(0,596px)_1fr]">
+    /* Trang chủ chiếm trọn một màn hình: cao bằng khung nhìn trừ header
+       (h-20 + viền 1px ở mobile, h-26 + 1px từ sm:). Không khoá chiều cao thì
+       nội dung kết thúc lưng chừng và dưới dải "Cách thức trải nghiệm" còn một
+       khoảng trắng thừa — chiếu lên máy chiếu là thấy ngay trang bị hụt.
+       Dùng svh chứ không phải vh: trên trình duyệt di động vh tính cả phần bị
+       thanh địa chỉ che, lấy vh là dải nền tối bị đẩy khuất dưới mép màn. */
+    <main className="flex min-h-[calc(100svh-5rem-1px)] flex-col sm:min-h-[calc(100svh-6.5rem-1px)]">
+      {/* flex-1: phần dư của khung nhìn dồn hết vào hero, nên hero giãn ra cho
+          vừa màn thay vì để trang hụt ở đáy. */}
+      <section className="relative grid flex-1 grid-cols-1 overflow-hidden lg:grid-cols-[minmax(0,596px)_1fr]">
         {/* Hai quầng sáng trôi rất chậm phía sau cột chữ — chỉ để nền sáng
             #F2F6FF không phẳng lì khi phóng lên màn chiếu lớn. Đặt blur rất
             mạnh và độ mờ thấp: thấy được là chuyển sắc chứ không thấy ra hình
@@ -61,8 +69,10 @@ export default function Home() {
           className="pointer-events-none absolute -bottom-48 left-24 h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(109,77,246,0.14),transparent_68%)] blur-3xl animate-[fp-aurora_28s_ease-in-out_infinite_reverse]"
         />
 
-        {/* Cột chữ */}
-        <div className="relative flex flex-col gap-10 px-6 py-12 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12">
+        {/* Cột chữ. lg:justify-center — khi hero giãn ra cho đủ chiều cao màn
+            hình, phần dư chia đều trên/dưới khối chữ; bỏ nó thì chữ dính lên
+            mép trên còn khoảng trống dồn hết xuống dưới nút bấm. */}
+        <div className="relative flex flex-col gap-10 px-6 py-12 sm:px-10 lg:justify-center lg:py-14 lg:pl-10 lg:pr-12">
           <span className="label-caps reveal text-[15px]">ITDE Tech Camp 2026</span>
 
           {/* Đúng 2 dòng, chia sẵn bằng hai span block chứ không để chữ tự
@@ -77,9 +87,9 @@ export default function Home() {
           {/* Dòng hai tô dải xanh->tím (.gradient-text). Chỉ tô DÒNG THỨ HAI:
               tô cả hai dòng thì hero thành một mảng màu và mất hẳn tương phản
               với nút chính ngay bên dưới, vốn cũng là dải màu đó. */}
-          <h1 className="reveal d-1 text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[54px]">
+          <h1 className=" reveal d-1 text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[54px]">
             <span className="block sm:whitespace-nowrap">Khám phá dấu ấn</span>
-            <span className="gradient-text block sm:whitespace-nowrap">
+            <span className="pb-1 gradient-text block sm:whitespace-nowrap">
               công nghệ của bạn
             </span>
           </h1>
