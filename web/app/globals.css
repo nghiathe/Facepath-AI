@@ -66,6 +66,14 @@
   --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ĐẶT TRONG @layer base / @layer components — KHÔNG được để trần.
+   Tailwind v4 nhét toàn bộ utility vào `@layer utilities`, mà trong CSS thì
+   style NGOÀI layer luôn thắng style TRONG layer, bất kể độ đặc hiệu. Viết
+   `h1 { color: ... }` ở ngoài layer là mọi class `text-*` đặt lên h1 đều bị
+   nuốt — đúng lỗi từng làm tiêu đề màn 02 thành chữ navy đậm trên nền tối, và
+   làm `.label-caps text-[15px]` ở màn 01 vẫn ra 12px. Nằm trong layer thì thứ
+   tự base < components < utilities áp dụng bình thường và utility đè được. */
+@layer components {
 body {
   background: var(--color-page);
   color: var(--color-ink-body);
@@ -113,4 +121,325 @@ p {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-sky);
+}
+}
+
+/* ===========================================================================
+   LỚP CHUYỂN ĐỘNG — dựng cho bản chiếu màn hình lớn ở hội trại.
+   ...........................................................................
+   Mọi hiệu ứng ở đây đều là TRANG TRÍ: chỉ chạm vào transform / opacity /
+   filter, không chạm layout. Tắt hết bằng prefers-reduced-motion ở cuối file
+   thì trang vẫn đọc được y nguyên — đừng đưa nội dung nào vào diện chỉ hiện
+   sau khi animation chạy.
+
+   Vì sao chỉ transform + opacity: hai thuộc tính này chạy trên compositor,
+   không kích hoạt layout/paint lại. Chiếu qua máy chiếu 1080p mà animate
+   width/top/height là thấy giật ngay.
+   =========================================================================== */
+
+@keyframes fp-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fp-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Khối nền chuyển sắc trôi rất chậm phía sau cột chữ màn 01. */
+@keyframes fp-aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(0.95);
+  }
+}
+
+/* Vệt sáng chạy ngang nút chính khi rê chuột. */
+@keyframes fp-shine {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+/* Vòng sáng lan ra từ khung căn mặt lúc đã đủ điều kiện chụp. */
+@keyframes fp-halo {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+}
+
+/* Vạch quét chạy dọc khung ảnh/camera — thuần trang trí, KHÔNG phản ánh tiến
+   trình đo nào cả. Đừng để ai hiểu nhầm nó là thanh tiến độ.
+
+   Phần tử mang animation này phải CAO BẰNG KHUNG (h-full), còn vạch sáng là
+   thẻ con mỏng nằm ở mép trên nó. Lý do: translateY theo % tính trên chiều cao
+   của CHÍNH phần tử được dịch — gắn thẳng vào vạch 3px thì 100% chỉ là 3px và
+   vạch gần như đứng yên. Cao bằng khung thì -100% -> 100% đúng bằng một lượt
+   chạy trọn khung, không phụ thuộc khung cao bao nhiêu. */
+@keyframes fp-sweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chuyển màn: trang mới trôi lên một đoạn ngắn rồi hiện rõ.
+   (components/PageTransition.tsx bọc mỗi trang bằng .page-enter.)
+
+   ĐỪNG THÊM fill `both` VÀO .page-enter DƯỚI KIA. Một phần tử có `transform`
+   khác `none` là containing block cho mọi con `position: fixed` bên trong —
+   lớp phủ fixed sẽ neo vào wrapper thay vì vào khung nhìn. Với fill `both`,
+   giá trị ở `to` bám lại vĩnh viễn sau khi animation chạy xong, nên cái bẫy đó
+   thành thường trực.
+
+   Ghi `transform: none` ở khung `to` KHÔNG cứu được: nội suy từ một transform
+   về `none` thì trình duyệt coi `none` là ma trận đơn vị, và computed value
+   đọc ra là `matrix(1, 0, 0, 1, 0, 0)` chứ không phải `none` — vẫn đủ để tạo
+   containing block. Đã đo tận nơi, không phải suy đoán.
+
+   Bỏ fill thì sau 0.34s phần tử trở về style gốc, không còn transform nào. */
+/* Màn kéo chuyển cảnh (components/Curtain.tsx). Hai khung hình nối thành MỘT
+   mạch đi lên: 100% -> 0 (che kín), rồi 0 -> -100% (lộ trang mới).
+   Thời lượng hai pha phải khớp CURTAIN_COVER_MS / CURTAIN_REVEAL_MS trong
+   lib/curtain.ts — lệch nhau là điều hướng xảy ra lúc màn chưa che kín, và
+   người xem thấy trang cũ nháy đi. */
+@keyframes fp-curtain-cover {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fp-curtain-reveal {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes fp-page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Nhịp thở nhẹ cho chấm "đang chạy" ở màn 03. */
+@keyframes fp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+/* --- Tiện ích ------------------------------------------------------------ */
+
+/* Hiện dần khi cuộn tới. components/Reveal.tsx gắn data-shown="true" qua
+   IntersectionObserver. Trạng thái mặc định vẫn là HIỆN (opacity 1): nếu JS
+   chưa chạy hoặc hỏng thì nội dung vẫn đọc được, chỉ mất hiệu ứng. */
+@layer components {
+.reveal {
+  animation: fp-fade-up 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Bậc trễ cho hiệu ứng nối tiếp nhau. Đủ 6 bậc cho khối dài nhất hiện có
+   (6 nhóm nghề ở phiếu kết quả). */
+.d-1 { animation-delay: 0.06s; }
+.d-2 { animation-delay: 0.12s; }
+.d-3 { animation-delay: 0.18s; }
+.d-4 { animation-delay: 0.24s; }
+.d-5 { animation-delay: 0.3s; }
+.d-6 { animation-delay: 0.36s; }
+
+.fade-in {
+  animation: fp-fade-in 0.5s ease both;
+}
+
+/* Mỗi lần đổi đường dẫn, trang mới chạy hiệu ứng này một lượt.
+   Cố ý NGẮN (0.34s): đây là thứ chen giữa người xem và nội dung ở mọi lần bấm,
+   dài hơn nữa là thành chậm chạp chứ không còn mượt.
+   Không có fill-mode — lý do ở ghi chú @keyframes fp-page-in bên trên. */
+.page-enter {
+  animation: fp-page-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Pha che: `forwards` là BẮT BUỘC ở đây (khác .page-enter). Tấm màn phải đứng
+   nguyên ở vị trí che kín trong lúc React đổi trang bên dưới; không giữ thì nó
+   bật về dưới màn hình ngay khi animation kết thúc, đúng lúc cần che nhất.
+   An toàn vì phần tử này tự tháo khỏi DOM khi xong, không để lại transform. */
+.curtain-cover {
+  animation: fp-curtain-cover 380ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+.curtain-reveal {
+  animation: fp-curtain-reveal 440ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.scale-in {
+  animation: fp-scale-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Thẻ nhấc lên khi rê chuột. Dùng chung cho thẻ ở mọi trang để cảm giác bấm
+   được là nhất quán. */
+.card-lift {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px -22px rgba(14, 26, 60, 0.42);
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+/* Chữ tô dải xanh -> tím. Giữ nguyên màu nền dự phòng cho trình duyệt không
+   hỗ trợ background-clip:text, nếu không chữ sẽ tàng hình. */
+.gradient-text {
+  background: linear-gradient(120deg, var(--color-blue) 0%, var(--color-violet) 58%, var(--color-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gradient-text {
+    color: var(--color-blue-deep);
+  }
+}
+
+/* Nút chính: thêm vệt sáng chạy qua khi rê chuột (mục 5 — nút chính là dải
+   xanh->tím kèm quầng). Vệt nằm trong ::after nên không thêm thẻ DOM nào. */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    filter 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -16px rgba(37, 99, 235, 0.85);
+}
+.btn-primary:hover::after {
+  animation: fp-shine 0.85s ease-out;
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Vòng focus thấy rõ trên cả nền sáng lẫn nền tối — bàn phím vẫn phải dùng
+   được khi máy chiếu đang bật. */
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+}
+
+/* --- Tôn trọng lựa chọn giảm chuyển động --------------------------------- */
+/* Không chỉ rút ngắn mà tắt hẳn: người đặt cờ này thường vì chóng mặt / tiền
+   đình, animation "nhanh hơn" vẫn gây khó chịu. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-lift:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* --- In phiếu (nút "Tải PDF" ở màn 04) ----------------------------------- */
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  body {
+    background: #fff;
+  }
 }

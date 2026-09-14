@@ -37,7 +37,7 @@ const careerName = (slug: string) =>
 function RuleCard({ r }: { r: Rule }) {
   const careers = Object.entries(r.careers).sort((a, b) => b[1] - a[1]);
   return (
-    <li className="flex flex-col gap-2.5 rounded-card border border-line-soft bg-card px-5 py-4">
+    <li className="card-lift flex flex-col gap-2.5 rounded-card border border-line-soft bg-card px-5 py-4">
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <code className="rounded-[6px] bg-surface px-1.5 py-0.5 text-[11.5px] text-blue-deep">
           {r.feature_key}
@@ -174,7 +174,7 @@ function FacesTab() {
       {FACE_TYPES.map((f) => (
         <article
           key={f.key}
-          className="flex flex-col gap-2 rounded-card border border-line-soft bg-card px-5 py-4"
+          className="card-lift flex flex-col gap-2 rounded-card border border-line-soft bg-card px-5 py-4"
         >
           <div className="flex flex-wrap items-baseline gap-2">
             <h2 className="text-[17px] font-semibold text-ink-title">{f.label}</h2>
@@ -214,7 +214,7 @@ function CareersTab() {
           return (
             <article
               key={c.slug}
-              className="flex flex-col gap-2 rounded-card border border-line-soft bg-card px-5 py-4"
+              className="card-lift flex flex-col gap-2 rounded-card border border-line-soft bg-card px-5 py-4"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h2 className="text-[17px] font-semibold text-ink-title">{c.name}</h2>
@@ -255,7 +255,7 @@ function SourcesTab() {
         return (
           <article
             key={s.id}
-            className="flex flex-col gap-1.5 rounded-card border border-line-soft bg-card px-5 py-4"
+            className="card-lift flex flex-col gap-1.5 rounded-card border border-line-soft bg-card px-5 py-4"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="text-[16px] font-semibold text-ink-title">{s.title}</h2>
@@ -322,10 +322,10 @@ export default function LibraryPage() {
             aria-selected={tab === t.key}
             onClick={() => setTab(t.key)}
             className={
-              "rounded-btn px-4 py-2.5 text-sm transition-colors " +
+              "rounded-btn px-4 py-2.5 text-sm transition-all duration-300 " +
               (tab === t.key
-                ? "bg-blue font-semibold text-white"
-                : "border border-line-strong bg-card text-ink-body hover:border-blue hover:text-blue-deep")
+                ? "bg-[linear-gradient(135deg,#2563EB,#6D4DF6)] font-semibold text-white shadow-btn"
+                : "border border-line-strong bg-card text-ink-body hover:-translate-y-0.5 hover:border-blue hover:text-blue-deep")
             }
           >
             {t.label}{" "}
@@ -336,10 +336,15 @@ export default function LibraryPage() {
         ))}
       </div>
 
-      {tab === "rules" && <RulesTab />}
-      {tab === "faces" && <FacesTab />}
-      {tab === "careers" && <CareersTab />}
-      {tab === "sources" && <SourcesTab />}
+      {/* key={tab} ép React dựng lại nhánh này mỗi lần đổi tab, nhờ đó class
+          .fade-in chạy lại. Không có key thì React tái dùng DOM cũ và animation
+          chỉ chạy đúng một lần, ở tab mở đầu. */}
+      <div key={tab} className="fade-in">
+        {tab === "rules" && <RulesTab />}
+        {tab === "faces" && <FacesTab />}
+        {tab === "careers" && <CareersTab />}
+        {tab === "sources" && <SourcesTab />}
+      </div>
     </main>
   );
 }

@@ -47,7 +47,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-12 sm:px-10 sm:py-16">
+    <main className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-12 sm:px-10 sm:py-16">
       <div className="flex flex-col gap-2">
         <span className="label-caps">Lịch sử quét</span>
         <h1 className="text-3xl sm:text-4xl">Các lượt quét trên máy này</h1>
@@ -90,7 +90,7 @@ export default function HistoryPage() {
             {entries.map((e) => (
               <li
                 key={e.id}
-                className="flex flex-col gap-4 rounded-card border border-line-soft bg-card px-5 py-4 sm:flex-row sm:items-center"
+                className="card-lift flex flex-col gap-4 rounded-card border border-line-soft bg-card px-5 py-4 sm:flex-row sm:items-center"
               >
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
                   <span className="text-xs text-ink-faintest">
@@ -131,7 +131,7 @@ export default function HistoryPage() {
                   <button
                     type="button"
                     onClick={() => reopen(e)}
-                    className="rounded-btn border border-line-strong px-4 py-2.5 text-[13px] font-medium text-blue-deep transition-colors hover:border-blue"
+                    className="rounded-btn border border-line-strong px-4 py-2.5 text-[13px] font-medium text-blue-deep transition-all duration-300 hover:-translate-y-0.5 hover:border-blue hover:shadow-[0_12px_24px_-16px_rgba(37,99,235,0.7)]"
                   >
                     Mở lại phiếu
                   </button>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DisclaimerBanner from "@/components/DisclaimerBanner";
 import { CAREERS, FACE_TYPES, RULES, SOURCES } from "@/lib/data";
 import { FEATURE_KEYS, FEATURE_LAYERS } from "@/lib/features/catalog";
 import { TOTAL_LANDMARKS } from "@/lib/features/landmark-ids";
@@ -86,12 +85,12 @@ const LIMITS = [
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-12 sm:px-10 sm:py-16">
+    <main className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-12 sm:px-10 sm:py-16">
       <section className="flex flex-col gap-3">
         <span className="label-caps">Về Tech Camp</span>
         <h1 className="text-3xl sm:text-4xl">Gương mặt công nghệ</h1>
-        <p className="max-w-[700px] text-[15.5px] font-light leading-[1.75] text-ink-faint">
-          Sản phẩm của <strong className="font-semibold text-ink-body">ITDE Tech Camp 2027</strong>{" "}
+        <p className="max-w-[900px] text-[15.5px] font-light leading-[1.75] text-ink-faint">
+          Sản phẩm của <strong className="font-semibold text-ink-body">ITDE Tech Camp 2026</strong>{" "}
           — Khoa Công nghệ thông tin &amp; Kinh tế số, Học viện Ngân hàng. Ứng
           dụng đối chiếu đặc điểm gương mặt bạn với một bộ luật tướng học cổ đã
           số hoá, rồi lập một phiếu luận giải có trích dẫn nguồn. Mục đích là để
@@ -100,27 +99,6 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* Riêng tư đặt lên trước phương pháp: đây là cam kết, không phải tính năng phụ. */}
-      <section className="flex flex-col gap-3 rounded-panel border border-line-soft bg-card px-6 py-6">
-        <h2 className="text-xl">Ảnh của bạn không rời khỏi máy</h2>
-        <ul className="flex flex-col gap-2.5 text-[14.5px] font-light leading-relaxed text-ink-body">
-          <li>
-            Camera, lưới điểm mốc và toàn bộ phép tính đều chạy trong trình duyệt.
-            Không khung hình nào được gửi lên máy chủ, kể cả khi bạn tải ảnh từ máy.
-          </li>
-          <li>
-            Việc chấm điểm cũng chạy tại chỗ: một lượt quét không phát sinh
-            request nào, nên tắt mạng vẫn dùng được.
-          </li>
-          <li>
-            Ảnh đã chụp chỉ nằm trong tab đang mở và mất khi bạn đóng tab.{" "}
-            <Link href="/history" className="text-blue-deep underline underline-offset-2">
-              Lịch sử quét
-            </Link>{" "}
-            lưu trên máy bạn và cố ý không giữ ảnh — chỉ giữ các chỉ số.
-          </li>
-        </ul>
-      </section>
 
       <section className="flex flex-col gap-4">
         <h2 className="text-xl">Ứng dụng làm gì với gương mặt</h2>
@@ -128,7 +106,7 @@ export default function AboutPage() {
           {PIPELINE.map((s) => (
             <li
               key={s.no}
-              className="flex gap-4 rounded-card border border-line-soft bg-card px-5 py-4"
+              className="card-lift flex gap-4 rounded-card border border-line-soft bg-card px-5 py-4"
             >
               <span className="text-sm font-bold tracking-[0.1em] text-sky">{s.no}</span>
               <div className="flex flex-col gap-1">
@@ -159,7 +137,7 @@ export default function AboutPage() {
           {LIMITS.map((l) => (
             <article
               key={l.title}
-              className="flex flex-col gap-1.5 rounded-card border border-line-soft bg-surface px-5 py-4"
+              className="card-lift flex flex-col gap-1.5 rounded-card border border-line-soft bg-surface px-5 py-4"
             >
               <strong className="text-[14.5px] font-semibold text-ink-title">
                 {l.title}
@@ -191,7 +169,6 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <DisclaimerBanner />
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <Link

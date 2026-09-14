@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import StartScanButton from "@/components/StartScanButton";
 
 // Màn 01 — Landing (design/itde-tech-camp.html, CLAUDE.md mục 11).
 // 478 là hằng số của MediaPipe Face Landmarker nên ghi thẳng được;
@@ -45,10 +47,23 @@ const STEPS = [
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <section className="grid grid-cols-1 lg:grid-cols-[minmax(0,596px)_1fr]">
+      <section className="relative grid grid-cols-1 overflow-hidden lg:grid-cols-[minmax(0,596px)_1fr]">
+        {/* Hai quầng sáng trôi rất chậm phía sau cột chữ — chỉ để nền sáng
+            #F2F6FF không phẳng lì khi phóng lên màn chiếu lớn. Đặt blur rất
+            mạnh và độ mờ thấp: thấy được là chuyển sắc chứ không thấy ra hình
+            tròn. pointer-events-none để không nuốt cú bấm vào nút bên dưới. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-40 -top-32 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.16),transparent_68%)] blur-3xl animate-[fp-aurora_22s_ease-in-out_infinite]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-48 left-24 h-[440px] w-[440px] rounded-full bg-[radial-gradient(circle,rgba(109,77,246,0.14),transparent_68%)] blur-3xl animate-[fp-aurora_28s_ease-in-out_infinite_reverse]"
+        />
+
         {/* Cột chữ */}
-        <div className="flex flex-col gap-10 px-6 py-12 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12">
-          <span className="label-caps text-[15px]">ITDE Tech Camp 2026</span>
+        <div className="relative flex flex-col gap-10 px-6 py-12 sm:px-10 lg:py-14 lg:pl-10 lg:pr-12">
+          <span className="label-caps reveal text-[15px]">ITDE Tech Camp 2026</span>
 
           {/* Đúng 2 dòng, chia sẵn bằng hai span block chứ không để chữ tự
               xuống dòng. Cỡ chữ ở lg là 54px chứ không phải 58px như mockup:
@@ -59,16 +74,21 @@ export default function Home() {
               54px -> dư 27px. Đổi chữ dài hơn nữa thì phải đo lại, đừng tăng
               cỡ theo cảm tính. whitespace-nowrap chỉ bật từ sm: dưới ngưỡng đó
               cột còn hẹp hơn chính dòng chữ, khoá lại là chữ tràn ra ngoài. */}
-          <h1 className="text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[54px]">
+          {/* Dòng hai tô dải xanh->tím (.gradient-text). Chỉ tô DÒNG THỨ HAI:
+              tô cả hai dòng thì hero thành một mảng màu và mất hẳn tương phản
+              với nút chính ngay bên dưới, vốn cũng là dải màu đó. */}
+          <h1 className="reveal d-1 text-pretty text-4xl leading-[1.06] tracking-[-0.035em] sm:text-5xl lg:text-[54px]">
             <span className="block sm:whitespace-nowrap">Khám phá dấu ấn</span>
-            <span className="block sm:whitespace-nowrap">công nghệ của bạn</span>
+            <span className="gradient-text block sm:whitespace-nowrap">
+              công nghệ của bạn
+            </span>
           </h1>
 
-          <p className="text-lg font-medium text-ink-body sm:text-[19px]">
+          <p className="reveal d-2 text-lg font-medium text-ink-body sm:text-[19px]">
             Một khuôn mặt — Một hành trình khám phá — Một góc nhìn mới về tương lai.
           </p>
 
-          <p className="max-w-[470px] text-pretty text-[15.5px] font-light leading-[1.75] text-ink-faint">
+          <p className="reveal d-3 max-w-[470px] text-pretty text-[15.5px] font-light leading-[1.75] text-ink-faint">
             Chụp một bức ảnh và khám phá cách hệ thống ứng dụng{" "}
             <strong className="font-semibold text-ink-body">
               AI, Computer Vision và RAG
@@ -81,46 +101,30 @@ export default function Home() {
             .
           </p>
 
-          <div className="mt-1.5 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center">
+          <div className="reveal d-4 mt-1.5 flex flex-col items-stretch gap-3.5 sm:flex-row sm:items-center">
+            {/* Là client component vì nó kéo màn chuyển cảnh trước khi điều
+                hướng — xem components/StartScanButton.tsx. Mũi tên trượt phải
+                khi rê chuột và vệt sáng chạy ngang vẫn nằm trong đó. */}
+            <StartScanButton />
+            {/* ?demo=1 — KHÔNG trỏ trần vào /result. Phiên mới chưa quét gì thì
+                /result chỉ hiện "Chưa có phiếu nào", tức nút này vô dụng đúng
+                lúc cần nó nhất (người xem chưa quét). Tham số này bảo màn 04
+                dựng phiếu từ lib/demo.ts. */}
             <Link
-              href="/scan"
-              className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-btn px-7 py-4 text-base font-semibold transition-[filter]"
-            >
-              Trải nghiệm ngay <span aria-hidden className="text-[17px]">→</span>
-            </Link>
-            <Link
-              href="/result"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-btn border border-line-strong bg-card px-6 py-4 text-[15.5px] font-medium text-blue-deep transition-colors hover:border-blue"
+              href="/result?demo=1"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-btn border border-line-strong bg-card px-6 py-4 text-[15.5px] font-medium text-blue-deep transition-all duration-300 hover:-translate-y-0.5 hover:border-blue hover:shadow-[0_14px_28px_-18px_rgba(37,99,235,0.7)]"
             >
               Xem kết quả mẫu
             </Link>
           </div>
 
-          <div className="mt-3 flex flex-col gap-2.5">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-blue">
-              Công nghệ phía sau trải nghiệm
-            </h2>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {STATS.map(({ title, body }) => (
-                <div
-                  key={title}
-                  className="flex flex-col gap-1 rounded-btn border border-line-soft bg-card px-4 py-3.5"
-                >
-                  <strong className="text-sm font-semibold text-ink-title">
-                    {title}
-                  </strong>
-                  <span className="text-[11.5px] font-light text-ink-faint">{body}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Khung hero — ô ảnh chân dung mà mockup chừa sẵn.
             ẢNH MINH HOẠ, không phải kết quả quét của ai: lớp lưới trên mặt là
             một phần của chính tấm ảnh. Nền chuyển sắc giữ nguyên bên dưới để
             khung không trắng bệch trong lúc ảnh đang tải. */}
-        <div className="relative min-h-[320px] overflow-hidden bg-[linear-gradient(150deg,#DCE6FF_0%,#C9D8FF_45%,#B7A7F5_100%)] lg:min-h-0">
+        <div className="fade-in relative min-h-[320px] overflow-hidden bg-[linear-gradient(150deg,#DCE6FF_0%,#C9D8FF_45%,#B7A7F5_100%)] lg:min-h-0">
           <Image
             src="/images/image.png"
             alt="Ảnh minh hoạ: khuôn mặt với lưới điểm mốc quét chồng lên"
@@ -129,6 +133,19 @@ export default function Home() {
             sizes="(min-width: 1024px) 55vw, 100vw"
             className="object-cover"
           />
+          {/* Vạch quét chạy dọc khung ảnh, 6 giây một lượt — gợi lại động tác
+              quét của màn 02. THUẦN TRANG TRÍ: không đo gì, không phải tiến độ,
+              và tấm ảnh bên dưới cũng chỉ là ảnh minh hoạ. Để chu kỳ dài và độ
+              mờ thấp, vì dải này chạy vĩnh viễn suốt buổi chiếu — nhấp nháy
+              nhanh là mỏi mắt cả hội trường. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
+            <div className="absolute inset-x-0 top-0 h-full animate-[fp-sweep_6s_ease-in-out_infinite]">
+              <div className="h-[3px] w-full bg-[linear-gradient(90deg,transparent,rgba(56,189,248,0.85),rgba(124,92,255,0.85),transparent)] blur-[1px]" />
+            </div>
+          </div>
           {/* Vệt sáng mép trái: hoà ảnh vào nền trang thay vì cắt ngang đột ngột. */}
           <div
             aria-hidden
@@ -160,18 +177,20 @@ export default function Home() {
             <br className="hidden lg:inline" /> trải nghiệm
           </h2>
           <ol className="grid flex-1 grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-            {STEPS.map(({ no, icon, title, body, warm }) => (
-              <li
+            {STEPS.map(({ no, icon, title, body, warm }, i) => (
+              <Reveal
+                as="li"
                 key={no}
-                className="flex items-start gap-3.5 lg:border-l lg:border-line-dark lg:pl-5"
+                delay={(i + 1) as 1 | 2 | 3 | 4}
+                className="group flex items-start gap-3.5 lg:border-l lg:border-line-dark lg:pl-5"
               >
                 <span
                   aria-hidden
                   className={
-                    "inline-flex h-11 w-11 flex-none items-center justify-center rounded-btn border text-lg " +
+                    "inline-flex h-11 w-11 flex-none items-center justify-center rounded-btn border text-lg transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 " +
                     (warm
-                      ? "border-violet-light/40 bg-violet-light/20 text-[#C4B5FD]"
-                      : "border-sky/35 bg-blue/20 text-[#93C5FD]")
+                      ? "border-violet-light/40 bg-violet-light/20 text-[#C4B5FD] group-hover:shadow-[0_10px_22px_-12px_rgba(124,92,255,0.9)]"
+                      : "border-sky/35 bg-blue/20 text-[#93C5FD] group-hover:shadow-[0_10px_22px_-12px_rgba(37,99,235,0.9)]")
                   }
                 >
                   {icon}
@@ -192,7 +211,7 @@ export default function Home() {
                     {body}
                   </span>
                 </div>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>

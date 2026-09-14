@@ -104,7 +104,22 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
 > Bảng màu navy/hổ phách của mockup cũ (`face-career-app.html`, đã bỏ) **không còn dùng**.
 > Giá trị dưới đây đã được cài thành token trong `web/app/globals.css`.
 
-**Sáng hay tối tuỳ màn** — đây là điểm dễ sai nhất:
+> **Cập nhật 14/09/2026 — chủ dự án quyết: MỌI MÀN DÙNG NỀN SÁNG.** Bảng bên
+> dưới là bảng gốc lấy từ mockup, giữ lại để tra cứu nguồn gốc màu. Bản đang
+> chạy thì màn 02 đã chuyển từ tối sang sáng như các màn khác; màn 04 vốn đã
+> dựng nền sáng để in phiếu PDF cho dễ đọc. **Đừng đổi màn nào về nền tối vì
+> thấy code lệch bảng này — hỏi trước.**
+>
+> Ngoại lệ còn lại, và chúng có lý do kỹ thuật chứ không phải thẩm mỹ:
+> - **Khung camera ở màn 02** giữ nền tối, vì lưới điểm mốc vẽ bằng màu sáng —
+>   đặt lên nền trắng là mất hút — và nó lấp chỗ trống lúc camera chưa trả
+>   khung hình đầu tiên.
+> - **Ô ảnh trống ở màn 04** (phiếu mẫu, hoặc phiếu mở lại từ lịch sử) giữ nền
+>   tối vì cùng lý do đó.
+> - **Dải "Cách thức trải nghiệm" ở màn 01** vẫn là dải nền tối — nó là một
+>   khối nhấn trong trang, không phải nền của màn.
+
+**Sáng hay tối tuỳ màn** (bảng gốc của mockup — xem ghi chú ngay trên):
 
 | Màn | Nền |
 |---|---|
@@ -335,7 +350,7 @@ GET  /api/rules?feature=...                   # tra cứu luật + nguồn
 >
 > Chữ trên màn này cũng đã đổi theo bản copy mới (hero "Khám phá dấu ấn công nghệ của bạn" — **54px** chứ không phải 58px, vì bản chữ mới dài hơn và 58px làm hero rớt xuống 3 dòng; nút "Trải nghiệm ngay" / "Xem kết quả mẫu", dải "Cách thức trải nghiệm"). Khung hero nay đặt ảnh minh hoạ `web/public/images/image.png` (ảnh đã có sẵn lưới quét nên bỏ lưới SVG trang trí).
 
-**02 · Quét gương mặt** — bật camera; khung căn mặt + hướng dẫn ("ánh sáng chính diện, bỏ kính, tóc không che cung mày, giữ 2 giây"); panel "Đặc trưng đang đọc" cập nhật live 4 chỉ số; chỉ báo `478/478 · fps · nghiêng đầu · sáng đều %` và trạng thái **đủ điều kiện chụp**; dòng "Chỉ 24 số liệu được gửi đi"; nút **Chụp và phân tích** + **Tải ảnh từ máy** (ảnh upload cũng xử lý on-device). DoD: gửi được vector 24 số sang /analyze, ảnh không rời client.
+**02 · Quét gương mặt** — bật camera; khung căn mặt + hướng dẫn ("ánh sáng chính diện, bỏ kính, tóc không che cung mày, giữ 3 giây"); panel "Đặc trưng đang đọc" cập nhật live 4 chỉ số; chỉ báo `478/478 · fps · nghiêng đầu · sáng đều %` và trạng thái **đủ điều kiện chụp**; dòng "Chỉ 24 số liệu được gửi đi"; nút **Chụp và phân tích** + **Tải ảnh từ máy** (ảnh upload cũng xử lý on-device). DoD: gửi được vector 24 số sang /analyze, ảnh không rời client.
 
 **03 · Đang phân tích** — 4 bước tuần tự có trạng thái ✓/đang chạy/○: *Chuẩn hoá 478 điểm mốc → Bóc tách 4 lớp · 24 chỉ số → Truy hồi luật khớp trong ngữ liệu → Sinh luận giải & bản đồ nhóm nghề*; ghi "trung bình 12 giây, có thể rời trang". DoD: phản ánh tiến trình gọi API thật (nếu stream thì cập nhật theo sự kiện).
 
