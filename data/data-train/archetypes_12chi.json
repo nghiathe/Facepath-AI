@@ -1,0 +1,193 @@
+{
+  "_meta": {
+    "source": "ntc",
+    "citation_base": "P.II Ch.I — III. Phân loại theo 12 Chi",
+    "why": "Sách nói rõ lối phân loại này đặt nặng tâm tướng (cá tính), khác Thập đại tự vốn thiên về vận mạng — nên phù hợp nhất để sinh trait.",
+    "matching": "Mỗi tiêu chí là {feature, level}. level 'high' = z > +0.5, 'low' = z < -0.5 (sau hiệu chuẩn). Điểm khớp = trung bình sigmoid của các tiêu chí ĐO ĐƯỢC. Chỉ xét mẫu có coverage >= 0.5; chỉ hiển thị khi điểm >= 0.65 và hơn mẫu thứ hai >= 0.08.",
+    "levels": ["high", "low"],
+    "hoi_missing": "Mục Hợi hình không có trong bản số hoá (bị mất sau Tuất hình). Cần tra lại bản in trước khi bổ sung."
+  },
+  "archetypes": [
+    {
+      "key": "ty_chuot", "label": "Tý hình",
+      "criteria": [
+        { "feature": "forehead_width", "level": "high" },
+        { "feature": "eye_size", "level": "low" },
+        { "feature": "eye_length", "level": "high" },
+        { "feature": "nose_wing_width", "level": "low" },
+        { "feature": "mouth_width", "level": "low" },
+        { "feature": "mouth_corner_angle", "level": "high" }
+      ],
+      "unmeasurable": ["vành tai ngoài lấn vành tai trong", "cằm có thịt sệ như hai cằm"],
+      "trait": "Ôn hòa, độ lượng, có trách nhiệm",
+      "reading_hint": "Trán phẳng rộng, mắt nhỏ dài, mũi hẹp ngay, miệng nhỏ tươi — tính ôn hòa, độ lượng, làm việc có ý thức trách nhiệm, tư tưởng phóng khoáng.",
+      "citation": "P.II Ch.I — 12 Chi, 1. Tý hình",
+      "display": true,
+      "careers": { "quan-ly-van-hanh": 0.6, "nghien-cuu-giang-day": 0.5, "kinh-doanh-truyen-thong": 0.4 }
+    },
+    {
+      "key": "suu", "label": "Sửu hình",
+      "criteria": [
+        { "feature": "brow_thickness", "level": "high" },
+        { "feature": "brow_gap", "level": "low" },
+        { "feature": "eye_size", "level": "high" },
+        { "feature": "nose_wing_width", "level": "low" },
+        { "feature": "cheekbone_prominence", "level": "high" },
+        { "feature": "lip_thickness", "level": "high" },
+        { "feature": "mouth_width", "level": "low" }
+      ],
+      "unmeasurable": ["mục quang hôn ám", "cằm ngắn bằng phẳng"],
+      "trait": "Trầm lặng, ưa môi trường yên tĩnh",
+      "reading_hint": "Mày đậm gần giao nhau, quyền nổi, môi dày miệng nhỏ — tính trầm lặng, không thích khung cảnh ồn ào.",
+      "trait_omitted": "Sách còn ghi 'thiếu đảm lượng, không thích việc khó nhọc' — không hiển thị.",
+      "citation": "P.II Ch.I — 12 Chi, 2. Sửu hình",
+      "display": true,
+      "careers": { "nghien-cuu-giang-day": 0.6, "tai-chinh-ke-toan": 0.5, "ky-thuat-cong-nghe": 0.4 }
+    },
+    {
+      "key": "dan", "label": "Dần hình",
+      "criteria": [
+        { "feature": "santing_upper", "level": "high" },
+        { "feature": "forehead_width", "level": "low" },
+        { "feature": "brow_length", "level": "low" },
+        { "feature": "brow_thickness", "level": "high" },
+        { "feature": "mouth_width", "level": "low" },
+        { "feature": "lip_thickness", "level": "high" },
+        { "feature": "cheekbone_prominence", "level": "high" }
+      ],
+      "unmeasurable": ["ánh mắt nhìn xuống", "mũi cao (cần góc nghiêng)", "Thùy châu lớn hướng trước"],
+      "trait": "Cương cường, dám nói dám làm",
+      "reading_hint": "Trán cao thiếu bề ngang, mày ngắn to đậm, quyền cao — tính cương cường, dám nói dám làm.",
+      "citation": "P.II Ch.I — 12 Chi, 3. Dần hình",
+      "display": true,
+      "careers": { "kinh-doanh-truyen-thong": 0.7, "quan-ly-van-hanh": 0.6 }
+    },
+    {
+      "key": "mao", "label": "Mão hình",
+      "criteria": [
+        { "feature": "forehead_width", "level": "high" },
+        { "feature": "santing_upper", "level": "low" },
+        { "feature": "brow_thickness", "level": "low" },
+        { "feature": "eye_tilt", "level": "low" }
+      ],
+      "unmeasurable": ["lỗ mũi lộ", "Nhân Trung ngắn túm", "lợi răng lộ", "tai dài Thùy châu rủ"],
+      "trait": null,
+      "reading_hint": "Sách luận: ưa nhàn tản, không chịu được khổ, thọ không cao.",
+      "citation": "P.II Ch.I — 12 Chi, 4. Mão hình",
+      "display": false,
+      "display_reason": "Luận giải chủ yếu tiêu cực/thọ yểu."
+    },
+    {
+      "key": "thin", "label": "Thìn hình",
+      "criteria": [
+        { "feature": "santing_upper", "level": "high" },
+        { "feature": "eye_size", "level": "high" },
+        { "feature": "nose_wing_width", "level": "high" },
+        { "feature": "cheekbone_prominence", "level": "high" }
+      ],
+      "unmeasurable": ["đầu tròn cân xứng", "mắt hạ tam bạch (có thể đo bằng iris landmark 468–477, chưa làm)", "tai mỏng, xương tai lớn"],
+      "trait": "Ý chí kiên cường, có khí phách",
+      "reading_hint": "Trán cao, mắt lớn sáng, mũi lớn ngay, quyền cao — ý chí kiên cường, khí phách, dũng cảm.",
+      "citation": "P.II Ch.I — 12 Chi, 5. Thìn hình",
+      "display": true,
+      "careers": { "quan-ly-van-hanh": 0.7, "phap-ly-hcc": 0.5, "kinh-doanh-truyen-thong": 0.4 },
+      "careers_note": "Sách nói người Thìn thành công trong võ nghiệp; nhóm dự án ánh xạ sang quản lý/thực thi."
+    },
+    {
+      "key": "ti_ran", "label": "Tỵ hình",
+      "criteria": [
+        { "feature": "santing_upper", "level": "high" },
+        { "feature": "brow_thickness", "level": "low" },
+        { "feature": "brow_length", "level": "high" },
+        { "feature": "mouth_width", "level": "low" },
+        { "feature": "chin_ratio", "level": "high" }
+      ],
+      "unmeasurable": ["đỉnh đầu bằng phẳng", "mắt đen trắng phân minh", "môi hồng", "tai lớn sắc trắng hơn da mặt"],
+      "trait": "Sáng suốt, làm việc có kế hoạch dài hạn",
+      "reading_hint": "Trán cao, mày nhỏ thanh tú dài quá mắt, miệng nhỏ, cằm đầy — tính từ thiện, sáng suốt, làm việc có kế hoạch lâu dài và dứt khoát.",
+      "citation": "P.II Ch.I — 12 Chi, 6. Tỵ hình",
+      "display": true,
+      "careers": { "quan-ly-van-hanh": 0.7, "tai-chinh-ke-toan": 0.6, "phap-ly-hcc": 0.4 }
+    },
+    {
+      "key": "ngo", "label": "Ngọ hình",
+      "criteria": [
+        { "feature": "eye_tilt", "level": "low" },
+        { "feature": "cheekbone_prominence", "level": "high" },
+        { "feature": "chin_ratio", "level": "high" }
+      ],
+      "category_criteria": [ { "feature": "mouth_shape", "in": ["chu_tu"] } ],
+      "unmeasurable": ["trán gồ lõm không đều", "ánh mắt có thần", "mũi bằng phẳng (cần góc nghiêng)"],
+      "trait": "Tự lập, càng về sau càng vững",
+      "reading_hint": "Đuôi mắt rủ, quyền cao, miệng vuông, cằm tròn đầy — sách ghi phần lớn người tay trắng làm nên có hình dạng này, từ trung vận trở đi tốt dần.",
+      "citation": "P.II Ch.I — 12 Chi, 7. Ngọ hình",
+      "display": true,
+      "careers": { "kinh-doanh-truyen-thong": 0.7, "quan-ly-van-hanh": 0.5 }
+    },
+    {
+      "key": "mui", "label": "Mùi hình",
+      "criteria": [
+        { "feature": "brow_eye_gap", "level": "low" },
+        { "feature": "santing_lower", "level": "low" }
+      ],
+      "unmeasurable": ["đầu thấp nhỏ", "mắt trọc", "sệ môi khi cười", "tai nhỏ mỏng"],
+      "trait": null,
+      "reading_hint": "Sách luận: cô độc, vất vả, thọ căn ngắn.",
+      "citation": "P.II Ch.I — 12 Chi, 8. Mùi hình",
+      "display": false,
+      "display_reason": "Luận giải hoàn toàn tiêu cực."
+    },
+    {
+      "key": "than_khi", "label": "Thân hình (12 Chi)",
+      "criteria": [
+        { "feature": "santing_upper", "level": "high" },
+        { "feature": "forehead_width", "level": "high" },
+        { "feature": "eye_size", "level": "low" },
+        { "feature": "eye_length", "level": "low" },
+        { "feature": "brow_thickness", "level": "low" },
+        { "feature": "nose_wing_width", "level": "low" },
+        { "feature": "mouth_width", "level": "low" },
+        { "feature": "jaw_ratio", "level": "low" }
+      ],
+      "unmeasurable": ["tai mỏng, cuốn ở phần trên"],
+      "trait": "Giỏi mưu trí, hợp việc trí óc",
+      "reading_hint": "Trán cao rộng, mắt nhỏ tròn, mày thưa, mũi nhỏ ngay, miệng nhỏ, hạ đình hẹp — giỏi mưu trí, làm việc trí óc thành công hơn sức lực, dễ rung cảm.",
+      "citation": "P.II Ch.I — 12 Chi, 9. Thân hình",
+      "display": true,
+      "careers": { "nghien-cuu-giang-day": 0.8, "ky-thuat-cong-nghe": 0.7, "tai-chinh-ke-toan": 0.4 },
+      "note": "Khác với 'Mặt chữ Thân' (申) trong face_letters.json — key riêng để tránh trùng."
+    },
+    {
+      "key": "dau", "label": "Dậu hình",
+      "criteria": [
+        { "feature": "forehead_width", "level": "high" },
+        { "feature": "brow_tail_rise", "level": "high" },
+        { "feature": "nose_wing_width", "level": "low" },
+        { "feature": "mouth_corner_angle", "level": "low" },
+        { "feature": "cheekbone_prominence", "level": "low" }
+      ],
+      "unmeasurable": ["sau đầu nảy nở", "tai dày hình nhỏ"],
+      "trait": null,
+      "reading_hint": "Sách luận: thông tuệ nhưng phần lớn kiêu ngạo, hay bi quan.",
+      "citation": "P.II Ch.I — 12 Chi, 10. Dậu hình",
+      "display": false,
+      "display_reason": "Chỉ hiển thị nửa tích cực ('thông tuệ') sẽ là trích dẫn chọn lọc — nên ẩn."
+    },
+    {
+      "key": "tuat", "label": "Tuất hình",
+      "criteria": [
+        { "feature": "santing_upper", "level": "low" },
+        { "feature": "brow_thickness", "level": "low" },
+        { "feature": "brow_length", "level": "low" },
+        { "feature": "brow_gap", "level": "low" },
+        { "feature": "jaw_ratio", "level": "low" }
+      ],
+      "unmeasurable": ["đầu nhỏ", "ánh mắt nghi kỵ", "mũi lệch"],
+      "trait": null,
+      "reading_hint": "Phần luận cá tính bị mất trong bản số hoá.",
+      "citation": "P.II Ch.I — 12 Chi, 11. Tuất hình",
+      "display": false,
+      "display_reason": "Thiếu văn bản luận giải; mô tả hình (ánh mắt nghi kỵ, mũi lệch) mang sắc thái tiêu cực."
+    }
+  ]
+}

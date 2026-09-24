@@ -14,7 +14,8 @@
       "tai-chinh-ke-toan": 0.7,
       "phap-ly-hcc": 0.7,
       "quan-ly-van-hanh": 0.6
-    }
+    },
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
   },
   {
     "id": "face_moc",
@@ -30,7 +31,8 @@
       "nghien-cuu-giang-day": 0.9,
       "kinh-doanh-truyen-thong": 0.6,
       "phap-ly-hcc": 0.5
-    }
+    },
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
   },
   {
     "id": "face_thuy",
@@ -46,7 +48,8 @@
       "kinh-doanh-truyen-thong": 0.8,
       "nghien-cuu-giang-day": 0.7,
       "ky-thuat-cong-nghe": 0.5
-    }
+    },
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
   },
   {
     "id": "face_hoa",
@@ -61,7 +64,8 @@
     "careers": {
       "kinh-doanh-truyen-thong": 0.85,
       "quan-ly-van-hanh": 0.6
-    }
+    },
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
   },
   {
     "id": "face_tho",
@@ -77,7 +81,8 @@
       "quan-ly-van-hanh": 0.85,
       "tai-chinh-ke-toan": 0.75,
       "phap-ly-hcc": 0.6
-    }
+    },
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
   },
   {
     "id": "santing_balanced",
@@ -208,15 +213,16 @@
     "feature_key": "brow_eye_gap",
     "op": "gt",
     "v_min": 0.5,
-    "trait": "Phóng khoáng, phúc khí",
-    "reading_hint": "Lông mày mọc cao, cách xa mắt — phú quý, được kính nể",
+    "trait": "Phúc khí, dễ hiển đạt",
+    "reading_hint": "Lông mày dài, mọc cao về phía trán, cách xa mắt — tướng phú quý vinh đạt",
     "source": "ntc",
-    "citation": "Chương II — Lông Mày, tương quan phú quý",
+    "citation": "Chương II — Lông Mày, b) tương quan phú quý, 1. Phú quý",
     "weight": 0.7,
     "careers": {
       "kinh-doanh-truyen-thong": 0.6,
       "quan-ly-van-hanh": 0.6
-    }
+    },
+    "change_note": "v4: bỏ 'phóng khoáng' vì sách không nói vậy; luận giải cá tính của vùng này (cung Điền trạch) lại là 'bảo thủ'."
   },
   {
     "id": "nose_wing_full",
@@ -487,15 +493,82 @@
     "feature_key": "cheekbone_prominence",
     "op": "gt",
     "v_min": 0.6,
-    "trait": "Tự tin, ý chí đấu tranh",
-    "reading_hint": "Lưỡng quyền cao, nở rộng — tự tin, tự tôn, ý chí đấu tranh kiên cường, có uy quyền",
+    "trait": "Tự tin vững, ý chí đấu tranh",
+    "reading_hint": "Lưỡng Quyền rộng, nổi bật so với khuôn mặt — ý chí đấu tranh, tự tin kiên cường, có tín nghĩa với bạn bè",
     "source": "te_dong_gia",
-    "citation": "Chương Lưỡng Quyền, quyền cao & quyền rộng",
+    "citation": "Chương Lưỡng Quyền, 2. Quyền rộng, Quyền hẹp",
     "weight": 0.9,
     "careers": {
       "quan-ly-van-hanh": 0.75,
       "kinh-doanh-truyen-thong": 0.6,
       "phap-ly-hcc": 0.5
+    },
+    "change_note": "v4: tách 'quyền cao' sang luật cheekbone_high để không đếm hai lần."
+  },
+  {
+    "id": "cheekbone_high",
+    "feature_key": "cheekbone_height",
+    "op": "gt",
+    "v_min": 0.0,
+    "trait": "Tự tin, trọng danh dự",
+    "reading_hint": "Lưỡng Quyền nằm trên đường chia đôi sống mũi (quyền cao) — tự tin và tự tôn mạnh, cạnh tranh thiên về tư tưởng, tinh thần hơn lợi ích",
+    "source": "te_dong_gia",
+    "citation": "Chương IV — B. Lưỡng Quyền, 1. Quyền cao, thấp",
+    "weight": 0.7,
+    "careers": {
+      "quan-ly-van-hanh": 0.6,
+      "phap-ly-hcc": 0.5,
+      "nghien-cuu-giang-day": 0.3
+    },
+    "note": "Sách cho tiêu chí hình học trực tiếp (so với trung điểm Sơn Căn–Chuần Đầu) nên ngưỡng 0 là ngưỡng của sách. Landmark gò má của MediaPipe bị mô hình 3D làm trơn, cần kiểm tra phân phối thật."
+  },
+  {
+    "id": "dien_trach_narrow",
+    "feature_key": "brow_eye_gap",
+    "op": "lt",
+    "v_max": 0.35,
+    "trait": "Cấp tiến, không nệ cổ",
+    "reading_hint": "Cung Điền trạch (khoảng từ bờ mắt trên tới bờ dưới lông mày) hẹp — tính nóng, thích tranh luận, không ưa khuôn sáo, óc cấp tiến",
+    "source": "kien_nong_cu_si",
+    "citation": "Chương I — VIII. 12 cung, 4. Cung Điền trạch (thuyết thứ hai)",
+    "weight": 0.6,
+    "careers": {
+      "kinh-doanh-truyen-thong": 0.6,
+      "ky-thuat-cong-nghe": 0.5,
+      "nghien-cuu-giang-day": 0.3
     }
+  },
+  {
+    "id": "brow_kiem",
+    "feature_key": "brow_kiem",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_curvature",
+        "op": "lt",
+        "v_max": 0.4
+      },
+      {
+        "feature_key": "brow_length",
+        "op": "gt",
+        "v_min": 1.0
+      },
+      {
+        "feature_key": "brow_tail_rise",
+        "op": "gt",
+        "v_min": 0.12
+      }
+    ],
+    "trait": "Cứng cỏi, học vấn sâu rộng",
+    "reading_hint": "Mày lưỡi kiếm: dài quá mắt, trông thẳng, đuôi ngược lên — tính nết cứng cỏi, học vấn sâu rộng",
+    "source": "ntc",
+    "citation": "Chương II — III. Các loại lông mày điển hình, 11. Lông mày lưỡi kiếm (kiếm mi)",
+    "weight": 0.7,
+    "careers": {
+      "nghien-cuu-giang-day": 0.7,
+      "phap-ly-hcc": 0.5,
+      "ky-thuat-cong-nghe": 0.4
+    },
+    "requires": "engine hỗ trợ op 'all' (xem lib/engine_all_op.ts)"
   }
 ]

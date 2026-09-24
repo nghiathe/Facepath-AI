@@ -7,6 +7,7 @@
 // nhỏ dạng data URL để vẽ lớp bóc tách — cả hai đều ở lại trên máy.
 
 import { useSyncExternalStore } from "react";
+import { normalizeFeatures } from "./features/migrate";
 import type { FaceFeatures } from "./features/types";
 
 const KEY = "facepath.scan";
@@ -51,13 +52,23 @@ export function saveScan(payload: Omit<ScanPayload, "at"> & { at?: number }): vo
   }
 }
 
+/**
+ * Vá bộ đặc trưng của những lượt quét lưu trước bản dữ liệu v4 — nếu không,
+ * mở lại một phiếu cũ là trang nổ (xem features/migrate.ts).
+ */
+function revive(parsed: unknown): ScanPayload | null {
+  const p = parsed as ScanPayload | null;
+  if (!p?.features) return null;
+  const features = normalizeFeatures(p.features);
+  return features ? { ...p, features } : null;
+}
+
 export function loadScan(): ScanPayload | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = sessionStorage.getItem(KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as ScanPayload;
-    return parsed?.features ? parsed : null;
+    return revive(JSON.parse(raw));
   } catch {
     return null;
   }
@@ -91,8 +102,7 @@ function getSnapshot(): ScanPayload | null {
   if (raw !== cachedRaw) {
     cachedRaw = raw;
     try {
-      const parsed = raw ? (JSON.parse(raw) as ScanPayload) : null;
-      cachedVal = parsed?.features ? parsed : null;
+      cachedVal = raw ? revive(JSON.parse(raw)) : null;
     } catch {
       cachedVal = null;
     }

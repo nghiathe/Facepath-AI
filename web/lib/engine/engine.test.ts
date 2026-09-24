@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CAREERS, FACE_TYPES, formatSource, getSource, RULES } from "../data";
 import type { FaceFeatures } from "../features/types";
-import { missingAccessors, SUPPORTED_KEYS } from "./accessors";
+import { missingAccessors, readKeys, SUPPORTED_KEYS } from "./accessors";
 import { scoreCareers } from "./career";
 import { evaluateRules, type Rule } from "./rule-engine";
 import { aggregateTraits, slugify, topTraits } from "./traits";
@@ -10,6 +10,19 @@ import { aggregateTraits, slugify, topTraits } from "./traits";
 function features(over: Partial<FaceFeatures> = {}): FaceFeatures {
   return {
     faceType: "kim",
+    shape: {
+      raw: {},
+      z: {},
+      membership: [{ key: "kim", p: 1 }],
+      secondary: null,
+      label: "Kim",
+      confident: true,
+      measured: true,
+      reason: null,
+      calibProvisional: true,
+      usedModel: false,
+      modelProbs: null,
+    },
     santing: {
       upper: 0.33,
       middle: 0.34,
@@ -19,8 +32,14 @@ function features(over: Partial<FaceFeatures> = {}): FaceFeatures {
     },
     forehead: { width: 0.72, shape: "vuong" },
     eyes: { length: 1.02, size: 0.5 },
-    cheekbone: { prominence: 0.55 },
-    eyebrows: { curvature: 0.4, length: 1.05, thickness: 0.7, eyeGap: 0.55 },
+    cheekbone: { prominence: 0.55, height: 0.0 },
+    eyebrows: {
+      curvature: 0.4,
+      length: 1.05,
+      thickness: 0.7,
+      eyeGap: 0.55,
+      tailRise: 0.05,
+    },
     nose: { wingWidth: 0.55, bridgeWidth: 0.5, length: 0.5 },
     mouth: {
       width: 0.65,
@@ -28,7 +47,14 @@ function features(over: Partial<FaceFeatures> = {}): FaceFeatures {
       cornerAngle: 0.1,
       shape: "vong_cung",
     },
-    quality: { landmarks: 478, headTiltDeg: 0, brightness: 0.8, ok: true },
+    quality: {
+      landmarks: 478,
+      headTiltDeg: 0,
+      brightness: 0.8,
+      yaw: 0,
+      eyeSpanPx: 180,
+      ok: true,
+    },
     ...over,
   };
 }
@@ -39,9 +65,11 @@ describe("dữ liệu khớp với engine", () => {
     expect(missingAccessors(RULES.map((r) => r.feature_key))).toEqual([]);
   });
 
-  it("rules.json dùng đúng 19 feature_key như PIPELINE mục 1", () => {
-    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(19);
-    expect(RULES).toHaveLength(32);
+  // Bản v4 của bộ dữ liệu: 32 -> 35 luật, thêm cheekbone_height, brow_kiem
+  // (luật ghép op="all") và dien_trach_narrow — xem data/README.md.
+  it("rules.json dùng đúng 21 feature_key", () => {
+    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(21);
+    expect(RULES).toHaveLength(35);
   });
 
   it("mọi luật đều truy được về nguồn có thật", () => {
@@ -68,7 +96,10 @@ describe("dữ liệu khớp với engine", () => {
   // chẳng luật nào dùng: hoặc luật bị xoá nhầm, hoặc tên gõ lệch một bên. Nêu
   // đích danh key thừa thay vì chỉ so số lượng, để lần sau khỏi phải đi dò.
   it("không accessor nào thừa so với rules.json", () => {
-    const used = new Set(RULES.map((r) => r.feature_key));
+    // Tính cả các vế bên trong luật ghép: brow_tail_rise chỉ được đọc ở đó.
+    const used = new Set(
+      RULES.flatMap((r) => [r.feature_key, ...readKeys(r)])
+    );
     expect(SUPPORTED_KEYS.filter((k) => !used.has(k))).toEqual([]);
   });
 });

@@ -7,7 +7,11 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = REPO_ROOT / "data"
+
+# Ngữ liệu đã soạn nằm ở data/data-train/ (từ bản v4 — xem data/README.md).
+# Thư mục data/ còn có lib/ (bản TS tham chiếu của classifier) và tools/
+# (script hiệu chuẩn, xuất ONNX) — đó là mã nguồn, không phải dữ liệu để nạp.
+DATA_DIR = REPO_ROOT / "data" / "data-train"
 
 load_dotenv(REPO_ROOT / ".env")
 

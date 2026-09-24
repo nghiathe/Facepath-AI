@@ -1,5 +1,6 @@
 """GET /api/rules — tra cứu luật + nguồn dẫn (mục 10)."""
 
+import json
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Query
@@ -11,7 +12,7 @@ router = APIRouter()
 
 _SELECT = """
     SELECT r.id, r.rule_key, r.feature_key, r.op, r.v_min, r.v_max, r.category,
-           r.reading_hint, r.weight,
+           r.conditions, r.reading_hint, r.weight,
            t.label AS trait, t.description AS trait_description,
            s.title AS source, s.citation
       FROM rules r
@@ -43,6 +44,11 @@ def list_rules(
     for row in rows:
         # Nhóm nghề mà luật này cộng điểm cho.
         row["feature_label"] = FEATURE_LABELS[row["feature_key"]]
+        # Luật ghép (op='all'): ngưỡng nằm trong cột JSON `conditions`, không
+        # phải v_min/v_max. Driver trả JSON về dạng chuỗi nên phải parse, nếu
+        # không client nhận được một chuỗi thay vì mảng điều kiện.
+        if isinstance(row.get("conditions"), (str, bytes)):
+            row["conditions"] = json.loads(row["conditions"])
     if not rows:
         return rows
 

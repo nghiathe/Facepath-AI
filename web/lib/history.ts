@@ -9,6 +9,7 @@
 // mặt. Không có gì trong đây đi qua mạng.
 
 import { useSyncExternalStore } from "react";
+import { normalizeFeatures } from "./features/migrate";
 import type { FaceFeatures } from "./features/types";
 
 const KEY = "facepath.history";
@@ -40,9 +41,18 @@ function readAll(): HistoryEntry[] {
     const raw = localStorage.getItem(KEY);
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed)
-      ? (parsed as HistoryEntry[]).filter((e) => e?.id && e?.features)
-      : [];
+    if (!Array.isArray(parsed)) return [];
+    // Vá bộ đặc trưng của các lượt lưu trước bản dữ liệu v4 (features/migrate.ts).
+    // Vá không được thì VẪN GIỮ mục đó: danh sách Lịch sử dựng từ các trường tóm
+    // tắt (archetype, trait, nhóm dẫn đầu) chứ không từ `features`, nên xoá đi là
+    // mất lịch sử của người dùng một cách không cần thiết. Mở lại mới cần
+    // `features`, và đường đó đi qua session.loadScan — nơi từ chối tử tế.
+    return (parsed as HistoryEntry[])
+      .filter((e) => e?.id && e?.features)
+      .map((e) => {
+        const features = normalizeFeatures(e.features);
+        return features ? { ...e, features } : e;
+      });
   } catch {
     return [];
   }

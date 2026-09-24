@@ -4,14 +4,14 @@ Chạy:
     python -m api.db.seed_all --check   # chỉ soát dữ liệu, không cần MySQL
     python -m api.db.seed_all           # nạp thật
 
-Nguồn sự thật là data/rules.json (PIPELINE mục 1). Seeder chỉ soi lại xem dữ
+Nguồn sự thật là data/data-train/rules.json (PIPELINE mục 1). Seeder chỉ soi lại xem dữ
 liệu có tự mâu thuẫn không rồi đổ vào DB; engine thật chạy ở TypeScript phía
 client (web/lib/engine/).
 
 Xoá rồi nạp lại theo đúng thứ tự khoá ngoại => chạy bao nhiêu lần cũng ra cùng
 kết quả.
 
-CITATION: cột sources.citation trong data/sources.json chỉ nói xuất xứ của cuốn
+CITATION: cột sources.citation trong data/data-train/sources.json chỉ nói xuất xứ của cuốn
 sách ("trích trong Nhân Tướng Học"), còn mỗi luật lại có citation riêng trỏ tới
 đúng chương/mục ("Q.I — Ngũ hành hình tướng"). Hai thứ khác nhau, nên seeder
 tạo một hàng `sources` cho từng cặp (nguồn, citation của luật) — khớp với cách
@@ -25,7 +25,7 @@ from typing import Any
 
 from api.config import DATA_DIR, enable_utf8_stdout
 from api.db.connection import get_connection
-from api.rules.features import FEATURE_KEYS, OPS_REQUIRING
+from api.rules.features import COMPOSITE_KEYS, COND_OPS, FEATURE_KEYS, OPS_REQUIRING
 
 
 class SeedError(RuntimeError):
@@ -62,6 +62,34 @@ def validate_rule(rule: dict, index: int, career_slugs: set[str], source_ids: se
             raise SeedError(f"{where}: op={op!r} bắt buộc phải có {field!r}.")
     if op == "between" and rule["v_min"] >= rule["v_max"]:
         raise SeedError(f"{where}: between cần v_min < v_max.")
+
+    # Luật ghép: mỗi vế phải tự nó hợp lệ, nếu không engine sẽ im lặng bỏ qua
+    # cả luật (rule-engine.ts coi vế không đọc được là không khớp).
+    if op == "all":
+        conds = rule.get("conditions") or []
+        if not isinstance(conds, list) or not conds:
+            raise SeedError(f"{where}: op='all' cần 'conditions' là mảng không rỗng.")
+        for j, cond in enumerate(conds):
+            at = f"{where}.conditions[{j}]"
+            ckey = cond.get("feature_key")
+            if ckey not in FEATURE_KEYS:
+                raise SeedError(
+                    f"{at}: feature_key={ckey!r} không có trong danh sách chỉ số.\n"
+                    f"  Hợp lệ: {', '.join(FEATURE_KEYS)}"
+                )
+            if ckey in COMPOSITE_KEYS:
+                raise SeedError(f"{at}: không được lồng luật ghép {ckey!r} vào 'all'.")
+            cop = cond.get("op")
+            if cop not in COND_OPS:
+                raise SeedError(
+                    f"{at}: op={cop!r} không dùng được ở một vế. "
+                    f"Hợp lệ: {', '.join(COND_OPS)}"
+                )
+            for field in COND_OPS[cop]:
+                if cond.get(field) in (None, ""):
+                    raise SeedError(f"{at}: op={cop!r} bắt buộc phải có {field!r}.")
+    elif rule.get("conditions"):
+        raise SeedError(f"{where}: chỉ op='all' mới được có 'conditions'.")
 
     for field in ("trait", "reading_hint", "source", "citation"):
         if not str(rule.get(field) or "").strip():
@@ -149,7 +177,11 @@ def main(check_only: bool = False) -> None:
         f"sources {len(pairs)} · traits {len(traits)} · careers {len(careers)} · "
         f"rules {len(rules)} · rule_career_weights {weight_count}"
     )
-    covered = {r["feature_key"] for r in rules}
+    # Tính cả các vế bên trong luật ghép: brow_tail_rise chỉ được đọc ở đó,
+    # bỏ sót thì báo "chưa phủ" một chỉ số thật ra đang dùng.
+    covered = {r["feature_key"] for r in rules} | {
+        c["feature_key"] for r in rules for c in (r.get("conditions") or [])
+    }
 
     if check_only:
         print(f"Dữ liệu hợp lệ: {summary}")
@@ -206,11 +238,14 @@ def main(check_only: bool = False) -> None:
         for rule in rules:
             cur.execute(
                 "INSERT INTO rules (rule_key, feature_key, op, v_min, v_max, category, "
-                "trait_id, source_id, reading_hint, weight) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                "conditions, trait_id, source_id, reading_hint, weight) "
+                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                 (
                     rule["id"], rule["feature_key"], rule["op"],
                     rule.get("v_min"), rule.get("v_max"), rule.get("category"),
+                    json.dumps(rule["conditions"], ensure_ascii=False)
+                    if rule.get("conditions")
+                    else None,
                     trait_id[rule["trait"]],
                     source_id[(rule["source"], rule["citation"])],
                     rule["reading_hint"], rule.get("weight", 1.0),

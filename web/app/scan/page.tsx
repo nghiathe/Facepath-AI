@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SUPPORTED_KEYS } from "@/lib/engine/accessors";
 import { extractFeatures, QUALITY_LIMITS } from "@/lib/features/features";
+import { YAW_LIMIT } from "@/lib/features/shape";
 import {
   detectFromImage,
   detectFromVideo,
@@ -119,7 +120,13 @@ export default function ScanPage() {
           const lm = await detectFromVideo(video, now);
           if (lm) {
             const brightness = measureBrightness(video, canvas);
-            const f = extractFeatures(lm, { brightness });
+            // frame: kích thước THẬT của khung hình. Thiếu nó thì toạ độ chuẩn
+            // hoá của MediaPipe bị tỉ lệ 16:9 kéo dài ra, và khuôn mặt nào cũng
+            // bị đo thành "mặt dài" (data/README.md, mục "Bản v4").
+            const f = extractFeatures(lm, {
+              brightness,
+              frame: { width: video.videoWidth, height: video.videoHeight },
+            });
             latestRef.current = { features: f, landmarks: lm };
 
             // Con số trên panel: hạ nhịp xuống READOUT_MS.
@@ -277,7 +284,24 @@ export default function ScanPage() {
         }
         const measure = canvasRef.current ?? document.createElement("canvas");
         const brightness = measureBrightness(c, measure);
-        const f = extractFeatures(lm, { brightness });
+        const f = extractFeatures(lm, {
+          brightness,
+          frame: { width: c.width, height: c.height },
+        });
+
+        // Ảnh tải lên không đi qua vòng kiểm "đủ điều kiện chụp" của camera,
+        // nên phải chặn ở đây: mặt quay ngang hoặc chụp quá xa thì ngũ hình
+        // lệch hẳn, mà ngũ hình là khoá của cả phiếu.
+        if (!f.shape.measured) {
+          setBusy(false);
+          setError(
+            f.shape.reason === "yaw"
+              ? "Khuôn mặt trong ảnh đang quay ngang. Cần ảnh chính diện thì mới đo được dáng mặt."
+              : "Khuôn mặt trong ảnh quá nhỏ. Thử ảnh chụp gần hơn hoặc độ phân giải cao hơn."
+          );
+          return;
+        }
+
         goAnalyze(f, lm, c.toDataURL("image/jpeg", 0.8));
       } catch (e) {
         setBusy(false);
@@ -405,6 +429,9 @@ export default function ScanPage() {
                 <Badge ok={q ? q.brightness >= QUALITY_LIMITS.minBrightness : false}>
                   sáng {q ? Math.round(q.brightness * 100) : 0}%
                 </Badge>
+                <Badge ok={q ? Math.abs(q.yaw) <= YAW_LIMIT : false}>
+                  chính diện {q ? Math.round(Math.abs(q.yaw) * 100) : 0}%
+                </Badge>
               </div>
             )}
 
@@ -421,7 +448,13 @@ export default function ScanPage() {
                       ? auto
                         ? "Đủ điều kiện — giữ yên để tự chụp"
                         : "Đủ điều kiện chụp"
-                      : "Chưa đủ điều kiện chụp"
+                      : // Nói rõ lý do khi vướng đúng hai điều kiện mới của bản
+                        // v4, vì người dùng không tự đoán ra được.
+                        features.shape.reason === "yaw"
+                        ? "Hãy nhìn thẳng vào camera"
+                        : features.shape.reason === "too_small"
+                          ? "Hãy lại gần camera hơn"
+                          : "Chưa đủ điều kiện chụp"
                     : "Chưa thấy khuôn mặt"}
                 </span>
               </div>

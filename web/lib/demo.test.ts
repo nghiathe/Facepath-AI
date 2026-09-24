@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { RULES } from "./data";
 import { DEMO_SCAN } from "./demo";
-import { CATEGORICAL, NUMERIC } from "./engine/accessors";
+import { CATEGORICAL, NUMERIC, readKeys } from "./engine/accessors";
 import { analyzeFeatures } from "./engine/analyze";
 
 // Phiếu mẫu (nút "Xem kết quả mẫu" ở trang chủ, đường /result?demo=1).
@@ -23,7 +23,9 @@ describe("phiếu mẫu", () => {
   // nghèo đi mà không có lỗi nào nổ ra.
   it("bộ số mẫu đọc được ở mọi chỉ số mà bộ luật dùng tới", () => {
     const f = DEMO_SCAN.features;
-    const unreadable = [...new Set(RULES.map((r) => r.feature_key))]
+    // readKeys: luật ghép (op="all") đọc các vế của nó chứ không đọc chính
+    // feature_key "brow_kiem" — cái đó chỉ là tên của tướng.
+    const unreadable = [...new Set(RULES.flatMap(readKeys))]
       .filter((key) => {
         const read = NUMERIC[key] ?? CATEGORICAL[key];
         return read === undefined || read(f) === undefined;

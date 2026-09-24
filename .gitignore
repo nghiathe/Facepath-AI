@@ -30,6 +30,17 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Tài nguyên MediaPipe tự host (~38MB): wasm copy từ node_modules, model tải về.
-# Dựng lại bằng: cd web && npm run setup:mediapipe  (tự chạy trước dev/build)
+# Tài nguyên tự host (~52MB): wasm của MediaPipe và onnxruntime-web copy từ
+# node_modules, model face_landmarker tải về.
+# Dựng lại bằng: cd web && npm run setup:assets  (tự chạy trước dev/build)
 web/public/mediapipe/
+web/public/onnxruntime/
+
+# ---- Model faceshape (EfficientNet-B4) ----
+# Trọng số gốc 68MB và các bản ONNX xuất ra đều quá nặng để commit. Dựng lại bằng:
+#   .venv/bin/python data/tools/export_onnx.py data/best_model.pth #     --out web/public/models/faceshape_b4
+# Trọng số gốc (best_model.pth) là output của notebook Kaggle, giữ ngoài repo.
+data/best_model.pth
+*.onnx
+*.onnx.data
+web/public/models/

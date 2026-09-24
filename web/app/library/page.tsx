@@ -1,7 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CAREERS, FACE_TYPES, formatSource, RULES, SOURCES } from "@/lib/data";
+import {
+  BOOK_SOURCES,
+  CAREERS,
+  FACE_TYPES,
+  formatSource,
+  RULES,
+} from "@/lib/data";
 import { describeCondition } from "@/lib/engine/describe";
 import type { Rule } from "@/lib/engine/rule-engine";
 import { FEATURE_LAYERS, featureLabel, featureLayer } from "@/lib/features/catalog";
@@ -20,7 +26,7 @@ const TABS: { key: Tab; label: string; count: number }[] = [
   { key: "rules", label: "Bộ luật", count: RULES.length },
   { key: "faces", label: "Ngũ hình", count: FACE_TYPES.length },
   { key: "careers", label: "Nhóm nghề", count: CAREERS.length },
-  { key: "sources", label: "Nguồn dẫn", count: SOURCES.length },
+  { key: "sources", label: "Nguồn dẫn", count: BOOK_SOURCES.length },
 ];
 
 /** Bỏ dấu để ô tìm kiếm gõ "cung may" vẫn ra "cung mày". */
@@ -250,7 +256,7 @@ function SourcesTab() {
         thư dưới đây đều được trích lại trong cuốn <em>Nhân Tướng Học</em> — ngữ
         liệu gốc của dự án.
       </p>
-      {SOURCES.map((s) => {
+      {BOOK_SOURCES.map((s) => {
         const used = RULES.filter((r) => r.source === s.id);
         return (
           <article

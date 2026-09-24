@@ -1,0 +1,217 @@
+[
+  {
+    "key": "dien",
+    "han": "田",
+    "label": "Mặt chữ Điền",
+    "geometry": "Trán vuông, hai bên trán (Thiên Thương) nảy nở; cằm (Địa Các) đầy và vuông; góc hàm rõ.",
+    "prototype": {
+      "fh": 1.0,
+      "jaw": 1.0,
+      "chin": 0.5,
+      "length": -0.5,
+      "round": 1.0,
+      "jaw_angle": -1.0
+    },
+    "hanh_map": {
+      "kim": 1.0,
+      "tho": 0.5
+    },
+    "mapping_source": "suy_luan",
+    "mapping_note": "Sách tả Kim hình là vuông vắn, tướng Ngũ phương (Thành Hòa Tử) → gán Kim; Địa Các đầy → kiêm Thổ.",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 4. Khuôn mặt chữ Điền",
+    "display_policy": "geometry_only",
+    "model_classes": [
+      "Square"
+    ]
+  },
+  {
+    "key": "dong",
+    "han": "同",
+    "label": "Mặt chữ Đồng",
+    "geometry": "Tam đình cân xứng, mỗi đình đều dài và rộng; Ngũ Nhạc nảy nở, phối hợp đúng mức.",
+    "prototype": {
+      "fh": 0.5,
+      "jaw": 0.5,
+      "chin": 0.0,
+      "length": 0.8,
+      "round": 0.5,
+      "jaw_angle": 0.0,
+      "santing_balance": 1.0
+    },
+    "hanh_map": {
+      "tho": 1.0,
+      "kim": 0.5
+    },
+    "mapping_source": "suy_luan",
+    "mapping_note": "Phong giám tập tả Kim hình có Tam Đình cân phân; khuôn đầy đặn, Ngũ Nhạc nảy nở gần Thổ hình.",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 5. Khuôn mặt chữ Đồng",
+    "display_policy": "geometry_only",
+    "model_classes": []
+  },
+  {
+    "key": "do",
+    "han": "由",
+    "label": "Mặt chữ Do",
+    "geometry": "Trán (Thiên Đình) hẹp và dài, cằm (Địa Các) nở to — trên nhỏ dưới rộng.",
+    "prototype": {
+      "fh": -1.2,
+      "jaw": 1.0,
+      "chin": 0.5,
+      "length": 0.0,
+      "jaw_angle": -0.5
+    },
+    "hanh_map": {
+      "hoa": 1.0
+    },
+    "mapping_source": "sach",
+    "mapping_note": "Bài tựa của Vương Văn Khiết (trích trong sách): hình chính Hỏa trên nhỏ nhọn, dưới nở rộng, giống chữ Do.",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, bài tựa & 1. Khuôn mặt chữ Do",
+    "display_policy": "geometry_only",
+    "model_classes": []
+  },
+  {
+    "key": "giap",
+    "han": "甲",
+    "label": "Mặt chữ Giáp",
+    "geometry": "Thiên Đình nở rộng và cao, Địa Các hẹp và dài — trên rộng dưới hẹp.",
+    "prototype": {
+      "fh": 1.0,
+      "jaw": -1.0,
+      "chin": -1.0,
+      "length": 0.3,
+      "round": -0.5,
+      "jaw_angle": 0.8
+    },
+    "hanh_map": {
+      "moc": 1.0
+    },
+    "mapping_source": "sach",
+    "mapping_note": "Bài tựa: hình chính Mộc trên rộng dưới hẹp, giống chữ Giáp.",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, bài tựa & 2. Khuôn mặt chữ Giáp",
+    "display_policy": "geometry_only",
+    "model_classes": [
+      "Heart"
+    ]
+  },
+  {
+    "key": "than",
+    "han": "申",
+    "label": "Mặt chữ Thân",
+    "geometry": "Trán nhỏ nhọn, vùng Lưỡng Quyền và mi cốt nở cả ngang lẫn dọc, Địa Các hẹp và dài — giữa lớn, hai đầu nhọn (dạng thoi).",
+    "prototype": {
+      "fh": -1.0,
+      "jaw": -1.0,
+      "chin": -1.0,
+      "length": 0.3,
+      "round": -1.0,
+      "cheekbone_prominence": 1.0
+    },
+    "hanh_map": {
+      "hoa": 1.0,
+      "moc": 1.0
+    },
+    "mapping_source": "sach",
+    "mapping_note": "Bài tựa: Hỏa và Mộc kết hợp hỗn tạp (giữa mặt lớn, trán và cằm nhọn) giống chữ Thân → kiêm hình Hỏa–Mộc.",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, bài tựa & mục Khuôn mặt chữ Thân",
+    "display_policy": "geometry_only",
+    "model_classes": []
+  },
+  {
+    "key": "vuong",
+    "han": "王",
+    "label": "Mặt chữ Vương",
+    "geometry": "Thiên Đình cân xứng; Trung Đình vuông nhưng lộ xương; Hạ Đình nảy nở nhưng ít thịt nhiều xương.",
+    "prototype": {
+      "round": -0.3,
+      "jaw_angle": -1.0,
+      "length": 0.0,
+      "cheekbone_prominence": 1.2
+    },
+    "hanh_map": {
+      "kim": 1.0
+    },
+    "mapping_source": "suy_luan",
+    "mapping_note": "Khung vuông, xương trội → gần Kim. Tỉ lệ xương/thịt không đo được từ landmark 2D nên độ tin cậy thấp.",
+    "confidence": "low",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 6. Khuôn mặt chữ Vương",
+    "display_policy": "geometry_only",
+    "required": [
+      "cheekbone_prominence"
+    ],
+    "model_classes": []
+  },
+  {
+    "key": "vien",
+    "han": "圓",
+    "label": "Mặt chữ Viên",
+    "geometry": "Khuôn mặt tròn, mắt tròn, miệng gần như tròn.",
+    "prototype": {
+      "length": -1.2,
+      "round": 0.3,
+      "jaw_angle": 1.0,
+      "chin": 0.5
+    },
+    "hanh_map": {
+      "thuy": 1.0
+    },
+    "mapping_source": "sach",
+    "mapping_note": "Sách tả Thủy hình chính cách hợp tướng Ngũ viên (đầu, mắt, mặt, cằm tròn).",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 7. Khuôn mặt chữ Viên; Q.I Ngũ hành hình tướng, Hình Thủy",
+    "display_policy": "geometry_only",
+    "model_classes": [
+      "Round"
+    ]
+  },
+  {
+    "key": "muc",
+    "han": "目",
+    "label": "Mặt chữ Mục",
+    "geometry": "Thiên Đình cao mà hẹp, Trung Đình ngắn, Hạ Đình dài mà hẹp — khuôn dài và hẹp đều.",
+    "prototype": {
+      "fh": -0.3,
+      "jaw": -0.5,
+      "chin": -0.3,
+      "length": 1.5
+    },
+    "hanh_map": {
+      "moc": 1.0
+    },
+    "mapping_source": "suy_luan",
+    "mapping_note": "Thon dài, hẹp là đặc trưng Mộc hình (Ngũ trường).",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 8. Hình chữ Mục",
+    "display_policy": "geometry_only",
+    "model_classes": [
+      "Oblong"
+    ]
+  },
+  {
+    "key": "phong",
+    "han": "風",
+    "label": "Mặt chữ Phong",
+    "geometry": "Trán vuông vắn nảy nở, Địa Các đầy rộng, riêng Trung Đình (vùng Lưỡng Quyền) thấp và hẹp lại.",
+    "prototype": {
+      "fh": 1.2,
+      "jaw": 1.2,
+      "chin": 0.5,
+      "cheekbone_prominence": -1.2
+    },
+    "hanh_map": {
+      "kim": 1.0,
+      "tho": 1.0
+    },
+    "mapping_source": "suy_luan",
+    "mapping_note": "Trán vuông (Kim) + Địa Các đầy rộng (Thổ).",
+    "source": "vuong_van_khiet",
+    "citation": "P.II Ch.I — Lối phân loại của Vương Văn Khiết, 10. Hình chữ Phong",
+    "display_policy": "geometry_only",
+    "model_classes": []
+  }
+]

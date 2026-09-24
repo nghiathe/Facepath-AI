@@ -12,7 +12,13 @@
 ---
 
 ## 1. Nguồn sự thật của schema = `rules.json`
-Engine phải chạy được với đúng 19 `feature_key` mà 32 luật đang dùng. Đây là danh sách chốt (đừng đổi tên nếu chưa sửa `rules.json`):
+
+> **Cập nhật (bản dữ liệu v4, xem `data/README.md`).** Ngữ liệu đã chuyển vào
+> **`data/data-train/`** (thư mục `data/` giờ còn `lib/` — bản TS tham chiếu — và
+> `tools/` — script hiệu chuẩn / xuất ONNX). Bộ luật tăng **32 → 35**, số
+> `feature_key` tăng **19 → 21**, và có thêm toán tử ghép `all`.
+
+Engine phải chạy được với đúng 21 `feature_key` mà 35 luật đang dùng. Đây là danh sách chốt (đừng đổi tên nếu chưa sửa `rules.json`):
 
 | feature_key | kiểu | op dùng trong rules |
 |---|---|---|
@@ -35,12 +41,25 @@ Engine phải chạy được với đúng 19 `feature_key` mà 32 luật đang 
 | `eye_length` | number (~tỉ lệ so mắt trung bình, 1.0 = trung bình) | gt |
 | `eye_size` | number 0..1, độ mở của mắt | gt |
 | `cheekbone_prominence` | number 0..1 | gt |
+| `cheekbone_height` | number **thô** (>0 = quyền cao hơn trung điểm Sơn Căn–Chuẩn Đầu) | gt |
+| `brow_tail_rise` | number **thô** (>0 = đuôi mày ngược lên) | chỉ dùng trong vế của `brow_kiem` |
+| `brow_kiem` | **luật ghép** — không phải phép đo, xem dưới | all |
 
 > `forehead_shape` là **xấp xỉ**: tướng học phân loại trán theo chân tóc, mà FaceMesh không có điểm mốc nào ở chân tóc. Code suy ra từ độ thu hẹp của đường bao trán và cần hiệu chỉnh (mục 10) trước khi tin kết quả.
 >
-> `data/rules_ear.json` (`ear_lobe`, `ear_position`) **cố ý để ngoài** `rules.json`: FaceMesh không có điểm mốc tai, muốn dùng phải thêm model phát hiện tai riêng hoặc cho nhập tay. `lib/data.ts` không nạp file này.
+> `data/data-train/rules_ear.json` (`ear_lobe`, `ear_position`) **cố ý để ngoài** `rules.json`: FaceMesh không có điểm mốc tai, muốn dùng phải thêm model phát hiện tai riêng hoặc cho nhập tay. `lib/data.ts` không nạp file này.
 
-Ops cần support: `lt, lte, gt, gte, between, category`.
+> Hai chỉ số **thô** (`cheekbone_height`, `brow_tail_rise`) cố ý KHÔNG ép về 0..1:
+> ngưỡng của chúng trong `rules.json` là ngưỡng hình học của chính sách (vd "quyền
+> nằm trên đường chia đôi sống mũi" ⇒ ngưỡng 0), so thẳng với phép đo thì mới đúng ý.
+>
+> `brow_kiem` là **luật ghép** (`op: "all"`): `feature_key` của nó chỉ là tên của
+> cái tướng ("mày lưỡi kiếm"), còn giá trị nằm ở mảng `conditions`. Mày lưỡi kiếm
+> phải vừa dài quá mắt, vừa trông thẳng, vừa ngược đuôi lên — tách thành ba luật rời
+> sẽ cộng điểm ba lần cho ba nét lẻ chứ không phải cho cái tướng ấy.
+> `accessors.ts` có `readKeys(rule)` trả về đúng những key mà một luật thật sự đọc.
+
+Ops cần support: `lt, lte, gt, gte, between, category, all`.
 
 ---
 
@@ -125,6 +144,8 @@ export const NUMERIC: Record<string, (f: FaceFeatures) => number> = {
   brow_length:       f => f.eyebrows.length,
   brow_thickness:    f => f.eyebrows.thickness,
   brow_eye_gap:      f => f.eyebrows.eyeGap,
+  brow_tail_rise:    f => f.eyebrows.tailRise,      // SỐ THÔ (v4)
+  cheekbone_height:  f => f.cheekbone.height,       // SỐ THÔ (v4)
   nose_wing_width:   f => f.nose.wingWidth,
   nose_bridge_width: f => f.nose.bridgeWidth,
   mouth_corner_angle:f => f.mouth.cornerAngle,
@@ -136,6 +157,11 @@ export const CATEGORICAL: Record<string, (f: FaceFeatures) => string> = {
   face_shape:  f => f.faceType,
   mouth_shape: f => f.mouth.shape,
 };
+
+// Luật ghép (op="all") không đọc feature_key của chính nó mà đọc các vế bên
+// trong `conditions`. readKeys(rule) trả về đúng tập key ấy — dùng cho các test
+// "mọi chỉ số đều đọc được" / "không accessor nào thừa".
+export const COMPOSITE_KEYS = { brow_kiem: "Mày lưỡi kiếm (dài + thẳng + ngược đuôi)" };
 ```
 
 ---
@@ -169,18 +195,39 @@ const norm = (x:number, lo:number, hi:number) => Math.max(0, Math.min(1, (x-lo)/
 ```
 Các cặp `(lo, hi)` để trong một object `CALIB` ở đầu file để dễ hiệu chỉnh (xem mục 10).
 
-### 4.2 Phân loại `faceType` (ngũ hình)
-Đọc `data/face_types.json` cột `trigger` làm mô tả. Logic tối thiểu cho MVP:
-```ts
-const r = faceWidth / faceHeight;              // vuông/tròn cao → r lớn
-const jaw = jawWidth / cheekWidth;             // hàm rộng?
-if (r >= 0.95 && jaw >= 0.9)          return "kim";   // vuông/chữ nhật, hàm rộng
-if (r <= 0.80)                         return "moc";   // dài, thon
-if (santing.upper < santing.lower-0.04) return "hoa";  // trên thon dưới nở
-if (fullness >= 0.6 && r >= 0.85)     return "thuy";  // tròn đầy, nhiều thịt
-return "tho";                                          // dày vững / còn lại
+### 4.2 Phân loại `faceType` (ngũ hình) — **đã thay ở bản v4**
+
+Cách cũ (ngưỡng cứng trên `faceWidth/faceHeight` và `jawWidth/cheekWidth`) **đã bỏ**.
+Nó hỏng vì hai lẽ, và `data/README.md` mô tả đúng triệu chứng — hầu như ai quét cũng ra Mộc hoặc Hoả:
+
+1. Toạ độ MediaPipe chia `x` cho bề ngang khung và `y` cho bề cao. Với webcam 16:9,
+   một hình vuông thật thành hình chữ nhật đứng ⇒ khuôn mặt nào cũng bị đo thành "dài".
+2. Lưới dừng ở giữa trán, không tới chân tóc và thái dương. Trên chính khuôn mặt trung
+   bình của MediaPipe, trán chỉ rộng `0.82` và hàm `0.78` so với gò má — đọc theo nghĩa
+   đen "trán rộng, cằm thon" thì gần như ai cũng "thon hai đầu".
+
+Bản đang chạy nằm ở **`web/lib/features/shape.ts`** (port của `data/lib/shapeClassifier.ts`), ba bước:
+
 ```
-(`fullness` = ước lượng "đầy thịt" từ độ tròn của oval + má; MVP có thể xấp xỉ bằng r và độ cong contour.)
+điểm mốc PIXEL (nhân với frame.width/height, KHÔNG dùng toạ độ chuẩn hoá)
+  → khử nghiêng đầu, chặn ảnh quay ngang (|yaw| > 0.12) và chụp quá xa (< 90px)
+  → đo 7 chiều: fh, temple, jaw, chin, length, round, jaw_angle
+  → z-score theo data/data-train/calib_shape.json   (so với QUẦN THỂ, không so số tuyệt đối)
+  → so khớp mềm với `prototype` của 5 hành trong face_types.json → xác suất
+  → hành thứ hai đạt ≥ 70% hành đầu ⇒ kiêm hình ("Kim kiêm Thổ")
+```
+
+Ba hệ quả mà UI phải tôn trọng:
+
+- **`frame` là bắt buộc.** `extractFeatures(lm, { frame })` — thiếu thì code giả định khung
+  vuông và lỗi (1) quay lại y nguyên.
+- **Kết quả là xác suất, không phải nhãn cứng.** `shape.confident === false` nghĩa là không
+  hành nào trội rõ; phiếu phải nói ra thay vì trình bày archetype như kết luận. Với khuôn
+  mặt trung bình của MediaPipe, phổ ra `tho 24% / thuy 21% / kim 21%` — đúng ra là *không
+  kết luận được*, và đó là câu trả lời trung thực.
+- **`calib_shape.json` hiện vẫn là số TẠM** (mean lấy từ `canonical_face_model`, std ước
+  lượng). Chạy `data/tools/calibrate.py` trên ≥150 lượt quét thật rồi thay, trước khi tin
+  con số ngũ hình. Cờ `shape.calibProvisional` mang thông tin này ra tới phiếu.
 
 ### 4.3 Phân loại `mouth.shape`
 ```ts
@@ -210,8 +257,11 @@ import { NUMERIC, CATEGORICAL } from "./accessors";
 import type { FaceFeatures } from "../features/types";
 
 export type Rule = {
-  id: string; feature_key: string; op: "lt"|"lte"|"gt"|"gte"|"between"|"category";
+  id: string; feature_key: string;
+  op: "lt"|"lte"|"gt"|"gte"|"between"|"category"|"all";
   v_min?: number; v_max?: number; category?: string;
+  conditions?: { feature_key: string; op: "lt"|"lte"|"gt"|"gte"|"between";
+                 v_min?: number; v_max?: number }[];   // chỉ với op="all"
   trait: string; reading_hint: string; source: string; citation: string;
   weight: number; careers: Record<string, number>;
 };
@@ -223,6 +273,13 @@ export function evaluateRules(f: FaceFeatures, rules: Rule[]): MatchedRule[] {
     if (r.op === "category") {
       const v = CATEGORICAL[r.feature_key]?.(f);
       if (v !== undefined && v === r.category) out.push({ ...r, value: v });
+      continue;
+    }
+    // Luật ghép (v4): mọi vế phải CÙNG khớp; vế không đọc được coi như không khớp.
+    if (r.op === "all") {
+      const conds = r.conditions ?? [];
+      const ok = conds.length > 0 && conds.every(c => compare(NUMERIC[c.feature_key]?.(f), c));
+      if (ok) out.push({ ...r, value: `${conds.length}/${conds.length}` });
       continue;
     }
     const v = NUMERIC[r.feature_key]?.(f);
@@ -240,6 +297,10 @@ export function evaluateRules(f: FaceFeatures, rules: Rule[]): MatchedRule[] {
 }
 ```
 Engine này **thuần, không phụ thuộc React**, để test dễ và có thể chạy cả ở client lẫn server.
+
+> Cột `rules.op` trong `db/schema.sql` đã thêm `'all'` vào ENUM, kèm cột `conditions JSON`.
+> `api/db/seed_all.py` kiểm từng vế: feature_key phải có thật, không được lồng `all` trong
+> `all`, và op của vế phải là một trong `lt/lte/gt/gte/between` (không có `category`).
 
 ---
 

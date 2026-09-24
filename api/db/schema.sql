@@ -33,10 +33,15 @@ CREATE TABLE IF NOT EXISTS rules (
   -- rules.json mới là nguồn sự thật (PIPELINE mục 1).
   rule_key     VARCHAR(60) NOT NULL UNIQUE,
   feature_key  VARCHAR(60) NOT NULL,       -- vd "brow_curvature" (mục 7)
-  op           ENUM('lt','lte','gt','gte','between','category') NOT NULL,
+  -- 'all' thêm ở bản v4: luật GHÉP, mọi vế trong cột `conditions` phải cùng
+  -- khớp (vd mày lưỡi kiếm = dài + thẳng + ngược đuôi). Tách thành ba luật rời
+  -- sẽ cộng điểm ba lần cho ba nét lẻ chứ không phải cho cái tướng ấy.
+  op           ENUM('lt','lte','gt','gte','between','category','all') NOT NULL,
   v_min        FLOAT,                      -- ngưỡng / cận dưới
   v_max        FLOAT,                      -- cận trên (cho 'between')
   category     VARCHAR(60),                -- cho op='category' (vd face_shape='kim')
+  -- Cho op='all': mảng [{feature_key, op, v_min, v_max}]. NULL với mọi op khác.
+  conditions   JSON,
   trait_id     INT NOT NULL,
   source_id    INT NOT NULL,
   reading_hint VARCHAR(255),               -- mảnh câu để LLM/template dùng

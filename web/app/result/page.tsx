@@ -194,6 +194,30 @@ function ResultView() {
             {result.matchedRulesCount}/{result.totalRulesCount} luật khớp ·{" "}
             {result.sourcesCount} nguồn dẫn · đức {result.faceType.duc_tinh}
           </span>
+          {/* Kiêm hình: hai hành cùng hiện rõ. Đây là cách nói của chính cổ
+              thư, và giấu đi thì phiếu sẽ tỏ ra chắc chắn hơn số liệu cho
+              phép — xem features/shape.ts. */}
+          {result.secondaryFaceType && (
+            <span className="text-sm font-light text-ink-muted">
+              Kiêm hình: còn mang nét {result.secondaryFaceType.label.toLowerCase()}
+            </span>
+          )}
+          {/* Model máy học KHÔNG phải nguồn tướng học. Trait và trích dẫn vẫn
+              hoàn toàn từ sách; model chỉ góp vào việc chọn ngũ hình, nên phải
+              ghi nguồn riêng ở đây (data/README.md). */}
+          {result.usedModel && (
+            <span className="text-sm font-light text-ink-faintest">
+              Dáng mặt có đối chiếu thêm bằng model máy học (EfficientNet-B4,
+              Kaggle FaceShape) chạy trong máy — đây là bằng chứng hình học phụ,
+              không phải kết luận của cổ thư.
+            </span>
+          )}
+          {!result.faceTypeConfident && (
+            <span className="text-sm font-light text-ink-faintest">
+              Dáng mặt không nghiêng hẳn về hành nào — hãy đọc phần ngũ hình như
+              một gợi ý, không phải một kết luận.
+            </span>
+          )}
         </div>
         {/* Khối "dẫn đầu" nổi lên bằng nền dải màu nhạt — trên máy chiếu, chỉ
             đổi cỡ chữ thì từ cuối hội trường không thấy đâu là điểm chính. */}

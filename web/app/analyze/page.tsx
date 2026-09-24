@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RULES } from "@/lib/data";
 import { SUPPORTED_KEYS } from "@/lib/engine/accessors";
 import { evaluateRules } from "@/lib/engine/rule-engine";
 import { aggregateTraits } from "@/lib/engine/traits";
+import { applyModelFusion } from "@/lib/features/features";
 import { TOTAL_LANDMARKS } from "@/lib/features/landmark-ids";
-import { useScan } from "@/lib/session";
+import {
+  imageFromDataUrl,
+  MODEL_ENABLED,
+  predictFaceShape,
+} from "@/lib/features/model";
+import type { FaceFeatures } from "@/lib/features/types";
+import { saveScan, useScan } from "@/lib/session";
 
 type State = "pending" | "running" | "done";
 type Step = {
@@ -28,6 +35,28 @@ type Step = {
    * đã xong từ trước.
    */
   measured: boolean;
+  /**
+   * Lý do bước này không chạy được phần việc của nó (vd không có ảnh để đưa
+   * qua model). Có giá trị thì hiện lý do thay cho con số ms — im lặng nuốt
+   * một bước đã bỏ qua rồi vẫn tick xanh là nói dối người xem.
+   */
+  skipped?: string | null;
+};
+
+/**
+ * Bước chạy model faceshape. Chỉ có trong danh sách khi model được bật
+ * (NEXT_PUBLIC_FACESHAPE_MODEL !== "off"), nên danh sách không đổi độ dài giữa
+ * các lần render.
+ *
+ * Model là BẰNG CHỨNG PHỤ: nó chỉ góp xác suất vào việc chọn ngũ hình, không
+ * sinh ra trait, trích dẫn hay trọng số nghề (data/README.md).
+ */
+const MODEL_STEP: Step = {
+  label: "Đối chiếu dáng mặt bằng model",
+  note: "EfficientNet-B4 chạy ngay trong máy — ảnh không rời thiết bị",
+  state: "pending",
+  ms: null,
+  measured: true,
 };
 
 /** ms rất nhỏ mà toFixed(1) thì ra "0.0" — vô nghĩa. Giữ đủ chữ số có nghĩa. */
@@ -66,6 +95,7 @@ export default function AnalyzePage() {
       ms: null,
       measured: false,
     },
+    ...(MODEL_ENABLED ? [MODEL_STEP] : []),
     {
       label: "Truy hồi luật khớp trong ngữ liệu",
       note: `Đối chiếu với ${RULES.length} luật soạn từ cổ thư`,
@@ -83,7 +113,28 @@ export default function AnalyzePage() {
   ]);
   const scan = useScan();
 
+  /**
+   * Effect bên dưới phải chạy ĐÚNG MỘT LƯỢT cho mỗi lượt quét, nên nó phụ thuộc
+   * vào `scan.at` (mốc thời gian, không đổi) chứ không phải chính object `scan`.
+   *
+   * VÌ SAO: bước model ghi kết quả đã trộn trở lại sessionStorage. useScan đọc
+   * store đó và trả về object MỚI sau mỗi lần ghi, nên nếu để `scan` trong
+   * dependency thì chính lần ghi ấy làm effect chạy lại từ bước 0 — hai lượt đè
+   * lên nhau, và màn hình hiện ra cảnh bước 1 đang quay trong khi bước 3 đã có
+   * số ms. Giá trị mới nhất vẫn đọc được qua ref.
+   */
+  const scanRef = useRef(scan);
+  const scanAt = scan?.at ?? null;
+
+  // Effect này khai báo TRƯỚC effect chạy các bước, nên nó luôn cập nhật ref
+  // xong trước khi effect kia đọc. (Gán ref thẳng trong thân render là lỗi lint
+  // — và đúng là sai: render phải thuần.)
   useEffect(() => {
+    scanRef.current = scan;
+  });
+
+  useEffect(() => {
+    const scan = scanRef.current;
     if (!scan) return;
 
     // KHÔNG dùng ref kiểu `started` để chặn chạy lặp: StrictMode ở dev cố ý
@@ -104,14 +155,18 @@ export default function AnalyzePage() {
       });
 
     (async () => {
-      const mark = async (i: number, work: () => void) => {
+      // work trả về chuỗi = bước bị bỏ qua, kèm lý do; trả về void/null = đã chạy.
+      const mark = async (
+        i: number,
+        work: () => void | string | null | Promise<void | string | null>
+      ) => {
         setSteps((prev) =>
           prev.map((s, k) => (k === i ? { ...s, state: "running" } : s))
         );
         await frame();
 
         const t0 = performance.now();
-        work();
+        const skipped = (await work()) ?? null;
         const ms = performance.now() - t0;
 
         // Giữ bước trên màn cho đủ STEP_MIN_MS kể từ lúc nó sáng lên. Trừ đi
@@ -122,7 +177,7 @@ export default function AnalyzePage() {
         if (cancelled) return;
 
         setSteps((prev) =>
-          prev.map((s, k) => (k === i ? { ...s, state: "done", ms } : s))
+          prev.map((s, k) => (k === i ? { ...s, state: "done", ms, skipped } : s))
         );
         await frame();
       };
@@ -131,12 +186,56 @@ export default function AnalyzePage() {
       if (cancelled) return;
       await mark(1, () => void scan.features);
       if (cancelled) return;
+
+      // Bộ đặc trưng dùng cho các bước sau. Model có thể thay ngũ hình, mà luật
+      // face_shape lại chấm theo ngũ hình — nên fusion phải xong TRƯỚC bước
+      // khớp luật, không phải sau.
+      let features: FaceFeatures = scan.features;
+      let next = 2;
+
+      if (MODEL_ENABLED) {
+        await mark(next++, async () => {
+          // StrictMode mount hai lần: lượt trước có thể đã trộn rồi, trộn tiếp
+          // là cộng ảnh hưởng của model hai lần.
+          if (scan.features.shape.modelProbs) return null;
+          if (!scan.snapshot || !scan.landmarks)
+            return "không có ảnh — chỉ dùng hình học";
+          if (!scan.features.shape.measured)
+            return "chưa đo được dáng mặt — bỏ qua";
+
+          try {
+            const img = await imageFromDataUrl(scan.snapshot);
+            const w = img.naturalWidth;
+            const h = img.naturalHeight;
+            const lmPx = scan.landmarks.map((q) => ({ x: q.x * w, y: q.y * h }));
+            const probs = await predictFaceShape(img, lmPx, w, h);
+
+            features = applyModelFusion(scan.features, probs);
+            // Ghi lại để màn Phiếu kết quả đọc đúng bản đã trộn.
+            saveScan({
+              features,
+              snapshot: scan.snapshot,
+              landmarks: scan.landmarks,
+              at: scan.at,
+            });
+            return features.shape.usedModel
+              ? null
+              : "model không đủ tự tin — giữ kết quả hình học";
+          } catch {
+            // Thiếu file .onnx, WASM bị chặn, hết bộ nhớ... đều không được làm
+            // hỏng cả phiếu: phần hình học vẫn đủ để lập luận giải.
+            return "model không nạp được — chỉ dùng hình học";
+          }
+        });
+        if (cancelled) return;
+      }
+
       let matched: ReturnType<typeof evaluateRules> = [];
-      await mark(2, () => {
-        matched = evaluateRules(scan.features, RULES);
+      await mark(next++, () => {
+        matched = evaluateRules(features, RULES);
       });
       if (cancelled) return;
-      await mark(3, () => void aggregateTraits(matched, RULES));
+      await mark(next, () => void aggregateTraits(matched, RULES));
 
       if (!cancelled) router.replace("/result");
     })();
@@ -145,7 +244,7 @@ export default function AnalyzePage() {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [router, scan]);
+  }, [router, scanAt]);
 
   if (scan === null) {
     return (
@@ -166,7 +265,11 @@ export default function AnalyzePage() {
   }
 
   // Chỉ cộng các bước thật sự chạy phép tính ở màn này — xem Step.measured.
-  const total = steps.reduce((s, x) => s + (x.measured ? (x.ms ?? 0) : 0), 0);
+  // Bước bị bỏ qua (vd model không có ảnh) không tính: nó không làm gì cả.
+  const total = steps.reduce(
+    (s, x) => s + (x.measured && !x.skipped ? (x.ms ?? 0) : 0),
+    0
+  );
   const doneCount = steps.filter((s) => s.state === "done").length;
   const allMeasured = steps.every((s) => !s.measured || s.state === "done");
 
@@ -238,12 +341,21 @@ export default function AnalyzePage() {
               </span>
             </div>
 
-            <span className="mt-0.5 whitespace-nowrap text-xs tabular-nums text-ink-faintest">
+            <span
+              className={
+                "mt-0.5 text-xs tabular-nums text-ink-faintest " +
+                // Lý do bỏ qua là cả một câu; ép nowrap thì nó tràn ra khỏi
+                // màn hình điện thoại. Con số ms thì ngược lại, phải nowrap.
+                (s.skipped ? "max-w-[9.5rem] text-right leading-snug" : "whitespace-nowrap")
+              }
+            >
               {s.state !== "done"
                 ? ""
-                : s.measured
-                  ? `${fmtMs(s.ms ?? 0)} ms`
-                  : "đã xong ở màn quét"}
+                : s.skipped
+                  ? s.skipped
+                  : s.measured
+                    ? `${fmtMs(s.ms ?? 0)} ms`
+                    : "đã xong ở màn quét"}
             </span>
           </li>
         ))}

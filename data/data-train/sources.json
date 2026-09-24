@@ -56,5 +56,37 @@
     "id": "thach_long",
     "title": "Thạch Long Tứ Thị — Quan tướng học đại ý",
     "citation": "học phái Nhật Bản, trích trong Nhân Tướng Học"
+  },
+  {
+    "id": "vuong_van_khiet",
+    "title": "Thập đại tự hình tướng (lối phân loại của Vương Văn Khiết)",
+    "author": "Vương Văn Khiết",
+    "citation": "trích trong Nhân Tướng Học"
+  },
+  {
+    "id": "kien_nong_cu_si",
+    "title": "Kiến Nông Cư Sĩ — luận về cung Điền trạch",
+    "citation": "trích trong Nhân Tướng Học (sách ghi lẫn 'Khuyết Nông Cư Sĩ' / 'Kiến Nông Cư Sỉ' — cần đối chiếu bản in)"
+  },
+  {
+    "id": "model_faceshape_b4",
+    "type": "model",
+    "title": "EfficientNet-B4 phân loại hình mặt (Kaggle FaceShape Dataset, 5 lớp)",
+    "citation": "KHÔNG phải nguồn tướng học — chỉ dùng làm bằng chứng hình học phụ",
+    "classes": [
+      "Heart",
+      "Oblong",
+      "Oval",
+      "Round",
+      "Square"
+    ],
+    "input": "ảnh chân dung nguyên khung, Resize((224,224)) không giữ tỉ lệ, chuẩn hoá ImageNet",
+    "reported_accuracy": 0.849,
+    "caveats": [
+      "Tập test cũng được dùng để chọn checkpoint (best val loss) → 0.849 là ước lượng lạc quan",
+      "Không có số liệu theo từng lớp",
+      "Dữ liệu chủ yếu là ảnh người nổi tiếng phương Tây, lấy từ mạng",
+      "Không có lớp tương ứng Hỏa (trên thon dưới nở) và Thổ"
+    ]
   }
 ]

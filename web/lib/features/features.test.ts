@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  classifyFaceType,
   classifyForeheadShape,
   classifyMouthShape,
   extractFeatures,
@@ -172,50 +171,46 @@ describe("classifyMouthShape", () => {
 });
 
 // --- Ngũ hình ---------------------------------------------------------------
-describe("classifyFaceType", () => {
-  const base = {
-    faceW: 1,
-    faceH: 1,
-    jawW: 1,
-    cheekW: 1,
-    santingUpper: 1 / 3,
-    santingLower: 1 / 3,
-  };
-
-  it("mặt vuông hàm rộng => kim", () => {
-    expect(classifyFaceType({ ...base, faceW: 1, faceH: 1, jawW: 0.95 })).toBe("kim");
-  });
-
-  it("mặt dài thon => moc", () => {
-    expect(classifyFaceType({ ...base, faceW: 0.75, faceH: 1, jawW: 0.5 })).toBe("moc");
-  });
-
-  it("trên thon dưới nở => hoa", () => {
-    expect(
-      classifyFaceType({
-        ...base,
-        faceW: 0.88,
-        faceH: 1,
-        jawW: 0.5,
-        santingUpper: 0.28,
-        santingLower: 0.4,
-      })
-    ).toBe("hoa");
-  });
-
-  it("tròn đầy => thuy", () => {
-    expect(classifyFaceType({ ...base, faceW: 0.9, faceH: 1, jawW: 0.5 })).toBe("thuy");
-  });
-
-  it("còn lại => tho", () => {
-    expect(classifyFaceType({ ...base, faceW: 0.83, faceH: 1, jawW: 0.5 })).toBe("tho");
-  });
-
-  it("luôn trả một trong năm hình", () => {
+// Phép phân loại đã chuyển sang z-score + prototype (features/shape.ts), nên
+// phần kiểm tra lõi nằm ở shape.test.ts. Ở đây chỉ kiểm cái mà extractFeatures
+// phải bảo đảm cho phần còn lại của app.
+describe("dáng mặt trong extractFeatures", () => {
+  it("luôn trả một trong năm hình, kèm đủ khối shape", () => {
     const ok = new Set(["kim", "moc", "thuy", "hoa", "tho"]);
-    for (let r = 0.6; r <= 1.3; r += 0.05)
-      for (const jaw of [0.5, 0.85, 0.95])
-        expect(ok.has(classifyFaceType({ ...base, faceW: r, faceH: 1, jawW: jaw }))).toBe(true);
+    for (const halfW of [0.14, 0.2, 0.26])
+      for (const jawHalfW of [0.08, 0.15, 0.24]) {
+        const f = extractFeatures(synthFace({ faceHalfW: halfW, jawHalfW }));
+        expect(ok.has(f.faceType)).toBe(true);
+        expect(f.faceType).toBe(f.shape.membership[0].key);
+        expect(f.shape.label.length).toBeGreaterThan(0);
+      }
+  });
+
+  it("tổng xác suất năm hành bằng 1", () => {
+    const f = extractFeatures(synthFace());
+    const total = f.shape.membership.reduce((a, b) => a + b.p, 0);
+    expect(total).toBeCloseTo(1, 6);
+    expect(f.shape.membership).toHaveLength(5);
+  });
+
+  it("mặt kéo dài ra thì z của length tăng", () => {
+    const short = extractFeatures(synthFace({ topY: 0.25, chinY: 0.75 }));
+    const long = extractFeatures(synthFace({ topY: 0.05, chinY: 0.95 }));
+    expect(long.shape.z.length).toBeGreaterThan(short.shape.z.length);
+  });
+
+  // Đây là lỗi mà bản v4 đi sửa: toạ độ chuẩn hoá của MediaPipe chia x cho bề
+  // ngang khung và y cho bề cao, nên với webcam 16:9 khuôn mặt nào cũng bị đo
+  // thành "dài" và rơi vào Mộc. Bỏ `frame` đi là tái hiện đúng lỗi ấy.
+  it("khung 16:9 khai báo đúng thì mặt không bị đo dài ra oan", () => {
+    const lm = synthFace();
+    const withFrame = extractFeatures(lm, {
+      frame: { width: 1280, height: 720 },
+    });
+    const assumedSquare = extractFeatures(lm);
+    expect(withFrame.shape.raw.length).toBeLessThan(
+      assumedSquare.shape.raw.length
+    );
   });
 });
 

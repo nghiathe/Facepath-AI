@@ -1,0 +1,14 @@
+{
+  "_status": "PROVISIONAL — mean lấy từ canonical_face_model của MediaPipe, std là ước lượng. Phải thay bằng output của tools/calibrate.py trên dữ liệu thật trước khi tin kết quả.",
+  "fh":         { "mean": 0.819, "std": 0.05 },
+  "temple":     { "mean": 0.925, "std": 0.04 },
+  "jaw":        { "mean": 0.775, "std": 0.05 },
+  "chin":       { "mean": 0.419, "std": 0.05 },
+  "length":     { "mean": 1.152, "std": 0.08 },
+  "round":      { "mean": 0.832, "std": 0.02 },
+  "jaw_angle":  { "mean": 132.2, "std": 5.0 },
+  "cheekbone_height": { "mean": -0.03, "std": 0.06 },
+  "brow_tail_rise":   { "mean": 0.04, "std": 0.06 },
+  "brow_gap":         { "mean": 0.94, "std": 0.12 },
+  "eye_tilt":         { "mean": 0.03, "std": 0.04 }
+}

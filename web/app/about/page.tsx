@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CAREERS, FACE_TYPES, RULES, SOURCES } from "@/lib/data";
+import { BOOK_SOURCES, CAREERS, FACE_TYPES, RULES } from "@/lib/data";
 import { FEATURE_KEYS, FEATURE_LAYERS } from "@/lib/features/catalog";
 import { TOTAL_LANDMARKS } from "@/lib/features/landmark-ids";
 
@@ -126,7 +126,7 @@ export default function AboutPage() {
             Kho luận giải
           </Link>
           : {RULES.length} luật · {TRAIT_COUNT} nét tính cách · {FACE_TYPES.length}{" "}
-          kiểu tướng ngũ hình · {CITED_SOURCE_COUNT}/{SOURCES.length} nguồn đang
+          kiểu tướng ngũ hình · {CITED_SOURCE_COUNT}/{BOOK_SOURCES.length} nguồn đang
           được dẫn.
         </p>
       </section>
@@ -158,7 +158,7 @@ export default function AboutPage() {
           mục để bạn tra ngược lại.
         </p>
         <ul className="flex flex-wrap gap-2">
-          {SOURCES.map((s) => (
+          {BOOK_SOURCES.map((s) => (
             <li
               key={s.id}
               className="rounded-[8px] border border-line-soft bg-card px-3 py-1.5 text-[12.5px] text-ink-body"

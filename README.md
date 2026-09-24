@@ -33,7 +33,7 @@ nhóm nghề phù hợp. Đồ án Khoa Công nghệ thông tin & Kinh tế số
 | `web/lib/features/` | Trích đặc trưng từ 478 điểm mốc MediaPipe |
 | `web/lib/engine/` | Khớp luật, gom trait, chấm điểm nghề (TypeScript thuần) |
 | `api/` | FastAPI + PyMySQL — phục vụ tra cứu luật/nghề |
-| `data/` | Nguồn sự thật: `rules.json`, `careers.json`, `sources.json`, `face_types.json` |
+| `data/` | Nguồn sự thật: `data-train/*.json` (luật, nghề, nguồn, ngũ hình) + `tools/` (hiệu chuẩn, xuất ONNX) |
 | `design/` | Mockup gốc (tham chiếu, không sửa) |
 
 Engine chạy **phía client**, nên ảnh lẫn bộ luật đều không cần rời máy.
@@ -45,9 +45,31 @@ cd web
 cp .env.local.example .env.local
 npm install
 npm run dev          # http://localhost:3000
-npm test             # 54 test cho features + engine + lịch sử
+npm test             # 82 test cho features + engine + lịch sử
 npm run test:watch
 ```
+
+`npm run dev` và `npm run build` tự chạy `npm run setup:assets` trước: script đó
+copy wasm của MediaPipe và onnxruntime-web từ `node_modules` vào `public/`, và
+tải model face_landmarker. Tự host chứ không gọi CDN lúc chạy — xem mục 1 của
+CLAUDE.md.
+
+### Model nhận dạng hình mặt (tuỳ chọn)
+
+App chạy bình thường khi không có model; nó chỉ mất phần **bằng chứng hình học
+phụ** cho việc chọn ngũ hình. Muốn bật thì cần `data/best_model.pth` (output của
+notebook Kaggle, không commit vì 68 MB) rồi:
+
+```bash
+pip install torch torchvision onnx onnxruntime onnxscript
+python data/tools/export_onnx.py data/best_model.pth --out web/public/models/faceshape_b4
+```
+
+Script tự kiểm và **thoát khác 0 nếu bản xuất ra bị lệch**. Dùng bản `_fp16.onnx`
+(34 MB); bản int8 đã đo là hỏng — xem `data/README.md`.
+
+Tắt model mà không cần sửa code: đặt `NEXT_PUBLIC_FACESHAPE_MODEL=off` trong
+`web/.env.local`.
 
 ## Chạy backend
 
@@ -83,23 +105,27 @@ Kiểm tra: `curl localhost:8000/api/health`, `/api/careers`,
 
 ## Soạn tiếp bộ luật
 
-`data/rules.json` là nguồn sự thật — cả engine TypeScript lẫn seeder Python đều
+`data/data-train/rules.json` là nguồn sự thật — cả engine TypeScript lẫn seeder Python đều
 đọc từ đó. Thêm luật: copy một object, đổi `feature_key`/ngưỡng/`trait`/`careers`,
 và **bắt buộc** điền `source` (id trong `sources.json`) + `citation` trỏ đúng
 chương trong sách.
 
 Soát lại bằng `python -m api.db.seed_all --check` và `npm test`. Hai lớp kiểm tra
-sẽ chặn nếu: `feature_key` không nằm trong 19 chỉ số, `op` thiếu ngưỡng đi kèm,
+sẽ chặn nếu: `feature_key` không nằm trong 21 chỉ số, `op` thiếu ngưỡng đi kèm,
 thiếu `citation`, `source` không có thật, slug nghề sai, trọng số ngoài 0..1,
 hoặc `id` luật bị trùng.
 
+Với luật GHÉP (`op: "all"`, vd `brow_kiem`) thì ngưỡng nằm trong mảng
+`conditions`, và seeder kiểm từng vế riêng: feature_key phải có thật, op của vế
+phải là `lt/lte/gt/gte/between`, và không được lồng `all` trong `all`.
+
 Thêm một `feature_key` mới thì phải sửa **bốn** chỗ, nếu không luật sẽ bị bỏ qua
-lặng lẽ: `data/rules.json`, `web/lib/features/types.ts` (thêm trường vào
+lặng lẽ: `data/data-train/rules.json`, `web/lib/features/types.ts` (thêm trường vào
 `FaceFeatures` + tính nó trong `features.ts`), `web/lib/engine/accessors.ts`,
 `api/rules/features.py`. Test `engine.test.ts` bắt cả hai chiều: thiếu accessor
 và accessor thừa.
 
-`data/rules_ear.json` **cố ý để ngoài** `rules.json` và không được `lib/data.ts`
+`data/data-train/rules_ear.json` **cố ý để ngoài** `rules.json` và không được `lib/data.ts`
 nạp: MediaPipe FaceMesh không có điểm mốc tai, nên `ear_lobe`/`ear_position`
 chưa đo được. Muốn dùng phải thêm model phát hiện tai riêng hoặc cho nhập tay.
 

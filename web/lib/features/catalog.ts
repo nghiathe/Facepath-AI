@@ -2,12 +2,12 @@
 // api/rules/features.py (FEATURE_LAYERS / FEATURE_LABELS).
 //
 // VÌ SAO CHÉP LẠI THAY VÌ GỌI /api/features: trang "Khám phá" tra cứu chính bộ
-// luật mà engine đang chạy (data/rules.json đã nằm sẵn trong bundle qua
+// luật mà engine đang chạy (data/data-train/rules.json đã nằm sẵn trong bundle qua
 // lib/data.ts). Bắt trang tra cứu phụ thuộc MySQL + FastAPI đang bật thì lúc
 // bảo vệ đồ án chỉ cần backend chưa chạy là cả tab trống trơn.
 //
-// Nguồn sự thật vẫn là data/rules.json. catalog.test.ts kiểm tra: mọi
-// feature_key trong rules.json đều có nhãn ở đây, và không có nhãn thừa.
+// Nguồn sự thật vẫn là data/data-train/rules.json. catalog.test.ts kiểm tra:
+// mọi feature_key trong rules.json đều có nhãn ở đây, và không có nhãn thừa.
 
 import { FACE_TYPES } from "../data";
 
@@ -23,6 +23,7 @@ export const FEATURE_LAYERS: { layer: string; keys: Record<string, string> }[] =
       forehead_width: "Bề ngang trán",
       forehead_shape: "Dạng trán (vuông / góc tròn) — xấp xỉ",
       cheekbone_prominence: "Lưỡng quyền (gò má) nở",
+      cheekbone_height: "Lưỡng quyền cao / thấp (0 = ngang sống mũi)",
     },
   },
   {
@@ -36,6 +37,8 @@ export const FEATURE_LAYERS: { layer: string; keys: Record<string, string> }[] =
       brow_eye_gap: "Khoảng cách mày — mắt",
       eye_length: "Chiều dài mắt (1.0 = trung bình)",
       eye_size: "Độ mở của mắt",
+      brow_tail_rise: "Đuôi mày ngược lên (0 = ngang)",
+      brow_kiem: "Mày lưỡi kiếm (dài + thẳng + ngược đuôi)",
     },
   },
   {

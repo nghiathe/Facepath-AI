@@ -91,11 +91,24 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
   /db/schema.sql               # DDL MySQL (mục 6)
   /db/seed_*.py                # nạp luật, nhóm nghề, nguồn, chunk ngữ liệu
 /data
-  /corpus                      # cổ thư đã số hoá (txt/md)
-  rules.json                   # bộ luật soạn từ sách (mục 8)
-  careers.json                 # 6 nhóm nghề (mục 8)
-  sources.json                 # danh mục nguồn dẫn
+  README.md                    # nhật ký các bản dữ liệu (v2, v4) — đọc trước khi sửa
+  /data-train                  # NGỮ LIỆU đã soạn (web + seeder đọc từ đây)
+    rules.json                 # bộ luật soạn từ sách (mục 8) — 35 luật
+    careers.json               # 6 nhóm nghề (mục 8)
+    sources.json               # danh mục nguồn dẫn (có 1 mục type="model", xem dưới)
+    face_types.json            # 5 ngũ hình + `prototype` để phân loại dáng mặt
+    face_letters.json          # Thập đại tự hình tướng — CHƯA dùng trong app
+    archetypes_12chi.json      # phân loại 12 Chi — CHƯA dùng trong app
+    calib_shape.json           # mean/std để tính z-score — số TẠM, xem mục 7
+    rules_ear.json             # luật tai — để ngoài, FaceMesh không có mốc tai
+  /lib                         # bản TS THAM CHIẾU của classifier (đã port sang web/)
+  /tools                       # script hiệu chuẩn, xuất ONNX — chạy tay, không nằm trong app
 ```
+
+> **Cập nhật 23/09/2026 — bản dữ liệu v4.** Ngữ liệu đã chuyển từ `/data/*.json`
+> xuống `/data/data-train/*.json`. Phần quan trọng hơn: cách nhận diện dáng mặt
+> đã đổi hẳn — xem ghi chú ở đầu mục 7. `data/README.md` là nhật ký của bộ dữ liệu, đọc nó
+> trước khi sửa bất cứ file nào trong `/data`.
 
 ---
 
@@ -231,6 +244,37 @@ CREATE TABLE sessions (
 ---
 
 ## 7. Trích đặc trưng khuôn mặt (`web/lib/features.ts`)
+
+> **Cập nhật 23/09/2026 (bản dữ liệu v4) — cách nhận diện DÁNG MẶT đã đổi hẳn.**
+> Bảng dưới đây là đặc tả gốc, giữ lại để tra cứu ý đồ ban đầu. Bản đang chạy khác ở
+> ba điểm, và **đừng "sửa lại cho đúng đặc tả" khi thấy lệch — hỏi trước**:
+>
+> - Không còn `face_shape_ratio` với ngưỡng cứng. Ngũ hình nay do
+>   `web/lib/features/shape.ts` chấm: đo 7 chiều (`fh`, `temple`, `jaw`, `chin`,
+>   `length`, `round`, `jaw_angle`) → z-score theo `calib_shape.json` → so khớp mềm
+>   với `prototype` trong `face_types.json` → **xác suất**, cho phép kiêm hình
+>   ("Kim kiêm Thổ"). Lý do: cách cũ cho ra Mộc/Hoả với gần như mọi người thật —
+>   `data/README.md` mục "Bản v4" ghi rõ nguyên nhân.
+> - **Phải truyền `frame` (kích thước khung hình) vào `extractFeatures`.** Toạ độ
+>   MediaPipe chia x cho bề ngang và y cho bề cao, nên webcam 16:9 làm khuôn mặt nào
+>   cũng bị đo thành "dài". Đây chính là một nửa của lỗi trên.
+> - Thêm hai điều kiện chụp: **|yaw| ≤ 0.12** (phải chính diện) và **≥ 90px** giữa hai
+>   khoé mắt ngoài. Không đạt thì không cho chụp, và ảnh tải lên cũng bị từ chối.
+>
+> **Model hỗ trợ đã được nối (23/09/2026).** Ngoài hình học, ngũ hình còn được
+> đối chiếu bằng EfficientNet-B4 chạy **trong trình duyệt** (`web/lib/features/
+> model.ts`, onnxruntime-web + WASM tự host). Nó là **bằng chứng phụ**: trộn với
+> alpha 0.3, chỉ khi model tự tin ≥ 0.5, và **không** sinh ra hay sửa trait,
+> trích dẫn hay trọng số nghề. Phiếu ghi nguồn riêng cho nó. Tắt bằng
+> `NEXT_PUBLIC_FACESHAPE_MODEL=off`. Phép thử ~50 ảnh người Việt mà
+> `data/README.md` yêu cầu thì **chưa làm** — đừng trình bày phần model như đã
+> kiểm chứng.
+>
+> `calib_shape.json` hiện là số **tạm** (mean lấy từ `canonical_face_model`). Chạy
+> `data/tools/calibrate.py` trên ≥150 lượt quét thật rồi thay, trước khi tin con số
+> ngũ hình ở phiếu. Khi chưa thay, khuôn mặt trung bình cho ra phổ ~`tho 24% /
+> thuy 21% / kim 21%` và cờ `shape.confident = false` — phiếu nói thẳng là chưa
+> kết luận được, đó là hành vi đúng chứ không phải lỗi.
 
 Từ 478 điểm mốc MediaPipe, tính ra **~24 chỉ số** đã chuẩn hoá (chia cho khoảng cách 2 mắt để bất biến với kích thước ảnh), gom thành **4 lớp** đúng như mockup. Tên `feature_key` phải khớp với cột `rules.feature_key`.
 

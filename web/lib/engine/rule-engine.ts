@@ -9,7 +9,32 @@
 import type { FaceFeatures } from "../features/types";
 import { CATEGORICAL, NUMERIC } from "./accessors";
 
-export type RuleOp = "lt" | "lte" | "gt" | "gte" | "between" | "category";
+export type RuleOp =
+  | "lt"
+  | "lte"
+  | "gt"
+  | "gte"
+  | "between"
+  | "category"
+  | "all";
+
+/** Toán tử so sánh số — một vế của luật ghép. */
+export type CondOp = "lt" | "lte" | "gt" | "gte" | "between";
+
+/**
+ * Một vế của luật op="all".
+ *
+ * Tướng học có những tướng chỉ thành hình khi NHIỀU nét cùng xuất hiện: mày
+ * lưỡi kiếm phải vừa dài quá mắt, vừa trông thẳng, vừa ngược đuôi lên — thiếu
+ * một nét là tướng khác hẳn. Tách thành ba luật rời sẽ cộng điểm ba lần cho ba
+ * nét lẻ, không phải cho cái tướng ấy.
+ */
+export type RuleCondition = {
+  feature_key: string;
+  op: CondOp;
+  v_min?: number;
+  v_max?: number;
+};
 
 export type Rule = {
   id: string;
@@ -18,6 +43,8 @@ export type Rule = {
   v_min?: number;
   v_max?: number;
   category?: string;
+  /** Chỉ có ở op="all": mọi vế phải cùng khớp. */
+  conditions?: RuleCondition[];
   trait: string;
   reading_hint: string;
   /** id của nguồn, trỏ vào data/sources.json (vd "may"), không phải tên sách. */
@@ -30,6 +57,28 @@ export type Rule = {
 
 export type MatchedRule = Rule & { value: number | string };
 
+/** So một giá trị đo được với một ngưỡng. undefined = không đọc được => không khớp. */
+function compare(
+  v: number | undefined,
+  op: CondOp,
+  v_min?: number,
+  v_max?: number
+): boolean {
+  if (v === undefined || !Number.isFinite(v)) return false;
+  switch (op) {
+    case "lt":
+      return v < (v_max ?? Infinity);
+    case "lte":
+      return v <= (v_max ?? Infinity);
+    case "gt":
+      return v > (v_min ?? -Infinity);
+    case "gte":
+      return v >= (v_min ?? -Infinity);
+    case "between":
+      return v >= (v_min ?? -Infinity) && v <= (v_max ?? Infinity);
+  }
+}
+
 export function evaluateRules(f: FaceFeatures, rules: Rule[]): MatchedRule[] {
   const out: MatchedRule[] = [];
 
@@ -40,22 +89,23 @@ export function evaluateRules(f: FaceFeatures, rules: Rule[]): MatchedRule[] {
       continue;
     }
 
+    // Luật ghép: mọi vế phải cùng khớp. Giá trị hiển thị lấy số vế đã khớp
+    // ("3/3") vì bản thân luật không đo một chỉ số đơn nào.
+    if (r.op === "all") {
+      const conds = r.conditions ?? [];
+      const ok =
+        conds.length > 0 &&
+        conds.every((c) =>
+          compare(NUMERIC[c.feature_key]?.(f), c.op, c.v_min, c.v_max)
+        );
+      if (ok) out.push({ ...r, value: conds.length + "/" + conds.length });
+      continue;
+    }
+
     const v = NUMERIC[r.feature_key]?.(f);
     if (v === undefined) continue; // thiếu accessor -> bỏ qua (xem missingAccessors)
 
-    const ok =
-      r.op === "lt"
-        ? v < (r.v_max ?? Infinity)
-        : r.op === "lte"
-          ? v <= (r.v_max ?? Infinity)
-          : r.op === "gt"
-            ? v > (r.v_min ?? -Infinity)
-            : r.op === "gte"
-              ? v >= (r.v_min ?? -Infinity)
-              : r.op === "between"
-                ? v >= (r.v_min ?? -Infinity) && v <= (r.v_max ?? Infinity)
-                : false;
-
+    const ok = compare(v, r.op, r.v_min, r.v_max);
     if (ok) out.push({ ...r, value: v });
   }
 

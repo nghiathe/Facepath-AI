@@ -13,6 +13,18 @@ import {
   RIGHT_EYEBROW,
   TOTAL_LANDMARKS,
 } from "./landmark-ids";
+import { FACE_TYPES } from "../data";
+import {
+  CALIB_IS_PROVISIONAL,
+  classifyHanh,
+  fuseWithModel,
+  labelFromMembership,
+  measureShape,
+  toPixels,
+  toZ,
+  type Proto,
+  type ProtoWithModel,
+} from "./shape";
 import type {
   FaceFeatures,
   FaceType,
@@ -130,26 +142,65 @@ const endpoints = (pts: Landmark[]) => {
 
 // --- Phân loại --------------------------------------------------------------
 
-/** Ngũ hình — PIPELINE mục 4.2. */
-export function classifyFaceType(input: {
-  faceW: number;
-  faceH: number;
-  jawW: number;
-  cheekW: number;
-  santingUpper: number;
-  santingLower: number;
-}): FaceType {
-  const r = input.faceW / input.faceH;
-  const jaw = input.cheekW === 0 ? 0 : input.jawW / input.cheekW;
-  // MVP: xấp xỉ "đầy thịt" bằng chính độ rộng tương đối của khuôn mặt.
-  // Bản đầy đủ nên dùng thêm độ cong contour + độ đầy gò má.
-  const fullness = norm(r, 0.75, 1.0);
+/**
+ * Ngũ hình — bản v4 (data/README.md, mục "Bản v4").
+ *
+ * Bản trước so faceW/faceH và jawW/cheekW với ngưỡng cứng. Cách đó hỏng vì hai
+ * lẽ: (a) toạ độ chuẩn hoá của MediaPipe bị khung hình 16:9 ép bề ngang lại,
+ * khuôn mặt nào cũng hoá ra "dài"; (b) trên chính khuôn mặt trung bình của
+ * MediaPipe, trán rộng 0.82 và hàm 0.78 so với gò má, nên đọc theo nghĩa đen
+ * "trán rộng, cằm thon" thì gần như ai cũng ra Mộc hoặc Hoả.
+ *
+ * Nay: đo trên toạ độ PIXEL → z-score theo quần thể (calib_shape.json) → so
+ * khớp mềm với `prototype` của từng hành trong face_types.json.
+ */
+const HANH_PROTOS: Proto[] = FACE_TYPES.filter((f) => f.prototype).map((f) => ({
+  key: f.key,
+  prototype: f.prototype as Record<string, number>,
+}));
 
-  if (r >= 0.95 && jaw >= 0.9) return "kim";
-  if (r <= 0.8) return "moc";
-  if (input.santingUpper < input.santingLower - 0.04) return "hoa";
-  if (fullness >= 0.6 && r >= 0.85) return "thuy";
-  return "tho";
+/** Cùng bộ trên, kèm ánh xạ lớp của model (Square → Kim, Oblong/Heart → Mộc…). */
+const HANH_PROTOS_WITH_MODEL: ProtoWithModel[] = FACE_TYPES.filter(
+  (f) => f.prototype
+).map((f) => ({
+  key: f.key,
+  prototype: f.prototype as Record<string, number>,
+  model_classes: f.model_classes,
+}));
+
+/**
+ * Trộn xác suất của model faceshape vào kết quả hình học đã có.
+ *
+ * Tách khỏi extractFeatures vì hai lẽ: extractFeatures chạy đồng bộ mỗi khung
+ * hình trên màn Quét, còn model thì tốn vài trăm ms và chỉ chạy MỘT lần trên
+ * ảnh đã chụp; và ảnh chỉ có ở màn Phân tích, không có lúc xem lại từ lịch sử.
+ *
+ * Trả về đối tượng MỚI, không sửa tại chỗ. Model không đủ tự tin thì trả lại
+ * gần như nguyên bản, chỉ đánh dấu là đã thử.
+ */
+export function applyModelFusion(
+  f: FaceFeatures,
+  modelProbs: number[]
+): FaceFeatures {
+  const { fused, usedModel } = fuseWithModel(
+    f.shape.membership,
+    modelProbs,
+    HANH_PROTOS_WITH_MODEL
+  );
+  const hanh = labelFromMembership(fused);
+  return {
+    ...f,
+    faceType: hanh.primary as FaceType,
+    shape: {
+      ...f.shape,
+      membership: hanh.membership,
+      secondary: hanh.secondary as FaceType | null,
+      label: hanh.label,
+      confident: hanh.confident,
+      usedModel,
+      modelProbs,
+    },
+  };
 }
 
 /**
@@ -188,7 +239,20 @@ export function classifyMouthShape(
 export type QualityInput = {
   /** 0..1. Phải do phía gọi đo từ khung hình; features.ts không thấy ảnh. */
   brightness?: number;
+  /**
+   * Kích thước THẬT của khung hình (px) mà điểm mốc được chuẩn hoá theo.
+   *
+   * BẮT BUỘC cho phép đo dáng mặt: toạ độ MediaPipe chia x cho bề ngang và y
+   * cho bề cao, nên với webcam 16:9 một hình vuông thật lại thành hình chữ nhật
+   * đứng trong toạ độ chuẩn hoá — khuôn mặt nào cũng "dài" ra và rơi vào Mộc.
+   * Thiếu trường này thì coi khung là vuông (giữ hành vi cũ) và kết quả ngũ
+   * hình chỉ đúng khi khung đúng là vuông.
+   */
+  frame?: { width: number; height: number };
 };
+
+/** Khung giả định khi phía gọi không cho biết kích thước thật. */
+const SQUARE_FRAME = { width: 1000, height: 1000 };
 
 export function extractFeatures(
   lm: Landmark[],
@@ -335,6 +399,14 @@ export function extractFeatures(
   const cheekW = bandWidth(eyeLineY + faceH * 0.06, faceH * 0.06);
   const cheekRaw = jawW === 0 ? 0 : cheekW / jawW;
 
+  // --- Dáng mặt (ngũ hình) — features/shape.ts ---
+  // Đo trên toạ độ PIXEL, không phải toạ độ chuẩn hoá: xem ghi chú ở
+  // QualityInput.frame.
+  const frame = quality.frame ?? SQUARE_FRAME;
+  const measured = measureShape(toPixels(lm, frame));
+  const shapeZ = toZ(measured.shape);
+  const hanh = classifyHanh(shapeZ, HANH_PROTOS);
+
   // --- Chất lượng khung hình ---
   const eyeDx = p(PT.EYE_L_OUTER).x - p(PT.EYE_R_OUTER).x;
   const eyeDy = p(PT.EYE_L_OUTER).y - p(PT.EYE_R_OUTER).y;
@@ -352,14 +424,21 @@ export function extractFeatures(
   };
 
   return {
-    faceType: classifyFaceType({
-      faceW,
-      faceH,
-      jawW,
-      cheekW: faceW,
-      santingUpper: upper,
-      santingLower: lower,
-    }),
+    faceType: hanh.primary as FaceType,
+    shape: {
+      raw: { ...measured.shape },
+      z: shapeZ,
+      membership: hanh.membership,
+      secondary: hanh.secondary as FaceType | null,
+      label: hanh.label,
+      confident: hanh.confident,
+      measured: measured.reason === null,
+      reason: measured.reason,
+      calibProvisional: CALIB_IS_PROVISIONAL,
+      // Model chạy sau, ở màn Phân tích — xem applyModelFusion.
+      usedModel: false,
+      modelProbs: null,
+    },
     santing,
     forehead: {
       width: norm(foreheadW / faceW, ...CALIB.foreheadWidth),
@@ -371,12 +450,14 @@ export function extractFeatures(
     },
     cheekbone: {
       prominence: norm(cheekRaw, ...CALIB.cheekbone),
+      height: measured.extra.cheekbone_height,
     },
     eyebrows: {
       curvature: norm(mean(curvRaw), ...CALIB.browCurvature),
       length: mean(lenRatio),
       thickness: norm(mean(thickRaw), ...CALIB.browThickness),
       eyeGap: norm(mean(gapRaw), ...CALIB.browEyeGap),
+      tailRise: measured.extra.brow_tail_rise,
     },
     nose: {
       wingWidth: norm(alaW / faceW, ...CALIB.noseWingWidth),
@@ -393,10 +474,16 @@ export function extractFeatures(
       landmarks: lm.length,
       headTiltDeg,
       brightness,
+      yaw: measured.yaw,
+      eyeSpanPx: measured.eyeSpanPx,
+      // Thêm điều kiện "đo được dáng mặt": mặt quay ngang hoặc chụp quá xa thì
+      // ngũ hình lệch hẳn, mà ngũ hình lại là khoá của cả phiếu (data/README.md
+      // mục "Bản v4"). Thà bắt chụp lại còn hơn trả một archetype sai.
       ok:
         lm.length >= QUALITY_LIMITS.minLandmarks &&
         Math.abs(headTiltDeg) <= QUALITY_LIMITS.maxHeadTiltDeg &&
-        brightness >= QUALITY_LIMITS.minBrightness,
+        brightness >= QUALITY_LIMITS.minBrightness &&
+        measured.reason === null,
     },
   };
 }

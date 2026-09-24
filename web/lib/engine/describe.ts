@@ -5,14 +5,34 @@
 // dùng chung một cách gọi tên ngưỡng.
 
 import { categoryLabel, featureLabel } from "../features/catalog";
-import type { Rule } from "./rule-engine";
+import type { Rule, RuleCondition } from "./rule-engine";
+
+const n = (v: number | undefined) => (v === undefined ? "?" : v.toFixed(2));
+
+/** Một vế của luật ghép, vd "Độ cong cung mày < 0.40". */
+const describeSub = (c: RuleCondition): string =>
+  featureLabel(c.feature_key) +
+  " " +
+  (c.op === "lt"
+    ? "< " + n(c.v_max)
+    : c.op === "lte"
+      ? "≤ " + n(c.v_max)
+      : c.op === "gt"
+        ? "> " + n(c.v_min)
+        : c.op === "gte"
+          ? "≥ " + n(c.v_min)
+          : "trong " + n(c.v_min) + " – " + n(c.v_max));
 
 /** vd "< 0.50", "≥ 0.36", "trong 0.32 – 0.35", "là mặt chữ Nhật — kim hình". */
 export function describeCondition(r: Rule): string {
-  const n = (v: number | undefined) => (v === undefined ? "?" : v.toFixed(2));
   switch (r.op) {
     case "category":
       return "là " + categoryLabel(r.category ?? "?");
+    case "all":
+      // Luật ghép: liệt kê đủ các vế, vì "khớp" ở đây nghĩa là khớp tất cả.
+      return (
+        "khi đủ cả: " + (r.conditions ?? []).map(describeSub).join("; ")
+      );
     case "lt":
       return "< " + n(r.v_max);
     case "lte":

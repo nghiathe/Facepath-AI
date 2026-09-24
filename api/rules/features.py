@@ -1,9 +1,14 @@
 """Danh sách chỉ số khuôn mặt — nguồn sự thật cho lớp Python.
 
-NGUỒN SỰ THẬT THẬT SỰ LÀ data/rules.json (PIPELINE.md mục 1): engine phải chạy
-được với đúng 19 feature_key mà 32 luật đang dùng. Danh sách dưới đây phải khớp
-với accessors bên TypeScript (web/lib/engine/accessors.ts). Đổi tên ở đây mà
-không sửa rules.json (hoặc ngược lại) thì seeder sẽ báo lỗi ngay.
+NGUỒN SỰ THẬT THẬT SỰ LÀ data/data-train/rules.json (PIPELINE.md mục 1): engine
+phải chạy được với đúng 21 feature_key mà 35 luật đang dùng. Danh sách dưới đây
+phải khớp với accessors bên TypeScript (web/lib/engine/accessors.ts). Đổi tên ở
+đây mà không sửa rules.json (hoặc ngược lại) thì seeder sẽ báo lỗi ngay.
+
+BẢN V4 (data/README.md) thêm: cheekbone_height (quyền cao/thấp),
+brow_tail_rise (đuôi mày ngược) và brow_kiem — luật GHÉP dùng op "all", tức
+nhiều vế phải cùng khớp. brow_kiem không phải một phép đo: nó là tên của tướng
+"mày lưỡi kiếm", còn giá trị nằm ở các vế trong rule["conditions"].
 
 Bản trước lấy 20 key từ CLAUDE.md mục 7; dữ liệu thật soạn từ sách dùng bộ khác
 (face_shape thay cho face_shape_ratio, thêm santing_balance và mouth_shape, bỏ
@@ -27,6 +32,7 @@ FEATURE_LAYERS: Dict[str, Dict[str, str]] = {
         "forehead_width": "Bề ngang trán",
         "forehead_shape": "Dạng trán (vuông/góc tròn) — xấp xỉ",
         "cheekbone_prominence": "Lưỡng quyền (gò má) nở",
+        "cheekbone_height": "Lưỡng quyền cao / thấp (0 = ngang sống mũi)",
     },
     "Lớp 2 — Cung mày & mắt": {
         "brow_curvature": "Độ cong cung mày (0 = thẳng)",
@@ -35,6 +41,8 @@ FEATURE_LAYERS: Dict[str, Dict[str, str]] = {
         "brow_eye_gap": "Khoảng cách mày - mắt",
         "eye_length": "Chiều dài mắt (1.0 = trung bình)",
         "eye_size": "Độ mở của mắt",
+        "brow_tail_rise": "Đuôi mày ngược lên (0 = ngang)",
+        "brow_kiem": "Mày lưỡi kiếm (dài + thẳng + ngược đuôi)",
     },
     "Lớp 3 — Mũi": {
         "nose_wing_width": "Bề rộng cánh mũi",
@@ -58,6 +66,10 @@ FEATURE_KEYS: List[str] = list(FEATURE_LABELS)
 # Phải khớp CATEGORICAL bên web/lib/engine/accessors.ts.
 CATEGORICAL_KEYS: List[str] = ["face_shape", "mouth_shape", "forehead_shape"]
 
+# Chỉ số GHÉP: không đo trực tiếp, giá trị suy từ rule["conditions"].
+# Phải khớp COMPOSITE_KEYS bên web/lib/engine/accessors.ts.
+COMPOSITE_KEYS: List[str] = ["brow_kiem"]
+
 # 4 chỉ số hiển thị live trên màn Quét (CLAUDE.md mục 7).
 LIVE_FEATURE_KEYS: List[str] = [
     "face_shape",
@@ -74,4 +86,16 @@ OPS_REQUIRING: Dict[str, tuple] = {
     "gte": ("v_min",),
     "between": ("v_min", "v_max"),
     "category": ("category",),
+    # Luật ghép: mọi vế trong "conditions" phải cùng khớp.
+    "all": ("conditions",),
+}
+
+# Toán tử cho phép ở MỘT VẾ của luật ghép — không lồng "all" trong "all",
+# và không so phân loại ở vế con.
+COND_OPS: Dict[str, tuple] = {
+    "lt": ("v_max",),
+    "lte": ("v_max",),
+    "gt": ("v_min",),
+    "gte": ("v_min",),
+    "between": ("v_min", "v_max"),
 }

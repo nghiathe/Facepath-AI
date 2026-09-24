@@ -57,3 +57,41 @@ export const PT = {
   LIP_LOWER_INNER: 14,
   LIP_LOWER_OUTER: 17,
 } as const;
+
+/**
+ * Đường viền mặt theo ĐÚNG THỨ TỰ đi vòng quanh contour.
+ *
+ * FACE_OVAL ở trên gom từ Connection[] rồi sort theo số, nên thứ tự điểm không
+ * còn là thứ tự đi vòng. Đo bề ngang / bbox thì không sao, nhưng tính DIỆN TÍCH
+ * đa giác (shape.ts: độ "đầy" của đường viền) thì sai hoàn toàn. Dãy dưới đây
+ * chép từ data/lib/shapeClassifier.ts (bản tham chiếu của bộ dữ liệu v4).
+ */
+export const FACE_OVAL_ORDERED = [
+  10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378,
+  400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21,
+  54, 103, 67, 109,
+] as const;
+
+/**
+ * Mốc dùng riêng cho phép đo dáng mặt v4 (data/README.md mục "Bản v4").
+ * Tách khỏi PT để thấy rõ đây là bộ mốc của shape.ts, không phải của 4 lớp
+ * bóc tách hiển thị trên phiếu.
+ */
+export const SHAPE_PT = {
+  FOREHEAD_L: 54, // hai bên trán — lưới KHÔNG tới chân tóc, xem ghi chú shape.ts
+  FOREHEAD_R: 284,
+  TEMPLE_L: 21, // thái dương
+  TEMPLE_R: 251,
+  CHEEK_L: 234, // gò má (bizygomatic) — chỗ rộng nhất
+  CHEEK_R: 454,
+  JAW_L: 172, // góc hàm
+  JAW_R: 397,
+  CHIN_L: 149, // hai bên cằm
+  CHIN_R: 378,
+  MALAR_L: 117, // đỉnh gò má, để đo "quyền cao / thấp"
+  MALAR_R: 346,
+  BROW_HEAD_L: 55, // đầu mày (phía mũi)
+  BROW_HEAD_R: 285,
+  BROW_TAIL_L: 70, // đuôi mày (phía thái dương)
+  BROW_TAIL_R: 300,
+} as const;
