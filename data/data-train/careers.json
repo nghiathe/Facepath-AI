@@ -1,38 +1,86 @@
 [
   {
-    "slug": "ky-thuat-cong-nghe",
-    "name": "Kỹ thuật & công nghệ",
-    "sample_jobs": "Kỹ sư dữ liệu · lập trình viên · kỹ thuật viên vận hành hệ thống",
+    "slug": "cong-nghe-so",
+    "name": "Công nghệ thông tin & dữ liệu",
+    "sample_jobs": "Kỹ sư phần mềm · nhà khoa học dữ liệu · chuyên viên an toàn thông tin",
     "sort_order": 1
+  },
+  {
+    "slug": "ky-thuat-xay-dung",
+    "name": "Kỹ thuật & xây dựng",
+    "sample_jobs": "Kỹ sư xây dựng · kỹ sư cơ khí · kiến trúc sư",
+    "sort_order": 2
+  },
+  {
+    "slug": "san-xuat-thu-cong",
+    "name": "Sản xuất & nghề kỹ thuật",
+    "sample_jobs": "Thợ cơ khí · thợ điện · giám sát sản xuất",
+    "sort_order": 3
   },
   {
     "slug": "tai-chinh-ke-toan",
     "name": "Tài chính, kế toán & kiểm toán",
-    "sample_jobs": "Kiểm toán viên · chuyên viên tín dụng · kế toán tổng hợp",
-    "sort_order": 2
+    "sample_jobs": "Kiểm toán viên · chuyên viên tín dụng · kế toán viên",
+    "sort_order": 4
   },
   {
     "slug": "quan-ly-van-hanh",
     "name": "Quản lý & vận hành",
-    "sample_jobs": "Quản trị dự án · quản lý chất lượng · điều phối chuỗi cung ứng",
-    "sort_order": 3
+    "sample_jobs": "Quản lý dự án · giám đốc điều hành · trưởng phòng quản lý chất lượng",
+    "sort_order": 5
   },
   {
     "slug": "nghien-cuu-giang-day",
     "name": "Nghiên cứu & giảng dạy",
-    "sample_jobs": "Nghiên cứu viên · giảng viên · chuyên viên phân tích chính sách",
-    "sort_order": 4
+    "sample_jobs": "Giảng viên · nhà thống kê · giáo viên trung học phổ thông",
+    "sort_order": 6
   },
   {
     "slug": "phap-ly-hcc",
     "name": "Pháp lý & hành chính công",
-    "sample_jobs": "Chuyên viên pháp chế · thanh tra · quản lý hồ sơ nhà nước",
-    "sort_order": 5
+    "sample_jobs": "Luật sư · chuyên viên pháp chế · thanh tra viên",
+    "sort_order": 7
   },
   {
     "slug": "kinh-doanh-truyen-thong",
     "name": "Kinh doanh & truyền thông",
-    "sample_jobs": "Kinh doanh B2B · truyền thông thương hiệu · tư vấn khách hàng",
-    "sort_order": 6
+    "sample_jobs": "Nhân viên kinh doanh · chuyên viên marketing · nhà báo",
+    "sort_order": 8
+  },
+  {
+    "slug": "sang-tao-nghe-thuat",
+    "name": "Nghệ thuật, thiết kế & thể thao",
+    "sample_jobs": "Nhà thiết kế đồ hoạ · đạo diễn · huấn luyện viên thể thao",
+    "sort_order": 9
+  },
+  {
+    "slug": "y-te-suc-khoe",
+    "name": "Y tế & chăm sóc sức khoẻ",
+    "sample_jobs": "Bác sĩ · điều dưỡng · dược sĩ",
+    "sort_order": 10
+  },
+  {
+    "slug": "cong-dong-xa-hoi",
+    "name": "Tâm lý, xã hội & nhân sự",
+    "sample_jobs": "Nhà tâm lý · nhân viên công tác xã hội · chuyên viên nhân sự",
+    "sort_order": 11
+  },
+  {
+    "slug": "du-lich-dich-vu",
+    "name": "Du lịch, ẩm thực & dịch vụ",
+    "sample_jobs": "Hướng dẫn viên du lịch · đầu bếp · lễ tân khách sạn",
+    "sort_order": 12
+  },
+  {
+    "slug": "nong-lam-moi-truong",
+    "name": "Nông, lâm, thuỷ sản & môi trường",
+    "sample_jobs": "Kỹ sư nông học · chuyên viên môi trường · chủ trang trại",
+    "sort_order": 13
+  },
+  {
+    "slug": "giao-thong-logistics",
+    "name": "Vận tải & logistics",
+    "sample_jobs": "Phi công · chuyên viên logistics · nhân viên giao nhận vận tải",
+    "sort_order": 14
   }
 ]

@@ -136,7 +136,7 @@ Theo [`data/README.md`](./data/README.md):
 1. `trait` + `reading_hint` + `source` + `citation` — **lấy trực tiếp từ sách**,
    người dùng tra lại được đúng chương/mục.
 2. `careers` (trọng số nghề) — **lớp diễn giải do nhóm dự án thêm vào**, suy từ
-   tính cách sang 6 nhóm nghề hiện đại. Không được trình bày như kết luận của cổ thư.
+   tính cách sang 14 nhóm nghề hiện đại. Không được trình bày như kết luận của cổ thư.
 
 Vì vậy phiếu kết quả trích nguồn cho *trait*, còn % nghề giữ đúng nhãn
 "mức khớp đặc điểm".

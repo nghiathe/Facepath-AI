@@ -94,7 +94,7 @@ Xây web app cho phép người dùng quét gương mặt bằng camera trình d
   README.md                    # nhật ký các bản dữ liệu (v2, v4) — đọc trước khi sửa
   /data-train                  # NGỮ LIỆU đã soạn (web + seeder đọc từ đây)
     rules.json                 # bộ luật soạn từ sách (mục 8) — 35 luật
-    careers.json               # 6 nhóm nghề (mục 8)
+    careers.json               # 14 nhóm nghề (data/README.md, bản v6)
     sources.json               # danh mục nguồn dẫn (có 1 mục type="model", xem dưới)
     face_types.json            # 5 ngũ hình + `prototype` để phân loại dáng mặt
     face_letters.json          # Thập đại tự hình tướng — CHƯA dùng trong app
@@ -398,7 +398,7 @@ GET  /api/rules?feature=...                   # tra cứu luật + nguồn
 
 **03 · Đang phân tích** — 4 bước tuần tự có trạng thái ✓/đang chạy/○: *Chuẩn hoá 478 điểm mốc → Bóc tách 4 lớp · 24 chỉ số → Truy hồi luật khớp trong ngữ liệu → Sinh luận giải & bản đồ nhóm nghề*; ghi "trung bình 12 giây, có thể rời trang". DoD: phản ánh tiến trình gọi API thật (nếu stream thì cập nhật theo sự kiện).
 
-**04 · Phiếu kết quả** — tiêu đề archetype + "N luật khớp, M nguồn dẫn"; badge **Nhóm nghề dẫn đầu** + %; khối ảnh đã chụp + lớp bóc tách (bật/tắt) với các nhãn đặc trưng (dáng mặt/tam đình/cung mày/cánh mũi/khoé miệng + giá trị); đoạn **Luận giải**; các **thẻ trait** kèm nguồn; **bảng 6 nhóm nghề** với thanh %; khối gợi ý "Nếu học tại Học viện Ngân hàng"; **disclaimer**; nút **Tải PDF** và **Quét lại**. DoD: render đúng từ JSON /analyze; nút Tải PDF xuất phiếu (in HTML→PDF phía client là đủ).
+**04 · Phiếu kết quả** — tiêu đề archetype + "N luật khớp, M nguồn dẫn"; badge **Nhóm nghề dẫn đầu** + %; khối ảnh đã chụp + lớp bóc tách (bật/tắt) với các nhãn đặc trưng (dáng mặt/tam đình/cung mày/cánh mũi/khoé miệng + giá trị); đoạn **Luận giải**; các **thẻ trait** kèm nguồn; **bảng 14 nhóm nghề** với thanh %; khối gợi ý "Nếu học tại Học viện Ngân hàng"; **disclaimer**; nút **Tải PDF** và **Quét lại**. DoD: render đúng từ JSON /analyze; nút Tải PDF xuất phiếu (in HTML→PDF phía client là đủ).
 
 ---
 

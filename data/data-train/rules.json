@@ -4,539 +4,613 @@
     "feature_key": "face_shape",
     "op": "category",
     "category": "kim",
-    "trait": "Kiên định, bền chí",
-    "reading_hint": "Xương mặt vuông, hàm rộng, các nét ngay thẳng",
-    "source": "may",
-    "citation": "Q.I — Ngũ hành hình tướng, Hình Kim",
+    "trait": "Nghiêm cẩn, trọng nghĩa",
+    "reading_hint": "Mặt vuông vắn, đường nét ngay ngắn",
+    "reading_short": "Khuôn mặt vuông vắn được cổ thư xếp vào hình Kim — dáng uy nghiêm, trọng chữ Nghĩa.",
+    "reading_full": "Thần tướng toàn biên tả hình Kim là 'vuông vắn ngay ngắn, thịt không đầy mà xương không mỏng', và cho rằng 'hình Kim vuông mới là chính, thân nặng, rất uy nghiêm'. Trong ngũ thường, sách gán Kim với chữ Nghĩa. Diễn giải của nhóm dự án: dáng mặt này thường được mô tả là nghiêm cẩn, trọng nguyên tắc, giữ lời; trong công việc, nét ấy gần với những vai trò cần kỷ luật và sự nhất quán.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Chính hình ca; q.5 — Ngũ hành sở sinh",
+    "passage_ids": [
+      "xiangshu.372.1",
+      "xiangshu.305.1",
+      "xiangshu.9.1"
+    ],
+    "quote_han": [
+      "金形方是正，體重極威嚴",
+      "金為義",
+      "金形方正色潔白"
+    ],
+    "quote_vi": "Hình Kim vuông mới là chính, thân nặng, rất uy nghiêm. — Kim là Nghĩa.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability",
+      "self_control"
+    ],
     "weight": 1.0,
     "careers": {
-      "ky-thuat-cong-nghe": 0.9,
-      "tai-chinh-ke-toan": 0.7,
-      "phap-ly-hcc": 0.7,
-      "quan-ly-van-hanh": 0.6
+      "san-xuat-thu-cong": 0.63,
+      "tai-chinh-ke-toan": 0.67,
+      "quan-ly-van-hanh": 0.42,
+      "phap-ly-hcc": 0.79,
+      "y-te-suc-khoe": 0.61,
+      "cong-dong-xa-hoi": 0.45,
+      "du-lich-dich-vu": 0.4,
+      "giao-thong-logistics": 0.79
     },
-    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype) và model hỗ trợ — xem web/lib/features/shape.ts",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "face_moc",
     "feature_key": "face_shape",
     "op": "category",
     "category": "moc",
-    "trait": "Ôn hòa, giàu đồng cảm",
-    "reading_hint": "Mặt dài dạng trái lê ngược, mày thanh mắt sáng, đức Nhân",
-    "source": "thanh_hoa_tu",
-    "citation": "Q.I — Ngũ hành hình tướng, Hình Mộc",
+    "trait": "Khoan hoà, giàu lòng nhân",
+    "reading_hint": "Mặt dài, thanh, đường nét thẳng",
+    "reading_short": "Khuôn mặt dài, thanh được xếp vào hình Mộc — cổ thư nói tâm tính khoan hoà, biết thương người.",
+    "reading_full": "Thần tướng toàn biên tả hình Mộc 'gầy thẳng, đốt xương cứng', 'dáng như tùng xanh chịu được rét năm', và nói người hình này 'việc làm thì tiện cho người, tâm tính khoan hoà, tự nhiên thương vật'. Mộc ứng với chữ Nhân. Diễn giải của nhóm dự án: nét nổi bật là sự ôn hoà và biết đặt mình vào chỗ người khác — gần với những công việc cần kiên nhẫn với con người như giảng dạy, tư vấn, nghiên cứu xã hội.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.5 — Ngũ hành ca, Ngũ hành sở sinh",
+    "passage_ids": [
+      "xiangshu.304.1",
+      "xiangshu.305.1",
+      "xiangshu.9.1"
+    ],
+    "quote_han": [
+      "方便所為心性緩，自然憐物作清官",
+      "木為仁",
+      "木形瘦直骨節堅"
+    ],
+    "quote_vi": "Việc làm thì tiện cho người, tâm tính khoan hoà, tự nhiên thương vật. — Mộc là Nhân.",
+    "confidence": "sach",
+    "trait_dims": [
+      "concern_for_others",
+      "cooperation",
+      "self_control"
+    ],
     "weight": 1.0,
     "careers": {
-      "nghien-cuu-giang-day": 0.9,
-      "kinh-doanh-truyen-thong": 0.6,
-      "phap-ly-hcc": 0.5
+      "san-xuat-thu-cong": 0.2,
+      "quan-ly-van-hanh": 0.23,
+      "nghien-cuu-giang-day": 0.16,
+      "phap-ly-hcc": 0.24,
+      "kinh-doanh-truyen-thong": 0.4,
+      "sang-tao-nghe-thuat": 0.15,
+      "y-te-suc-khoe": 1.0,
+      "cong-dong-xa-hoi": 0.9,
+      "du-lich-dich-vu": 0.88,
+      "giao-thong-logistics": 0.48
     },
-    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype) và model hỗ trợ — xem web/lib/features/shape.ts",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "face_thuy",
     "feature_key": "face_shape",
     "op": "category",
     "category": "thuy",
-    "trait": "Thông tuệ, linh hoạt",
-    "reading_hint": "Mặt tròn đầy, nhiều thịt, hào sảng",
-    "source": "may",
-    "citation": "Q.I — Ngũ hành hình tướng, kiêm hình Thủy đắc Kim sinh",
+    "trait": "Thông minh, sâu sắc",
+    "reading_hint": "Mặt tròn đầy, đường viền mềm",
+    "reading_short": "Khuôn mặt tròn đầy được xếp vào hình Thuỷ — cổ thư gán với chữ Trí: thông minh, nhanh nhạy.",
+    "reading_full": "Theo Thần tướng toàn biên, 'Thuỷ là Trí, chủ thông minh nhanh nhạy'. Bài Ngũ hành ca nói thêm người hình Thuỷ 'làm người tự nhiên lòng khó đoán' — ý là suy nghĩ sâu, không dễ để lộ. Diễn giải của nhóm dự án: nét này gần với sự nhạy bén, biết tính trước và xoay chuyển theo tình huống.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.5 — Ngũ hành ca, Ngũ hành sở sinh",
+    "passage_ids": [
+      "xiangshu.304.1",
+      "xiangshu.305.1"
+    ],
+    "quote_han": [
+      "為人自是心難測",
+      "水為智，主聰明敏達"
+    ],
+    "quote_vi": "Làm người tự nhiên lòng khó đoán. — Thuỷ là Trí, chủ thông minh nhanh nhạy.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "adaptability",
+      "independence"
+    ],
     "weight": 1.0,
     "careers": {
-      "kinh-doanh-truyen-thong": 0.8,
-      "nghien-cuu-giang-day": 0.7,
-      "ky-thuat-cong-nghe": 0.5
+      "cong-nghe-so": 0.86,
+      "ky-thuat-xay-dung": 0.57,
+      "quan-ly-van-hanh": 0.17,
+      "nghien-cuu-giang-day": 0.59,
+      "kinh-doanh-truyen-thong": 0.67,
+      "sang-tao-nghe-thuat": 0.79,
+      "nong-lam-moi-truong": 0.47
     },
-    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype) và model hỗ trợ — xem web/lib/features/shape.ts",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "face_hoa",
     "feature_key": "face_shape",
     "op": "category",
     "category": "hoa",
-    "trait": "Năng động, ứng biến",
-    "reading_hint": "Trên thon dưới nở, sắc hồng, khí chất linh hoạt",
-    "source": "thanh_hoa_tu",
-    "citation": "Q.I — Ngũ hành hình tướng, Hình Hỏa",
+    "trait": "Quyết đoán, nhiệt huyết",
+    "reading_hint": "Mặt trên thon dưới nở",
+    "reading_short": "Khuôn mặt trên thon dưới nở được xếp vào hình Hoả — cổ thư tả người có khí thế, giỏi quyết đoán.",
+    "reading_full": "Thần tướng toàn biên nói nhà Hoả 'có quyền, mãnh liệt, giỏi quyết đoán', và 'Hoả là Lễ, chủ uy thế dũng mãnh'. Diễn giải của nhóm dự án: mẫu người hành động nhanh, dám quyết, có sức lôi cuốn; điều cần cân bằng là sự nóng vội.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.5 — Ngũ hành ca, Ngũ hành sở sinh",
+    "passage_ids": [
+      "xiangshu.304.1",
+      "xiangshu.305.1"
+    ],
+    "quote_han": [
+      "有權猛烈多能斷",
+      "火為禮，主威勢勇烈"
+    ],
+    "quote_vi": "Có quyền, mãnh liệt, giỏi quyết đoán. — Hoả là Lễ, chủ uy thế dũng mãnh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "initiative",
+      "leadership",
+      "achievement"
+    ],
     "weight": 1.0,
     "careers": {
-      "kinh-doanh-truyen-thong": 0.85,
-      "quan-ly-van-hanh": 0.6
+      "cong-nghe-so": 0.42,
+      "ky-thuat-xay-dung": 0.47,
+      "tai-chinh-ke-toan": 0.19,
+      "quan-ly-van-hanh": 0.95,
+      "nghien-cuu-giang-day": 0.52,
+      "kinh-doanh-truyen-thong": 0.71,
+      "sang-tao-nghe-thuat": 0.47,
+      "nong-lam-moi-truong": 0.45
     },
-    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype) và model hỗ trợ — xem web/lib/features/shape.ts",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "face_tho",
     "feature_key": "face_shape",
     "op": "category",
     "category": "tho",
-    "trait": "Đáng tin, bền bỉ",
-    "reading_hint": "Mặt dày vững, thịt xương rắn chắc, đức Tín",
-    "source": "than_di_phu",
-    "citation": "Q.I — Ngũ hành hình tướng, Hình Thổ",
+    "trait": "Đôn hậu, giữ chữ tín",
+    "reading_hint": "Mặt dày vững, hàm và cằm rộng",
+    "reading_short": "Khuôn mặt dày vững được xếp vào hình Thổ — cổ thư gán với chữ Tín, tính ưa yên tĩnh.",
+    "reading_full": "Theo Thần tướng toàn biên, 'hình Thổ đôn hậu, sắc vàng sáng… tính ưa yên tĩnh', và 'Thổ là Tín'. Diễn giải của nhóm dự án: người được mô tả là điềm đạm, chắc chắn, giữ lời — gần với những việc cần sự ổn định, tin cậy lâu dài.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.1 — Thuần Dương tướng pháp; q.5 — Ngũ hành sở sinh",
+    "passage_ids": [
+      "xiangshu.9.1",
+      "xiangshu.305.1",
+      "xiangshu.304.1"
+    ],
+    "quote_han": [
+      "土形敦厚色黃光，臀背露兮性樂靜",
+      "土為信",
+      "敦厚兼清秀又豐"
+    ],
+    "quote_vi": "Hình Thổ đôn hậu, sắc vàng sáng, tính ưa yên tĩnh. — Thổ là Tín.",
+    "confidence": "sach",
+    "trait_dims": [
+      "dependability",
+      "self_control",
+      "persistence"
+    ],
     "weight": 1.0,
     "careers": {
-      "quan-ly-van-hanh": 0.85,
-      "tai-chinh-ke-toan": 0.75,
-      "phap-ly-hcc": 0.6
+      "san-xuat-thu-cong": 0.61,
+      "tai-chinh-ke-toan": 0.34,
+      "quan-ly-van-hanh": 0.47,
+      "phap-ly-hcc": 0.69,
+      "kinh-doanh-truyen-thong": 0.2,
+      "y-te-suc-khoe": 0.59,
+      "cong-dong-xa-hoi": 0.31,
+      "du-lich-dich-vu": 0.19,
+      "nong-lam-moi-truong": 0.61,
+      "giao-thong-logistics": 0.67
     },
-    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype, z-score) với xác suất model (alpha 0.3, chỉ khi model tự tin >= 0.5). Xem face_types.json."
+    "evidence": "face_shape = hành chính sau khi trộn so khớp hình học (prototype) và model hỗ trợ — xem web/lib/features/shape.ts",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "santing_balanced",
     "feature_key": "santing_balance",
     "op": "gte",
     "v_min": 0.8,
-    "trait": "Nhịp làm việc ổn định",
-    "reading_hint": "Tam đình cân — quân bình trí lực, khí lực và hoạt lực",
-    "source": "to_lang_thien",
-    "citation": "Chương I — Tam Đình, ý nghĩa về khả năng",
-    "weight": 0.9,
+    "trait": "Cân bằng, điều độ",
+    "reading_hint": "Tam đình cân đối",
+    "reading_short": "Ba phần trán – mũi – cằm cân nhau; cổ thư coi đây là tướng bậc trên.",
+    "reading_full": "Thần tướng toàn biên viết: 'ba đình đều cân xứng mới là người có tướng bậc trên', và bài Đắc ý ca dặn 'tam đình phải ngay ngắn'. Sách không nói cụ thể về tính cách. Nhóm dự án suy ra rằng sự cân đối này thường được hiểu là nhịp sống điều độ, không thiên lệch — chỉ nên coi là gợi ý tham khảo.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.1 — Diện tam đình",
+    "passage_ids": [
+      "xiangshu.37.1",
+      "xiangshu.360.1"
+    ],
+    "quote_han": [
+      "三停皆稱，乃為上相之人矣",
+      "三停須要端"
+    ],
+    "quote_vi": "Ba đình đều cân xứng mới là người có tướng bậc trên. — Tam đình phải ngay ngắn.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "self_control",
+      "dependability"
+    ],
+    "weight": 0.6,
     "careers": {
-      "quan-ly-van-hanh": 0.8,
-      "tai-chinh-ke-toan": 0.7,
-      "phap-ly-hcc": 0.5
-    }
+      "san-xuat-thu-cong": 0.67,
+      "tai-chinh-ke-toan": 0.36,
+      "quan-ly-van-hanh": 0.63,
+      "phap-ly-hcc": 0.73,
+      "y-te-suc-khoe": 0.77,
+      "cong-dong-xa-hoi": 0.5,
+      "du-lich-dich-vu": 0.55,
+      "giao-thong-logistics": 1.0
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "santing_upper_high",
     "feature_key": "santing_upper",
     "op": "gte",
     "v_min": 0.36,
-    "trait": "Trí lực thiên phú",
-    "reading_hint": "Thượng đình (trán) cao rộng — biểu dương cho trí lực",
-    "source": "to_lang_thien",
-    "citation": "Chương I — Tam Đình, Thượng đình chủ Trí lực",
-    "weight": 0.9,
+    "trait": "Thiên về tư duy",
+    "reading_hint": "Thượng đình (trán) cao",
+    "reading_short": "Thượng đình cao; cổ thư gắn vùng trán sáng sạch với sự thông minh.",
+    "reading_full": "Thần tướng toàn biên nói các vị trên trán 'cần ngay ngắn, sáng sạch thì thông minh', và khen 'thượng đình dài mà đầy đặn, vuông mà rộng'. Ứng dụng chỉ đo được tỉ lệ chiều cao của thượng đình, không thấy độ sáng sạch, nên đây là suy luận của nhóm dự án: thượng đình cao được hiểu là thiên về tư duy, học hỏi.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.12 — Ngạch bộ tướng; q.1 — Diện tam đình",
+    "passage_ids": [
+      "xiangshu.486.2",
+      "xiangshu.37.1"
+    ],
+    "quote_han": [
+      "須得端正明淨，則聰明顯達也",
+      "上停長而豐隆，方而廣闊者"
+    ],
+    "quote_vi": "Cần ngay ngắn, sáng sạch thì thông minh. — Thượng đình dài mà đầy đặn, vuông mà rộng.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "analytical_thinking",
+      "innovation"
+    ],
+    "weight": 0.6,
     "careers": {
-      "nghien-cuu-giang-day": 0.85,
-      "ky-thuat-cong-nghe": 0.6,
-      "phap-ly-hcc": 0.5
-    }
+      "cong-nghe-so": 0.94,
+      "ky-thuat-xay-dung": 0.96,
+      "san-xuat-thu-cong": 0.53,
+      "nghien-cuu-giang-day": 0.96,
+      "sang-tao-nghe-thuat": 0.87,
+      "nong-lam-moi-truong": 0.92
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "santing_lower_full",
     "feature_key": "santing_lower",
     "op": "gte",
     "v_min": 0.35,
-    "trait": "Hoạt lực, thực thi bền bỉ",
-    "reading_hint": "Hạ đình (cằm) đầy đặn vuông vức — biểu dương cho hoạt lực, hậu vận",
-    "source": "to_lang_thien",
-    "citation": "Chương I — Tam Đình, Hạ đình chủ Hoạt lực",
-    "weight": 0.8,
+    "trait": "Thực tế, bền bỉ",
+    "reading_hint": "Hạ đình (cằm) đầy đặn",
+    "reading_short": "Hạ đình đầy đặn — nhóm dự án liên tưởng tới sự vững chãi, thực tế.",
+    "reading_full": "Thần tướng toàn biên khen 'hạ đình bằng mà đầy, ngay mà dày', nhưng chỉ bàn chuyện của cải, không nói về tính cách. Nhóm dự án suy ra rằng hạ đình đầy đặn tượng cho sự vững chãi, thực tế, chịu được việc dài hơi. Hãy đọc đây như một liên tưởng, không phải lời sách.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.1 — Diện tam đình",
+    "passage_ids": [
+      "xiangshu.37.1"
+    ],
+    "quote_han": "下停平而滿，端而厚者",
+    "quote_vi": "Hạ đình bằng mà đầy, ngay mà dày.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "persistence",
+      "stress_tolerance"
+    ],
+    "weight": 0.5,
     "careers": {
-      "quan-ly-van-hanh": 0.75,
-      "kinh-doanh-truyen-thong": 0.5
-    }
+      "cong-nghe-so": 0.2,
+      "san-xuat-thu-cong": 0.23,
+      "tai-chinh-ke-toan": 0.26,
+      "quan-ly-van-hanh": 0.67,
+      "phap-ly-hcc": 0.67,
+      "kinh-doanh-truyen-thong": 0.69,
+      "sang-tao-nghe-thuat": 0.29,
+      "y-te-suc-khoe": 0.75,
+      "cong-dong-xa-hoi": 0.17,
+      "nong-lam-moi-truong": 0.73,
+      "giao-thong-logistics": 0.43
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_straight",
     "feature_key": "brow_curvature",
     "op": "lt",
     "v_max": 0.5,
-    "trait": "Lý trí, thích quy tắc",
-    "reading_hint": "Cung mày thẳng, ít cong (mày chữ nhất) — nhân nghĩa, thông tuệ",
+    "trait": "Ngay thẳng, nề nếp",
+    "reading_hint": "Cung mày thẳng, ít cong",
+    "reading_short": "Mày thẳng — cổ thư liên hệ với chức việc thanh liêm.",
+    "reading_full": "Bài quyết về mày trong Thần tướng toàn biên viết: 'Mày nếu cao và thẳng, thân giữ chức thanh liêm.' Đây là một trong số ít câu cổ thư gắn thẳng nét mặt với loại công việc: việc công cần sự ngay thẳng, nề nếp. Ứng dụng mới đo được độ thẳng của mày, chưa đo được độ cao.",
     "source": "than_tuong_toan_bien",
-    "citation": "Chương II — Lông Mày, mày chữ nhất",
-    "weight": 1.0,
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.2"
+    ],
+    "quote_han": "眉若高直。身當清職",
+    "quote_vi": "Mày nếu cao và thẳng, thân giữ chức thanh liêm.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability",
+      "attention_to_detail"
+    ],
+    "weight": 0.9,
     "careers": {
-      "tai-chinh-ke-toan": 0.85,
-      "ky-thuat-cong-nghe": 0.8,
-      "phap-ly-hcc": 0.6
-    }
+      "cong-nghe-so": 0.34,
+      "ky-thuat-xay-dung": 0.36,
+      "san-xuat-thu-cong": 0.98,
+      "tai-chinh-ke-toan": 0.98,
+      "phap-ly-hcc": 0.75,
+      "y-te-suc-khoe": 0.55,
+      "du-lich-dich-vu": 0.16,
+      "nong-lam-moi-truong": 0.3,
+      "giao-thong-logistics": 0.77
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_curved",
     "feature_key": "brow_curvature",
     "op": "gte",
     "v_min": 0.6,
-    "trait": "Ôn nhã, thiên hướng văn học",
-    "reading_hint": "Cung mày cong như trăng non — nổi tiếng đường văn học, khoa bảng",
-    "source": "may",
-    "citation": "Chương II — Lông Mày, mày trăng non (tân nguyệt mi)",
+    "trait": "Thông minh, hiền hoà",
+    "reading_hint": "Cung mày cong như trăng non",
+    "reading_short": "Mày cong như trăng non — cổ thư khen thông minh vượt trội.",
+    "reading_full": "Bài quyết về mày viết: 'Mày như trăng mới, thông minh vượt trội' và 'mày như cung sừng, tính hiền mà không hung hăng'. Diễn giải của nhóm dự án: nét mày cong mềm được cổ thư liên hệ với trí tuệ nhạy và tính khí ôn hoà — gần với việc học thuật, sáng tạo, làm việc với con người.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.2"
+    ],
+    "quote_han": [
+      "眉如初月，聰明超越",
+      "眉如角弓，性善不雄"
+    ],
+    "quote_vi": "Mày như trăng mới, thông minh vượt trội. — Mày như cung sừng, tính hiền mà không hung hăng.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "cooperation",
+      "innovation"
+    ],
     "weight": 1.0,
     "careers": {
-      "nghien-cuu-giang-day": 0.85,
-      "kinh-doanh-truyen-thong": 0.4
-    }
+      "cong-nghe-so": 0.45,
+      "ky-thuat-xay-dung": 0.48,
+      "san-xuat-thu-cong": 0.31,
+      "nghien-cuu-giang-day": 0.65,
+      "kinh-doanh-truyen-thong": 0.15,
+      "sang-tao-nghe-thuat": 0.67,
+      "y-te-suc-khoe": 0.15,
+      "cong-dong-xa-hoi": 0.27,
+      "du-lich-dich-vu": 0.33,
+      "nong-lam-moi-truong": 0.59
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_long",
     "feature_key": "brow_length",
     "op": "gt",
     "v_min": 1.0,
-    "trait": "Giao tế khéo léo",
-    "reading_hint": "Lông mày dài quá mắt — thông minh, cư xử khéo",
-    "source": "nhan_luan",
-    "citation": "Chương II — Lông Mày, tương quan cá tính",
+    "trait": "Trung trực",
+    "reading_hint": "Mày dài quá mắt",
+    "reading_short": "Mày dài quá mắt — cổ thư nói người trung trực.",
+    "reading_full": "Thần tướng toàn biên viết: 'Mày dài quá mắt, trung trực có lộc.' Trung trực là trung thành và thẳng thắn. Diễn giải của nhóm dự án: nét này gần với sự đáng tin và tận tâm trong việc chung.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.2"
+    ],
+    "quote_han": "眉長過目，忠直有祿",
+    "quote_vi": "Mày dài quá mắt, trung trực có lộc.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability"
+    ],
     "weight": 0.8,
     "careers": {
-      "kinh-doanh-truyen-thong": 0.7,
-      "quan-ly-van-hanh": 0.6,
-      "nghien-cuu-giang-day": 0.5
-    }
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_short",
     "feature_key": "brow_length",
     "op": "lt",
     "v_max": 0.9,
-    "trait": "Tập trung độc lập",
-    "reading_hint": "Lông mày ngắn hơn mắt — thiên về làm việc độc lập hơn giao tế",
-    "source": "nhan_luan",
-    "citation": "Chương II — Lông Mày, tương quan cá tính",
+    "trait": "Độc lập, thích tự làm",
+    "reading_hint": "Mày ngắn hơn mắt",
+    "reading_short": "Mày ngắn hơn mắt — cổ thư nói tâm tính thích một mình.",
+    "reading_full": "Bài quyết viết: 'Mày ngắn hơn mắt, tâm tính cô độc.' Nhóm dự án hiểu chữ 'cô độc' ở đây theo nghĩa trung tính: thích tự suy nghĩ, tự làm, ít dựa vào người khác — không phải lời phán về hoàn cảnh sống.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.2"
+    ],
+    "quote_han": "眉短於目，心性孤獨",
+    "quote_vi": "Mày ngắn hơn mắt, tâm tính cô độc.",
+    "confidence": "sach",
+    "trait_dims": [
+      "independence",
+      "analytical_thinking"
+    ],
     "weight": 0.6,
     "careers": {
-      "ky-thuat-cong-nghe": 0.6,
-      "tai-chinh-ke-toan": 0.5
-    }
+      "cong-nghe-so": 0.61,
+      "ky-thuat-xay-dung": 0.63,
+      "tai-chinh-ke-toan": 0.29,
+      "nghien-cuu-giang-day": 0.71,
+      "phap-ly-hcc": 0.19,
+      "kinh-doanh-truyen-thong": 0.52,
+      "sang-tao-nghe-thuat": 0.75,
+      "nong-lam-moi-truong": 0.4
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_thick",
     "feature_key": "brow_thickness",
     "op": "gt",
     "v_min": 0.65,
-    "trait": "Thiên hướng cạnh tranh",
-    "reading_hint": "Mày cọp: to bản, thô, xếch — hợp nghề cạnh tranh, thực nghiệp gia",
-    "source": "ntc",
-    "citation": "Chương II — Lông Mày, mày cọp (hổ mi)",
+    "trait": "Có uy, dám làm",
+    "reading_hint": "Mày đậm — dáng mày hổ",
+    "reading_short": "Mày đậm như mày hổ — cổ thư nói có uy, có gan, làm được việc.",
+    "reading_full": "Thần tướng toàn biên tả mày hổ: 'mày này tuy thô nhưng có uy, cả đời có gan có chí, làm được việc.' Diễn giải của nhóm dự án: nét của người chủ động, dám nhận trách nhiệm và theo việc tới cùng. Ứng dụng chỉ đo được độ đậm, chưa phân biệt được các dáng mày đậm khác nhau.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Mày hổ",
+    "passage_ids": [
+      "xiangshu.151.1"
+    ],
+    "quote_han": "此眉雖粗且有威，平生膽志有施為",
+    "quote_vi": "Mày này tuy thô nhưng có uy, cả đời có gan có chí, làm được việc.",
+    "confidence": "sach",
+    "trait_dims": [
+      "initiative",
+      "leadership",
+      "persistence"
+    ],
     "weight": 0.9,
     "careers": {
-      "kinh-doanh-truyen-thong": 0.85,
-      "quan-ly-van-hanh": 0.6
-    }
+      "cong-nghe-so": 0.37,
+      "ky-thuat-xay-dung": 0.37,
+      "tai-chinh-ke-toan": 0.15,
+      "quan-ly-van-hanh": 0.84,
+      "nghien-cuu-giang-day": 0.23,
+      "phap-ly-hcc": 0.21,
+      "kinh-doanh-truyen-thong": 0.81,
+      "sang-tao-nghe-thuat": 0.4,
+      "cong-dong-xa-hoi": 0.16,
+      "nong-lam-moi-truong": 0.98
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
   },
   {
     "id": "brow_high",
     "feature_key": "brow_eye_gap",
     "op": "gt",
     "v_min": 0.5,
-    "trait": "Phúc khí, dễ hiển đạt",
-    "reading_hint": "Lông mày dài, mọc cao về phía trán, cách xa mắt — tướng phú quý vinh đạt",
-    "source": "ntc",
-    "citation": "Chương II — Lông Mày, b) tương quan phú quý, 1. Phú quý",
-    "weight": 0.7,
-    "careers": {
-      "kinh-doanh-truyen-thong": 0.6,
-      "quan-ly-van-hanh": 0.6
-    },
-    "change_note": "v4: bỏ 'phóng khoáng' vì sách không nói vậy; luận giải cá tính của vùng này (cung Điền trạch) lại là 'bảo thủ'."
-  },
-  {
-    "id": "nose_wing_full",
-    "feature_key": "nose_wing_width",
-    "op": "gte",
-    "v_min": 0.6,
-    "trait": "Thực tế, giữ của",
-    "reading_hint": "Cánh mũi đầy đặn, chắc chắn — tướng giàu, giữ được tài lộc",
-    "source": "ntc",
-    "citation": "Chương IV — Mũi, tương quan phú quý",
-    "weight": 0.9,
-    "careers": {
-      "tai-chinh-ke-toan": 0.85,
-      "quan-ly-van-hanh": 0.5
-    }
-  },
-  {
-    "id": "nose_wing_balanced",
-    "feature_key": "nose_wing_width",
-    "op": "between",
-    "v_min": 0.48,
-    "v_max": 0.6,
-    "trait": "Khéo léo kỹ thuật",
-    "reading_hint": "Hai cánh mũi cân xứng chắc chắn — tài mô phỏng, khéo léo về kỹ thuật",
-    "source": "ntc",
-    "citation": "Chương IV — Mũi, tương quan cá tính (thông minh lanh lợi)",
-    "weight": 0.9,
-    "careers": {
-      "ky-thuat-cong-nghe": 0.85
-    }
-  },
-  {
-    "id": "nose_wing_thin",
-    "feature_key": "nose_wing_width",
-    "op": "lt",
-    "v_max": 0.45,
-    "trait": "Hào phóng, coi nhẹ vật chất",
-    "reading_hint": "Cánh mũi mỏng, lỗ mũi rộng — hào phóng, coi rẻ tiền bạc",
-    "source": "ntc",
-    "citation": "Chương IV — Mũi, tương quan cá tính (hào phóng)",
-    "weight": 0.7,
-    "careers": {
-      "nghien-cuu-giang-day": 0.55,
-      "kinh-doanh-truyen-thong": 0.4
-    }
-  },
-  {
-    "id": "nose_bridge_firm",
-    "feature_key": "nose_bridge_width",
-    "op": "gte",
-    "v_min": 0.45,
-    "trait": "Ý chí kiên cường, chính trực",
-    "reading_hint": "Sống mũi và cánh mũi cứng rắn, ngay thẳng — ý chí kiên cường, tâm địa chính trực",
-    "source": "ntc",
-    "citation": "Chương IV — Mũi, tương quan cá tính (lương thiện chính trực)",
-    "weight": 0.9,
-    "careers": {
-      "phap-ly-hcc": 0.7,
-      "quan-ly-van-hanh": 0.6,
-      "ky-thuat-cong-nghe": 0.5
-    }
-  },
-  {
-    "id": "mouth_corner_up",
-    "feature_key": "mouth_corner_angle",
-    "op": "gt",
-    "v_min": 0.0,
-    "trait": "Tín nghĩa, tích cực",
-    "reading_hint": "Khóe miệng hướng lên — người tín nghĩa, cát tướng",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, tương quan cá tính",
-    "weight": 0.6,
-    "careers": {
-      "kinh-doanh-truyen-thong": 0.5,
-      "quan-ly-van-hanh": 0.5
-    }
-  },
-  {
-    "id": "mouth_wide",
-    "feature_key": "mouth_width",
-    "op": "gt",
-    "v_min": 0.6,
-    "trait": "Giao tiếp cởi mở",
-    "reading_hint": "Khóe miệng rộng, môi cân — khẩu tài, trình bày rõ ràng",
+    "trait": "Phong thái có uy",
+    "reading_hint": "Mày cao, cách mắt rộng",
+    "reading_short": "Mày cao — cổ thư nói có uy.",
+    "reading_full": "Bài quyết về mày mở đầu bằng câu: 'Mày cao vút thanh tú, uy quyền lộc dày.' Nhóm dự án chỉ giữ phần nói về uy — phong thái khiến người khác nể — và bỏ phần nói về bổng lộc.",
     "source": "than_tuong_toan_bien",
-    "citation": "Chương V — Miệng, tương quan cá tính",
-    "weight": 0.9,
-    "careers": {
-      "kinh-doanh-truyen-thong": 0.85,
-      "nghien-cuu-giang-day": 0.6
-    }
-  },
-  {
-    "id": "lip_thin",
-    "feature_key": "lip_thickness",
-    "op": "lt",
-    "v_max": 0.45,
-    "trait": "Mau lẹ, mưu cơ",
-    "reading_hint": "Môi mỏng cân xứng — phản ứng mau lẹ, điềm tĩnh, làm việc có mưu cơ sâu sắc",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, tương quan cá tính (môi mỏng)",
-    "weight": 0.8,
-    "careers": {
-      "quan-ly-van-hanh": 0.7,
-      "kinh-doanh-truyen-thong": 0.6,
-      "ky-thuat-cong-nghe": 0.4
-    }
-  },
-  {
-    "id": "lip_thick",
-    "feature_key": "lip_thickness",
-    "op": "gte",
-    "v_min": 0.6,
-    "trait": "Điềm đạm, chung thủy",
-    "reading_hint": "Môi dày cân xứng — điềm đạm, tình cảm chung thủy, ít biến đổi",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, tương quan cá tính (môi dày)",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.2"
+    ],
+    "quote_han": "眉高聳秀，威權祿厚",
+    "quote_vi": "Mày cao vút thanh tú, uy quyền lộc dày.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "self_control"
+    ],
     "weight": 0.7,
     "careers": {
-      "quan-ly-van-hanh": 0.6,
-      "tai-chinh-ke-toan": 0.6,
-      "phap-ly-hcc": 0.5
-    }
+      "tai-chinh-ke-toan": 0.17,
+      "quan-ly-van-hanh": 0.87,
+      "phap-ly-hcc": 0.41,
+      "kinh-doanh-truyen-thong": 0.17,
+      "y-te-suc-khoe": 0.27,
+      "cong-dong-xa-hoi": 0.54,
+      "du-lich-dich-vu": 0.51,
+      "nong-lam-moi-truong": 0.15,
+      "giao-thong-logistics": 0.46
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Bỏ 'phúc khí, dễ hiển đạt' (chủ đề vận mạng)."
   },
   {
-    "id": "mouth_shape_vong_cung",
-    "feature_key": "mouth_shape",
-    "op": "category",
-    "category": "vong_cung",
-    "trait": "Lý tưởng, chiều sâu tư duy",
-    "reading_hint": "Miệng vòng cung — hợp nghề văn học, nghiên cứu hơn kinh doanh hay chính khách",
-    "source": "may",
-    "citation": "Chương V — Miệng, miệng vòng cung (loan cung khẩu)",
-    "weight": 1.0,
-    "careers": {
-      "nghien-cuu-giang-day": 0.9,
-      "phap-ly-hcc": 0.3
-    }
-  },
-  {
-    "id": "mouth_shape_ho",
-    "feature_key": "mouth_shape",
-    "op": "category",
-    "category": "ho",
-    "trait": "Uy quyền, thiên thực hành",
-    "reading_hint": "Miệng cọp — uy quyền, linh lợi, thiên về thực hành hơn lý thuyết",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, miệng cọp",
-    "weight": 1.0,
-    "careers": {
-      "quan-ly-van-hanh": 0.8,
-      "kinh-doanh-truyen-thong": 0.7
-    }
-  },
-  {
-    "id": "mouth_shape_long",
-    "feature_key": "mouth_shape",
-    "op": "category",
-    "category": "long",
-    "trait": "Dung hòa, uy tín lãnh đạo",
-    "reading_hint": "Miệng rồng — uy quyền chức vị, dung hòa được thực tiễn lẫn lý thuyết",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, miệng rồng",
-    "weight": 1.0,
-    "careers": {
-      "quan-ly-van-hanh": 0.85,
-      "kinh-doanh-truyen-thong": 0.6,
-      "phap-ly-hcc": 0.5
-    }
-  },
-  {
-    "id": "mouth_shape_chu_tu",
-    "feature_key": "mouth_shape",
-    "op": "category",
-    "category": "chu_tu",
-    "trait": "Cẩn thận, trung hậu",
-    "reading_hint": "Miệng chữ tứ / miệng vuông — cẩn thận trong lời nói và việc làm, trung hậu, thực thà",
-    "source": "ntc",
-    "citation": "Chương V — Miệng, miệng chữ tứ & miệng vuông",
-    "weight": 1.0,
-    "careers": {
-      "tai-chinh-ke-toan": 0.8,
-      "phap-ly-hcc": 0.7,
-      "quan-ly-van-hanh": 0.6
-    }
-  },
-  {
-    "id": "eye_phoenix",
-    "feature_key": "eye_length",
+    "id": "brow_rise",
+    "feature_key": "brow_tail_rise",
     "op": "gt",
-    "v_min": 1.0,
-    "trait": "Thông tuệ, thiên học thuật",
-    "reading_hint": "Mắt dài, sáng ẩn tàng (kiểu mắt phượng) — thông tuệ văn hóa, hợp nghiên cứu học thuật hơn thương mại",
-    "source": "ntc",
-    "citation": "Chương VI — Mắt, mắt phượng (phụng nhãn)",
-    "weight": 1.0,
-    "careers": {
-      "nghien-cuu-giang-day": 0.9,
-      "phap-ly-hcc": 0.4
-    }
-  },
-  {
-    "id": "eye_large",
-    "feature_key": "eye_size",
-    "op": "gt",
-    "v_min": 0.6,
-    "trait": "Chí khí cao, khai phóng",
-    "reading_hint": "Mắt lớn, tròng đen lớn — chí khí cao, đại lượng, tự tin, không câu nệ khuôn thức",
-    "source": "ntc",
-    "citation": "Chương VI — Mắt, biểu nhất lãm cá tính",
-    "weight": 0.9,
-    "careers": {
-      "kinh-doanh-truyen-thong": 0.7,
-      "quan-ly-van-hanh": 0.65
-    }
-  },
-  {
-    "id": "forehead_wide",
-    "feature_key": "forehead_width",
-    "op": "gt",
-    "v_min": 0.7,
-    "trait": "Bao quát rộng, trí nhớ tốt",
-    "reading_hint": "Trán rộng bề ngang — trí nhớ dai, nắm dữ kiện cụ thể mạnh, kiến thức phát triển theo chiều rộng",
-    "source": "ntc",
-    "citation": "Chương Trán, trán rộng",
+    "v_min": 0.15,
+    "trait": "Cương quyết",
+    "reading_hint": "Đuôi mày vểnh lên",
+    "reading_short": "Đuôi mày vểnh lên — cổ thư nói khí cương cường.",
+    "reading_full": "Thần tướng toàn biên viết: 'mày vểnh lên thì khí cương cường'; Băng giám cũng xếp mày 'dựng ngược lên' vào bậc trên. Diễn giải của nhóm dự án: nét của người quả quyết, giữ chính kiến, ít lùi bước trước khó khăn.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày; Băng giám — chương Râu mày",
+    "passage_ids": [
+      "xiangshu.131.1",
+      "bingjian.6.1"
+    ],
+    "quote_han": [
+      "昂者氣剛",
+      "倒豎者，上也"
+    ],
+    "quote_vi": "Mày vểnh lên thì khí cương cường. — Mày dựng ngược lên là bậc trên.",
+    "confidence": "sach",
+    "trait_dims": [
+      "persistence",
+      "stress_tolerance",
+      "initiative"
+    ],
     "weight": 0.8,
     "careers": {
-      "ky-thuat-cong-nghe": 0.6,
-      "tai-chinh-ke-toan": 0.6,
-      "quan-ly-van-hanh": 0.5
-    }
-  },
-  {
-    "id": "forehead_square",
-    "feature_key": "forehead_shape",
-    "op": "category",
-    "category": "vuong",
-    "trait": "Óc thực nghiệp, trọng thực tiễn",
-    "reading_hint": "Trán vuông vức, cao rộng — tinh thần thực tiễn; phần lớn khoa học gia, kinh tế gia, thực nghiệp gia có trán này",
-    "source": "ntc",
-    "citation": "Chương Trán, trán vuông",
-    "weight": 1.0,
-    "careers": {
-      "ky-thuat-cong-nghe": 0.8,
-      "tai-chinh-ke-toan": 0.7,
-      "kinh-doanh-truyen-thong": 0.6
-    },
-    "requires": "cần phân loại hình trán từ chân tóc (xấp xỉ)"
-  },
-  {
-    "id": "forehead_round_corner",
-    "feature_key": "forehead_shape",
-    "op": "category",
-    "category": "goc_tron",
-    "trait": "Thiên bẩm văn học nghệ thuật",
-    "reading_hint": "Trán hai góc tròn (chân tóc hình chữ M), cao rộng — khả năng văn học, nghệ thuật thiên bẩm",
-    "source": "ntc",
-    "citation": "Chương Trán, trán có góc tròn",
-    "weight": 1.0,
-    "careers": {
-      "nghien-cuu-giang-day": 0.85,
-      "kinh-doanh-truyen-thong": 0.4
-    },
-    "requires": "cần phân loại hình trán từ chân tóc (xấp xỉ)"
-  },
-  {
-    "id": "cheekbone_prominent",
-    "feature_key": "cheekbone_prominence",
-    "op": "gt",
-    "v_min": 0.6,
-    "trait": "Tự tin vững, ý chí đấu tranh",
-    "reading_hint": "Lưỡng Quyền rộng, nổi bật so với khuôn mặt — ý chí đấu tranh, tự tin kiên cường, có tín nghĩa với bạn bè",
-    "source": "te_dong_gia",
-    "citation": "Chương Lưỡng Quyền, 2. Quyền rộng, Quyền hẹp",
-    "weight": 0.9,
-    "careers": {
+      "cong-nghe-so": 0.33,
+      "tai-chinh-ke-toan": 0.18,
       "quan-ly-van-hanh": 0.75,
-      "kinh-doanh-truyen-thong": 0.6,
-      "phap-ly-hcc": 0.5
+      "phap-ly-hcc": 0.37,
+      "kinh-doanh-truyen-thong": 0.77,
+      "sang-tao-nghe-thuat": 0.37,
+      "y-te-suc-khoe": 0.25,
+      "cong-dong-xa-hoi": 0.26,
+      "nong-lam-moi-truong": 0.67,
+      "giao-thong-logistics": 0.2
     },
-    "change_note": "v4: tách 'quyền cao' sang luật cheekbone_high để không đếm hai lần."
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Luật mới. Ngưỡng 0.15 là tạm (brow_kiem dùng 0.12) — cần hiệu chuẩn."
   },
   {
-    "id": "cheekbone_high",
-    "feature_key": "cheekbone_height",
-    "op": "gt",
-    "v_min": 0.0,
-    "trait": "Tự tin, trọng danh dự",
-    "reading_hint": "Lưỡng Quyền nằm trên đường chia đôi sống mũi (quyền cao) — tự tin và tự tôn mạnh, cạnh tranh thiên về tư tưởng, tinh thần hơn lợi ích",
-    "source": "te_dong_gia",
-    "citation": "Chương IV — B. Lưỡng Quyền, 1. Quyền cao, thấp",
-    "weight": 0.7,
-    "careers": {
-      "quan-ly-van-hanh": 0.6,
-      "phap-ly-hcc": 0.5,
-      "nghien-cuu-giang-day": 0.3
-    },
-    "note": "Sách cho tiêu chí hình học trực tiếp (so với trung điểm Sơn Căn–Chuần Đầu) nên ngưỡng 0 là ngưỡng của sách. Landmark gò má của MediaPipe bị mô hình 3D làm trơn, cần kiểm tra phân phối thật."
-  },
-  {
-    "id": "dien_trach_narrow",
-    "feature_key": "brow_eye_gap",
+    "id": "brow_droop",
+    "feature_key": "brow_tail_rise",
     "op": "lt",
-    "v_max": 0.35,
-    "trait": "Cấp tiến, không nệ cổ",
-    "reading_hint": "Cung Điền trạch (khoảng từ bờ mắt trên tới bờ dưới lông mày) hẹp — tính nóng, thích tranh luận, không ưa khuôn sáo, óc cấp tiến",
-    "source": "kien_nong_cu_si",
-    "citation": "Chương I — VIII. 12 cung, 4. Cung Điền trạch (thuyết thứ hai)",
+    "v_max": -0.1,
+    "trait": "Mềm mỏng, ngại va chạm",
+    "reading_hint": "Đuôi mày rủ xuống",
+    "reading_short": "Đuôi mày rủ — cổ thư nói tính mềm mỏng.",
+    "reading_full": "Thần tướng toàn biên viết: 'đuôi mày rủ xuống mắt thì tính nhu nhược.' Nhóm dự án diễn đạt lại theo nghĩa trung tính: người mềm mỏng, ngại va chạm, dễ nhường. Mặt mạnh của nét này là sự hoà nhã; điều nên rèn thêm là dám nêu ý kiến của mình.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.1"
+    ],
+    "quote_han": "尾垂眼者性懦",
+    "quote_vi": "Đuôi mày rủ xuống mắt thì tính nhu nhược.",
+    "confidence": "sach",
+    "trait_dims": [
+      "cooperation",
+      "concern_for_others"
+    ],
     "weight": 0.6,
     "careers": {
-      "kinh-doanh-truyen-thong": 0.6,
-      "ky-thuat-cong-nghe": 0.5,
-      "nghien-cuu-giang-day": 0.3
-    }
+      "nghien-cuu-giang-day": 0.29,
+      "kinh-doanh-truyen-thong": 0.44,
+      "sang-tao-nghe-thuat": 0.23,
+      "y-te-suc-khoe": 0.85,
+      "cong-dong-xa-hoi": 0.96,
+      "du-lich-dich-vu": 0.94,
+      "giao-thong-logistics": 0.36
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Luật mới. Ngưỡng -0.1 là tạm — cần hiệu chuẩn."
   },
   {
     "id": "brow_kiem",
@@ -559,16 +633,2799 @@
         "v_min": 0.12
       }
     ],
-    "trait": "Cứng cỏi, học vấn sâu rộng",
-    "reading_hint": "Mày lưỡi kiếm: dài quá mắt, trông thẳng, đuôi ngược lên — tính nết cứng cỏi, học vấn sâu rộng",
-    "source": "ntc",
-    "citation": "Chương II — III. Các loại lông mày điển hình, 11. Lông mày lưỡi kiếm (kiếm mi)",
+    "trait": "Có uy và trí thức",
+    "reading_hint": "Mày lưỡi kiếm: dài quá mắt, thẳng, đuôi ngược lên",
+    "reading_short": "Mày lưỡi kiếm — cổ thư nói có uy quyền và trí thức.",
+    "reading_full": "Thần tướng toàn biên tả mày kiếm 'thanh tú mà dài, có uy quyền và trí thức để phò vua'; Băng giám viết 'mày như lưỡi kiếm thì nắm binh quyền'. Cả hai sách đều gắn mày kiếm với vai trò cầm quyền, giữ kỷ cương. Diễn giải của nhóm dự án: nét này gần với người vừa có hiểu biết vừa có khả năng tổ chức, điều hành.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Mày kiếm; Băng giám — chương Râu mày",
+    "passage_ids": [
+      "xiangshu.142.1",
+      "bingjian.6.1"
+    ],
+    "quote_han": [
+      "眉若山林秀且長，威權智識輔君王",
+      "如劍者掌兵權"
+    ],
+    "quote_vi": "Mày như rừng trên núi, thanh tú mà dài, có uy quyền và trí thức để phò vua. — Mày như lưỡi kiếm thì nắm binh quyền.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "analytical_thinking",
+      "integrity"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "cong-nghe-so": 0.36,
+      "ky-thuat-xay-dung": 0.45,
+      "san-xuat-thu-cong": 0.16,
+      "tai-chinh-ke-toan": 0.59,
+      "quan-ly-van-hanh": 0.45,
+      "nghien-cuu-giang-day": 0.55,
+      "phap-ly-hcc": 0.39,
+      "nong-lam-moi-truong": 0.79,
+      "giao-thong-logistics": 0.17
+    },
+    "requires": "engine hỗ trợ op 'all' (xem lib/engine_all_op.ts)",
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "eye_phoenix",
+    "feature_key": "eye_length",
+    "op": "gt",
+    "v_min": 1.0,
+    "trait": "Thông minh, sáng trí",
+    "reading_hint": "Mắt dài — dáng mắt phượng",
+    "reading_short": "Mắt dài như mắt phượng — cổ thư nói thông minh trí tuệ.",
+    "reading_full": "Thần tướng toàn biên tả mắt phượng 'sóng mắt dài… thông minh trí tuệ, công danh toại nguyện', và nói chung 'mắt dài mà sâu, sáng nhuận' là tướng rất tốt. Ứng dụng chỉ đo được chiều dài mắt, không đo được thần sắc. Diễn giải của nhóm dự án: thiên hướng học thuật, tư duy.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Mắt phượng, Tướng mục luận",
+    "passage_ids": [
+      "xiangshu.160.1",
+      "xiangshu.157.1"
+    ],
+    "quote_han": [
+      "聰明智慧功名遂",
+      "眼長而深，光潤者大貴"
+    ],
+    "quote_vi": "Thông minh trí tuệ, công danh toại nguyện. — Mắt dài mà sâu, sáng nhuận thì rất quý.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 1.0,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "eye_temple",
+    "feature_key": "eye_length",
+    "op": "gt",
+    "v_min": 1.15,
+    "trait": "Hợp việc luật lệ, xét xử",
+    "reading_hint": "Đuôi mắt dài về phía thái dương",
+    "reading_short": "Đuôi mắt rất dài — Băng giám nói hợp việc hình danh (luật pháp).",
+    "reading_full": "Băng giám viết: 'Đuôi mắt dài vào tới tóc mai ắt nắm việc hình danh.' Hình danh là việc luật lệ, xét xử. Đây là một câu hiếm hoi cổ thư nói thẳng về loại công việc. Ứng dụng xấp xỉ 'dài vào tới tóc mai' bằng chiều dài mắt lớn hơn hẳn mức trung bình.",
+    "source": "bang_giam",
+    "citation": "chương Dung mạo",
+    "passage_ids": [
+      "bingjian.4.4"
+    ],
+    "quote_han": "眼角入鬢，必掌刑名",
+    "quote_vi": "Đuôi mắt dài vào tới tóc mai ắt nắm việc hình danh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "attention_to_detail",
+      "analytical_thinking"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.55,
+      "ky-thuat-xay-dung": 0.59,
+      "san-xuat-thu-cong": 0.86,
+      "tai-chinh-ke-toan": 0.95,
+      "nghien-cuu-giang-day": 0.33,
+      "phap-ly-hcc": 0.63,
+      "y-te-suc-khoe": 0.29,
+      "nong-lam-moi-truong": 0.37,
+      "giao-thong-logistics": 0.23
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Luật mới. Ngưỡng 1.15 là tạm — cần hiệu chuẩn."
+  },
+  {
+    "id": "eye_narrow_deep",
+    "feature_key": "eye_size",
+    "op": "lt",
+    "v_max": 0.4,
+    "trait": "Kín đáo, trầm lắng",
+    "reading_hint": "Mắt nhỏ, độ mở hẹp",
+    "reading_short": "Mắt nhỏ mà sâu — cổ thư nói tính kín đáo.",
+    "reading_full": "Thần tướng toàn biên viết mắt 'nhỏ mà sâu… kiêm tính kín đáo, ít giao du'. Diễn giải của nhóm dự án: người trầm tĩnh, thích làm việc tập trung, cân nhắc kỹ trước khi nói. Ứng dụng chỉ đo được độ mở của mắt, chưa đo được độ sâu.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Tướng mục luận",
+    "passage_ids": [
+      "xiangshu.157.1"
+    ],
+    "quote_han": "細而深者長壽。兼性隱僻",
+    "quote_vi": "Mắt nhỏ mà sâu thì sống lâu, kiêm tính kín đáo, ít giao du.",
+    "confidence": "sach",
+    "trait_dims": [
+      "independence",
+      "attention_to_detail",
+      "self_control"
+    ],
     "weight": 0.7,
     "careers": {
-      "nghien-cuu-giang-day": 0.7,
-      "phap-ly-hcc": 0.5,
-      "ky-thuat-cong-nghe": 0.4
+      "cong-nghe-so": 0.23,
+      "ky-thuat-xay-dung": 0.24,
+      "san-xuat-thu-cong": 0.65,
+      "tai-chinh-ke-toan": 0.61,
+      "phap-ly-hcc": 0.52,
+      "sang-tao-nghe-thuat": 0.16,
+      "y-te-suc-khoe": 0.52,
+      "du-lich-dich-vu": 0.31,
+      "giao-thong-logistics": 0.33
     },
-    "requires": "engine hỗ trợ op 'all' (xem lib/engine_all_op.ts)"
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Thay luật eye_large (không có câu gốc về tính cách). Ngưỡng 0.4 là tạm."
+  },
+  {
+    "id": "nose_wing_full",
+    "feature_key": "nose_wing_width",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Hiền hoà, rộng lượng",
+    "reading_hint": "Phần dưới mũi đầy đặn",
+    "reading_short": "Mũi đầy đặn — cổ thư nói người không hại ai.",
+    "reading_full": "Thần tướng toàn biên viết: 'đầu mũi đầy lớn thì không hại người.' Ứng dụng đo bề rộng cánh mũi chứ không đo đầu mũi, nên nhóm dự án chỉ dùng câu này như suy luận: phần mũi đầy đặn được hiểu là tính rộng lượng, dễ chịu.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Tướng mũi",
+    "passage_ids": [
+      "xiangshu.199.1"
+    ],
+    "quote_han": "準頭豐大與人無害",
+    "quote_vi": "Đầu mũi đầy lớn thì không hại người.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "cooperation",
+      "concern_for_others"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "nghien-cuu-giang-day": 0.29,
+      "kinh-doanh-truyen-thong": 0.44,
+      "sang-tao-nghe-thuat": 0.23,
+      "y-te-suc-khoe": 0.85,
+      "cong-dong-xa-hoi": 0.96,
+      "du-lich-dich-vu": 0.94,
+      "giao-thong-logistics": 0.36
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "nose_bridge_firm",
+    "feature_key": "nose_bridge_width",
+    "op": "gte",
+    "v_min": 0.45,
+    "trait": "Sáng ý, có chủ kiến",
+    "reading_hint": "Sống mũi vững",
+    "reading_short": "Sống mũi vững — Băng giám ví mũi là ngọn núi của khuôn mặt.",
+    "reading_full": "Băng giám viết: 'mũi là ngọn núi của khuôn mặt, không cao thì không linh.' 'Linh' ở đây là sự nhanh nhạy, sáng ý. Ứng dụng đo bề rộng sống mũi chứ không đo độ cao, nên đây là suy luận của nhóm dự án.",
+    "source": "bang_giam",
+    "citation": "chương Dung mạo",
+    "passage_ids": [
+      "bingjian.4.4"
+    ],
+    "quote_han": "鼻者面之山，不高則不靈",
+    "quote_vi": "Mũi là ngọn núi của khuôn mặt, không cao thì không linh.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "analytical_thinking",
+      "independence"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "cong-nghe-so": 0.61,
+      "ky-thuat-xay-dung": 0.63,
+      "tai-chinh-ke-toan": 0.29,
+      "nghien-cuu-giang-day": 0.71,
+      "phap-ly-hcc": 0.19,
+      "kinh-doanh-truyen-thong": 0.52,
+      "sang-tao-nghe-thuat": 0.75,
+      "nong-lam-moi-truong": 0.4
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_corner_up",
+    "feature_key": "mouth_corner_angle",
+    "op": "gt",
+    "v_min": 0.0,
+    "trait": "Ham học, nhiều tài",
+    "reading_hint": "Khoé miệng hơi ngửa lên",
+    "reading_short": "Khoé miệng hơi ngửa lên — cổ thư nói thông minh, nhiều tài học.",
+    "reading_full": "Thần tướng toàn biên tả miệng chữ tứ: 'hai đầu hơi ngửa lên không rủ xuống. Thông minh lại có nhiều tài học.' Diễn giải của nhóm dự án: thiên hướng ham học, tiếp thu tốt, thái độ tích cực.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Miệng chữ tứ",
+    "passage_ids": [
+      "xiangshu.245.1"
+    ],
+    "quote_han": "兩頭略仰不垂低。聰明更有多才學",
+    "quote_vi": "Hai đầu hơi ngửa lên không rủ xuống. Thông minh lại có nhiều tài học.",
+    "confidence": "sach",
+    "trait_dims": [
+      "achievement",
+      "analytical_thinking"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_wide",
+    "feature_key": "mouth_width",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Cởi mở, giao tiếp",
+    "reading_hint": "Khoé miệng rộng",
+    "reading_short": "Miệng rộng — cổ thư gọi miệng là 'cửa của lời nói'.",
+    "reading_full": "Thần tướng toàn biên gọi miệng là 'cửa của lời nói' và đề cao 'khẩu đức': ngay ngắn, đôn hậu, không nói càn. Sách không nói miệng rộng thì giỏi giao tiếp; đó là suy luận của nhóm dự án, kèm lời nhắc của chính cổ thư rằng lời nói quý ở sự ngay thẳng.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Tướng miệng",
+    "passage_ids": [
+      "xiangshu.243.1"
+    ],
+    "quote_han": [
+      "口為言語之門",
+      "端厚不妄誕，謂之《口德》"
+    ],
+    "quote_vi": "Miệng là cửa của lời nói. — Ngay ngắn, đôn hậu, không nói càn gọi là khẩu đức.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "social_orientation",
+      "cooperation"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "quan-ly-van-hanh": 0.65,
+      "nghien-cuu-giang-day": 0.21,
+      "kinh-doanh-truyen-thong": 0.88,
+      "sang-tao-nghe-thuat": 0.27,
+      "y-te-suc-khoe": 0.4,
+      "cong-dong-xa-hoi": 0.88,
+      "du-lich-dich-vu": 1.0,
+      "giao-thong-logistics": 0.31
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "lip_thick",
+    "feature_key": "lip_thickness",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Trung tín, giữ lời",
+    "reading_hint": "Môi trên dưới đều dày",
+    "reading_short": "Môi trên dưới đều dày — cổ thư nói người trung tín.",
+    "reading_full": "Thần tướng toàn biên viết: 'trên dưới đều dày là người trung tín', và nói chung 'môi nên dày không nên mỏng'. Diễn giải của nhóm dự án: nét của người giữ lời, đáng tin, làm việc có trước có sau.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Luận môi",
+    "passage_ids": [
+      "xiangshu.261.1"
+    ],
+    "quote_han": "上下俱厚者，忠信之人",
+    "quote_vi": "Trên dưới đều dày là người trung tín.",
+    "confidence": "sach",
+    "trait_dims": [
+      "dependability",
+      "integrity"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_shape_vong_cung",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "vong_cung",
+    "trait": "Tinh thần sáng suốt",
+    "reading_hint": "Miệng như cánh cung",
+    "reading_short": "Miệng cánh cung — cổ thư nói thần trong khí sảng.",
+    "reading_full": "Thần tướng toàn biên tả miệng cánh cung 'như cánh cung vừa lên dây, hai môi đầy dày… thần trong khí sảng, rốt cuộc được trọng dụng'. Diễn giải của nhóm dự án: người tỉnh táo, minh mẫn, có năng lực được tin giao việc.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Miệng cánh cung",
+    "passage_ids": [
+      "xiangshu.248.1"
+    ],
+    "quote_han": "神清氣爽終為用",
+    "quote_vi": "Thần trong khí sảng, rốt cuộc được trọng dụng.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "dependability"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.47,
+      "ky-thuat-xay-dung": 0.54,
+      "san-xuat-thu-cong": 0.84,
+      "tai-chinh-ke-toan": 0.57,
+      "nghien-cuu-giang-day": 0.54,
+      "phap-ly-hcc": 0.36,
+      "y-te-suc-khoe": 0.21,
+      "nong-lam-moi-truong": 0.63,
+      "giao-thong-logistics": 0.4
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_shape_ho",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "ho",
+    "trait": "Bao quát, có chừng mực",
+    "reading_hint": "Miệng hổ: rộng lớn mà gọn",
+    "reading_short": "Miệng hổ — rộng lớn mà có thu gọn.",
+    "reading_full": "Thần tướng toàn biên tả miệng hổ 'rộng lớn mà có thu gọn', rồi chỉ bàn về của cải. Nhóm dự án suy ra từ hình ảnh 'rộng mà có thu gọn' một tính cách bao quát nhưng biết giữ chừng mực — đây không phải lời sách.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Miệng hổ",
+    "passage_ids": [
+      "xiangshu.251.1"
+    ],
+    "quote_han": "闊大有收拾",
+    "quote_vi": "Rộng lớn mà có thu gọn.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "leadership",
+      "self_control"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "tai-chinh-ke-toan": 0.17,
+      "quan-ly-van-hanh": 0.87,
+      "phap-ly-hcc": 0.41,
+      "kinh-doanh-truyen-thong": 0.17,
+      "y-te-suc-khoe": 0.27,
+      "cong-dong-xa-hoi": 0.54,
+      "du-lich-dich-vu": 0.51,
+      "nong-lam-moi-truong": 0.15,
+      "giao-thong-logistics": 0.46
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_shape_long",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "long",
+    "trait": "Biết điều hành, quyền biến",
+    "reading_hint": "Miệng rồng: hai môi đầy, đều",
+    "reading_short": "Miệng rồng — cổ thư nói biết tụ người, tán người, quyền biến thông suốt.",
+    "reading_full": "Thần tướng toàn biên tả miệng rồng 'hai môi đầy và đều… tụ người thì hô, tán người thì quát, quyền biến thông suốt'. Đây là hình ảnh người điều khiển được đám đông và biết linh hoạt theo tình thế. Diễn giải của nhóm dự án: thiên hướng dẫn dắt, điều phối.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Miệng rồng",
+    "passage_ids": [
+      "xiangshu.250.1"
+    ],
+    "quote_han": "聚呼喝散權通變",
+    "quote_vi": "Tụ người thì hô, tán người thì quát, quyền biến thông suốt.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "adaptability",
+      "social_orientation"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "cong-nghe-so": 0.21,
+      "ky-thuat-xay-dung": 0.23,
+      "quan-ly-van-hanh": 0.81,
+      "nghien-cuu-giang-day": 0.26,
+      "kinh-doanh-truyen-thong": 0.86,
+      "sang-tao-nghe-thuat": 0.42,
+      "cong-dong-xa-hoi": 0.52,
+      "du-lich-dich-vu": 0.57,
+      "giao-thong-logistics": 0.19
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "mouth_shape_chu_tu",
+    "feature_key": "mouth_shape",
+    "op": "category",
+    "category": "chu_tu",
+    "trait": "Lời nói chính trực",
+    "reading_hint": "Miệng chữ tứ: hai môi đều nhau",
+    "reading_short": "Hai môi đều, xứng nhau — cổ thư nói lời nói chính trực.",
+    "reading_full": "Thần tướng toàn biên tả miệng chữ tứ 'khoé miệng sáng sủa, hai môi đều nhau', và ở thiên Luận môi viết: 'trên dưới xứng nhau thì lời nói chính trực.' Diễn giải của nhóm dự án: người nói năng cẩn trọng, đúng mực — gần với việc cần sự chính xác và tin cậy.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Miệng chữ tứ, Luận môi",
+    "passage_ids": [
+      "xiangshu.245.1",
+      "xiangshu.261.1"
+    ],
+    "quote_han": [
+      "口角光明脣兩齊",
+      "上下兩相稱者，言語正直"
+    ],
+    "quote_vi": "Khoé miệng sáng sủa, hai môi đều nhau. — Trên dưới xứng nhau thì lời nói chính trực.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "attention_to_detail"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "cong-nghe-so": 0.43,
+      "ky-thuat-xay-dung": 0.42,
+      "san-xuat-thu-cong": 0.95,
+      "tai-chinh-ke-toan": 1.0,
+      "phap-ly-hcc": 0.77,
+      "y-te-suc-khoe": 0.54,
+      "giao-thong-logistics": 0.5
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "forehead_wide",
+    "feature_key": "forehead_width",
+    "op": "gt",
+    "v_min": 0.7,
+    "trait": "Minh mẫn, sáng dạ",
+    "reading_hint": "Trán rộng",
+    "reading_short": "Trán rộng — cổ thư nói anh tuấn, thông minh.",
+    "reading_full": "Thần tướng toàn biên viết: 'chân tóc đều, trán rộng thì anh tuấn thông minh', và 'trán rộng, phẳng, không vân thì giúp đôi mắt thêm gấp bội tinh thần'. Lời chú của sách cũng nhắc: mắt không có thần thì trán rộng cũng chẳng được bao nhiêu — nên nét này chỉ nên đọc cùng các nét khác.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.12 — Luận trán; q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.488.1",
+      "xiangshu.332.58"
+    ],
+    "quote_han": [
+      "額闊平無紋，助眼倍精神",
+      "髮齊額廣。英俊聰明"
+    ],
+    "quote_vi": "Trán rộng, phẳng, không vân thì giúp đôi mắt thêm gấp bội tinh thần. — Chân tóc đều, trán rộng thì anh tuấn thông minh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "forehead_square",
+    "feature_key": "forehead_shape",
+    "op": "category",
+    "category": "vuong",
+    "trait": "Vững vàng, thực tế",
+    "reading_hint": "Trán vuông (ước lượng)",
+    "reading_short": "Trán vuông — cổ thư coi là tướng tốt; phần tính cách do nhóm suy ra.",
+    "reading_full": "Thần tướng toàn biên nhiều lần khen trán vuông ('trán lớn mặt vuông', 'trán vuông cao vút') nhưng chỉ nói về vận tốt, không nói về tính cách. Nhóm dự án suy ra từ hình khối vuông vắn một tính cách vững vàng, thực tế. Ứng dụng cũng chỉ ước lượng được dạng trán vì không thấy chân tóc.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.12 — Ngạch bộ tướng",
+    "passage_ids": [
+      "xiangshu.486.2"
+    ],
+    "quote_han": "額大面方",
+    "quote_vi": "Trán lớn mặt vuông.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "dependability",
+      "persistence"
+    ],
+    "weight": 0.4,
+    "careers": {
+      "cong-nghe-so": 0.3,
+      "ky-thuat-xay-dung": 0.31,
+      "san-xuat-thu-cong": 0.69,
+      "tai-chinh-ke-toan": 0.42,
+      "quan-ly-van-hanh": 0.43,
+      "phap-ly-hcc": 0.59,
+      "kinh-doanh-truyen-thong": 0.19,
+      "y-te-suc-khoe": 0.37,
+      "nong-lam-moi-truong": 1.0,
+      "giao-thong-logistics": 0.57
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học. Bỏ forehead_round_corner (không có câu gốc trong nguồn công cộng)."
+  },
+  {
+    "id": "cheekbone_prominent",
+    "feature_key": "cheekbone_prominence",
+    "op": "gt",
+    "v_min": 0.6,
+    "trait": "Có uy, biết cân nhắc",
+    "reading_hint": "Gò má nở",
+    "reading_short": "Gò má rõ — cổ thư nói chủ về quyền thế, biết cân nhắc.",
+    "reading_full": "Thần tướng toàn biên viết: 'trên mặt có xương nhô cao gọi là gò má, chủ về quyền thế', 'gò má thịt mỏng mà mở vuông ra thì chủ có quyền hành, biết cân nhắc nặng nhẹ', và ngược lại 'mặt không có gò má thì người ấy không có uy'. Diễn giải của nhóm dự án: nét của người có uy, biết cân nhắc khi ra quyết định.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.1 — Tướng cốt, Luận cốt nhục; q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.43.1",
+      "xiangshu.42.1",
+      "xiangshu.332.58"
+    ],
+    "quote_han": [
+      "面上有骨卓起，名為顴骨，主權勢",
+      "肉薄而開方者，主有權衡",
+      "面無顴骨，其人無威"
+    ],
+    "quote_vi": "Trên mặt có xương nhô cao gọi là gò má, chủ về quyền thế. — Gò má thịt mỏng mà mở vuông ra thì chủ có quyền hành. — Mặt không có gò má thì người ấy không có uy.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "analytical_thinking",
+      "self_control"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "ky-thuat-xay-dung": 0.33,
+      "tai-chinh-ke-toan": 0.25,
+      "quan-ly-van-hanh": 0.71,
+      "nghien-cuu-giang-day": 0.43,
+      "phap-ly-hcc": 0.29,
+      "sang-tao-nghe-thuat": 0.2,
+      "y-te-suc-khoe": 0.19,
+      "cong-dong-xa-hoi": 0.29,
+      "du-lich-dich-vu": 0.2,
+      "nong-lam-moi-truong": 0.43,
+      "giao-thong-logistics": 0.21
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "cheekbone_high",
+    "feature_key": "cheekbone_height",
+    "op": "gt",
+    "v_min": 0.0,
+    "trait": "Khí phách, tự tin",
+    "reading_hint": "Gò má cao",
+    "reading_short": "Gò má cao — cổ thư nói khí phách hơn người.",
+    "reading_full": "Bài Dũng trí ca trong Thần tướng toàn biên viết 'gò má cao, khí phun như mây', và bài Đắc ý ca: 'gò má trên mặt có quyền hành, nổi danh nhất giữa đám đông'. Diễn giải của nhóm dự án: người tự tin, dám đứng trước đám đông, gần với vai trò đại diện, dẫn dắt.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Dũng trí ca, Đắc ý ca",
+    "passage_ids": [
+      "xiangshu.366.1",
+      "xiangshu.360.1"
+    ],
+    "quote_han": [
+      "顴高氣吐雲",
+      "面上顴骨有權衡，眾中最馳名"
+    ],
+    "quote_vi": "Gò má cao, khí phun như mây. — Gò má trên mặt có quyền hành, nổi danh nhất giữa đám đông.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "stress_tolerance",
+      "social_orientation"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "quan-ly-van-hanh": 0.79,
+      "phap-ly-hcc": 0.27,
+      "kinh-doanh-truyen-thong": 0.59,
+      "sang-tao-nghe-thuat": 0.26,
+      "y-te-suc-khoe": 0.23,
+      "cong-dong-xa-hoi": 0.63,
+      "du-lich-dich-vu": 0.61,
+      "giao-thong-logistics": 0.42
+    },
+    "change_note": "v5: soạn lại từ nguyên văn Hán công cộng, bỏ trích dẫn Nhân Tướng Học."
+  },
+  {
+    "id": "glabella_wide",
+    "feature_key": "glabella_width",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Thẳng thắn, không tư lợi",
+    "reading_hint": "Ấn đường rộng",
+    "reading_short": "Khoảng giữa hai mày rộng — cổ thư nói lòng dạ phẳng lặng.",
+    "reading_full": "Nhân luân đại thống phú viết khoảng giữa hai mày rộng thì lòng phẳng lặng, thản nhiên không riêng tư. Diễn giải của nhóm dự án: người ít toan tính cho riêng mình, dễ được tin cậy khi làm việc chung.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Nhân luân đại thống phú (thượng)",
+    "passage_ids": [
+      "xiangshu.336.10"
+    ],
+    "quote_han": [
+      "眉宇寬廣，心田坦平",
+      "若眉宇寬長平闊者，則心坦然無私"
+    ],
+    "quote_vi": "Khoảng giữa hai mày rộng, lòng dạ phẳng lặng. — Khoảng giữa hai mày rộng dài, phẳng thoáng thì lòng thản nhiên, không riêng tư.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "cooperation"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "san-xuat-thu-cong": 0.18,
+      "tai-chinh-ke-toan": 0.31,
+      "quan-ly-van-hanh": 0.21,
+      "nghien-cuu-giang-day": 0.18,
+      "phap-ly-hcc": 0.5,
+      "y-te-suc-khoe": 0.57,
+      "cong-dong-xa-hoi": 0.73,
+      "du-lich-dich-vu": 0.71,
+      "nong-lam-moi-truong": 0.16,
+      "giao-thong-logistics": 0.52
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "glabella_close",
+    "feature_key": "glabella_width",
+    "op": "lte",
+    "v_max": 0.35,
+    "trait": "Lo xa, cân nhắc kỹ",
+    "reading_hint": "Hai đầu mày gần nhau",
+    "reading_short": "Hai đầu mày gần nhau — gợi nét hay nghĩ xa, cẩn thận.",
+    "reading_full": "Thái Ất chân nhân thư viết người thường lo sâu nghĩ xa là do đôi mày chụm lại. Câu này tả dáng chau mày, còn app đo khoảng cách hai đầu mày lúc mặt nghỉ, nên đây là suy luận của nhóm dự án: người có xu hướng nghĩ kỹ, tính trước các tình huống.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Thái Ất chân nhân thư",
+    "passage_ids": [
+      "xiangshu.340.1"
+    ],
+    "quote_han": [
+      "常是憂深遠慮只為眉攢"
+    ],
+    "quote_vi": "Thường lo sâu nghĩ xa chỉ vì đôi mày chụm lại.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "attention_to_detail",
+      "self_control"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "san-xuat-thu-cong": 0.9,
+      "tai-chinh-ke-toan": 0.75,
+      "phap-ly-hcc": 0.71,
+      "y-te-suc-khoe": 0.79,
+      "du-lich-dich-vu": 0.37,
+      "giao-thong-logistics": 0.65
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_brow_open_space",
+    "feature_key": "eye_brow_open_space",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_spacing",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "glabella_width",
+        "op": "gte",
+        "v_min": 0.5
+      }
+    ],
+    "trait": "Thư thái, dễ mở lòng",
+    "reading_hint": "Vùng giữa hai mắt, hai mày thoáng rộng",
+    "reading_short": "Vùng giữa hai mắt, hai mày thoáng rộng — gợi vẻ thư thái.",
+    "reading_full": "Thiên Tướng ấn đường dặn ấn đường nên đầy đặn, rộng, phẳng, ngay và hai mày giãn ra. Sách không nói riêng về khoảng cách hai mắt và cũng không nêu tính cách ở điểm này. Nhóm dự án suy rộng rằng vùng giữa mặt thoáng thường được đọc là người thư thái, dễ tiếp nhận — chỉ nên coi là gợi ý tham khảo.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Tướng ấn đường",
+    "passage_ids": [
+      "xiangshu.197.1"
+    ],
+    "quote_han": [
+      "要豐闊平正，兩眉舒展"
+    ],
+    "quote_vi": "Nên đầy đặn, rộng, phẳng, ngay, hai mày giãn ra.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "adaptability",
+      "cooperation"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "cong-nghe-so": 0.39,
+      "ky-thuat-xay-dung": 0.15,
+      "quan-ly-van-hanh": 0.73,
+      "nghien-cuu-giang-day": 0.24,
+      "kinh-doanh-truyen-thong": 0.55,
+      "sang-tao-nghe-thuat": 0.45,
+      "y-te-suc-khoe": 0.24,
+      "cong-dong-xa-hoi": 0.75,
+      "du-lich-dich-vu": 0.73,
+      "nong-lam-moi-truong": 0.29,
+      "giao-thong-logistics": 0.27
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nasion_straight_loyal",
+    "feature_key": "nasion_straight_loyal",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nasion_height",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "nose_straightness",
+        "op": "gte",
+        "v_min": 0.7
+      }
+    ],
+    "trait": "Trung tín",
+    "reading_hint": "Sống mũi thẳng liền tới sơn căn",
+    "reading_short": "Sống mũi thẳng liền tới sơn căn — cổ thư nói cả đời giữ lòng trung tín.",
+    "reading_full": "Chiếu đảm kinh viết mũi phải thẳng lên tới sơn căn, không đứt đoạn thì suốt đời ôm lòng trung tín. Diễn giải của nhóm dự án: người giữ lời, đi đường dài với điều đã nhận.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mũi",
+    "passage_ids": [
+      "xiangshu.672.2"
+    ],
+    "quote_han": [
+      "鼻要直至山根上，無破一生懷抱忠信"
+    ],
+    "quote_vi": "Mũi phải thẳng lên tới sơn căn, không đứt đoạn thì suốt đời ôm lòng trung tín.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability"
+    ],
+    "weight": 0.9,
+    "careers": {
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nasion_high",
+    "feature_key": "nasion_height",
+    "op": "gte",
+    "v_min": 0.65,
+    "trait": "Thiên về học thuật",
+    "reading_hint": "Sơn căn cao",
+    "reading_short": "Sơn căn cao, không gãy — cổ thư gắn với nơi học hành thanh cao.",
+    "reading_full": "Lã Thuần Dương tướng phú viết sơn căn không gãy thì công danh đẹp, nơi học hành thanh cao. Sách nói về đường học vấn chứ không tả tính cách; nhóm dự án suy ra người có xu hướng thích môi trường học thuật, nghiên cứu.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Lã Thuần Dương tướng phú",
+    "passage_ids": [
+      "xiangshu.333.8"
+    ],
+    "quote_han": [
+      "山根不折者，功名俊美，學館清高"
+    ],
+    "quote_vi": "Sơn căn không gãy thì công danh đẹp, nơi học hành thanh cao.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_tip_high",
+    "feature_key": "nose_tip_height",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Thành thật, giữ chữ tín",
+    "reading_hint": "Chuẩn đầu cao",
+    "reading_short": "Đầu mũi cao — cổ thư nói người thành khẩn, giữ tín.",
+    "reading_full": "Nhân luân đại thống phú viết đầu mũi cao thì người ấy thành khẩn và rất giữ tín. Diễn giải của nhóm dự án: hợp những việc người khác phải tin vào lời mình nói.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Nhân luân đại thống phú (hạ)",
+    "passage_ids": [
+      "xiangshu.337.3"
+    ],
+    "quote_han": [
+      "準頭高隆，其人誠懇而篤信"
+    ],
+    "quote_vi": "Đầu mũi cao, người ấy thành khẩn và rất giữ tín.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_tip_full",
+    "feature_key": "nose_tip_size",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Hiền hoà, không hiểm",
+    "reading_hint": "Chuẩn đầu đầy đặn",
+    "reading_short": "Đầu mũi đầy đặn — cổ thư nói lòng không độc.",
+    "reading_full": "Thần dị phú viết đầu mũi đầy và lớn thì lòng không độc. Diễn giải của nhóm dự án: người ít để bụng, cư xử hiền hoà với xung quanh.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.332.7"
+    ],
+    "quote_han": [
+      "準頭豐大心無毒"
+    ],
+    "quote_vi": "Đầu mũi đầy và lớn thì lòng không độc.",
+    "confidence": "sach",
+    "trait_dims": [
+      "concern_for_others",
+      "cooperation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "nghien-cuu-giang-day": 0.29,
+      "kinh-doanh-truyen-thong": 0.44,
+      "sang-tao-nghe-thuat": 0.23,
+      "y-te-suc-khoe": 0.85,
+      "cong-dong-xa-hoi": 0.96,
+      "du-lich-dich-vu": 0.94,
+      "giao-thong-logistics": 0.36
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_wide_long",
+    "feature_key": "nose_wide_long",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nose_length",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "nose_wing_width",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Tay nghề hơn người",
+    "reading_hint": "Mũi rộng và dài",
+    "reading_short": "Mũi rộng và dài — cổ thư nói kỹ nghệ khác thường.",
+    "reading_full": "Chiếu đảm kinh viết mũi rộng mà dài thì kỹ nghệ khác thường. Diễn giải của nhóm dự án: người có khiếu với nghề cần tay nghề, trau dồi kỹ năng lâu dài.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mũi",
+    "passage_ids": [
+      "xiangshu.672.1"
+    ],
+    "quote_han": [
+      "鼻廣而長，伎藝非常"
+    ],
+    "quote_vi": "Mũi rộng mà dài thì kỹ nghệ khác thường.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "attention_to_detail",
+      "achievement"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.57,
+      "ky-thuat-xay-dung": 0.88,
+      "san-xuat-thu-cong": 0.88,
+      "tai-chinh-ke-toan": 0.39,
+      "nghien-cuu-giang-day": 0.39,
+      "sang-tao-nghe-thuat": 0.43
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_straight",
+    "feature_key": "nose_straightness",
+    "op": "gte",
+    "v_min": 0.8,
+    "trait": "Vui vẻ, dễ chịu",
+    "reading_hint": "Sống mũi thẳng",
+    "reading_short": "Sống mũi thẳng — bài thơ cổ gắn với vẻ an vui.",
+    "reading_full": "Một bài thơ trong Thần tướng toàn biên viết sống mũi phẳng thẳng thì vui vẻ và thuận. Câu thơ không tả tính cách cụ thể; nhóm dự án suy ra người có nhịp sống dễ chịu, ít cực đoan.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.5 — Tướng giàu có",
+    "passage_ids": [
+      "xiangshu.297.1"
+    ],
+    "quote_han": [
+      "鼻梁平直樂且宜"
+    ],
+    "quote_vi": "Sống mũi phẳng thẳng thì vui vẻ và thuận.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "cooperation",
+      "self_control"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "quan-ly-van-hanh": 0.54,
+      "phap-ly-hcc": 0.32,
+      "kinh-doanh-truyen-thong": 0.23,
+      "y-te-suc-khoe": 0.94,
+      "cong-dong-xa-hoi": 0.83,
+      "du-lich-dich-vu": 0.83,
+      "giao-thong-logistics": 0.72
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_high_narrow",
+    "feature_key": "nose_high_narrow",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nasion_height",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "nose_ridge_width",
+        "op": "lte",
+        "v_max": 0.45
+      }
+    ],
+    "trait": "Lanh lợi, nhạy bén",
+    "reading_hint": "Sống mũi cao, thon",
+    "reading_short": "Sống mũi cao và thon — cổ thư nói tính lanh lợi.",
+    "reading_full": "Thơ trong hai thiên Hạc hình và Hổ hình đều viết sống mũi nhọn cao thì tính linh hoạt, thông tuệ. Diễn giải của nhóm dự án: người nhạy, nắm vấn đề nhanh.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.11 — Hạc hình, Hổ hình",
+    "passage_ids": [
+      "xiangshu.432.1",
+      "xiangshu.455.1"
+    ],
+    "quote_han": [
+      "鼻梁尖聳性靈聰",
+      "鼻梁尖起性靈聰"
+    ],
+    "quote_vi": "Sống mũi nhọn cao, tính linh hoạt thông tuệ.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "adaptability"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 1.0,
+      "ky-thuat-xay-dung": 0.67,
+      "nghien-cuu-giang-day": 0.63,
+      "kinh-doanh-truyen-thong": 0.39,
+      "sang-tao-nghe-thuat": 0.71,
+      "nong-lam-moi-truong": 0.69
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_round_straight",
+    "feature_key": "nose_round_straight",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nose_straightness",
+        "op": "gte",
+        "v_min": 0.7
+      },
+      {
+        "feature_key": "nose_tip_size",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Đứng đắn, có tài",
+    "reading_hint": "Mũi thẳng, đầu mũi tròn đầy",
+    "reading_short": "Mũi thẳng, đầu mũi tròn đầy — cổ thư gọi là bậc hiền tài.",
+    "reading_full": "Ngọc quản quyết viết đầu mũi sinh ra thẳng lại tròn nhuận, như sừng tê ẩn thì là người hiền tài. Sách có nói thêm độ nhuận của da, phần này app không đo. Diễn giải của nhóm dự án: người đứng đắn, có năng lực thật.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Ngọc quản quyết",
+    "passage_ids": [
+      "xiangshu.341.4"
+    ],
+    "quote_han": [
+      "鼻準生來直更圓潤，如犀伏主高賢"
+    ],
+    "quote_vi": "Đầu mũi sinh ra thẳng lại tròn nhuận, như sừng tê ẩn thì là bậc hiền tài.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "analytical_thinking"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.5,
+      "ky-thuat-xay-dung": 0.43,
+      "san-xuat-thu-cong": 0.34,
+      "tai-chinh-ke-toan": 0.79,
+      "nghien-cuu-giang-day": 0.57,
+      "phap-ly-hcc": 0.65,
+      "y-te-suc-khoe": 0.18,
+      "nong-lam-moi-truong": 0.65,
+      "giao-thong-logistics": 0.16
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_deer",
+    "feature_key": "nose_deer",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nose_tip_size",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "nose_wing_width",
+        "op": "gte",
+        "v_min": 0.5
+      }
+    ],
+    "trait": "Rộng lòng, trọng nghĩa",
+    "reading_hint": "Mũi đầy, đầu mũi tròn",
+    "reading_short": "Mũi đầy, đầu mũi tròn — cổ thư nói tình rộng, đủ nhân nghĩa.",
+    "reading_full": "Thơ Lộc tỵ (mũi hươu) viết mũi đầy, đều, đầu mũi tròn thì tình rộng, đủ cả nhân nghĩa. Bài thơ còn tả dáng đi vội và tính hay nghi, phần này app không đo. Diễn giải của nhóm dự án: người sống tình cảm, trọng nghĩa với người quen.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Lộc tỵ",
+    "passage_ids": [
+      "xiangshu.221.1"
+    ],
+    "quote_han": [
+      "鹿鼻豐齊準更圓，情寬步急義仁全"
+    ],
+    "quote_vi": "Mũi hươu đầy đều, đầu mũi tròn, tình rộng bước vội, đủ cả nhân nghĩa.",
+    "confidence": "sach",
+    "trait_dims": [
+      "concern_for_others",
+      "integrity"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "san-xuat-thu-cong": 0.33,
+      "tai-chinh-ke-toan": 0.37,
+      "nghien-cuu-giang-day": 0.19,
+      "phap-ly-hcc": 0.57,
+      "y-te-suc-khoe": 0.63,
+      "cong-dong-xa-hoi": 0.77,
+      "du-lich-dich-vu": 0.59,
+      "nong-lam-moi-truong": 0.17,
+      "giao-thong-logistics": 0.3
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_high_round",
+    "feature_key": "nose_high_round",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "nasion_height",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "nose_tip_size",
+        "op": "gte",
+        "v_min": 0.5
+      }
+    ],
+    "trait": "Có tiếng về trí",
+    "reading_hint": "Sống mũi cao, đầu mũi tròn",
+    "reading_short": "Sống mũi cao, đầu mũi tròn — cổ thư nói nổi tiếng về trí.",
+    "reading_full": "Quỷ Nhãn tiên sinh tướng pháp viết sống mũi cao, đầu mũi sáng tròn thì nổi tiếng về trí. Diễn giải của nhóm dự án: người hay được tìm đến khi cần ý kiến, cách giải quyết.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Quỷ Nhãn tiên sinh tướng pháp",
+    "passage_ids": [
+      "xiangshu.342.2"
+    ],
+    "quote_han": [
+      "梁峻準見明圓，智譽兮名資大炫"
+    ],
+    "quote_vi": "Sống mũi cao, đầu mũi sáng tròn thì tiếng trí vang xa.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_leopard",
+    "feature_key": "nose_leopard",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "face_length",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "nose_tip_height",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Hào sảng, giỏi văn",
+    "reading_hint": "Mặt dài, mũi cao",
+    "reading_short": "Mặt dài, mũi cao — cổ thư nói nhiều ân huệ, giỏi văn, tính hào sảng.",
+    "reading_full": "Thơ Báo hình viết mặt dài, răng khít, mũi cao thì nhiều ân huệ, giỏi văn, tính hào sảng. App không xét răng nên chỉ dựa trên hai nét còn lại. Diễn giải của nhóm dự án: người phóng khoáng, thích thể hiện ý tưởng.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.11 — Báo hình",
+    "passage_ids": [
+      "xiangshu.475.1"
+    ],
+    "quote_han": [
+      "面長齒密鼻隆高，多惠多文性且豪"
+    ],
+    "quote_vi": "Mặt dài, răng khít, mũi cao, nhiều ân huệ, giỏi văn, tính hào sảng.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "social_orientation"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.27,
+      "ky-thuat-xay-dung": 0.29,
+      "san-xuat-thu-cong": 0.25,
+      "quan-ly-van-hanh": 0.19,
+      "nghien-cuu-giang-day": 0.47,
+      "kinh-doanh-truyen-thong": 0.93,
+      "sang-tao-nghe-thuat": 0.95,
+      "cong-dong-xa-hoi": 0.42,
+      "du-lich-dich-vu": 0.65
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "nose_ridge_thin",
+    "feature_key": "nose_ridge_width",
+    "op": "lte",
+    "v_max": 0.35,
+    "trait": "Nhanh nhận lời",
+    "reading_hint": "Sống mũi mảnh",
+    "reading_short": "Sống mũi mảnh — cổ thư nói người chóng nhận lời.",
+    "reading_full": "Chiếu đảm kinh viết trụ mũi mỏng thì chủ về lập lời hứa. Diễn giải của nhóm dự án: người dễ gật đầu giúp đỡ, nên chú ý đừng nhận nhiều hơn sức mình.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mũi",
+    "passage_ids": [
+      "xiangshu.672.1"
+    ],
+    "quote_han": [
+      "鼻柱薄，主立諾"
+    ],
+    "quote_vi": "Trụ mũi mỏng, chủ về lập lời hứa.",
+    "confidence": "sach",
+    "trait_dims": [
+      "cooperation",
+      "dependability"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "san-xuat-thu-cong": 0.58,
+      "quan-ly-van-hanh": 0.49,
+      "phap-ly-hcc": 0.26,
+      "y-te-suc-khoe": 0.66,
+      "cong-dong-xa-hoi": 0.68,
+      "du-lich-dich-vu": 0.76,
+      "giao-thong-logistics": 0.96
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "philtrum_straight",
+    "feature_key": "philtrum_straightness",
+    "op": "gte",
+    "v_min": 0.8,
+    "trait": "Trung nghĩa",
+    "reading_hint": "Nhân trung ngay",
+    "reading_short": "Nhân trung ngay thẳng — cổ thư gọi là người trung nghĩa.",
+    "reading_full": "Thiên Nhân trung luận viết người có nhân trung ngay thẳng là kẻ sĩ trung nghĩa. Diễn giải của nhóm dự án: người coi trọng nguyên tắc và sự gắn bó với tập thể.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Nhân trung luận",
+    "passage_ids": [
+      "xiangshu.223.2"
+    ],
+    "quote_han": [
+      "人中端直者，忠義之士"
+    ],
+    "quote_vi": "Nhân trung ngay thẳng là kẻ sĩ trung nghĩa.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "dependability"
+    ],
+    "weight": 0.8,
+    "careers": {
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "philtrum_taper",
+    "feature_key": "philtrum_taper",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Khéo tính toán, nhiều cách",
+    "reading_hint": "Nhân trung trên hẹp dưới rộng",
+    "reading_short": "Nhân trung trên hẹp dưới rộng — cổ thư nói người nhiều kế khéo.",
+    "reading_full": "Chiếu đảm kinh viết nhân trung trên hẹp dưới rộng là người khéo mưu tính. Diễn giải của nhóm dự án: người hay nghĩ ra cách xoay xở khi gặp vướng mắc. App đo xấp xỉ bằng các điểm hai bên chân mũi và đỉnh môi trên.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Nhân trung",
+    "passage_ids": [
+      "xiangshu.674.2"
+    ],
+    "quote_han": [
+      "人中上狹下闊巧計人"
+    ],
+    "quote_vi": "Nhân trung trên hẹp dưới rộng là người khéo mưu tính.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "adaptability"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.88,
+      "ky-thuat-xay-dung": 0.69,
+      "san-xuat-thu-cong": 0.21,
+      "quan-ly-van-hanh": 0.39,
+      "nghien-cuu-giang-day": 0.5,
+      "kinh-doanh-truyen-thong": 0.57,
+      "sang-tao-nghe-thuat": 1.0,
+      "cong-dong-xa-hoi": 0.15,
+      "du-lich-dich-vu": 0.18,
+      "nong-lam-moi-truong": 0.81
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "philtrum_clear",
+    "feature_key": "philtrum_clear",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "philtrum_length",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "philtrum_straightness",
+        "op": "gte",
+        "v_min": 0.7
+      }
+    ],
+    "trait": "Ngay thẳng",
+    "reading_hint": "Nhân trung dài, rõ",
+    "reading_short": "Nhân trung dài và ngay — gợi nét chính trực.",
+    "reading_full": "Chiếu đảm kinh viết nhân trung phân minh thì chính trực như thần. Sách nói tới độ rõ nét, app chỉ đo được độ dài và độ ngay, nên đây là suy luận của nhóm dự án: người rõ ràng, không quanh co.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Nhân trung",
+    "passage_ids": [
+      "xiangshu.674.1"
+    ],
+    "quote_han": [
+      "人中分明，正直如神"
+    ],
+    "quote_vi": "Nhân trung phân minh thì chính trực như thần.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "integrity",
+      "self_control"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "san-xuat-thu-cong": 0.29,
+      "tai-chinh-ke-toan": 0.71,
+      "quan-ly-van-hanh": 0.34,
+      "phap-ly-hcc": 0.98,
+      "y-te-suc-khoe": 0.71,
+      "cong-dong-xa-hoi": 0.59,
+      "du-lich-dich-vu": 0.47,
+      "giao-thong-logistics": 0.61
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "chin_brow_square",
+    "feature_key": "chin_brow_square",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "chin_width",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "forehead_width",
+        "op": "gte",
+        "v_min": 0.5
+      }
+    ],
+    "trait": "Nhã nhặn, biết nhường",
+    "reading_hint": "Cằm và trán vuông đều",
+    "reading_short": "Cằm và trán vuông đều — cổ thư đề cao vẻ lễ nhượng.",
+    "reading_full": "Thiên Tướng cốt tiết viết cằm, trán vuông mà phẳng thì lễ nhượng là đáng quý nhất. Diễn giải của nhóm dự án: người biết giữ phép tắc, chịu nhường khi cần.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.12 — Tướng cốt tiết",
+    "passage_ids": [
+      "xiangshu.492.2"
+    ],
+    "quote_han": [
+      "頦額方且平，揖讓最為貴"
+    ],
+    "quote_vi": "Cằm, trán vuông mà phẳng, lễ nhượng là đáng quý nhất.",
+    "confidence": "sach",
+    "trait_dims": [
+      "cooperation",
+      "self_control"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "quan-ly-van-hanh": 0.54,
+      "phap-ly-hcc": 0.32,
+      "kinh-doanh-truyen-thong": 0.23,
+      "y-te-suc-khoe": 0.94,
+      "cong-dong-xa-hoi": 0.83,
+      "du-lich-dich-vu": 0.83,
+      "giao-thong-logistics": 0.72
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "chin_pointed",
+    "feature_key": "chin_width",
+    "op": "lte",
+    "v_max": 0.35,
+    "trait": "Nói năng nhỏ nhẹ",
+    "reading_hint": "Cằm thon",
+    "reading_short": "Cằm thon — cổ thư tả người nói năng nhỏ nhẹ.",
+    "reading_full": "Lã Thuần Dương tướng phú viết người nói thủ thỉ thường có địa các thon gầy. Diễn giải của nhóm dự án: người kín tiếng, chọn lời, ưa trao đổi riêng hơn nói trước đám đông.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Lã Thuần Dương tướng phú",
+    "passage_ids": [
+      "xiangshu.333.7"
+    ],
+    "quote_han": [
+      "唧唧噥噥者，地閣尖瘦"
+    ],
+    "quote_vi": "Người nói thủ thỉ thường có địa các thon gầy.",
+    "confidence": "sach",
+    "trait_dims": [
+      "self_control",
+      "independence"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "tai-chinh-ke-toan": 0.22,
+      "quan-ly-van-hanh": 0.6,
+      "nghien-cuu-giang-day": 0.15,
+      "phap-ly-hcc": 0.44,
+      "kinh-doanh-truyen-thong": 0.74,
+      "sang-tao-nghe-thuat": 0.35,
+      "y-te-suc-khoe": 0.35,
+      "cong-dong-xa-hoi": 0.47,
+      "du-lich-dich-vu": 0.43,
+      "giao-thong-logistics": 0.26
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "chin_full_open",
+    "feature_key": "chin_full_open",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "chin_width",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "jaw_width",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Khoáng đạt",
+    "reading_hint": "Cằm và hàm đầy đặn",
+    "reading_short": "Cằm và hàm đầy đặn — gợi tính khoáng đạt.",
+    "reading_full": "Bài Nhân thân thông luận tả người có địa các đầy đặn, mặt vuông, tính cao thượng lỗi lạc. Đây là bài ca tả tướng tốt toàn thân, không riêng cằm, nên nối với tính khoáng đạt là suy luận của nhóm dự án.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.1 — Nhân thân thông luận",
+    "passage_ids": [
+      "xiangshu.33.1"
+    ],
+    "quote_han": [
+      "地閣豐肥",
+      "賦性高名磊落，面方背厚宛如龜"
+    ],
+    "quote_vi": "Địa các đầy đặn. — Bẩm tính cao thượng lỗi lạc, mặt vuông lưng dày như rùa.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "integrity",
+      "independence"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.4,
+      "ky-thuat-xay-dung": 0.26,
+      "tai-chinh-ke-toan": 0.65,
+      "quan-ly-van-hanh": 0.24,
+      "nghien-cuu-giang-day": 0.25,
+      "phap-ly-hcc": 0.61,
+      "kinh-doanh-truyen-thong": 0.26,
+      "sang-tao-nghe-thuat": 0.19,
+      "y-te-suc-khoe": 0.17,
+      "cong-dong-xa-hoi": 0.18,
+      "du-lich-dich-vu": 0.15,
+      "nong-lam-moi-truong": 0.27,
+      "giao-thong-logistics": 0.18
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "chin_long_narrow",
+    "feature_key": "chin_long_narrow",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "chin_length",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "chin_width",
+        "op": "lte",
+        "v_max": 0.45
+      }
+    ],
+    "trait": "Hay lo toan",
+    "reading_hint": "Cằm dài, thon",
+    "reading_short": "Cằm dài và thon — cổ thư nói người hay lo.",
+    "reading_full": "Thái Ất chân nhân thư viết địa các nhọn dài thì hay lo. Diễn giải của nhóm dự án: người để tâm nhiều tới việc còn dang dở, kỹ lưỡng nhưng nên giữ nhịp nghỉ.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Thái Ất chân nhân thư",
+    "passage_ids": [
+      "xiangshu.340.1"
+    ],
+    "quote_han": [
+      "地閣尖長，多憂"
+    ],
+    "quote_vi": "Địa các nhọn dài thì hay lo.",
+    "confidence": "sach",
+    "trait_dims": [
+      "attention_to_detail",
+      "persistence"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "cong-nghe-so": 0.52,
+      "ky-thuat-xay-dung": 0.52,
+      "san-xuat-thu-cong": 0.93,
+      "tai-chinh-ke-toan": 0.77,
+      "phap-ly-hcc": 0.54,
+      "kinh-doanh-truyen-thong": 0.18,
+      "y-te-suc-khoe": 0.39,
+      "nong-lam-moi-truong": 0.77,
+      "giao-thong-logistics": 0.24
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "face_round_gentle",
+    "feature_key": "face_round_gentle",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "face_round",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "face_length",
+        "op": "lte",
+        "v_max": 0.45
+      }
+    ],
+    "trait": "Ôn hoà, được việc",
+    "reading_hint": "Mặt rộng, tròn",
+    "reading_short": "Mặt rộng, tròn — cổ thư nói tính ôn thuần, có tài có sức.",
+    "reading_full": "Thơ Miêu nhãn (mắt mèo) tả người mặt rộng tròn tính ôn thuần, có tài có sức, đáng giao việc. Bài thơ còn tả màu mắt, phần này app không đo. Diễn giải của nhóm dự án: người hiền, chịu làm, đáng tin khi được giao việc.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Miêu nhãn",
+    "passage_ids": [
+      "xiangshu.196.1"
+    ],
+    "quote_han": [
+      "面闊圓溫純",
+      "有才有力堪任使"
+    ],
+    "quote_vi": "Mặt rộng tròn, tính ôn thuần. — Có tài có sức, đáng được giao việc.",
+    "confidence": "sach",
+    "trait_dims": [
+      "dependability",
+      "cooperation"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "san-xuat-thu-cong": 0.58,
+      "quan-ly-van-hanh": 0.49,
+      "phap-ly-hcc": 0.26,
+      "y-te-suc-khoe": 0.66,
+      "cong-dong-xa-hoi": 0.68,
+      "du-lich-dich-vu": 0.76,
+      "giao-thong-logistics": 0.96
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "face_broad_calm",
+    "feature_key": "face_length",
+    "op": "lte",
+    "v_max": 0.35,
+    "trait": "Bình tâm, khiêm lời",
+    "reading_hint": "Mặt ngắn, đầy",
+    "reading_short": "Mặt đầy, ngắn — cổ thư tả lòng bình, lời khiêm.",
+    "reading_full": "Thơ Ngưu hình viết mặt đầy tráng kiện, lòng bình, lời nói khiêm. Diễn giải của nhóm dự án: người chậm mà chắc, ít nóng nảy.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.11 — Ngưu hình",
+    "passage_ids": [
+      "xiangshu.461.1"
+    ],
+    "quote_han": [
+      "面壯心平語話謙"
+    ],
+    "quote_vi": "Mặt đầy tráng kiện, lòng bình, lời nói khiêm.",
+    "confidence": "sach",
+    "trait_dims": [
+      "self_control",
+      "cooperation"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "quan-ly-van-hanh": 0.54,
+      "phap-ly-hcc": 0.32,
+      "kinh-doanh-truyen-thong": 0.23,
+      "y-te-suc-khoe": 0.94,
+      "cong-dong-xa-hoi": 0.83,
+      "du-lich-dich-vu": 0.83,
+      "giao-thong-logistics": 0.72
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_large_skilled",
+    "feature_key": "eye_size",
+    "op": "gte",
+    "v_min": 0.65,
+    "trait": "Chuyên tâm học nghề",
+    "reading_hint": "Mắt lớn",
+    "reading_short": "Mắt lớn — cổ thư nói hay chuyên về nghề nghiệp, kỹ nghệ.",
+    "reading_full": "Thiên Mục vi giám sát quan viết người mắt lớn thường chuyên theo nghề nghiệp, kỹ nghệ. Diễn giải của nhóm dự án: người học việc nhanh và muốn đi sâu vào một nghề.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.2 — Mục vi giám sát quan",
+    "passage_ids": [
+      "xiangshu.54.2"
+    ],
+    "quote_han": [
+      "眼大者多攻藝業"
+    ],
+    "quote_vi": "Người mắt lớn thường chuyên theo nghề nghiệp, kỹ nghệ.",
+    "confidence": "sach",
+    "trait_dims": [
+      "achievement",
+      "persistence"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.48,
+      "ky-thuat-xay-dung": 0.5,
+      "san-xuat-thu-cong": 0.36,
+      "tai-chinh-ke-toan": 0.4,
+      "quan-ly-van-hanh": 0.69,
+      "nghien-cuu-giang-day": 0.34,
+      "phap-ly-hcc": 0.23,
+      "kinh-doanh-truyen-thong": 0.98,
+      "sang-tao-nghe-thuat": 0.69,
+      "nong-lam-moi-truong": 0.75
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_lion",
+    "feature_key": "eye_lion",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_size",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "brow_thickness",
+        "op": "gte",
+        "v_min": 0.6
+      }
+    ],
+    "trait": "Uy nghi, đĩnh đạc",
+    "reading_hint": "Mắt lớn, mày đậm",
+    "reading_short": "Mắt lớn, mày đậm — cổ thư tả vẻ uy nghiêm, đoan trang.",
+    "reading_full": "Thơ Sư nhãn (mắt sư tử) viết mắt lớn uy nghiêm, tính hơi phóng túng, mày thô lại thêm đoan trang. Diễn giải của nhóm dự án: người có sức hiện diện, tự nhiên đứng ra trước đám đông.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Sư nhãn",
+    "passage_ids": [
+      "xiangshu.165.1"
+    ],
+    "quote_han": [
+      "眼大威嚴性略狂，粗眉趁此又端莊"
+    ],
+    "quote_vi": "Mắt lớn uy nghiêm, tính hơi phóng túng; mày thô đi cùng lại thêm đoan trang.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "initiative"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.24,
+      "ky-thuat-xay-dung": 0.39,
+      "quan-ly-van-hanh": 0.99,
+      "nghien-cuu-giang-day": 0.36,
+      "kinh-doanh-truyen-thong": 0.64,
+      "sang-tao-nghe-thuat": 0.32,
+      "cong-dong-xa-hoi": 0.35,
+      "du-lich-dich-vu": 0.29,
+      "nong-lam-moi-truong": 0.85
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_long_learned",
+    "feature_key": "eye_length",
+    "op": "gt",
+    "v_min": 1.1,
+    "trait": "Có học",
+    "reading_hint": "Mắt dài",
+    "reading_short": "Mắt dài — cổ thư nói người có học.",
+    "reading_full": "Ma Y tạp luận viết mắt dài thì có học. Diễn giải của nhóm dự án: người thích tích luỹ kiến thức một cách bài bản.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Ma Y tạp luận",
+    "passage_ids": [
+      "xiangshu.357.1"
+    ],
+    "quote_han": [
+      "眼長而有學"
+    ],
+    "quote_vi": "Mắt dài thì có học.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_long_brow_clear",
+    "feature_key": "eye_long_brow_clear",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_length",
+        "op": "gt",
+        "v_min": 1.0
+      },
+      {
+        "feature_key": "eye_size",
+        "op": "lte",
+        "v_max": 0.5
+      },
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.55
+      }
+    ],
+    "trait": "Thông minh, học giỏi",
+    "reading_hint": "Mắt nhỏ dài, mày thanh",
+    "reading_short": "Mắt nhỏ dài, mày thanh — cổ thư tả người thông minh, đỗ đạt.",
+    "reading_full": "Thần dị phú viết mắt nhỏ dài có thần, mày thanh tú có ánh thì ắt là người thông minh đỗ đạt. App đo hình dáng mắt, mày; phần thần và ánh không đo được. Diễn giải của nhóm dự án: người học nhanh, thi cử tốt.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.332.12"
+    ],
+    "quote_han": [
+      "若目細長而有神，眉清秀而有光，必聰明登第之士也"
+    ],
+    "quote_vi": "Mắt nhỏ dài có thần, mày thanh tú có ánh, ắt là người thông minh đỗ đạt.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_fine_gentle",
+    "feature_key": "eye_fine_gentle",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_size",
+        "op": "lte",
+        "v_max": 0.4
+      },
+      {
+        "feature_key": "eye_length",
+        "op": "gte",
+        "v_min": 1.0
+      }
+    ],
+    "trait": "Nhân hậu, ôn hoà",
+    "reading_hint": "Mắt nhỏ, dài",
+    "reading_short": "Mắt nhỏ, dài — cổ thư nói tính nhân hoà.",
+    "reading_full": "Thơ Tượng nhãn (mắt voi) viết sóng mắt dài, mắt nhỏ, tính cũng nhân hoà. Diễn giải của nhóm dự án: người hiền, dễ gần, hợp việc chăm sóc người khác.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Tượng nhãn",
+    "passage_ids": [
+      "xiangshu.162.1"
+    ],
+    "quote_han": [
+      "波長眼細亦仁和"
+    ],
+    "quote_vi": "Sóng mắt dài, mắt nhỏ, tính cũng nhân hoà.",
+    "confidence": "sach",
+    "trait_dims": [
+      "concern_for_others",
+      "cooperation"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "nghien-cuu-giang-day": 0.29,
+      "kinh-doanh-truyen-thong": 0.44,
+      "sang-tao-nghe-thuat": 0.23,
+      "y-te-suc-khoe": 0.85,
+      "cong-dong-xa-hoi": 0.96,
+      "du-lich-dich-vu": 0.94,
+      "giao-thong-logistics": 0.36
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_deep",
+    "feature_key": "eye_depth",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Nói chuẩn, giữ tín",
+    "reading_hint": "Mắt sâu",
+    "reading_short": "Mắt sâu — cổ thư tả người nói chuẩn xác, có tín.",
+    "reading_full": "Thơ Yến nhãn (mắt én) viết mắt sâu, đen trắng rõ ràng, nói nhiều mà chuẩn xác, có tín. Diễn giải của nhóm dự án: người cẩn thận với lời nói của mình. Độ sâu của mắt suy từ trục z của FaceMesh nên sai số khá lớn.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Yến nhãn",
+    "passage_ids": [
+      "xiangshu.194.1"
+    ],
+    "quote_han": [
+      "眼深黑白朗明收，語多準促而有信"
+    ],
+    "quote_vi": "Mắt sâu, đen trắng sáng rõ, lời nói chuẩn xác mà có tín.",
+    "confidence": "sach",
+    "trait_dims": [
+      "dependability",
+      "integrity"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.17,
+      "ky-thuat-xay-dung": 0.19,
+      "san-xuat-thu-cong": 0.76,
+      "tai-chinh-ke-toan": 0.87,
+      "quan-ly-van-hanh": 0.28,
+      "phap-ly-hcc": 0.87,
+      "y-te-suc-khoe": 0.46,
+      "cong-dong-xa-hoi": 0.22,
+      "du-lich-dich-vu": 0.24,
+      "nong-lam-moi-truong": 0.53,
+      "giao-thong-logistics": 0.87
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_deep_fine",
+    "feature_key": "eye_deep_fine",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_depth",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "eye_size",
+        "op": "lte",
+        "v_max": 0.45
+      }
+    ],
+    "trait": "Kín đáo, khó đoán",
+    "reading_hint": "Mắt nhỏ, sâu",
+    "reading_short": "Mắt nhỏ mà sâu — cổ thư nói tâm cơ khó lường.",
+    "reading_full": "Quỷ Nhãn tiên sinh tướng pháp viết mắt nhỏ mà sâu thì tâm cơ khó lường. Diễn giải của nhóm dự án: người giữ suy nghĩ cho riêng mình, nghĩ nhiều nói ít.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.8 — Quỷ Nhãn tiên sinh tướng pháp",
+    "passage_ids": [
+      "xiangshu.342.1"
+    ],
+    "quote_han": [
+      "眼細而深，機關莫測"
+    ],
+    "quote_vi": "Mắt nhỏ mà sâu, tâm cơ khó lường.",
+    "confidence": "sach",
+    "trait_dims": [
+      "independence",
+      "analytical_thinking"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.61,
+      "ky-thuat-xay-dung": 0.63,
+      "tai-chinh-ke-toan": 0.29,
+      "nghien-cuu-giang-day": 0.71,
+      "phap-ly-hcc": 0.19,
+      "kinh-doanh-truyen-thong": 0.52,
+      "sang-tao-nghe-thuat": 0.75,
+      "nong-lam-moi-truong": 0.4
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "iris_dark",
+    "feature_key": "iris_ratio",
+    "op": "gte",
+    "v_min": 0.6,
+    "trait": "Sáng dạ, có văn",
+    "reading_hint": "Tròng đen lớn",
+    "reading_short": "Tròng đen lớn — cổ thư nói sáng dạ, giỏi văn.",
+    "reading_full": "Tướng mục luận viết mắt đen như sơn thì thông tuệ, giỏi văn; thiên Định quan phẩm cũng nói mắt như chấm sơn là thông minh. Sách nói về độ đen, app đo tỉ lệ tròng đen so với bề ngang mắt. Diễn giải của nhóm dự án: người tiếp thu nhanh, có khiếu chữ nghĩa.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Tướng mục luận; q.14 — Định quan phẩm",
+    "passage_ids": [
+      "xiangshu.157.1",
+      "xiangshu.615.4"
+    ],
+    "quote_han": [
+      "黑如點漆，聰慧文章",
+      "目如點漆正聰明"
+    ],
+    "quote_vi": "Đen như chấm sơn, thông tuệ, giỏi văn. — Mắt như chấm sơn mới thật thông minh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "innovation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.94,
+      "ky-thuat-xay-dung": 0.96,
+      "san-xuat-thu-cong": 0.53,
+      "nghien-cuu-giang-day": 0.96,
+      "sang-tao-nghe-thuat": 0.87,
+      "nong-lam-moi-truong": 0.92
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "iris_mouth_literary",
+    "feature_key": "iris_mouth_literary",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "iris_ratio",
+        "op": "gte",
+        "v_min": 0.55
+      },
+      {
+        "feature_key": "mouth_width",
+        "op": "gte",
+        "v_min": 0.6
+      }
+    ],
+    "trait": "Thiên về văn chương",
+    "reading_hint": "Tròng đen lớn, miệng rộng",
+    "reading_short": "Tròng đen lớn, miệng rộng — cổ thư gọi là người văn chương.",
+    "reading_full": "Thần dị phú viết tròng mắt như chấm sơn, miệng rộng như tô son là người văn chương. Diễn giải của nhóm dự án: người giỏi diễn đạt, thích viết và nói.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.332.68"
+    ],
+    "quote_han": [
+      "目睛如點漆，口闊若抹丹」，文章之士也"
+    ],
+    "quote_vi": "Tròng mắt như chấm sơn, miệng rộng như tô son, là kẻ sĩ văn chương.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "social_orientation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.27,
+      "ky-thuat-xay-dung": 0.29,
+      "san-xuat-thu-cong": 0.25,
+      "quan-ly-van-hanh": 0.19,
+      "nghien-cuu-giang-day": 0.47,
+      "kinh-doanh-truyen-thong": 0.93,
+      "sang-tao-nghe-thuat": 0.95,
+      "cong-dong-xa-hoi": 0.42,
+      "du-lich-dich-vu": 0.65
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_tail_down",
+    "feature_key": "eye_tail_down",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "eye_tilt",
+        "op": "lt",
+        "v_max": -0.02
+      },
+      {
+        "feature_key": "santing_upper",
+        "op": "gte",
+        "v_min": 0.36
+      }
+    ],
+    "trait": "Ôn hoà, yêu thiên nhiên",
+    "reading_hint": "Đuôi mắt rủ, thượng đình dài",
+    "reading_short": "Đuôi mắt rủ, thượng đình dài — cổ thư tả tính ôn nhu, ưa núi sông.",
+    "reading_full": "Thiên Hạc hình tả người đuôi mắt rủ, thượng đình dài, tính ôn nhu, thích núi sông. Thiên này còn tả dáng người và bước đi, phần đó app không đo. Diễn giải của nhóm dự án: người trầm, ưa môi trường yên tĩnh, gần gũi thiên nhiên.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.11 — Hạc hình",
+    "passage_ids": [
+      "xiangshu.432.1"
+    ],
+    "quote_han": [
+      "眼尾垂，身體弱，頭骨粗，項細長，行步闊，上停長，性溫柔，好山水"
+    ],
+    "quote_vi": "Đuôi mắt rủ, thân mảnh, xương đầu thô, cổ nhỏ dài, bước rộng, thượng đình dài, tính ôn nhu, thích núi sông.",
+    "confidence": "sach",
+    "trait_dims": [
+      "concern_for_others",
+      "independence"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "quan-ly-van-hanh": 0.16,
+      "nghien-cuu-giang-day": 0.42,
+      "kinh-doanh-truyen-thong": 0.84,
+      "sang-tao-nghe-thuat": 0.65,
+      "y-te-suc-khoe": 0.3,
+      "cong-dong-xa-hoi": 0.71,
+      "du-lich-dich-vu": 0.54
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "eye_tail_up",
+    "feature_key": "eye_tilt",
+    "op": "gt",
+    "v_min": 0.09,
+    "trait": "Quyết liệt, khí tướng",
+    "reading_hint": "Đuôi mắt xếch",
+    "reading_short": "Đuôi mắt xếch — gợi khí chất tướng lĩnh.",
+    "reading_full": "Kinh thần phú kể tướng Liêm Pha có đuôi hai mắt dựng ngược lên trời, rồi kết rằng xem hình để thấy lòng. Sách chỉ nêu ví dụ, không nói thẳng về tính cách; nhóm dự án suy ra nét quyết liệt, chịu được sức ép.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Kinh thần phú",
+    "passage_ids": [
+      "xiangshu.348.3"
+    ],
+    "quote_han": [
+      "廉頗兩眼尾以豎天"
+    ],
+    "quote_vi": "Liêm Pha có đuôi hai mắt dựng ngược lên trời.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "leadership",
+      "stress_tolerance"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "quan-ly-van-hanh": 0.92,
+      "phap-ly-hcc": 0.47,
+      "sang-tao-nghe-thuat": 0.18,
+      "y-te-suc-khoe": 0.32,
+      "cong-dong-xa-hoi": 0.38,
+      "du-lich-dich-vu": 0.35,
+      "nong-lam-moi-truong": 0.32,
+      "giao-thong-logistics": 0.54
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_fine_arched",
+    "feature_key": "brow_fine_arched",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.45
+      },
+      {
+        "feature_key": "brow_curvature",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Học rộng",
+    "reading_hint": "Mày mảnh, cong",
+    "reading_short": "Mày mảnh, cong — cổ thư nói học thức đủ đường.",
+    "reading_full": "Chiếu đảm kinh viết mày nhỏ cong cong thì học thức đủ đường. Diễn giải của nhóm dự án: người thích tìm hiểu nhiều lĩnh vực.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mày",
+    "passage_ids": [
+      "xiangshu.675.1"
+    ],
+    "quote_han": [
+      "眉細彎彎，學識多般"
+    ],
+    "quote_vi": "Mày nhỏ cong cong, học thức đủ đường.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "achievement"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.72,
+      "ky-thuat-xay-dung": 0.78,
+      "san-xuat-thu-cong": 0.43,
+      "tai-chinh-ke-toan": 0.49,
+      "nghien-cuu-giang-day": 0.83,
+      "kinh-doanh-truyen-thong": 0.32,
+      "sang-tao-nghe-thuat": 0.56,
+      "nong-lam-moi-truong": 0.22
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_fine_long",
+    "feature_key": "brow_fine_long",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.5
+      },
+      {
+        "feature_key": "brow_curvature",
+        "op": "lte",
+        "v_max": 0.5
+      },
+      {
+        "feature_key": "brow_length",
+        "op": "gte",
+        "v_min": 1.0
+      }
+    ],
+    "trait": "Thông minh",
+    "reading_hint": "Mày mảnh, phẳng, dài",
+    "reading_short": "Mày mảnh, phẳng, dài — cổ thư nói tính thông minh.",
+    "reading_full": "Luận mày viết mày nên nhỏ, phẳng mà rộng, thanh tú mà dài thì tính thông minh. Diễn giải của nhóm dự án: người suy nghĩ rành mạch, tiếp thu nhanh.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.3 — Luận mày",
+    "passage_ids": [
+      "xiangshu.131.1"
+    ],
+    "quote_han": [
+      "故眉欲細平而闊、秀而長者，性乃聰明也"
+    ],
+    "quote_vi": "Mày nên nhỏ, phẳng mà rộng, thanh tú mà dài thì tính thông minh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "innovation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.94,
+      "ky-thuat-xay-dung": 0.96,
+      "san-xuat-thu-cong": 0.53,
+      "nghien-cuu-giang-day": 0.96,
+      "sang-tao-nghe-thuat": 0.87,
+      "nong-lam-moi-truong": 0.92
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_past_eye",
+    "feature_key": "brow_length",
+    "op": "gt",
+    "v_min": 1.15,
+    "trait": "Trí hơn người",
+    "reading_hint": "Mày dài quá mắt",
+    "reading_short": "Mày dài quá mắt — cổ thư nói trí hơn người.",
+    "reading_full": "Chiếu đảm kinh viết mày dài quá mắt thì trí hơn người. Diễn giải của nhóm dự án: người nhìn việc xa hơn một bước, chủ động đề xuất.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mày",
+    "passage_ids": [
+      "xiangshu.675.1"
+    ],
+    "quote_han": [
+      "眉過目，智過人"
+    ],
+    "quote_vi": "Mày dài quá mắt, trí hơn người.",
+    "confidence": "sach",
+    "trait_dims": [
+      "analytical_thinking",
+      "initiative"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.84,
+      "ky-thuat-xay-dung": 0.55,
+      "tai-chinh-ke-toan": 0.2,
+      "quan-ly-van-hanh": 0.4,
+      "nghien-cuu-giang-day": 0.67,
+      "phap-ly-hcc": 0.17,
+      "kinh-doanh-truyen-thong": 0.48,
+      "sang-tao-nghe-thuat": 0.48,
+      "nong-lam-moi-truong": 0.71
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_straight_head_up",
+    "feature_key": "brow_straight_head_up",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_curvature",
+        "op": "lt",
+        "v_max": 0.45
+      },
+      {
+        "feature_key": "brow_tail_rise",
+        "op": "lt",
+        "v_max": 0.0
+      }
+    ],
+    "trait": "Ý khí mạnh mẽ",
+    "reading_hint": "Mày thẳng, đầu mày cao",
+    "reading_short": "Mày thẳng, đầu mày cao — cổ thư nói ý khí mạnh mẽ.",
+    "reading_full": "Chiếu đảm kinh viết mày thẳng, đầu mày ngẩng thì ý khí mạnh mẽ. Diễn giải của nhóm dự án: người dám nhận phần việc khó, muốn đi đầu.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Mày",
+    "passage_ids": [
+      "xiangshu.675.1"
+    ],
+    "quote_han": [
+      "眉直頭昂，意氣雄強"
+    ],
+    "quote_vi": "Mày thẳng, đầu mày ngẩng, ý khí mạnh mẽ.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "initiative"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.24,
+      "ky-thuat-xay-dung": 0.39,
+      "quan-ly-van-hanh": 0.99,
+      "nghien-cuu-giang-day": 0.36,
+      "kinh-doanh-truyen-thong": 0.64,
+      "sang-tao-nghe-thuat": 0.32,
+      "cong-dong-xa-hoi": 0.35,
+      "du-lich-dich-vu": 0.29,
+      "nong-lam-moi-truong": 0.85
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_soft_cover",
+    "feature_key": "brow_eye_gap",
+    "op": "lte",
+    "v_max": 0.3,
+    "trait": "Mềm mỏng, chậm quyết",
+    "reading_hint": "Mày sát mắt",
+    "reading_short": "Mày sát mắt — cổ thư tả tính mềm, ít quyết đoán.",
+    "reading_full": "Nhân luân đại thống phú viết mày che mắt thì mềm yếu, ít quyết đoán. Diễn giải của nhóm dự án: người dễ chịu, hay nghĩ cho người khác, nên tập chốt việc sớm hơn.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Nhân luân đại thống phú (thượng)",
+    "passage_ids": [
+      "xiangshu.336.12"
+    ],
+    "quote_han": [
+      "覆目軟柔而少斷"
+    ],
+    "quote_vi": "Mày che mắt thì mềm yếu, ít quyết đoán.",
+    "confidence": "sach",
+    "trait_dims": [
+      "cooperation",
+      "self_control"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "quan-ly-van-hanh": 0.54,
+      "phap-ly-hcc": 0.32,
+      "kinh-doanh-truyen-thong": 0.23,
+      "y-te-suc-khoe": 0.94,
+      "cong-dong-xa-hoi": 0.83,
+      "du-lich-dich-vu": 0.83,
+      "giao-thong-logistics": 0.72
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_high_arch",
+    "feature_key": "brow_high_arch",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_curvature",
+        "op": "gte",
+        "v_min": 0.65
+      },
+      {
+        "feature_key": "brow_eye_gap",
+        "op": "gte",
+        "v_min": 0.6
+      }
+    ],
+    "trait": "Thích tranh luận",
+    "reading_hint": "Mày cong cao như trăng non",
+    "reading_short": "Mày cong cao như trăng non — cổ thư nói người hay tranh.",
+    "reading_full": "Nhân luân đại thống phú viết mày như trăng non cao vút thì hay tranh. Diễn giải của nhóm dự án: người có chính kiến, không ngại nêu ý kiến trái chiều.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Nhân luân đại thống phú (thượng)",
+    "passage_ids": [
+      "xiangshu.336.12"
+    ],
+    "quote_han": [
+      "偃月高揭而好爭"
+    ],
+    "quote_vi": "Mày như trăng non cao vút thì hay tranh.",
+    "confidence": "sach",
+    "trait_dims": [
+      "initiative",
+      "independence"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "cong-nghe-so": 0.54,
+      "ky-thuat-xay-dung": 0.34,
+      "quan-ly-van-hanh": 0.77,
+      "nghien-cuu-giang-day": 0.4,
+      "phap-ly-hcc": 0.16,
+      "kinh-doanh-truyen-thong": 1.0,
+      "sang-tao-nghe-thuat": 0.81,
+      "cong-dong-xa-hoi": 0.3,
+      "du-lich-dich-vu": 0.17,
+      "nong-lam-moi-truong": 0.34
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_clear_fair",
+    "feature_key": "brow_clear_fair",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.5
+      },
+      {
+        "feature_key": "brow_curvature",
+        "op": "lte",
+        "v_max": 0.55
+      }
+    ],
+    "trait": "Công tâm",
+    "reading_hint": "Mày thanh, phẳng",
+    "reading_short": "Mày thanh, phẳng — cổ thư nói không thiên vị.",
+    "reading_full": "Thông nguyên phú viết mày thanh mà phẳng thì tính không thiên lệch, không bè đảng. Diễn giải của nhóm dự án: người xử sự công bằng, hợp vai trò phân xử, đánh giá.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Thông nguyên phú",
+    "passage_ids": [
+      "xiangshu.346.3"
+    ],
+    "quote_han": [
+      "眉清而平生性，無偏無黨"
+    ],
+    "quote_vi": "Mày thanh mà phẳng, tính không thiên lệch, không bè đảng.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "self_control"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "san-xuat-thu-cong": 0.29,
+      "tai-chinh-ke-toan": 0.71,
+      "quan-ly-van-hanh": 0.34,
+      "phap-ly-hcc": 0.98,
+      "y-te-suc-khoe": 0.71,
+      "cong-dong-xa-hoi": 0.59,
+      "du-lich-dich-vu": 0.47,
+      "giao-thong-logistics": 0.61
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_willow",
+    "feature_key": "brow_willow",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.5
+      },
+      {
+        "feature_key": "brow_curvature",
+        "op": "between",
+        "v_min": 0.45,
+        "v_max": 0.7
+      },
+      {
+        "feature_key": "brow_length",
+        "op": "gte",
+        "v_min": 1.0
+      }
+    ],
+    "trait": "Có tài nghệ",
+    "reading_hint": "Mày lá liễu",
+    "reading_short": "Mày lá liễu — cổ thư nói có tài nghệ.",
+    "reading_full": "Lã Thuần Dương tướng phú viết mày lá liễu đều đặn thì có tài nghệ. Diễn giải của nhóm dự án: người khéo tay, có gu, hợp công việc sáng tạo.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.7 — Lã Thuần Dương tướng phú",
+    "passage_ids": [
+      "xiangshu.333.11"
+    ],
+    "quote_han": [
+      "《柳葉眉》齊而有藝"
+    ],
+    "quote_vi": "Mày lá liễu đều đặn thì có tài nghệ.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "attention_to_detail"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.81,
+      "ky-thuat-xay-dung": 0.9,
+      "san-xuat-thu-cong": 1.0,
+      "tai-chinh-ke-toan": 0.33,
+      "nghien-cuu-giang-day": 0.2,
+      "sang-tao-nghe-thuat": 0.3,
+      "nong-lam-moi-truong": 0.36,
+      "giao-thong-logistics": 0.15
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "brow_thick_eye_firm",
+    "feature_key": "brow_thick_eye_firm",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "brow_thickness",
+        "op": "gte",
+        "v_min": 0.7
+      },
+      {
+        "feature_key": "eye_size",
+        "op": "gte",
+        "v_min": 0.55
+      }
+    ],
+    "trait": "Hợp việc võ",
+    "reading_hint": "Mày đậm, mắt to",
+    "reading_short": "Mày đậm, mắt to — cổ thư gắn với việc võ.",
+    "reading_full": "Thiên Định quan phẩm viết mày đậm dày, mắt cứng cỏi là tướng làm việc võ. Sách nói tới ánh mắt cứng cỏi, app chỉ đo độ mở của mắt. Diễn giải của nhóm dự án: người hợp công việc cần kỷ luật và sức chịu đựng.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.14 — Định quan phẩm",
+    "passage_ids": [
+      "xiangshu.615.4"
+    ],
+    "quote_han": [
+      "若眉濃厚而眼剛，則為武職之相也"
+    ],
+    "quote_vi": "Mày đậm dày, mắt cứng cỏi là tướng làm việc võ.",
+    "confidence": "sach",
+    "trait_dims": [
+      "leadership",
+      "stress_tolerance"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "quan-ly-van-hanh": 0.92,
+      "phap-ly-hcc": 0.47,
+      "sang-tao-nghe-thuat": 0.18,
+      "y-te-suc-khoe": 0.32,
+      "cong-dong-xa-hoi": 0.38,
+      "du-lich-dich-vu": 0.35,
+      "nong-lam-moi-truong": 0.32,
+      "giao-thong-logistics": 0.54
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "mouth_square_speech",
+    "feature_key": "mouth_square_speech",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "mouth_width",
+        "op": "gte",
+        "v_min": 0.5
+      },
+      {
+        "feature_key": "lip_thickness",
+        "op": "gte",
+        "v_min": 0.5
+      },
+      {
+        "feature_key": "mouth_level",
+        "op": "gte",
+        "v_min": 0.7
+      }
+    ],
+    "trait": "Có tài biện luận",
+    "reading_hint": "Miệng vuông vắn",
+    "reading_short": "Miệng vuông vắn — cổ thư nói có tài biện luận.",
+    "reading_full": "Ma Y tạp luận viết miệng vuông thì có tài biện luận. App xấp xỉ miệng vuông bằng độ rộng, độ dày môi và độ ngang của hai khoé. Diễn giải của nhóm dự án: người lập luận rành mạch.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.9 — Ma Y tạp luận",
+    "passage_ids": [
+      "xiangshu.357.1"
+    ],
+    "quote_han": [
+      "口方而有辨"
+    ],
+    "quote_vi": "Miệng vuông thì có tài biện luận.",
+    "confidence": "sach",
+    "trait_dims": [
+      "social_orientation",
+      "analytical_thinking"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.31,
+      "ky-thuat-xay-dung": 0.25,
+      "san-xuat-thu-cong": 0.19,
+      "tai-chinh-ke-toan": 0.24,
+      "nghien-cuu-giang-day": 0.61,
+      "kinh-doanh-truyen-thong": 0.79,
+      "sang-tao-nghe-thuat": 0.39,
+      "y-te-suc-khoe": 0.16,
+      "cong-dong-xa-hoi": 0.33,
+      "du-lich-dich-vu": 0.39
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "lips_wide_even",
+    "feature_key": "lips_wide_even",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "mouth_width",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "mouth_level",
+        "op": "gte",
+        "v_min": 0.7
+      }
+    ],
+    "trait": "Nói có văn",
+    "reading_hint": "Môi rộng, ngay ngắn",
+    "reading_short": "Môi rộng, ngay ngắn — cổ thư nói lời nói có văn.",
+    "reading_full": "Chiếu đảm kinh viết môi rộng ngay ngắn là tốt, nói ra có văn. Diễn giải của nhóm dự án: người có khiếu trình bày, thuyết phục.",
+    "source": "chieu_dam_kinh",
+    "citation": "quyển hạ — Miệng",
+    "passage_ids": [
+      "xiangshu.671.2"
+    ],
+    "quote_han": [
+      "脣寬端正好，出語有文章"
+    ],
+    "quote_vi": "Môi rộng ngay ngắn là tốt, nói ra có văn.",
+    "confidence": "sach",
+    "trait_dims": [
+      "social_orientation",
+      "innovation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "cong-nghe-so": 0.27,
+      "ky-thuat-xay-dung": 0.29,
+      "san-xuat-thu-cong": 0.25,
+      "quan-ly-van-hanh": 0.19,
+      "nghien-cuu-giang-day": 0.47,
+      "kinh-doanh-truyen-thong": 0.93,
+      "sang-tao-nghe-thuat": 0.95,
+      "cong-dong-xa-hoi": 0.42,
+      "du-lich-dich-vu": 0.65
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "lips_balanced",
+    "feature_key": "lip_balance",
+    "op": "gte",
+    "v_min": 0.75,
+    "trait": "Nói năng ngay thẳng",
+    "reading_hint": "Hai môi tương xứng",
+    "reading_short": "Hai môi tương xứng — cổ thư nói lời nói ngay thẳng.",
+    "reading_full": "Luận môi viết hai môi trên dưới tương xứng thì lời nói ngay thẳng; thiên của Hứa Phụ thêm rằng người ấy dễ nói lời lành, thích gom văn chương. Diễn giải của nhóm dự án: người rõ ràng trong giao tiếp.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Luận môi, Hứa Phụ tướng thần thiên",
+    "passage_ids": [
+      "xiangshu.261.1",
+      "xiangshu.262.1"
+    ],
+    "quote_han": [
+      "上下兩相稱者，言語正直",
+      "脣上下相當，語音易善，好集文章"
+    ],
+    "quote_vi": "Hai môi trên dưới tương xứng thì lời nói ngay thẳng. — Môi trên dưới cân nhau, lời dễ lành, thích gom văn chương.",
+    "confidence": "sach",
+    "trait_dims": [
+      "integrity",
+      "social_orientation"
+    ],
+    "weight": 0.7,
+    "careers": {
+      "san-xuat-thu-cong": 0.17,
+      "tai-chinh-ke-toan": 0.63,
+      "quan-ly-van-hanh": 0.37,
+      "nghien-cuu-giang-day": 0.17,
+      "phap-ly-hcc": 0.55,
+      "kinh-doanh-truyen-thong": 0.61,
+      "y-te-suc-khoe": 0.2,
+      "cong-dong-xa-hoi": 0.65,
+      "du-lich-dich-vu": 0.69,
+      "giao-thong-logistics": 0.29
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "lips_thick_quiet",
+    "feature_key": "lip_thickness",
+    "op": "gte",
+    "v_min": 0.7,
+    "trait": "Ít lời",
+    "reading_hint": "Môi dày",
+    "reading_short": "Môi dày — cổ thư nói người ít lời.",
+    "reading_full": "Thiên của Hứa Phụ viết môi dày thì ít nói. Diễn giải của nhóm dự án: người nghĩ kỹ rồi mới nói, ưa làm hơn bàn.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Hứa Phụ tướng thần thiên",
+    "passage_ids": [
+      "xiangshu.262.1"
+    ],
+    "quote_han": [
+      "脣厚少語"
+    ],
+    "quote_vi": "Môi dày thì ít nói.",
+    "confidence": "sach",
+    "trait_dims": [
+      "self_control",
+      "independence"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "tai-chinh-ke-toan": 0.22,
+      "quan-ly-van-hanh": 0.6,
+      "nghien-cuu-giang-day": 0.15,
+      "phap-ly-hcc": 0.44,
+      "kinh-doanh-truyen-thong": 0.74,
+      "sang-tao-nghe-thuat": 0.35,
+      "y-te-suc-khoe": 0.35,
+      "cong-dong-xa-hoi": 0.47,
+      "du-lich-dich-vu": 0.43,
+      "giao-thong-logistics": 0.26
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "mouth_level_straight",
+    "feature_key": "mouth_level",
+    "op": "gte",
+    "v_min": 0.85,
+    "trait": "Giữ lời đoan chính",
+    "reading_hint": "Miệng ngay ngắn",
+    "reading_short": "Miệng ngay ngắn — cổ thư dặn lời nói nên đoan chính.",
+    "reading_full": "Thiên Tướng khẩu dặn đức của miệng là phải đoan chính. Sách nói tới đức, không phải hình dáng, nên nối dáng miệng ngay ngắn với lối nói đoan chính là suy luận của nhóm dự án.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.4 — Tướng khẩu",
+    "passage_ids": [
+      "xiangshu.243.2"
+    ],
+    "quote_han": [
+      "《口德》欲端"
+    ],
+    "quote_vi": "Đức của miệng cốt ở đoan chính.",
+    "confidence": "suy_luan",
+    "trait_dims": [
+      "integrity",
+      "self_control"
+    ],
+    "weight": 0.5,
+    "careers": {
+      "san-xuat-thu-cong": 0.29,
+      "tai-chinh-ke-toan": 0.71,
+      "quan-ly-van-hanh": 0.34,
+      "phap-ly-hcc": 0.98,
+      "y-te-suc-khoe": 0.71,
+      "cong-dong-xa-hoi": 0.59,
+      "du-lich-dich-vu": 0.47,
+      "giao-thong-logistics": 0.61
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
+  },
+  {
+    "id": "forehead_brow_literary",
+    "feature_key": "forehead_brow_literary",
+    "op": "all",
+    "conditions": [
+      {
+        "feature_key": "forehead_width",
+        "op": "gte",
+        "v_min": 0.6
+      },
+      {
+        "feature_key": "brow_thickness",
+        "op": "lte",
+        "v_max": 0.55
+      }
+    ],
+    "trait": "Thiên văn chương, tu dưỡng",
+    "reading_hint": "Trán rộng, mày thanh",
+    "reading_short": "Trán rộng, mày thanh — cổ thư tả người văn chương.",
+    "reading_full": "Thần dị phú viết trán rộng mày thanh là đạo sĩ giỏi văn chương. Diễn giải của nhóm dự án: người ưa đọc, viết và những việc cần chiều sâu suy nghĩ.",
+    "source": "than_tuong_toan_bien",
+    "citation": "q.6 — Thần dị phú",
+    "passage_ids": [
+      "xiangshu.332.79"
+    ],
+    "quote_han": [
+      "廣額秀眉，文章道士"
+    ],
+    "quote_vi": "Trán rộng mày thanh, là đạo sĩ giỏi văn chương.",
+    "confidence": "sach",
+    "trait_dims": [
+      "innovation",
+      "analytical_thinking"
+    ],
+    "weight": 0.6,
+    "careers": {
+      "cong-nghe-so": 0.94,
+      "ky-thuat-xay-dung": 0.96,
+      "san-xuat-thu-cong": 0.53,
+      "nghien-cuu-giang-day": 0.96,
+      "sang-tao-nghe-thuat": 0.87,
+      "nong-lam-moi-truong": 0.92
+    },
+    "change_note": "v6: luật mới theo bộ vị đo được bằng FaceMesh, soạn từ nguyên văn Hán công cộng."
   }
 ]

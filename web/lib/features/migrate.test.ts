@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { evaluateRules } from "../engine/rule-engine";
+import { BOVI_KEYS } from "./bovi";
 import { RULES } from "../data";
 import { CATEGORICAL, NUMERIC, readKeys } from "../engine/accessors";
 import { analyzeFeatures } from "../engine/analyze";
@@ -28,9 +30,22 @@ describe("normalizeFeatures", () => {
     expect(r.careers.length).toBeGreaterThan(0);
   });
 
+  it("lượt quét cũ không khớp luật nào đọc bộ vị v6", () => {
+    const f = normalizeFeatures(structuredClone(LEGACY)) as FaceFeatures;
+    const usesBovi = (id: string) => {
+      const r = RULES.find((x) => x.id === id);
+      return readKeys(r!).some((k) => (BOVI_KEYS as readonly string[]).includes(k));
+    };
+    expect(evaluateRules(f, RULES).filter((m) => usesBovi(m.id))).toEqual([]);
+  });
+
   it("mọi chỉ số bộ luật dùng tới đều đọc được sau khi vá", () => {
     const f = normalizeFeatures(structuredClone(LEGACY)) as FaceFeatures;
+    // Bộ vị v6 cố ý không vá: chúng không có giá trị trung tính, điền vào là tự
+    // bịa ra số đo cho một khuôn mặt đã không còn ở đó. Luật dùng chúng không
+    // khớp ở lượt quét cũ — xem bài kiểm thử ngay dưới.
     const unreadable = [...new Set(RULES.flatMap(readKeys))]
+      .filter((k) => !(BOVI_KEYS as readonly string[]).includes(k))
       .filter((k) => {
         const read = NUMERIC[k] ?? CATEGORICAL[k];
         return read === undefined || read(f) === undefined;

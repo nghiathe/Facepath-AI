@@ -14,6 +14,8 @@ export type MouthShape = "vong_cung" | "ho" | "long" | "chu_tu" | "khac";
  */
 export type ForeheadShape = "vuong" | "goc_tron" | "khac";
 
+import type { BoVi } from "./bovi";
+
 /** Một điểm mốc đã chuẩn hoá về [0,1] theo khung hình (định dạng MediaPipe). */
 export type Landmark = { x: number; y: number; z?: number };
 
@@ -115,6 +117,13 @@ export type FaceFeatures = {
     cornerAngle: number; // -1..1, dương = hếch → mouth_corner_angle
     shape: MouthShape; // → mouth_shape
   };
+
+  /**
+   * Các bộ vị của bản dữ liệu v6 (features/bovi.ts), đặt tên theo feature_key.
+   * Lượt quét lưu trước bản đó không có khối này: luật dùng chúng sẽ không khớp,
+   * chứ không đoán bừa — vì vậy trường này tuỳ chọn.
+   */
+  bovi?: BoVi;
 
   quality: {
     // để màn Scan quyết định "đủ điều kiện chụp"

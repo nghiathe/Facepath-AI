@@ -65,11 +65,12 @@ describe("dữ liệu khớp với engine", () => {
     expect(missingAccessors(RULES.map((r) => r.feature_key))).toEqual([]);
   });
 
-  // Bản v4 của bộ dữ liệu: 32 -> 35 luật, thêm cheekbone_height, brow_kiem
-  // (luật ghép op="all") và dien_trach_narrow — xem data/README.md.
-  it("rules.json dùng đúng 21 feature_key", () => {
-    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(21);
-    expect(RULES).toHaveLength(35);
+  // Bản v6 của bộ dữ liệu: 33 -> 83 luật, thêm các bộ vị đo ở features/bovi.ts.
+  // Mỗi luật ghép có feature_key riêng nên số key tăng mạnh — data/README.md,
+  // mục "Bản v6".
+  it("rules.json dùng đúng 66 feature_key", () => {
+    expect(new Set(RULES.map((r) => r.feature_key)).size).toBe(66);
+    expect(RULES).toHaveLength(83);
   });
 
   it("mọi luật đều truy được về nguồn có thật", () => {
@@ -153,8 +154,8 @@ describe("evaluateRules", () => {
     const matched = evaluateRules(f, RULES);
     const kim = matched.find((m) => m.id === "face_kim");
     expect(kim).toBeDefined();
-    expect(kim!.source).toBe("may");
-    expect(kim!.citation).toContain("Ngũ hành hình tướng");
+    expect(kim!.source).toBe("than_tuong_toan_bien");
+    expect(kim!.citation).toContain("Chính hình ca");
     expect(kim!.value).toBe("kim");
   });
 
@@ -220,11 +221,11 @@ describe("aggregateTraits", () => {
 
 // --- Chấm điểm nghề ---------------------------------------------------------
 describe("scoreCareers", () => {
-  it("trả đủ 6 nhóm nghề, percent 0..100, sắp giảm dần", () => {
+  it("trả đủ 14 nhóm nghề, percent 0..100, sắp giảm dần", () => {
     const matched = evaluateRules(features(), RULES);
     const scores = scoreCareers(matched, RULES, CAREERS);
 
-    expect(scores).toHaveLength(6);
+    expect(scores).toHaveLength(14);
     for (const s of scores) {
       expect(s.percent).toBeGreaterThanOrEqual(0);
       expect(s.percent).toBeLessThanOrEqual(100);
@@ -268,7 +269,7 @@ describe("end-to-end: features -> luật -> trait -> nghề", () => {
 
     expect(matched.length).toBeGreaterThan(0);
     expect(traits.length).toBeGreaterThan(0);
-    expect(careers).toHaveLength(6);
+    expect(careers).toHaveLength(14);
 
     // Đúng nguyên tắc CLAUDE.md mục 1: mọi nét hiển thị đều tra ngược được.
     for (const t of traits)

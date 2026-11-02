@@ -112,6 +112,57 @@ Cảnh báo — cần nêu trong báo cáo:
 - `tools/fit_prototypes_from_model.py` — dùng model làm nhãn yếu trên một thư mục ảnh để **đề xuất** chỉnh `prototype` của Kim/Mộc/Thủy. Không ghi đè file; xuất đề xuất + bảng chéo hình học × model để người duyệt.
 - `tools/smoke_test.ts` — biến dạng mặt trung bình MediaPipe; kéo dài → Mộc/Mục, ép ngắn → Thủy/Viên, hàm nở trán hẹp → Hỏa/Do, dạng thoi → chữ Thân, quay ngang → từ chối.
 
+## Bản v5 (02/11/2026): chỉ dùng nguồn công cộng, chỉ hiển thị tiếng Việt
+
+### Vì sao
+Bản thương mại (mở khoá phiếu trả phí) không được dựa vào bản dịch *Nhân Tướng Học*
+(Hy Trương), vì sách này còn bản quyền. Mọi luật nay trỏ thẳng vào **nguyên văn Hán thuộc
+phạm vi công cộng** trên Wikisource, phần tiếng Việt do nhóm tự dịch.
+
+### Thay đổi
+| File | Thay đổi |
+|---|---|
+| `data/corpus/*.jsonl` (mới) | 1.814 đoạn nguyên văn: *Thần tướng toàn biên* (Cổ kim đồ thư tập thành, q.631–650) + *Băng giám*. Dựng lại bằng `tools/fetch_corpus.py`. Xem `corpus/README.md`. |
+| `sources.json` | Còn 2 nguồn sách (`than_tuong_toan_bien`, `bang_giam`) + mục model. Bỏ `ntc` và mọi mục "trích trong Nhân Tướng Học". |
+| `rules.json` | 35 → **33 luật**, viết lại toàn bộ. Trường mới: `passage_ids`, `quote_han` (chỉ để kiểm chứng, **không hiển thị**), `quote_vi`, `confidence` (`sach` / `suy_luan`), `reading_short` (miễn phí), `reading_full` (trả phí), `trait_dims`. Bỏ `lip_thin`, `nose_wing_thin`, `nose_wing_balanced`, `eye_large`, `forehead_round_corner`, `dien_trach_narrow` (câu gốc mang ý chê bai, hoặc không có trong nguồn công cộng). Thêm `brow_rise`, `brow_droop`, `eye_temple`, `eye_narrow_deep` — ngưỡng của 4 luật này là **tạm**. |
+| `face_types.json` | `summary`, `reading`, `source`, `citation` viết lại theo nguồn mới; thêm `passage_ids`. |
+| `trait_dims.json` (mới) | 16 chiều tính cách = 16 Work Styles của O*NET — cầu nối luật → nghề (giai đoạn 3). |
+| `careers.json` | Chưa đổi. Trọng số `careers` trong luật vẫn là số tay, sẽ thay bằng ma trận O*NET. |
+
+### Quy tắc
+- **Chỉ hiển thị tiếng Việt.** Trường người dùng nhìn thấy không được có chữ Hán. `quote_han` và `corpus.han` chỉ dùng để kiểm chứng câu trích.
+- Chỉ lấy câu nói về **tính cách, năng lực, tác phong**. Không lấy câu về phú quý, thọ yểu, hôn nhân.
+- `confidence: "suy_luan"` = sách không nói thẳng; luận giải phải tự nói rõ đó là suy luận của nhóm.
+- Bản dịch hiện là **nháp do máy dịch** (`translator: "Claude (nháp, chưa duyệt)"`). Trước khi bán phiếu, cần một người đọc được Hán văn duyệt lại và điền `reviewed_by`.
+- `python -I data/tools/validate_data.py` phải thoát 0 trước khi seed hay build.
+
+## Bản v6 (02/11/2026): 83 luật, 14 nhóm nghề, 350 nghề
+
+### Thay đổi
+| File | Thay đổi |
+|---|---|
+| `web/lib/features/bovi.ts` (mới) | 21 phép đo mới: ấn đường, sơn căn, sống mũi, chuẩn đầu, nhân trung, khoảng cách mắt, độ xếch và độ sâu của mắt, tròng mắt, cằm, hàm, dáng mặt, độ ngay của miệng, độ cân của hai môi. Nằm ở `FaceFeatures.bovi`, tên trường trùng `feature_key`. Mốc đã đối chiếu trên `canonical_face_model` của MediaPipe; `bovi.test.ts` đo lại trên chính mô hình đó. |
+| `rules.json` | 33 → **83 luật** (42 `sach`, 8 `suy_luan` trong số 50 luật mới). Luật ghép có `feature_key` trùng `id`. Trường `careers` nay do `build_occupations.py` sinh ra, **không sửa tay**. |
+| `corpus/xiangshu.jsonl` | Thêm bản dịch nháp cho 41 đoạn, `reviewed_by` vẫn trống. |
+| `sources.json` | Thêm `chieu_dam_kinh` (Chiếu đảm kinh, q.645–646). |
+| `occupations/` (mới) | Đầu vào của danh mục nghề, xem bên dưới. |
+| `occupations.json` (mới), `careers.json` | **14 nhóm, 350 nghề.** Mỗi nghề có mã VSCO, mã O*NET, mô tả và 16 chiều `work_styles`. |
+| `trait_dims.json` | `onet` đổi sang tên yếu tố của O*NET 31.0. |
+
+### Dữ liệu nghề
+- **Mã nghề Việt Nam:** Phụ lục I, Quyết định 34/2020/QĐ-TTg, tải từ trang Danh mục của Cục Thống kê (nso.gov.vn).
+- **Hồ sơ nghề:** O*NET 31.0, file Work Styles, thang Work Styles Impact (WI, từ -3 đến +3). O*NET Database by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), giấy phép CC BY 4.0; nhóm dự án đã trích và tổng hợp lại. Phải giữ dòng ghi nguồn này khi dùng dữ liệu, trang Về phương pháp đã có.
+- `occupations/occupation_map.tsv` soạn tay; `occupations/work_styles_matrix.csv` là bản trích 350 mã nghề, mỗi cột đơn vị 1/100 của WI. File gốc của O*NET không nằm trong repo. Dựng lại `occupations.json`, `careers.json` và trọng số luật bằng `python -I data/tools/build_occupations.py`.
+
+### Cần lưu ý
+- **O*NET đã đổi bộ Work Styles.** Từ bản 30.1 có 21 yếu tố (mã 1.D.*), không còn 16 yếu tố cũ, và đánh dấu nguồn `AI/Expert`. Kế hoạch dùng 16 chiều nên phải ánh xạ: `independence` lấy trung bình Self-Confidence và Tolerance for Ambiguity, `analytical_thinking` lấy Intellectual Curiosity, `concern_for_others` lấy Empathy; các chiều khác khớp thẳng. Hai chiều đầu là gần đúng.
+- **Ghép VSCO với O*NET là gần đúng**, do nhóm tự ghép. Sĩ quan công an và lực lượng vũ trang không có mã O*NET riêng nên lấy nghề dân sự gần nhất.
+- **Khoảng cách hai mắt:** ngữ liệu không có câu nào nói về tính cách, nên chỉ có một luật `suy_luan` (`eye_brow_open_space`).
+- **Không đo được:** độ sâu, vằn, nốt ruồi ở nhân trung và ấn đường; độ nhuận của da; thần và ánh của mắt. Luật nào sách có nhắc tới các yếu tố đó thì `reading_full` tự nói rõ phần app không đo.
+- **Trục z** là ước lượng từ ảnh phẳng: `nasion_height`, `nose_tip_height`, `eye_depth` nhiễu hơn các phép đo khác. Không có z thì luật dùng chúng không khớp.
+- **Lượt quét cũ** không có khối `bovi`, nên 50 luật mới không khớp với chúng; `migrate.ts` cố ý không điền số.
+- **Mọi ngưỡng mới là số tạm**, đặt theo mặt trung bình của MediaPipe. Mô phỏng 8.000 khuôn mặt giả (phân phối do nhóm tự giả định, chưa phải người thật): mỗi lượt khớp khoảng 20 luật, nhóm dẫn đầu từ 1,3% đến 18% số lượt, nghiêng về Tài chính và Pháp lý vì vài luật về tính chính trực khớp quá thường xuyên. Phải chạy lại trên lượt quét thật rồi chỉnh ngưỡng.
+
 ## Ghi chú quan trọng về tính trung thực của dữ liệu
 
 Hai lớp thông tin có **độ tin cậy khác nhau**, cần phân biệt rõ trong UI:
@@ -125,6 +176,6 @@ Hai lớp thông tin có **độ tin cậy khác nhau**, cần phân biệt rõ 
 Vì vậy phiếu kết quả nên: trích dẫn nguồn cho *trait*, còn phần % nghề giữ đúng nhãn “mức khớp giữa đặc điểm đọc được và mô tả trong ngữ liệu”, không phải dự báo thành công — như disclaimer đã quy định.
 
 ## Cách mở rộng
-- Thêm luật: copy một object trong `rules.json`, đổi `feature_key`/ngưỡng/`trait`/`careers`, và **bắt buộc** điền `source` + `citation` trỏ về đúng chỗ trong sách.
-- Sách còn nhiều bộ vị chưa khai thác (Mắt, Tai, Trán, Lưỡng Quyền, Nhân Trung, Pháp Lệnh, Ngũ Nhạc...). Có thể bổ sung dần khi thêm feature_key tương ứng ở `features.ts`.
+- Thêm luật: copy một object trong `rules.json`, điền `feature_key`/ngưỡng/`trait`/`trait_dims`, `passage_ids`, `quote_han`, `quote_vi`, rồi chạy `build_occupations.py` để sinh `careers`, sau đó chạy `validate_data.py`.
+- Phép đo mới thêm ở `web/lib/features/bovi.ts` và `catalog.ts`, đồng thời chép sang `api/rules/features.py`.
 - Với RAG: nạp toàn văn từng chương vào `corpus_chunks` để LLM viết luận giải bám sát, còn điểm số nghề vẫn do rules engine tính (deterministic).

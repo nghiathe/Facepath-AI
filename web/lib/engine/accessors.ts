@@ -5,6 +5,7 @@
 // Thêm feature_key mới vào rules.json thì phải thêm accessor tương ứng ở đây,
 // nếu không luật sẽ bị bỏ qua (rule-engine không ném lỗi, xem checkCoverage).
 
+import { BOVI_KEYS } from "../features/bovi";
 import type { FaceFeatures } from "../features/types";
 
 export const NUMERIC: Record<string, (f: FaceFeatures) => number> = {
@@ -29,6 +30,11 @@ export const NUMERIC: Record<string, (f: FaceFeatures) => number> = {
   mouth_corner_angle: (f) => f.mouth.cornerAngle,
   mouth_width: (f) => f.mouth.width,
   lip_thickness: (f) => f.mouth.thickness,
+  // Bộ vị v6, tên trường trùng feature_key. Lượt quét cũ không có khối bovi nên
+  // trả undefined: rule-engine coi là không đo được, luật không khớp.
+  ...Object.fromEntries(
+    BOVI_KEYS.map((k) => [k, (f: FaceFeatures) => f.bovi?.[k] as number])
+  ),
 };
 
 export const CATEGORICAL: Record<string, (f: FaceFeatures) => string> = {
@@ -47,6 +53,35 @@ export const CATEGORICAL: Record<string, (f: FaceFeatures) => string> = {
  */
 export const COMPOSITE_KEYS: Record<string, string> = {
   brow_kiem: "Mày lưỡi kiếm (dài + thẳng + ngược đuôi)",
+  eye_brow_open_space: "Vùng giữa hai mắt, hai mày thoáng rộng (luật ghép)",
+  nasion_straight_loyal: "Sống mũi thẳng liền tới sơn căn (luật ghép)",
+  nose_wide_long: "Mũi rộng và dài (luật ghép)",
+  nose_high_narrow: "Sống mũi cao, thon (luật ghép)",
+  nose_round_straight: "Mũi thẳng, đầu mũi tròn đầy (luật ghép)",
+  nose_deer: "Mũi đầy, đầu mũi tròn (luật ghép)",
+  nose_high_round: "Sống mũi cao, đầu mũi tròn (luật ghép)",
+  nose_leopard: "Mặt dài, mũi cao (luật ghép)",
+  philtrum_clear: "Nhân trung dài, rõ (luật ghép)",
+  chin_brow_square: "Cằm và trán vuông đều (luật ghép)",
+  chin_full_open: "Cằm và hàm đầy đặn (luật ghép)",
+  chin_long_narrow: "Cằm dài, thon (luật ghép)",
+  face_round_gentle: "Mặt rộng, tròn (luật ghép)",
+  eye_lion: "Mắt lớn, mày đậm (luật ghép)",
+  eye_long_brow_clear: "Mắt nhỏ dài, mày thanh (luật ghép)",
+  eye_fine_gentle: "Mắt nhỏ, dài (luật ghép)",
+  eye_deep_fine: "Mắt nhỏ, sâu (luật ghép)",
+  iris_mouth_literary: "Tròng đen lớn, miệng rộng (luật ghép)",
+  eye_tail_down: "Đuôi mắt rủ, thượng đình dài (luật ghép)",
+  brow_fine_arched: "Mày mảnh, cong (luật ghép)",
+  brow_fine_long: "Mày mảnh, phẳng, dài (luật ghép)",
+  brow_straight_head_up: "Mày thẳng, đầu mày cao (luật ghép)",
+  brow_high_arch: "Mày cong cao như trăng non (luật ghép)",
+  brow_clear_fair: "Mày thanh, phẳng (luật ghép)",
+  brow_willow: "Mày lá liễu (luật ghép)",
+  brow_thick_eye_firm: "Mày đậm, mắt to (luật ghép)",
+  mouth_square_speech: "Miệng vuông vắn (luật ghép)",
+  lips_wide_even: "Môi rộng, ngay ngắn (luật ghép)",
+  forehead_brow_literary: "Trán rộng, mày thanh (luật ghép)",
 };
 
 /** Mọi feature_key mà engine hiểu được. */

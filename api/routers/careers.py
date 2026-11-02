@@ -1,4 +1,4 @@
-"""GET /api/careers — 6 nhóm nghề cho trang "Kho luận giải" (mục 10)."""
+"""GET /api/careers — các nhóm nghề cho trang "Kho luận giải" (mục 10)."""
 
 from fastapi import APIRouter
 

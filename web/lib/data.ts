@@ -69,9 +69,8 @@ export const SOURCES = sourcesJson as unknown as Source[];
  * Chỉ các nguồn tướng học — dùng cho mọi chỗ hiển thị "nguồn dẫn".
  *
  * sources.json từ bản v4 có thêm một mục type="model" (EfficientNet-B4 train
- * trên Kaggle FaceShape). Đó KHÔNG phải cổ thư: xếp chung vào danh sách dưới
- * câu "các cổ thư đều được trích lại trong Nhân Tướng Học" là trình bày sai
- * xuất xứ, đúng điều data/README.md dặn phải tránh.
+ * trên Kaggle FaceShape). Đó KHÔNG phải cổ thư: xếp chung vào danh mục cổ thư
+ * là trình bày sai xuất xứ, đúng điều data/README.md dặn phải tránh.
  */
 export const BOOK_SOURCES = SOURCES.filter(isBookSource);
 export const FACE_TYPES = faceTypesJson as unknown as FaceTypeInfo[];
@@ -79,7 +78,7 @@ export const FACE_TYPES = faceTypesJson as unknown as FaceTypeInfo[];
 const sourceById = new Map(SOURCES.map((s) => [s.id, s]));
 const faceTypeByKey = new Map(FACE_TYPES.map((f) => [f.key, f]));
 
-/** Tra nguồn theo id mà rules.json tham chiếu (vd "may"). */
+/** Tra nguồn theo id mà rules.json tham chiếu (vd "than_tuong_toan_bien"). */
 export const getSource = (id: string): Source | undefined => sourceById.get(id);
 
 /** Archetype hiển thị trên phiếu, suy từ faceType đã phân loại. */
@@ -87,7 +86,7 @@ export const getFaceType = (key: FaceType): FaceTypeInfo | undefined =>
   faceTypeByKey.get(key);
 
 /**
- * Nhãn nguồn đầy đủ để hiển thị, vd "Ma Y Thần Tướng — Q.I, Ngũ hành hình tướng".
+ * Nhãn nguồn đầy đủ để hiển thị, vd "Thần tướng toàn biên — q.3 — Luận mày".
  * Trả về chính id nếu không tra được, để lỗi dữ liệu lộ ra thay vì im lặng.
  */
 export function formatSource(sourceId: string, citation: string): string {

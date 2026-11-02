@@ -65,13 +65,23 @@ const LIMITS = [
     title: "Trọng số nghề là lớp diễn giải của nhóm dự án",
     body:
       "Cổ thư nói về tính cách và cách hành xử, hầu như không nói tới nghề " +
-      "nghiệp hiện đại. Việc quy các nét tính cách về sáu nhóm nghề là do nhóm " +
+      "nghiệp hiện đại. Việc quy các nét tính cách về các nhóm nghề là do nhóm " +
       "dự án đặt ra — phần này không có trong sách.",
+  },
+  {
+    title: "Nguồn dữ liệu nghề nghiệp",
+    body:
+      "Hồ sơ phong cách làm việc của từng nghề lấy từ O*NET 31.0 của Bộ Lao động " +
+      "Hoa Kỳ (USDOL/ETA), dùng theo giấy phép CC BY 4.0; nhóm dự án đã tổng hợp " +
+      "lại theo nhóm nghề. Tên và mã nghề đối chiếu với Danh mục nghề nghiệp Việt " +
+      "Nam (Quyết định 34/2020/QĐ-TTg). Dữ liệu O*NET mô tả thị trường lao động " +
+      "Hoa Kỳ, và việc ghép với nghề ở Việt Nam chỉ là gần đúng.",
   },
   {
     title: "Vài chỉ số chỉ là xấp xỉ",
     body:
-      "Dạng trán được suy từ đường bao trán vì lưới điểm mốc không thấy chân " +
+      "Độ cao sơn căn, đầu mũi và độ sâu của mắt suy từ một ảnh phẳng nên sai số " +
+      "khá lớn. Dạng trán được suy từ đường bao trán vì lưới điểm mốc không thấy chân " +
       "tóc. Các luật về tai bị để riêng ngoài bộ luật đang chạy: lưới điểm mốc " +
       "không có điểm nào ở tai.",
   },
@@ -153,9 +163,9 @@ export default function AboutPage() {
       <section className="flex flex-col gap-3">
         <h2 className="text-xl">Ngữ liệu</h2>
         <p className="max-w-[700px] text-[14.5px] font-light leading-relaxed text-ink-muted">
-          Ngữ liệu gốc là cuốn <em>Nhân Tướng Học</em> (Hy Trương) đã số hoá; các
-          cổ thư khác đều được trích lại trong sách này. Mỗi luật ghi rõ quyển và
-          mục để bạn tra ngược lại.
+          Ngữ liệu là nguyên văn Hán của các cổ thư tướng học thuộc phạm vi công
+          cộng; phần tiếng Việt do nhóm dự án tự dịch. Mỗi luật ghi rõ quyển và
+          thiên để bạn tra ngược lại.
         </p>
         <ul className="flex flex-wrap gap-2">
           {BOOK_SOURCES.map((s) => (

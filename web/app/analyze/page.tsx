@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { RULES } from "@/lib/data";
+import { CAREERS, RULES } from "@/lib/data";
 import { SUPPORTED_KEYS } from "@/lib/engine/accessors";
 import { evaluateRules } from "@/lib/engine/rule-engine";
 import { aggregateTraits } from "@/lib/engine/traits";
@@ -105,7 +105,7 @@ export default function AnalyzePage() {
     },
     {
       label: "Sinh luận giải & bản đồ nhóm nghề",
-      note: "Gom nét tính cách kèm nguồn dẫn, chấm điểm 6 nhóm nghề",
+      note: `Gom nét tính cách kèm nguồn dẫn, chấm điểm ${CAREERS.length} nhóm nghề`,
       state: "pending",
       ms: null,
       measured: true,

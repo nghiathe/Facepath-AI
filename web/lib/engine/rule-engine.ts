@@ -47,7 +47,7 @@ export type Rule = {
   conditions?: RuleCondition[];
   trait: string;
   reading_hint: string;
-  /** id của nguồn, trỏ vào data/sources.json (vd "may"), không phải tên sách. */
+  /** id của nguồn, trỏ vào data/sources.json (vd "than_tuong_toan_bien"), không phải tên sách. */
   source: string;
   citation: string;
   weight: number;

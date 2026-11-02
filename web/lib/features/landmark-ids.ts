@@ -95,3 +95,35 @@ export const SHAPE_PT = {
   BROW_TAIL_L: 70, // đuôi mày (phía thái dương)
   BROW_TAIL_R: 300,
 } as const;
+
+/**
+ * Mốc của các bộ vị v6 (features/bovi.ts). Đã đối chiếu vị trí từng điểm trên
+ * canonical_face_model của MediaPipe; bovi.test.ts đo lại trên chính mô hình đó.
+ * Hậu tố _R là phía mép trái ảnh, _L là phía mép phải ảnh, như PT.
+ */
+export const BOVI_PT = {
+  BROW_INNER_R: 55, // đầu mày, mép dưới
+  BROW_INNER_L: 285,
+  BROW_RIDGE_R: 105, // gờ xương mày
+  BROW_RIDGE_L: 334,
+  LID_TOP_R: 159, // mí trên, giữa mắt
+  LID_TOP_L: 386,
+  NOSE_RIDGE_R: 122, // hai bên sống mũi, ngang sơn căn
+  NOSE_RIDGE_L: 351,
+  NOSE_TIP_TOP: 4, // điểm nhô nhất của đầu mũi
+  TIP_SIDE_R: 45, // hai bên đầu mũi
+  TIP_SIDE_L: 275,
+  ALA_BASE_R: 129, // chân cánh mũi, sát má
+  ALA_BASE_L: 358,
+  NOSTRIL_IN_R: 97, // chân mũi, phía trong lỗ mũi
+  NOSTRIL_IN_L: 326,
+  PHILTRUM_MID: 164, // giữa nhân trung
+  CUPID_R: 37, // hai đỉnh cung môi trên
+  CUPID_L: 267,
+  // 10 điểm tròng mắt chỉ có ở Face Landmarker 478 điểm.
+  IRIS_R: [469, 470, 471, 472],
+  IRIS_L: [474, 475, 476, 477],
+} as const;
+
+/** Các điểm trên sống mũi, từ dưới sơn căn tới đầu mũi. */
+export const NOSE_BRIDGE_LINE = [6, 197, 195, 5, 4] as const;

@@ -1,0 +1,352 @@
+# Bảng đối chiếu nghề do nhóm dự án soạn tay. Mỗi dòng: nhóm, mã VSCO (QĐ 34/2020/QĐ-TTg), mã O*NET-SOC, tên nghề, mô tả ngắn.
+# Một mã VSCO có thể ứng với nhiều nghề cụ thể và ngược lại; đây là ghép gần đúng để lấy hồ sơ Work Styles, không phải bảng tương đương chính thức.
+cong-nghe-so	25120	15-1252.00	Kỹ sư phần mềm	Thiết kế, viết và bảo trì phần mềm theo yêu cầu.
+cong-nghe-so	25130	15-1254.00	Lập trình viên web	Xây dựng và duy trì website, ứng dụng web.
+cong-nghe-so	25140	15-1251.00	Lập trình viên ứng dụng	Viết mã cho các chương trình và ứng dụng cụ thể.
+cong-nghe-so	25111	15-1211.00	Chuyên viên phân tích hệ thống	Phân tích nhu cầu và thiết kế hệ thống thông tin.
+cong-nghe-so	25112	13-1111.00	Chuyên viên phân tích nghiệp vụ CNTT	Nối nhu cầu kinh doanh với giải pháp công nghệ.
+cong-nghe-so	25113	15-1299.08	Kiến trúc sư giải pháp	Định hình kiến trúc tổng thể của hệ thống CNTT.
+cong-nghe-so	25211	15-1242.00	Quản trị cơ sở dữ liệu	Vận hành, sao lưu và tối ưu cơ sở dữ liệu.
+cong-nghe-so	25212	15-1243.00	Kiến trúc sư dữ liệu	Thiết kế cấu trúc lưu trữ dữ liệu của tổ chức.
+cong-nghe-so	25291	15-2051.00	Nhà khoa học dữ liệu	Khai thác dữ liệu, xây dựng mô hình dự báo.
+cong-nghe-so	25291	15-2051.01	Chuyên viên phân tích dữ liệu kinh doanh	Tổng hợp dữ liệu thành báo cáo hỗ trợ quyết định.
+cong-nghe-so	25292	15-1243.01	Chuyên viên kho dữ liệu	Xây dựng kho dữ liệu và luồng tích hợp dữ liệu.
+cong-nghe-so	25220	15-1244.00	Quản trị hệ thống	Vận hành máy chủ, mạng và hạ tầng CNTT.
+cong-nghe-so	25230	15-1241.00	Kỹ sư mạng máy tính	Thiết kế và triển khai hệ thống mạng.
+cong-nghe-so	25190	15-1212.00	Chuyên viên an toàn thông tin	Bảo vệ hệ thống, phát hiện và xử lý sự cố bảo mật.
+cong-nghe-so	25190	15-1299.04	Chuyên gia kiểm thử xâm nhập	Thử tấn công có kiểm soát để tìm lỗ hổng.
+cong-nghe-so	25190	15-1253.00	Kỹ sư kiểm thử phần mềm	Lập kịch bản kiểm thử, tìm và báo lỗi phần mềm.
+cong-nghe-so	25190	15-1299.09	Quản lý dự án CNTT	Điều phối tiến độ, nguồn lực của dự án công nghệ.
+cong-nghe-so	25190	15-1221.00	Nhà nghiên cứu khoa học máy tính	Nghiên cứu thuật toán và công nghệ tính toán mới.
+cong-nghe-so	25130	15-1255.00	Nhà thiết kế giao diện số	Thiết kế trải nghiệm và giao diện sản phẩm số.
+cong-nghe-so	25130	15-1255.01	Nhà thiết kế trò chơi điện tử	Xây dựng luật chơi, cốt truyện và cơ chế trò chơi.
+cong-nghe-so	35120	15-1232.00	Kỹ thuật viên hỗ trợ người dùng	Hướng dẫn và xử lý sự cố CNTT cho người dùng.
+cong-nghe-so	35130	15-1231.00	Kỹ thuật viên mạng	Lắp đặt, theo dõi và sửa lỗi mạng máy tính.
+cong-nghe-so	35140	15-1299.01	Quản trị website	Duy trì nội dung, hiệu năng của website.
+ky-thuat-xay-dung	21420	17-2051.00	Kỹ sư xây dựng	Thiết kế và giám sát công trình dân dụng, hạ tầng.
+ky-thuat-xay-dung	21440	17-2141.00	Kỹ sư cơ khí	Thiết kế, chế tạo máy và thiết bị cơ khí.
+ky-thuat-xay-dung	21510	17-2071.00	Kỹ sư điện	Thiết kế và vận hành hệ thống điện.
+ky-thuat-xay-dung	21520	17-2072.00	Kỹ sư điện tử	Thiết kế mạch và thiết bị điện tử.
+ky-thuat-xay-dung	21530	15-1241.01	Kỹ sư viễn thông	Thiết kế và tối ưu mạng viễn thông.
+ky-thuat-xay-dung	21410	17-2112.03	Kỹ sư chế tạo	Tối ưu quy trình và dây chuyền sản xuất.
+ky-thuat-xay-dung	21450	17-2041.00	Kỹ sư hoá học	Thiết kế quy trình sản xuất hoá chất, vật liệu.
+ky-thuat-xay-dung	21460	17-2151.00	Kỹ sư mỏ, địa chất	Khảo sát và tổ chức khai thác khoáng sản.
+ky-thuat-xay-dung	21490	17-2199.08	Kỹ sư robot	Thiết kế và lập trình hệ thống robot.
+ky-thuat-xay-dung	21490	17-2199.05	Kỹ sư cơ điện tử	Tích hợp cơ khí, điện tử và điều khiển.
+ky-thuat-xay-dung	21490	17-2011.00	Kỹ sư hàng không	Thiết kế, kiểm tra máy bay và thiết bị bay.
+ky-thuat-xay-dung	21490	17-2171.00	Kỹ sư dầu khí	Thiết kế phương án khai thác dầu khí.
+ky-thuat-xay-dung	21490	17-2112.00	Kỹ sư công nghiệp	Tổ chức con người, máy móc cho hiệu quả cao.
+ky-thuat-xay-dung	21490	17-2121.00	Kỹ sư tàu thuỷ	Thiết kế và bảo trì tàu, thiết bị hàng hải.
+ky-thuat-xay-dung	21490	17-2141.02	Kỹ sư ô tô	Phát triển xe và các hệ thống trên xe.
+ky-thuat-xay-dung	21490	17-2111.00	Kỹ sư an toàn	Đánh giá và phòng ngừa rủi ro kỹ thuật.
+ky-thuat-xay-dung	21610	17-1011.00	Kiến trúc sư	Thiết kế công trình, không gian sống và làm việc.
+ky-thuat-xay-dung	21620	17-1012.00	Kiến trúc sư cảnh quan	Thiết kế công viên, sân vườn, không gian mở.
+ky-thuat-xay-dung	21641	19-3051.00	Nhà quy hoạch đô thị	Lập quy hoạch sử dụng đất và phát triển đô thị.
+ky-thuat-xay-dung	21651	17-1022.00	Kỹ sư trắc địa	Đo đạc địa hình, xác định ranh giới công trình.
+ky-thuat-xay-dung	21654	17-1021.00	Người lập bản đồ	Thu thập số liệu không gian và lập bản đồ.
+ky-thuat-xay-dung	31121	17-3022.00	Kỹ thuật viên xây dựng	Hỗ trợ kỹ sư khảo sát, thí nghiệm, giám sát thi công.
+ky-thuat-xay-dung	31180	17-3011.00	Kỹ thuật viên vẽ kỹ thuật	Dựng bản vẽ thi công bằng phần mềm CAD.
+ky-thuat-xay-dung	31131	17-3023.00	Kỹ thuật viên điện	Lắp đặt, thử nghiệm và bảo trì thiết bị điện.
+ky-thuat-xay-dung	31151	17-3027.00	Kỹ thuật viên cơ khí	Thử nghiệm, hiệu chỉnh máy và thiết bị cơ khí.
+ky-thuat-xay-dung	31153	17-3024.01	Kỹ thuật viên robot	Lắp đặt và bảo trì robot công nghiệp.
+ky-thuat-xay-dung	31230	47-1011.00	Giám sát công trường	Điều phối đội thợ và tiến độ thi công.
+san-xuat-thu-cong	72121	51-4121.00	Thợ hàn	Nối, cắt kim loại bằng nhiệt theo bản vẽ.
+san-xuat-thu-cong	72311	49-3023.00	Thợ cơ khí ô tô	Chẩn đoán, sửa chữa và bảo dưỡng xe.
+san-xuat-thu-cong	72331	49-9041.00	Thợ cơ khí máy công nghiệp	Sửa chữa, bảo trì máy trong nhà xưởng.
+san-xuat-thu-cong	72321	49-3011.00	Thợ cơ khí máy bay	Kiểm tra, bảo dưỡng máy bay.
+san-xuat-thu-cong	71150	47-2031.00	Thợ mộc	Gia công và lắp dựng kết cấu, đồ gỗ.
+san-xuat-thu-cong	71110	47-2021.00	Thợ xây	Xây tường, kết cấu gạch đá.
+san-xuat-thu-cong	71260	47-2152.00	Thợ ống nước	Lắp đặt, sửa chữa đường ống.
+san-xuat-thu-cong	74110	47-2111.00	Thợ điện công trình	Đi dây, lắp đặt điện cho nhà và công trình.
+san-xuat-thu-cong	71270	49-9021.00	Thợ điện lạnh	Lắp đặt, sửa chữa điều hoà và hệ thống lạnh.
+san-xuat-thu-cong	72220	51-4111.00	Thợ làm khuôn, dụng cụ	Chế tạo khuôn mẫu và dụng cụ chính xác.
+san-xuat-thu-cong	72230	51-4041.00	Thợ tiện, phay	Gia công chi tiết kim loại trên máy công cụ.
+san-xuat-thu-cong	73131	51-9071.00	Thợ kim hoàn	Chế tác trang sức từ kim loại quý, đá quý.
+san-xuat-thu-cong	73141	51-9195.05	Thợ gốm	Tạo hình và nung sản phẩm gốm sứ.
+san-xuat-thu-cong	73110	49-9064.00	Thợ sửa đồng hồ, dụng cụ chính xác	Lắp ráp và hiệu chỉnh cơ cấu nhỏ, chính xác.
+san-xuat-thu-cong	75310	51-6052.00	Thợ may đo	May, sửa trang phục theo số đo.
+san-xuat-thu-cong	75221	51-7011.00	Thợ đồ gỗ nội thất	Đóng tủ, bàn ghế và đồ gỗ gia dụng.
+san-xuat-thu-cong	75121	51-3011.00	Thợ làm bánh	Pha chế, nướng và trang trí bánh.
+san-xuat-thu-cong	73221	51-5112.00	Thợ in	Vận hành máy in, kiểm soát chất lượng bản in.
+san-xuat-thu-cong	74222	49-2011.00	Thợ sửa máy tính, thiết bị văn phòng	Chẩn đoán, sửa chữa máy tính và thiết bị.
+san-xuat-thu-cong	81894	51-9161.00	Thợ vận hành máy CNC	Cài đặt và điều khiển máy gia công tự động.
+san-xuat-thu-cong	81893	51-9141.00	Thợ vận hành máy bán dẫn	Vận hành thiết bị sản xuất chip, tấm silicon.
+san-xuat-thu-cong	82022	51-2022.00	Thợ lắp ráp điện tử	Lắp ráp linh kiện, bo mạch điện tử.
+san-xuat-thu-cong	75430	51-9061.00	Nhân viên kiểm tra chất lượng sản phẩm	Đo, thử và phân loại sản phẩm theo tiêu chuẩn.
+san-xuat-thu-cong	31220	51-1011.00	Giám sát sản xuất	Quản lý ca làm việc và tổ sản xuất.
+san-xuat-thu-cong	31310	51-8013.00	Người vận hành nhà máy điện	Điều khiển tổ máy và theo dõi phát điện.
+san-xuat-thu-cong	31330	51-8091.00	Người vận hành nhà máy hoá chất	Giám sát quy trình phản ứng và thiết bị hoá chất.
+tai-chinh-ke-toan	24111	13-2011.00	Kế toán viên	Ghi chép, lập báo cáo tài chính của đơn vị.
+tai-chinh-ke-toan	24112	13-2011.00	Kiểm toán viên	Kiểm tra tính trung thực của báo cáo tài chính.
+tai-chinh-ke-toan	24113	13-2082.00	Kế toán thuế	Lập tờ khai và tư vấn nghĩa vụ thuế.
+tai-chinh-ke-toan	24120	13-2052.00	Cố vấn tài chính cá nhân	Lập kế hoạch tài chính cho khách hàng.
+tai-chinh-ke-toan	24120	13-2071.00	Tư vấn tín dụng cá nhân	Hỗ trợ khách hàng quản lý nợ và ngân sách.
+tai-chinh-ke-toan	24131	13-2051.00	Chuyên viên phân tích tài chính	Đánh giá doanh nghiệp, dự án và khoản đầu tư.
+tai-chinh-ke-toan	24132	13-2054.00	Chuyên viên quản trị rủi ro	Đo lường và kiểm soát rủi ro tài chính.
+tai-chinh-ke-toan	24133	11-3031.03	Quản lý quỹ đầu tư	Xây dựng và điều hành danh mục đầu tư.
+tai-chinh-ke-toan	24139	13-2099.01	Chuyên viên phân tích định lượng	Dùng mô hình toán để định giá và đo rủi ro.
+tai-chinh-ke-toan	24139	15-2011.00	Chuyên viên định phí bảo hiểm	Tính xác suất, phí và dự phòng bảo hiểm.
+tai-chinh-ke-toan	24139	13-2031.00	Chuyên viên phân tích ngân sách	Lập và theo dõi ngân sách của tổ chức.
+tai-chinh-ke-toan	24139	13-2053.00	Chuyên viên thẩm định bảo hiểm	Đánh giá rủi ro để nhận bảo hiểm.
+tai-chinh-ke-toan	24139	13-2099.04	Chuyên viên điều tra gian lận tài chính	Phát hiện và làm rõ hành vi gian lận.
+tai-chinh-ke-toan	24139	13-2061.00	Thanh tra tài chính	Kiểm tra sự tuân thủ của tổ chức tài chính.
+tai-chinh-ke-toan	33110	41-3031.00	Môi giới chứng khoán	Tư vấn và thực hiện giao dịch cho khách hàng.
+tai-chinh-ke-toan	33120	13-2072.00	Chuyên viên tín dụng	Thẩm định hồ sơ và đề xuất khoản vay.
+tai-chinh-ke-toan	33120	13-2041.00	Chuyên viên phân tích tín dụng	Đánh giá khả năng trả nợ của khách hàng.
+tai-chinh-ke-toan	33130	43-3031.00	Kế toán tổng hợp	Ghi sổ, đối chiếu và tổng hợp số liệu kế toán.
+tai-chinh-ke-toan	33151	13-2023.00	Thẩm định viên về giá	Định giá bất động sản và tài sản.
+tai-chinh-ke-toan	33152	13-1031.00	Giám định viên bồi thường	Xác minh tổn thất và mức chi trả.
+tai-chinh-ke-toan	33160	11-3031.01	Kiểm soát viên ngân quỹ	Quản lý dòng tiền và kiểm soát thu chi.
+tai-chinh-ke-toan	33211	41-3021.00	Đại lý bảo hiểm	Tư vấn và bán sản phẩm bảo hiểm.
+tai-chinh-ke-toan	42111	43-3071.00	Giao dịch viên ngân hàng	Thực hiện giao dịch tiền gửi, thanh toán tại quầy.
+tai-chinh-ke-toan	43130	43-3051.00	Nhân viên kế toán tiền lương	Tính lương, chấm công và các khoản khấu trừ.
+tai-chinh-ke-toan	42141	43-3011.00	Nhân viên thu hồi nợ	Liên hệ và thoả thuận phương án trả nợ.
+quan-ly-van-hanh	17100	11-1011.00	Tổng giám đốc	Định hướng chiến lược và điều hành toàn doanh nghiệp.
+quan-ly-van-hanh	17290	11-1021.00	Giám đốc điều hành	Phụ trách hoạt động hằng ngày của đơn vị.
+quan-ly-van-hanh	17310	11-3031.00	Giám đốc tài chính	Quản lý nguồn vốn, ngân sách và báo cáo tài chính.
+quan-ly-van-hanh	17310	11-3012.00	Trưởng phòng hành chính	Tổ chức các dịch vụ hành chính nội bộ.
+quan-ly-van-hanh	17320	11-3121.00	Giám đốc nhân sự	Xây dựng chính sách và đội ngũ nhân lực.
+quan-ly-van-hanh	17330	11-2022.00	Giám đốc kinh doanh	Đặt mục tiêu và dẫn dắt đội bán hàng.
+quan-ly-van-hanh	17330	11-2021.00	Giám đốc marketing	Định vị thương hiệu và kế hoạch thị trường.
+quan-ly-van-hanh	17350	11-3071.04	Giám đốc chuỗi cung ứng	Điều phối mua hàng, kho và phân phối.
+quan-ly-van-hanh	17350	11-3061.00	Trưởng phòng mua hàng	Lựa chọn nhà cung cấp, thương lượng hợp đồng.
+quan-ly-van-hanh	17360	11-3021.00	Giám đốc công nghệ thông tin	Định hướng và quản lý hệ thống CNTT.
+quan-ly-van-hanh	17370	11-9121.00	Giám đốc nghiên cứu và phát triển	Quản lý các chương trình nghiên cứu sản phẩm.
+quan-ly-van-hanh	17220	11-3051.00	Giám đốc sản xuất	Điều hành nhà máy và kế hoạch sản xuất.
+quan-ly-van-hanh	17220	11-3051.01	Trưởng phòng quản lý chất lượng	Xây dựng và giám sát hệ thống chất lượng.
+quan-ly-van-hanh	17230	11-9021.00	Giám đốc dự án xây dựng	Quản lý chi phí, tiến độ công trình.
+quan-ly-van-hanh	17250	11-9081.00	Quản lý khách sạn	Điều hành dịch vụ lưu trú.
+quan-ly-van-hanh	17250	11-9051.00	Quản lý nhà hàng	Điều hành bếp, phục vụ và chi phí nhà hàng.
+quan-ly-van-hanh	17240	41-1011.00	Quản lý cửa hàng	Phụ trách doanh số, nhân viên bán lẻ.
+quan-ly-van-hanh	17480	11-9111.00	Quản lý bệnh viện, cơ sở y tế	Điều hành dịch vụ và nguồn lực y tế.
+quan-ly-van-hanh	17290	11-3013.00	Quản lý cơ sở vật chất	Vận hành, bảo trì toà nhà và hạ tầng.
+quan-ly-van-hanh	24210	13-1111.00	Chuyên viên tư vấn quản lý	Phân tích và đề xuất cải tiến tổ chức.
+quan-ly-van-hanh	24210	13-1082.00	Quản lý dự án	Lập kế hoạch và điều phối dự án.
+quan-ly-van-hanh	33410	43-1011.00	Giám sát văn phòng	Phân công và theo dõi công việc văn phòng.
+quan-ly-van-hanh	33430	43-6011.00	Thư ký giám đốc	Sắp xếp lịch, tài liệu cho lãnh đạo.
+quan-ly-van-hanh	41101	43-9061.00	Nhân viên văn phòng	Xử lý giấy tờ và công việc hành chính chung.
+quan-ly-van-hanh	41200	43-6014.00	Thư ký tổng hợp	Soạn văn bản, sắp xếp hồ sơ và liên lạc.
+nghien-cuu-giang-day	23110	25-1011.00	Giảng viên kinh tế, quản trị	Giảng dạy, nghiên cứu về kinh doanh ở đại học.
+nghien-cuu-giang-day	23110	25-1021.00	Giảng viên công nghệ thông tin	Giảng dạy, nghiên cứu khoa học máy tính.
+nghien-cuu-giang-day	23110	25-1081.00	Giảng viên sư phạm	Đào tạo giáo viên và nghiên cứu giáo dục.
+nghien-cuu-giang-day	23110	25-1022.00	Giảng viên toán học	Giảng dạy, nghiên cứu toán ở đại học.
+nghien-cuu-giang-day	23120	25-1194.00	Giảng viên cao đẳng nghề	Đào tạo kỹ năng nghề bậc cao đẳng.
+nghien-cuu-giang-day	23200	25-2032.00	Giáo viên trung cấp	Dạy lý thuyết và thực hành nghề.
+nghien-cuu-giang-day	23310	25-2031.00	Giáo viên trung học phổ thông	Dạy học sinh cấp III theo môn chuyên.
+nghien-cuu-giang-day	23320	25-2022.00	Giáo viên trung học cơ sở	Dạy học sinh cấp II.
+nghien-cuu-giang-day	23410	25-2021.00	Giáo viên tiểu học	Dạy kiến thức nền tảng cho học sinh nhỏ.
+nghien-cuu-giang-day	23420	25-2011.00	Giáo viên mầm non	Chăm sóc, giáo dục trẻ trước tuổi đi học.
+nghien-cuu-giang-day	23920	25-2056.00	Giáo viên giáo dục đặc biệt	Dạy học sinh có nhu cầu giáo dục đặc biệt.
+nghien-cuu-giang-day	23930	25-3011.00	Giáo viên ngoại ngữ	Dạy ngôn ngữ cho người học các lứa tuổi.
+nghien-cuu-giang-day	23910	25-9031.00	Chuyên gia phương pháp giáo dục	Xây dựng chương trình và tài liệu giảng dạy.
+nghien-cuu-giang-day	21110	19-2012.00	Nhà vật lý	Nghiên cứu các quy luật của vật chất, năng lượng.
+nghien-cuu-giang-day	21130	19-2031.00	Nhà hoá học	Nghiên cứu thành phần và phản ứng của chất.
+nghien-cuu-giang-day	21140	19-2042.00	Nhà địa chất	Nghiên cứu cấu tạo và lịch sử Trái Đất.
+nghien-cuu-giang-day	21211	15-2021.00	Nhà toán học	Phát triển lý thuyết và phương pháp toán.
+nghien-cuu-giang-day	21212	15-2031.00	Chuyên gia vận trù học	Dùng mô hình toán để tối ưu quyết định.
+nghien-cuu-giang-day	21220	15-2041.00	Nhà thống kê	Thiết kế khảo sát, phân tích số liệu.
+nghien-cuu-giang-day	21310	19-1029.04	Nhà sinh học	Nghiên cứu sinh vật và các quá trình sống.
+nghien-cuu-giang-day	26310	19-3011.00	Nhà kinh tế học	Nghiên cứu sản xuất, phân phối và chính sách.
+nghien-cuu-giang-day	26320	19-3041.00	Nhà xã hội học	Nghiên cứu hành vi nhóm và cấu trúc xã hội.
+nghien-cuu-giang-day	26330	19-3093.00	Nhà sử học	Nghiên cứu, diễn giải tư liệu lịch sử.
+nghien-cuu-giang-day	26210	25-4011.00	Chuyên viên lưu trữ	Đánh giá, bảo quản tài liệu có giá trị.
+nghien-cuu-giang-day	26210	25-4012.00	Người phụ trách bảo tàng	Sưu tầm, trưng bày và nghiên cứu hiện vật.
+nghien-cuu-giang-day	26220	25-4022.00	Thủ thư	Tổ chức tài liệu, hỗ trợ bạn đọc tra cứu.
+phap-ly-hcc	26111	23-1011.00	Luật sư tranh tụng	Đại diện khách hàng tại phiên toà.
+phap-ly-hcc	26112	23-1011.00	Luật sư tư vấn	Tư vấn pháp lý, soạn thảo hợp đồng.
+phap-ly-hcc	26120	23-1023.00	Thẩm phán	Xét xử và ra phán quyết theo pháp luật.
+phap-ly-hcc	26191	23-2093.00	Công chứng viên	Chứng nhận tính xác thực của giao dịch, giấy tờ.
+phap-ly-hcc	26199	23-1022.00	Hoà giải viên, trọng tài viên	Giúp các bên giải quyết tranh chấp ngoài toà.
+phap-ly-hcc	26199	13-1041.00	Chuyên viên pháp chế, tuân thủ	Đảm bảo tổ chức hoạt động đúng quy định.
+phap-ly-hcc	34110	23-2011.00	Trợ lý pháp lý	Tra cứu văn bản, chuẩn bị hồ sơ cho luật sư.
+phap-ly-hcc	33420	43-6012.00	Thư ký văn phòng luật	Soạn thảo, quản lý hồ sơ pháp lý.
+phap-ly-hcc	33420	23-1012.00	Thư ký toà án	Ghi biên bản, chuẩn bị hồ sơ xét xử.
+phap-ly-hcc	24410	33-3051.04	Công chức hải quan	Kiểm soát hàng hoá, người qua cửa khẩu.
+phap-ly-hcc	24420	13-2081.00	Công chức thuế	Kiểm tra kê khai và thu thuế.
+phap-ly-hcc	24440	13-1041.04	Thanh tra viên nhà nước	Kiểm tra sự chấp hành quy định ở các đơn vị.
+phap-ly-hcc	24220	13-1041.07	Chuyên viên quản lý chính sách	Theo dõi và tham mưu thực thi quy định.
+phap-ly-hcc	24460	19-3094.00	Nhà ngoại giao	Đại diện, đàm phán và theo dõi quan hệ quốc tế.
+phap-ly-hcc	02100	33-3051.00	Sĩ quan công an	Giữ gìn trật tự, an toàn xã hội.
+phap-ly-hcc	02100	33-3021.00	Điều tra viên	Thu thập chứng cứ, làm rõ vụ việc.
+phap-ly-hcc	02100	33-3021.06	Chuyên viên phân tích an ninh	Tổng hợp thông tin phục vụ bảo đảm an ninh.
+phap-ly-hcc	02300	33-2011.00	Chiến sĩ phòng cháy chữa cháy	Chữa cháy, cứu nạn và phòng ngừa sự cố.
+phap-ly-hcc	02300	33-2021.00	Cán bộ điều tra cháy nổ	Xác định nguyên nhân và kiểm tra an toàn cháy.
+phap-ly-hcc	54010	33-9032.00	Nhân viên an ninh	Bảo vệ con người, tài sản tại cơ sở.
+phap-ly-hcc	54091	33-9021.00	Thám tử tư	Thu thập thông tin theo yêu cầu hợp pháp.
+phap-ly-hcc	33530	43-4061.00	Nhân viên thẩm tra trợ cấp	Xét hồ sơ hưởng chính sách xã hội.
+phap-ly-hcc	33540	43-4031.00	Nhân viên cấp phép	Tiếp nhận, xử lý hồ sơ hành chính.
+phap-ly-hcc	33590	47-4011.00	Thanh tra xây dựng	Kiểm tra công trình theo quy chuẩn.
+phap-ly-hcc	32570	19-5011.00	Thanh tra an toàn lao động	Đánh giá điều kiện làm việc và nguy cơ nghề nghiệp.
+phap-ly-hcc	44050	43-4071.00	Nhân viên văn thư	Tiếp nhận, phân loại và lưu trữ công văn.
+kinh-doanh-truyen-thong	33220	41-4012.00	Nhân viên kinh doanh	Tìm khách hàng, tư vấn và chốt đơn hàng.
+kinh-doanh-truyen-thong	24330	41-9031.00	Kỹ sư bán hàng	Tư vấn giải pháp kỹ thuật cho khách hàng.
+kinh-doanh-truyen-thong	24340	41-4011.00	Chuyên viên kinh doanh giải pháp CNTT	Bán sản phẩm công nghệ cho doanh nghiệp.
+kinh-doanh-truyen-thong	33231	13-1023.00	Nhân viên thu mua	Tìm nguồn hàng, đàm phán giá.
+kinh-doanh-truyen-thong	33240	41-3091.00	Môi giới thương mại	Kết nối bên mua, bên bán và hưởng hoa hồng.
+kinh-doanh-truyen-thong	33340	41-9022.00	Môi giới bất động sản	Giới thiệu, đàm phán mua bán nhà đất.
+kinh-doanh-truyen-thong	52210	13-1199.06	Chủ cửa hàng trực tuyến	Tự vận hành gian hàng và bán hàng trên mạng.
+kinh-doanh-truyen-thong	52230	41-2031.00	Nhân viên bán hàng	Tư vấn và phục vụ khách tại cửa hàng.
+kinh-doanh-truyen-thong	52440	41-9041.00	Nhân viên bán hàng qua điện thoại	Liên hệ, giới thiệu sản phẩm từ xa.
+kinh-doanh-truyen-thong	52420	41-9011.00	Nhân viên giới thiệu sản phẩm	Trình diễn sản phẩm cho người mua.
+kinh-doanh-truyen-thong	24310	13-1161.00	Chuyên viên marketing	Nghiên cứu thị trường, lập kế hoạch quảng bá.
+kinh-doanh-truyen-thong	24310	13-1161.01	Chuyên viên marketing tìm kiếm	Tối ưu hiển thị và quảng cáo trên công cụ tìm kiếm.
+kinh-doanh-truyen-thong	24310	41-3011.00	Nhân viên kinh doanh quảng cáo	Bán không gian và gói quảng cáo.
+kinh-doanh-truyen-thong	24320	27-3031.00	Chuyên viên quan hệ công chúng	Xây dựng hình ảnh, làm việc với báo chí.
+kinh-doanh-truyen-thong	26421	27-3023.00	Nhà báo	Điều tra, viết và đưa tin.
+kinh-doanh-truyen-thong	26422	27-3041.00	Biên tập viên	Chọn lọc và biên tập nội dung xuất bản.
+kinh-doanh-truyen-thong	26413	27-3043.00	Người viết nội dung quảng cáo	Viết thông điệp thu hút cho thương hiệu.
+kinh-doanh-truyen-thong	26414	27-3042.00	Người viết tài liệu kỹ thuật	Biến kiến thức phức tạp thành hướng dẫn dễ hiểu.
+kinh-doanh-truyen-thong	26431	27-3091.00	Phiên dịch viên	Dịch lời nói giữa các ngôn ngữ.
+kinh-doanh-truyen-thong	26432	27-3091.00	Biên dịch viên	Dịch văn bản giữa các ngôn ngữ.
+kinh-doanh-truyen-thong	26560	27-3011.00	Phát thanh viên, người dẫn chương trình	Dẫn dắt nội dung trên sóng và nền tảng số.
+kinh-doanh-truyen-thong	33320	13-1121.00	Chuyên viên tổ chức sự kiện	Lên kế hoạch và điều phối hội nghị, sự kiện.
+kinh-doanh-truyen-thong	42220	43-4051.00	Nhân viên chăm sóc khách hàng	Giải đáp, xử lý yêu cầu của khách hàng.
+kinh-doanh-truyen-thong	42270	43-4111.00	Nhân viên khảo sát thị trường	Phỏng vấn, thu thập ý kiến người dùng.
+sang-tao-nghe-thuat	21660	27-1024.00	Nhà thiết kế đồ hoạ	Tạo hình ảnh và ấn phẩm truyền thông.
+sang-tao-nghe-thuat	21631	27-1022.00	Nhà thiết kế thời trang	Sáng tạo trang phục, phụ kiện.
+sang-tao-nghe-thuat	21632	27-1021.00	Nhà thiết kế sản phẩm công nghiệp	Tạo kiểu dáng và công năng cho sản phẩm.
+sang-tao-nghe-thuat	34320	27-1025.00	Nhà thiết kế nội thất	Bố trí, trang trí không gian bên trong.
+sang-tao-nghe-thuat	26512	27-1013.00	Hoạ sĩ	Sáng tác tác phẩm hội hoạ.
+sang-tao-nghe-thuat	26511	27-1013.00	Nhà điêu khắc	Tạo tác phẩm hình khối.
+sang-tao-nghe-thuat	26513	27-1014.00	Hoạ sĩ hoạt hình	Tạo hình và chuyển động cho nhân vật.
+sang-tao-nghe-thuat	26411	27-3043.05	Nhà văn, nhà thơ	Sáng tác văn chương.
+sang-tao-nghe-thuat	26412	27-3043.00	Biên kịch	Viết kịch bản phim, sân khấu.
+sang-tao-nghe-thuat	26521	27-2042.00	Nhạc công	Biểu diễn nhạc cụ.
+sang-tao-nghe-thuat	26522	27-2041.00	Nhạc sĩ	Sáng tác, phối khí âm nhạc.
+sang-tao-nghe-thuat	26524	27-2042.00	Ca sĩ	Biểu diễn thanh nhạc.
+sang-tao-nghe-thuat	26530	27-2031.00	Vũ công	Biểu diễn múa.
+sang-tao-nghe-thuat	26530	27-2032.00	Biên đạo múa	Dàn dựng động tác, tiết mục múa.
+sang-tao-nghe-thuat	26540	27-2012.00	Đạo diễn	Chỉ đạo sản xuất phim, sân khấu.
+sang-tao-nghe-thuat	26550	27-2011.00	Diễn viên	Hoá thân vào nhân vật.
+sang-tao-nghe-thuat	34310	27-4021.00	Nhiếp ảnh gia	Sáng tạo và xử lý hình ảnh.
+sang-tao-nghe-thuat	35212	27-4031.00	Quay phim	Điều khiển máy quay ghi hình.
+sang-tao-nghe-thuat	35216	27-4032.00	Dựng phim	Ghép nối hình ảnh, âm thanh thành sản phẩm.
+sang-tao-nghe-thuat	35215	27-4014.00	Kỹ sư âm thanh	Thu, phối và xử lý âm thanh.
+sang-tao-nghe-thuat	34390	27-1011.00	Giám đốc nghệ thuật	Định hướng phong cách hình ảnh của dự án.
+sang-tao-nghe-thuat	34390	27-1027.00	Nhà thiết kế sân khấu, triển lãm	Thiết kế bối cảnh, không gian trưng bày.
+sang-tao-nghe-thuat	52410	41-9012.00	Người mẫu	Trình diễn và quảng bá sản phẩm thời trang.
+sang-tao-nghe-thuat	34210	27-2021.00	Vận động viên	Luyện tập và thi đấu thể thao.
+sang-tao-nghe-thuat	34221	27-2022.00	Huấn luyện viên thể thao	Lập giáo án, dẫn dắt vận động viên.
+y-te-suc-khoe	22110	29-1215.00	Bác sĩ đa khoa	Khám, chẩn đoán và điều trị bệnh thường gặp.
+y-te-suc-khoe	22124	29-1216.00	Bác sĩ nội khoa	Chẩn đoán và điều trị bệnh nội khoa.
+y-te-suc-khoe	22126	29-1221.00	Bác sĩ nhi khoa	Chăm sóc sức khoẻ trẻ em.
+y-te-suc-khoe	22128	29-1223.00	Bác sĩ tâm thần	Điều trị các rối loạn tâm thần.
+y-te-suc-khoe	22121	29-1212.00	Bác sĩ tim mạch	Điều trị bệnh tim và mạch máu.
+y-te-suc-khoe	22129	29-1214.00	Bác sĩ cấp cứu	Xử trí tình huống y tế khẩn cấp.
+y-te-suc-khoe	22129	29-1242.00	Bác sĩ phẫu thuật chỉnh hình	Phẫu thuật xương, khớp và cơ.
+y-te-suc-khoe	22129	29-1224.00	Bác sĩ chẩn đoán hình ảnh	Đọc phim và kết quả hình ảnh y khoa.
+y-te-suc-khoe	22610	29-1021.00	Bác sĩ răng hàm mặt	Khám và điều trị răng miệng.
+y-te-suc-khoe	22210	29-1141.00	Điều dưỡng	Chăm sóc, theo dõi người bệnh.
+y-te-suc-khoe	22220	29-9099.01	Hộ sinh	Chăm sóc thai phụ, đỡ đẻ.
+y-te-suc-khoe	22300	29-1291.00	Thầy thuốc y học cổ truyền	Điều trị bằng châm cứu và phương pháp truyền thống.
+y-te-suc-khoe	22500	29-1131.00	Bác sĩ thú y	Chẩn đoán và điều trị cho động vật.
+y-te-suc-khoe	22629	29-1051.00	Dược sĩ	Cấp phát thuốc, tư vấn sử dụng thuốc.
+y-te-suc-khoe	22640	29-1123.00	Chuyên viên vật lý trị liệu	Phục hồi vận động sau chấn thương.
+y-te-suc-khoe	22650	29-1031.00	Chuyên gia dinh dưỡng	Xây dựng chế độ ăn phù hợp từng người.
+y-te-suc-khoe	22660	29-1127.00	Chuyên viên âm ngữ trị liệu	Hỗ trợ phục hồi khả năng nói và nuốt.
+y-te-suc-khoe	22670	29-1041.00	Chuyên viên khúc xạ	Đo thị lực, kê kính và tầm soát mắt.
+y-te-suc-khoe	32112	29-2034.00	Kỹ thuật viên X quang	Chụp ảnh y khoa bằng thiết bị chuyên dụng.
+y-te-suc-khoe	32111	29-2032.00	Kỹ thuật viên siêu âm	Thực hiện siêu âm chẩn đoán.
+y-te-suc-khoe	32120	29-2012.00	Kỹ thuật viên xét nghiệm	Phân tích mẫu bệnh phẩm.
+y-te-suc-khoe	32130	29-2052.00	Kỹ thuật viên dược	Chuẩn bị thuốc dưới sự hướng dẫn của dược sĩ.
+y-te-suc-khoe	32580	29-2042.00	Nhân viên cấp cứu	Sơ cứu và vận chuyển người bệnh.
+y-te-suc-khoe	32520	29-2072.00	Nhân viên hồ sơ y tế	Mã hoá và quản lý hồ sơ bệnh án.
+y-te-suc-khoe	53221	31-1122.00	Nhân viên chăm sóc cá nhân	Giúp người cần hỗ trợ sinh hoạt hằng ngày.
+y-te-suc-khoe	53222	31-1121.00	Điều dưỡng tại nhà	Chăm sóc người bệnh ngay tại gia đình.
+cong-dong-xa-hoi	26340	19-3033.00	Nhà tâm lý lâm sàng	Đánh giá và trị liệu tâm lý.
+cong-dong-xa-hoi	26340	19-3034.00	Nhà tâm lý học đường	Hỗ trợ học sinh về học tập và cảm xúc.
+cong-dong-xa-hoi	26340	19-3032.00	Nhà tâm lý tổ chức	Nghiên cứu hành vi con người trong công việc.
+cong-dong-xa-hoi	26350	21-1014.00	Chuyên viên tham vấn tâm lý	Đồng hành, hỗ trợ người gặp khó khăn tâm lý.
+cong-dong-xa-hoi	26350	21-1012.00	Chuyên viên tư vấn hướng nghiệp	Giúp người học định hướng học tập, nghề nghiệp.
+cong-dong-xa-hoi	26350	21-1021.00	Nhân viên công tác xã hội trẻ em	Hỗ trợ trẻ em và gia đình khó khăn.
+cong-dong-xa-hoi	26350	21-1022.00	Nhân viên công tác xã hội y tế	Hỗ trợ người bệnh và gia đình.
+cong-dong-xa-hoi	26350	21-1013.00	Chuyên viên tham vấn gia đình	Hỗ trợ cải thiện quan hệ trong gia đình.
+cong-dong-xa-hoi	26350	21-1015.00	Chuyên viên phục hồi chức năng xã hội	Giúp người khuyết tật hoà nhập, tìm việc làm.
+cong-dong-xa-hoi	26350	21-1091.00	Chuyên viên giáo dục sức khoẻ	Tổ chức chương trình nâng cao sức khoẻ cộng đồng.
+cong-dong-xa-hoi	34120	21-1093.00	Nhân viên hỗ trợ xã hội	Kết nối người dân với dịch vụ an sinh.
+cong-dong-xa-hoi	32530	21-1094.00	Nhân viên y tế cộng đồng	Tuyên truyền, kết nối dịch vụ y tế tại địa phương.
+cong-dong-xa-hoi	24230	13-1071.00	Chuyên viên nhân sự	Tuyển dụng, quản lý hồ sơ và quan hệ nhân viên.
+cong-dong-xa-hoi	24230	13-1141.00	Chuyên viên lương thưởng	Xây dựng thang lương và chính sách đãi ngộ.
+cong-dong-xa-hoi	24230	13-1075.00	Chuyên viên quan hệ lao động	Đối thoại, giải quyết vấn đề lao động.
+cong-dong-xa-hoi	24240	13-1151.00	Chuyên viên đào tạo	Thiết kế và tổ chức chương trình đào tạo nội bộ.
+cong-dong-xa-hoi	41102	43-4161.00	Nhân viên hành chính nhân sự	Xử lý hồ sơ, chấm công và thủ tục nhân sự.
+cong-dong-xa-hoi	53110	39-9011.00	Nhân viên chăm sóc trẻ	Trông nom, chăm sóc trẻ nhỏ.
+cong-dong-xa-hoi	53120	25-9042.00	Trợ giảng	Hỗ trợ giáo viên trên lớp.
+cong-dong-xa-hoi	34230	39-9032.00	Nhân viên tổ chức hoạt động cộng đồng	Dẫn dắt hoạt động giải trí, sinh hoạt tập thể.
+cong-dong-xa-hoi	24210	11-9151.00	Quản lý dịch vụ xã hội	Điều hành chương trình, tổ chức phi lợi nhuận.
+cong-dong-xa-hoi	24210	13-1131.00	Chuyên viên gây quỹ	Vận động tài trợ cho hoạt động cộng đồng.
+du-lich-dich-vu	42210	41-3041.00	Tư vấn viên du lịch	Thiết kế, bán tour và dịch vụ đi lại.
+du-lich-dich-vu	51139	39-7011.00	Hướng dẫn viên du lịch	Dẫn đoàn, giới thiệu điểm đến.
+du-lich-dich-vu	51110	53-2031.00	Tiếp viên hàng không	Phục vụ và bảo đảm an toàn hành khách.
+du-lich-dich-vu	42240	43-4081.00	Lễ tân khách sạn	Đón tiếp và làm thủ tục lưu trú.
+du-lich-dich-vu	42250	39-6012.00	Nhân viên hỗ trợ khách lưu trú	Tư vấn, đặt dịch vụ cho khách.
+du-lich-dich-vu	42260	43-4171.00	Lễ tân	Tiếp khách, nghe điện và chuyển thông tin.
+du-lich-dich-vu	51200	35-2014.00	Đầu bếp	Chế biến món ăn tại nhà hàng.
+du-lich-dich-vu	34340	35-1011.00	Bếp trưởng	Xây dựng thực đơn và điều hành bếp.
+du-lich-dich-vu	51311	35-1012.00	Tổ trưởng phục vụ nhà hàng	Điều phối nhân viên phục vụ theo ca.
+du-lich-dich-vu	51312	35-3031.00	Nhân viên phục vụ bàn	Nhận gọi món và phục vụ khách.
+du-lich-dich-vu	51320	35-3011.00	Nhân viên pha chế	Pha đồ uống và tương tác với khách.
+du-lich-dich-vu	51320	35-3023.01	Nhân viên pha cà phê	Chuẩn bị cà phê và đồ uống tại quầy.
+du-lich-dich-vu	51410	39-5012.00	Thợ làm tóc	Cắt, tạo kiểu và chăm sóc tóc.
+du-lich-dich-vu	51420	39-5094.00	Chuyên viên chăm sóc da	Tư vấn và thực hiện liệu trình chăm sóc da.
+du-lich-dich-vu	51420	39-5091.00	Chuyên viên trang điểm	Trang điểm cho khách và diễn viên.
+du-lich-dich-vu	51510	37-1011.00	Giám sát buồng phòng	Phân công và kiểm tra vệ sinh phòng.
+du-lich-dich-vu	91122	37-2012.00	Nhân viên buồng phòng	Dọn dẹp, chuẩn bị phòng cho khách.
+du-lich-dich-vu	51640	39-2021.00	Nhân viên chăm sóc thú cưng	Tắm, chải và chăm sóc vật nuôi.
+du-lich-dich-vu	51630	39-4031.00	Nhân viên dịch vụ tang lễ	Tổ chức nghi lễ và hỗ trợ gia đình.
+du-lich-dich-vu	34222	39-9031.00	Huấn luyện viên thể dục	Hướng dẫn tập luyện cho cá nhân, nhóm.
+du-lich-dich-vu	52302	41-2011.00	Nhân viên thu ngân	Tính tiền và xử lý thanh toán.
+du-lich-dich-vu	52460	35-3023.00	Nhân viên quầy đồ ăn	Nhận đơn và chuẩn bị đồ ăn nhanh.
+du-lich-dich-vu	42230	43-2011.00	Nhân viên tổng đài	Tiếp nhận và chuyển cuộc gọi.
+du-lich-dich-vu	51650	25-3021.00	Giáo viên dạy lái xe	Hướng dẫn kỹ năng lái xe an toàn.
+du-lich-dich-vu	94020	35-2021.00	Phụ bếp	Sơ chế nguyên liệu, hỗ trợ đầu bếp.
+nong-lam-moi-truong	21321	19-1013.00	Kỹ sư nông học	Nghiên cứu cây trồng và đất canh tác.
+nong-lam-moi-truong	21325	19-1011.00	Kỹ sư chăn nuôi	Nghiên cứu giống và dinh dưỡng vật nuôi.
+nong-lam-moi-truong	21328	19-1023.00	Kỹ sư nuôi trồng thuỷ sản	Tư vấn kỹ thuật nuôi tôm, cá.
+nong-lam-moi-truong	21330	19-2041.00	Chuyên viên môi trường	Đánh giá và đề xuất giải pháp về môi trường.
+nong-lam-moi-truong	21330	19-1031.00	Chuyên viên bảo tồn	Quản lý, bảo vệ tài nguyên thiên nhiên.
+nong-lam-moi-truong	21430	17-2081.00	Kỹ sư môi trường	Thiết kế hệ thống xử lý nước thải, chất thải.
+nong-lam-moi-truong	21329	19-1032.00	Kỹ sư lâm nghiệp	Quy hoạch và quản lý rừng.
+nong-lam-moi-truong	21653	19-2043.00	Nhà thuỷ văn	Nghiên cứu nguồn nước và dòng chảy.
+nong-lam-moi-truong	24450	33-3031.00	Kiểm lâm	Tuần tra, bảo vệ rừng và động vật hoang dã.
+nong-lam-moi-truong	31420	19-4012.00	Kỹ thuật viên nông nghiệp	Lấy mẫu, theo dõi thí nghiệm đồng ruộng.
+nong-lam-moi-truong	31420	19-4012.01	Kỹ thuật viên nông nghiệp chính xác	Dùng dữ liệu, cảm biến để canh tác.
+nong-lam-moi-truong	31430	19-4071.00	Kỹ thuật viên lâm nghiệp	Khảo sát rừng, hỗ trợ bảo tồn.
+nong-lam-moi-truong	61140	11-9013.00	Chủ trang trại	Quản lý sản xuất và tiêu thụ nông sản.
+nong-lam-moi-truong	61112	45-2092.00	Người trồng rau	Gieo trồng, chăm sóc và thu hoạch rau.
+nong-lam-moi-truong	61121	45-2092.00	Người trồng cà phê	Chăm sóc vườn và thu hái cà phê.
+nong-lam-moi-truong	61122	45-2092.00	Người trồng chè	Chăm sóc đồi chè, thu hái búp chè.
+nong-lam-moi-truong	61211	45-2093.00	Người chăn nuôi gia súc	Chăm sóc trâu bò và gia súc khác.
+nong-lam-moi-truong	61231	45-2021.00	Người nuôi ong	Nuôi đàn ong, thu hoạch mật.
+nong-lam-moi-truong	62102	45-4011.00	Người trồng rừng	Trồng, chăm sóc và bảo vệ rừng.
+nong-lam-moi-truong	62211	45-2093.00	Người nuôi cá	Nuôi và chăm sóc cá thương phẩm.
+nong-lam-moi-truong	62231	45-3031.00	Ngư dân	Đánh bắt hải sản trên biển.
+nong-lam-moi-truong	83410	45-2091.00	Người vận hành máy nông nghiệp	Điều khiển máy làm đất, thu hoạch.
+nong-lam-moi-truong	92040	37-3011.00	Công nhân cây xanh	Chăm sóc cây xanh, sân vườn.
+nong-lam-moi-truong	31320	51-8031.00	Người vận hành xử lý nước	Vận hành trạm cấp nước và xử lý nước thải.
+nong-lam-moi-truong	96120	53-7081.00	Nhân viên thu gom tái chế	Thu gom, phân loại rác và vật liệu tái chế.
+giao-thong-logistics	31530	53-2011.00	Phi công	Điều khiển máy bay chở khách, chở hàng.
+giao-thong-logistics	31540	53-2021.00	Kiểm soát viên không lưu	Điều hành máy bay trên không và tại sân bay.
+giao-thong-logistics	31520	53-5021.00	Thuyền trưởng, hoa tiêu	Chỉ huy và dẫn tàu trên biển, cảng.
+giao-thong-logistics	31510	53-5031.00	Máy trưởng tàu thuỷ	Vận hành hệ động lực trên tàu.
+giao-thong-logistics	83501	53-5022.00	Người lái tàu thuyền	Điều khiển tàu nhỏ trên sông, ven biển.
+giao-thong-logistics	83502	53-5011.00	Thuỷ thủ	Làm việc trên boong và bảo dưỡng tàu.
+giao-thong-logistics	83110	53-4011.00	Lái tàu hoả	Điều khiển đầu máy trên tuyến đường sắt.
+giao-thong-logistics	83311	53-3052.00	Lái xe buýt	Chở khách theo tuyến cố định.
+giao-thong-logistics	83221	53-3054.00	Lái xe taxi	Chở khách theo yêu cầu.
+giao-thong-logistics	83222	53-3053.00	Lái xe con	Đưa đón cán bộ, khách hàng.
+giao-thong-logistics	83321	53-3032.00	Lái xe tải	Vận chuyển hàng hoá đường dài.
+giao-thong-logistics	83431	53-7021.00	Người vận hành cần trục	Nâng, chuyển vật nặng tại cảng, công trường.
+giao-thong-logistics	83421	47-5022.00	Người vận hành máy đào	Điều khiển máy đào, xúc đất.
+giao-thong-logistics	33310	13-1041.08	Nhân viên thủ tục hải quan	Chuẩn bị hồ sơ thông quan hàng hoá.
+giao-thong-logistics	33310	43-5011.01	Nhân viên giao nhận vận tải	Sắp xếp lộ trình, chứng từ gửi hàng.
+giao-thong-logistics	24210	13-1081.00	Chuyên viên logistics	Tổ chức dòng hàng từ nhà cung cấp tới khách.
+giao-thong-logistics	24210	13-1081.02	Chuyên viên phân tích logistics	Phân tích dữ liệu để tối ưu vận chuyển, kho.
+giao-thong-logistics	21649	19-3099.01	Nhà quy hoạch giao thông	Đánh giá và quy hoạch mạng lưới giao thông.
+giao-thong-logistics	43230	43-5071.00	Nhân viên kho vận	Nhập, xuất và kiểm đếm hàng hoá.
+giao-thong-logistics	43210	53-7065.00	Nhân viên ghi tồn kho	Sắp xếp hàng và cập nhật số lượng tồn.
+giao-thong-logistics	43220	43-5061.00	Nhân viên điều độ sản xuất	Lập lịch và theo dõi tiến độ đơn hàng.
+giao-thong-logistics	96211	43-5052.00	Nhân viên bưu tá	Phát thư, bưu phẩm theo tuyến.
+giao-thong-logistics	96212	43-5021.00	Nhân viên giao hàng	Giao hàng, tài liệu tới người nhận.
+giao-thong-logistics	93333	53-7062.00	Công nhân bốc xếp	Bốc dỡ hàng hoá tại kho, cảng, sân bay.
+giao-thong-logistics	93334	53-7051.00	Người lái xe nâng	Dùng xe nâng di chuyển hàng trong kho.

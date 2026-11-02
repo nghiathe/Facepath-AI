@@ -14,6 +14,7 @@ import {
   TOTAL_LANDMARKS,
 } from "./landmark-ids";
 import { FACE_TYPES } from "../data";
+import { measureBoVi } from "./bovi";
 import {
   CALIB_IS_PROVISIONAL,
   classifyHanh,
@@ -43,7 +44,7 @@ export const CALIB = {
   browEyeGap: [0.08, 0.28] as [number, number], // (mí trên - mép dưới mày) / iod
   noseWingWidth: [0.25, 0.45] as [number, number], // bề ngang cánh mũi / bề ngang mặt
   noseBridgeWidth: [0.28, 0.46] as [number, number], // bề ngang sống mũi / iod
-  noseLength: [0.5, 0.9] as [number, number], // dài mũi / iod
+  noseLength: [0.42, 0.78] as [number, number], // dài mũi / iod
   mouthWidth: [0.35, 0.55] as [number, number], // bề ngang miệng / bề ngang mặt
   lipThickness: [0.12, 0.34] as [number, number], // (dày môi trên + dưới) / iod
   eyeSize: [0.07, 0.13] as [number, number], // cao mắt / iod
@@ -403,7 +404,8 @@ export function extractFeatures(
   // Đo trên toạ độ PIXEL, không phải toạ độ chuẩn hoá: xem ghi chú ở
   // QualityInput.frame.
   const frame = quality.frame ?? SQUARE_FRAME;
-  const measured = measureShape(toPixels(lm, frame));
+  const pixels = toPixels(lm, frame);
+  const measured = measureShape(pixels);
   const shapeZ = toZ(measured.shape);
   const hanh = classifyHanh(shapeZ, HANH_PROTOS);
 
@@ -470,6 +472,7 @@ export function extractFeatures(
       cornerAngle,
       shape: classifyMouthShape(mouthWidth, lipThickness, cornerAngle),
     },
+    bovi: measureBoVi(pixels, frame.width, measured.shape, measured.extra),
     quality: {
       landmarks: lm.length,
       headTiltDeg,

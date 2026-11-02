@@ -1,72 +1,27 @@
 [
   {
-    "id": "ntc",
-    "title": "Nhân Tướng Học",
-    "author": "Hy Trương",
-    "citation": "sách gốc của dự án",
-    "note": "Bản số hoá dùng làm ngữ liệu chính. Các nguồn cổ thư bên dưới đều được trích dẫn lại trong sách này."
-  },
-  {
-    "id": "may",
-    "title": "Ma Y Thần Tướng",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "than_di_phu",
-    "title": "Thần dị phú",
-    "author": "Trần Đoàn chú giải",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "phong_giam",
-    "title": "Phong giám tập",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "thanh_hoa_tu",
-    "title": "Thành Hòa Tử",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
     "id": "than_tuong_toan_bien",
     "title": "Thần tướng toàn biên",
-    "citation": "trích trong Nhân Tướng Học"
+    "author": "thường ghi Viên Trung Triệt biên soạn (đời Minh)",
+    "citation": "chép trong Cổ kim đồ thư tập thành, Nghệ thuật điển, Tướng thuật bộ (quyển 631–644)",
+    "note": "Nguyên văn Hán thuộc phạm vi công cộng. Bản tiếng Việt trên phiếu do nhóm dự án tự dịch từ nguyên văn.",
+    "url": "https://zh.wikisource.org/wiki/欽定古今圖書集成/博物彙編/藝術典/相術部"
   },
   {
-    "id": "thuy_kinh",
-    "title": "Thủy kính tập",
-    "citation": "trích trong Nhân Tướng Học"
+    "id": "bang_giam",
+    "title": "Băng giám",
+    "author": "không rõ người soạn (bản Wikisource ghi La Tổ chân nhân; thường được gán cho Tăng Quốc Phiên nhưng chưa có căn cứ chắc)",
+    "citation": "bản chép tay của Giản Sa Lữ, Giản Hy Nghiêu hiệu đính (thời Dân Quốc), 7 chương",
+    "note": "Nguyên văn Hán thuộc phạm vi công cộng. Sách thiên về xem thần thái, tính tình. Bản tiếng Việt do nhóm dự án tự dịch.",
+    "url": "https://zh.wikisource.org/wiki/冰鑑"
   },
   {
-    "id": "nhan_luan",
-    "title": "Nhân Luân đại thống phú",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "to_lang_thien",
-    "title": "Tô Lãng Thiên",
-    "citation": "học phái Nhật Bản, trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "te_dong_gia",
-    "title": "Tề Đông Giã — Tướng mạng đàm kỳ",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "thach_long",
-    "title": "Thạch Long Tứ Thị — Quan tướng học đại ý",
-    "citation": "học phái Nhật Bản, trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "vuong_van_khiet",
-    "title": "Thập đại tự hình tướng (lối phân loại của Vương Văn Khiết)",
-    "author": "Vương Văn Khiết",
-    "citation": "trích trong Nhân Tướng Học"
-  },
-  {
-    "id": "kien_nong_cu_si",
-    "title": "Kiến Nông Cư Sĩ — luận về cung Điền trạch",
-    "citation": "trích trong Nhân Tướng Học (sách ghi lẫn 'Khuyết Nông Cư Sĩ' / 'Kiến Nông Cư Sỉ' — cần đối chiếu bản in)"
+    "id": "chieu_dam_kinh",
+    "title": "Chiếu đảm kinh",
+    "author": "không rõ người soạn",
+    "citation": "chép trong Cổ kim đồ thư tập thành, Nghệ thuật điển, Tướng thuật bộ (quyển 645–646)",
+    "note": "Nguyên văn Hán thuộc phạm vi công cộng. Bản tiếng Việt trên phiếu do nhóm dự án tự dịch từ nguyên văn.",
+    "url": "https://zh.wikisource.org/wiki/欽定古今圖書集成/博物彙編/藝術典/第646卷"
   },
   {
     "id": "model_faceshape_b4",

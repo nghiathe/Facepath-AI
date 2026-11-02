@@ -1,0 +1,98 @@
+[
+  {
+    "id": "achievement",
+    "onet": "Achievement Orientation",
+    "label": "Cầu tiến, nỗ lực",
+    "description": "Đặt mục tiêu cao và bỏ công để đạt được."
+  },
+  {
+    "id": "persistence",
+    "onet": "Perseverance",
+    "label": "Bền chí",
+    "description": "Theo đuổi việc đến cùng dù gặp trở ngại."
+  },
+  {
+    "id": "initiative",
+    "onet": "Initiative",
+    "label": "Chủ động",
+    "description": "Tự nhận việc, tự đứng ra làm khi chưa ai giao."
+  },
+  {
+    "id": "leadership",
+    "onet": "Leadership Orientation",
+    "label": "Dẫn dắt",
+    "description": "Sẵn lòng đứng ra điều phối, đưa ra định hướng."
+  },
+  {
+    "id": "cooperation",
+    "onet": "Cooperation",
+    "label": "Hợp tác",
+    "description": "Dễ chịu, hoà hợp khi làm việc cùng người khác."
+  },
+  {
+    "id": "concern_for_others",
+    "onet": "Empathy",
+    "label": "Quan tâm người khác",
+    "description": "Nhạy với nhu cầu, cảm xúc của người xung quanh."
+  },
+  {
+    "id": "social_orientation",
+    "onet": "Social Orientation",
+    "label": "Hướng ngoại, thích giao tiếp",
+    "description": "Thích làm việc với người hơn làm một mình."
+  },
+  {
+    "id": "self_control",
+    "onet": "Self-Control",
+    "label": "Điềm tĩnh, tự chủ",
+    "description": "Giữ được bình tĩnh, kiềm chế phản ứng."
+  },
+  {
+    "id": "stress_tolerance",
+    "onet": "Stress Tolerance",
+    "label": "Chịu áp lực",
+    "description": "Làm việc tốt dưới sức ép."
+  },
+  {
+    "id": "adaptability",
+    "onet": "Adaptability",
+    "label": "Linh hoạt",
+    "description": "Dễ thích nghi khi hoàn cảnh thay đổi."
+  },
+  {
+    "id": "dependability",
+    "onet": "Dependability",
+    "label": "Đáng tin cậy",
+    "description": "Giữ lời, làm tròn trách nhiệm."
+  },
+  {
+    "id": "attention_to_detail",
+    "onet": "Attention to Detail",
+    "label": "Tỉ mỉ, cẩn trọng",
+    "description": "Chú ý chi tiết, làm kỹ từng phần."
+  },
+  {
+    "id": "integrity",
+    "onet": "Integrity",
+    "label": "Chính trực",
+    "description": "Trung thực, giữ nguyên tắc đạo đức."
+  },
+  {
+    "id": "independence",
+    "onet": "Self-Confidence + Tolerance for Ambiguity",
+    "label": "Độc lập",
+    "description": "Tự định hướng, ít cần người giám sát."
+  },
+  {
+    "id": "innovation",
+    "onet": "Innovation",
+    "label": "Sáng tạo",
+    "description": "Nghĩ ra cách làm, ý tưởng mới."
+  },
+  {
+    "id": "analytical_thinking",
+    "onet": "Intellectual Curiosity",
+    "label": "Tư duy phân tích",
+    "description": "Dùng lập luận, logic để xử lý vấn đề."
+  }
+]

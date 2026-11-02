@@ -253,8 +253,8 @@ function SourcesTab() {
     <div className="flex flex-col gap-3">
       <p className="max-w-[720px] text-sm font-light leading-relaxed text-ink-faint">
         Mọi luật đều trỏ về một chỗ cụ thể trong sách để bạn tra lại được. Các cổ
-        thư dưới đây đều được trích lại trong cuốn <em>Nhân Tướng Học</em> — ngữ
-        liệu gốc của dự án.
+        thư dưới đây thuộc phạm vi công cộng; câu trích hiển thị là bản tiếng Việt
+        do nhóm dự án tự dịch từ nguyên văn.
       </p>
       {BOOK_SOURCES.map((s) => {
         const used = RULES.filter((r) => r.source === s.id);
